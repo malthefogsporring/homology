@@ -1,0 +1,30 @@
+An admissable category...
+
+The axioms of (generic) homology theory...
+
+\section{Basic results}
+\begin{prop}
+If $A\subset X$ is a deformation retract, then $H_n(X,A)=0$.
+\end{prop}
+\begin{proof}
+If $A\subset X$ is a deformation retract, then the inclusion $i:A\rightarrow X$ is a homotopy equivalence. Let $r:X\rightarrow A$ be the retraction. Then $ir\simeq id_X$ and $ri\simeq id_A$.
+By homotopy invariance of $H_n$ and the identity property of functors, $(ir)_*=(id_{X})_*=id_{H_nX}$ and $(ri)_*=(id_{A})_*=id_{H_nA}$. Since $(ri)_*=r_*i_*$ and vice-versa, we have that $i_*$ is an isomorphism.
+
+Now consider the long exact homology chain:
+
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAJAfTAEEQAvqXSZc+QigDMFanSat23MAA1BwkBmx4CRACwyaDFm0SceACmWleASjUit4ogFYDc44q7AwAWgCMAvxCDmI6KH5uRgqm3N4A1AGW1nbBGqLaEsgAbJHyJiAAOgVQEDgIqZqhmeS5HqZFJWWCsjBQAObwRKAAZgBOEAC2SPogOBBINe7RhQVo9L14TPYgfYMTNGNIEVP5WFwAVMurQ4jbm4hkO+wAVgdH-SeX59JX9bPzi4z3a4gv586pY5IHKjcaIXQCSgCIA
+\begin{tikzcd}
+\dots \arrow[r] & {H_{n+1}(X,A)} \arrow[r, "\partial"] & H_nA \arrow[r, "i_*"] & H_nX \arrow[r, "j_*"] & {H_n(X,A)} \arrow[r, "\partial"] & H_{n-1}A \arrow[r] & \dots
+\end{tikzcd}
+
+Since $i_*$ is an isomorphism, and the chain is exact, $H_nX=im(i_*)=ker(j_*)$ so $0=im(j_*)=ker(\partial)$
+
+However, on the left we also have $0=ker(i_*)=im(\partial)$ since $i_*$ is an isomorphism. It follows that $H_n(X,A)=0$.
+
+\end{proof}
+
+\begin{remark}
+As a special case of this result, $H_n(X,X)=0$, as $X$ is a deformation retract of itself.
+\end{remark}
+

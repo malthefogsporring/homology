@@ -5,19 +5,24 @@
 %\usepackage{listings}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{tikz-cd}
 %\usepackage{mathtools}
 %\usepackage{theoremref}
 \usepackage{amsthm}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
+\newcounter{thm}
+\numberwithin{thm}{section}
+\newtheorem{theorem}{Theorem}[thm]
+\newtheorem{corollary}{Corollary}[thm]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{remark}[thm]{Remark}
 
-\title{Simplicial Complexes and the Borsuk-Ulam Theorem}
+\title{Axiomatic Homology Theory and the Borsuk-Ulam Theorem}
 \author{Malthe Sporring}
 
 \begin{document}
 \maketitle
 
-\section{Finite simplicial complexes}
-\input{finite-simplicial-complexes}
+\section{Axioms}
+\input{axioms}
 \end{document}
