@@ -25,6 +25,88 @@ However, on the left we also have $0=ker(i_*)=im(\partial)$ since $i_*$ is an is
 \end{proof}
 
 \begin{remark}
-As a special case of this result, $H_n(X,X)=0$, as $X$ is a deformation retract of itself.
+\label{contractible-0}
+As a special case of this result, $H_n(X,X)=0$, as $X$ is a deformation retract of itself. We are also interested in special case where $A=x$ is a single point, i.e. $X$ is contractible. Then we have $H_n(X,x)=0$.
 \end{remark}
 
+It is possible to reduce the abelian objects $H_nX$ into simpler objects $\tilde{H}_nX$ by in some sense factoring out the object $H_n1$. Furthermore, this can be done without losing any information, i.e. the transformation $H_nX\rightarrow \tilde{H}_nX$ is reversible.
+
+First we will need some facts about abelian objects.
+
+\begin{definition}
+If there exist maps $f:A\rightarrow B$ and $g:B\rightarrow A$ between abelian objects such that $g\circ f = id_A$ then $g$ is called a \defn{retraction} of $f$, and $f$ is called a \defn{something} of $g$.
+\end{definition}
+
+$g$ can be thought of as a one-sided inverse of $f$, as there is no requirement that $g\circ f=id_B$.
+
+\begin{lemma}
+If $g:B\rightarrow A$ is a retraction of $f:A\rightarrow B$, then $B\iso im(f)\dsum ker(g)$ 
+\end{lemma}
+
+\begin{proof}
+\label{direct-sum-iso}
+The isomorphism is given by $$h:B\rightarrow im(f)\dsum ker(g)$$
+$$x \mapsto (f\circ g(x),x-f\circ g(x))$$
+This is well-defined as $f\circ g(x)\in im(f)$ and 
+$$g(x-f\circ g(x))=g(x)-g\circ f \circ g(x)=g(x)-g(x)=0$$
+by the associativity of homomorphisms, and since $g\circ f= id_A$. Hence $x-f\circ g(x)\in ker(g)$
+The inverse is $$h^{-1}:im(f)\dsum ker(g)\rightarrow B$$
+$$(a,b)\mapsto a+b$$
+One quickly checks that
+$$h\circ h^{-1}(a,b)=h(a+b)=(f\circ g(a+b),a+b - f\circ g(a+b))$$
+$$=(f\circ g(a)+0,a+b-f\circ g(a))$$
+since $b\in ker(g)$. However, $a=f(c)$ for some $c\in A$, so
+$$(f\circ g(a)+0,a+b-f\circ g(a))=(f\circ g \circ f(c),a+b-f\circ g \circ f(c))$$
+$$=(f(c),a+b-f(c))=(a,b)$$
+since $f\circ g=id_B$. Additionally,
+$$h^{-1}\circ h(x)=f\circ g(x)+x-f\circ g(x)=x$$
+So $h$ and $h^{-1}$ are indeed inverse homomorphisms, and $B\iso im(f)\dsum ker(g)$.
+\end{proof}
+
+We will use this Lemma on the following construction.
+
+\begin{definition}
+$\tilde{H}_n(X)=ker(p^*:H_nX\rightarrow H_n1)$ where $p^*$ is the map induced by the initial map $p:X\rightarrow 1$. $\tilde{H}_nX)$ is called the \defn{reduced homology} of $X$.
+\end{definition}
+
+\begin{prop}
+\label{reduced-homology}
+For any $x\in X$,
+$H_n(X,A)=\tilde{H}_n(X,A)\dsum H_n1=H_n(X,x)\dsum H_n1$
+\end{prop}
+
+\begin{proof}
+For the first equality, consider the following diagram. $x$ exists by assumption MISSING of an admissable category, and $p$ exists since $1$ is an initial object. Notice $p$ is a retraction of $x$.
+
+DIAGRAM
+
+$H_n$ induces the following diagram, and since functors map compositions to compositions and identities to identities, we have that $p^*\circ x^*=id_{H_n1}$, so $p^*$ is a retraction of $x^*$.
+
+DIAGRAM
+
+By \ref{direct-sum-iso}, $$H_nX\iso im(x^*)\dsum ker(p^*)=im(x^*)\dsum H_n1\dsum \tilde{H}_nX$$
+where the last equality holds because $p^*\circ x^* = id_{H_n1}$ guarantees that $x^*$ is injective.
+
+For the second equality, note any two initial objects are isomorphic. In particular, for $x\in X$, $x\iso 1$. We hence have the following long exact chain
+
+DIAGRAM
+
+From which we can extract a short exact chain
+
+DIAGRAM
+
+By exactness, $H_n1\iso im(x^*)\iso ker(j*)$ and $im(j*)\iso ker(\partial)=H_n(X,x)$. Furthermore, by the first isomorphism theorem, $im(j*)\iso H_nX/ker(j*)$. Therefore, $$H_n(X,x)\iso H_nX/H_n1\iso \tilde{H}_nX\dsum H_n1/H_n1 \iso \tilde{H}_nX$$
+where the last few isomorphisms are done somewhat informally, to be made precise at a future point. MISSING
+\end{proof}
+
+\begin{corollary}
+If $X$ is contractible to $x\in X$, then $H_n(X)=H_n(X,x)\dsum H_n1=0\dsum H_n1\iso H_n1$, by \ref{contractible-0}. It follows that $\tilde{H}_nX=0$
+\end{corollary}
+
+\ref{reduced-homology} shows that $H_n(X,A)$ always carries around a copy of $H_n1$, which can be safely removed by going to the kernel of $p^*$. Gluing a copy of $H_n1$ onto $\tilde{H}_n(X,A)$ recovers the original object.
+
+We would like to do manipulations using $\tilde{H}_nX$ instead of $H_n X$, as these spaces are simpler. To justify this, we should show that $\tilde{H}_n X$ forms a homology theory whenever $H_n$ does.
+
+\begin{theorem}
+If $H_n$ and $\partial$ form a homology theory over some category $C$, then for $\tilde{H}_nX$ there exist $\tilde{\partial}$ such that they form a homology theory as well.
+\end{theorem}
