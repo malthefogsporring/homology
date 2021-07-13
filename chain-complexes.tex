@@ -1,0 +1,20 @@
+\begin{definition}
+A \defn{chain complex} is a sequence of algebraic objects and homomorphisms between them, such that for any consecutive $f_{i},f_{i+1}$ we have that $im(f_i)\subset ker(f_{i+1})$. If we have equality instead of inclusion, the construction is called an \defn{exact sequence}.
+\end{definition}
+
+**MISSING: Not actually sequences, as they can be infinite in both directions
+
+We also distinguish between \defn{short} and \defn{long exact sequences}, where the former is finite sequences of three or fewer nonzero elements, and the latter is all other sequences.
+
+\begin{example}
+For any objects $A_1,A_2,\dots$ the following is a long exact sequence:
+DIAGRAM MISSING
+\end{example}
+
+\begin{remark}
+The requirement that $im(f_i)\subseteq ker(f_{i+1})$ for all $i\in \mathbb{Z}$ is equivalent to the requirement that $f_{i+1}\circ f_i=0$ for all $i\in \mathbb{Z}$. This is clear from the definition; if $im(f_i)\subseteq ker(f_{i+1})$ then $f_{i+1}\circ f_i (A_i)=f_{i+1}(im(f_i))=0$. Conversely, if $f_{i+1}\circ f_i=0$ then $f_{i+1}(im(f_i))=0$.
+\end{remark}
+
+\begin{lemma}[Braid lemma]
+
+\end{lemma}

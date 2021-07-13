@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz-cd}
+\usepackage{enumerate}
 %\usepackage{mathtools}
 %\usepackage{theoremref}
 \usepackage{amsthm}
@@ -17,10 +18,14 @@
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{remark}[thm]{Remark}
 \newtheorem{definition}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
 
 \newcommand{\dsum}{\bigoplus}
 \newcommand{\iso}{\cong}
 \newcommand{\defn}[1]{\textit{#1}}
+\newcommand{\cat}[1]{\mathcal{#1}}
+\newcommand{\RP}[1]{\mathbb{RP}^{#1}}
+\newcommand{\S}[1]{\mathbb{S}^{#1}}
 
 \title{Axiomatic Homology Theory and the Borsuk-Ulam Theorem}
 \author{Malthe Sporring}
@@ -29,5 +34,8 @@
 \maketitle
 
 \section{Axioms}
+\input{chain-complexes}
 \input{axioms}
+\input{spheres}
+\input{real-projective-space}
 \end{document}

@@ -29,6 +29,8 @@ However, on the left we also have $0=ker(i_*)=im(\partial)$ since $i_*$ is an is
 As a special case of this result, $H_n(X,X)=0$, as $X$ is a deformation retract of itself. We are also interested in special case where $A=x$ is a single point, i.e. $X$ is contractible. Then we have $H_n(X,x)=0$.
 \end{remark}
 
+\subsection{Reduced homology}
+
 It is possible to reduce the abelian objects $H_nX$ into simpler objects $\tilde{H}_nX$ by in some sense factoring out the object $H_n1$. Furthermore, this can be done without losing any information, i.e. the transformation $H_nX\rightarrow \tilde{H}_nX$ is reversible.
 
 First we will need some facts about abelian objects.
@@ -84,7 +86,7 @@ $H_n$ induces the following diagram, and since functors map compositions to comp
 
 DIAGRAM
 
-By \ref{direct-sum-iso}, $$H_nX\iso im(x^*)\dsum ker(p^*)=im(x^*)\dsum H_n1\dsum \tilde{H}_nX$$
+By \ref{direct-sum-iso}, $$H_nX\iso im(x^*)\dsum ker(p^*)= H_n1\dsum \tilde{H}_nX$$
 where the last equality holds because $p^*\circ x^* = id_{H_n1}$ guarantees that $x^*$ is injective.
 
 For the second equality, note any two initial objects are isomorphic. In particular, for $x\in X$, $x\iso 1$. We hence have the following long exact chain
@@ -105,8 +107,38 @@ If $X$ is contractible to $x\in X$, then $H_n(X)=H_n(X,x)\dsum H_n1=0\dsum H_n1\
 
 \ref{reduced-homology} shows that $H_n(X,A)$ always carries around a copy of $H_n1$, which can be safely removed by going to the kernel of $p^*$. Gluing a copy of $H_n1$ onto $\tilde{H}_n(X,A)$ recovers the original object.
 
-We would like to do manipulations using $\tilde{H}_nX$ instead of $H_n X$, as these spaces are simpler. To justify this, we should show that $\tilde{H}_n X$ forms a homology theory whenever $H_n$ does.
+As we will see, there is a long exact chain for the reduced homology. To define it, we will need the following lemma. Consider an admissable category $C$ and a triple $(X,A,B)\in Top_{(3)}$ such that $(X,A),(X,B),(A,B)\in C$. The long exact sequences, which will be labelled $(1),(3),(4)$ respectively, form a braid diagram as shown below. The sequence $(2)$, called the \defn{long exact homology sequence} for the triple $(X,A,B)$ is defined in such a way that the diagram commutes. Explicitly, it is the sequence
 
-\begin{theorem}
-If $H_n$ and $\partial$ form a homology theory over some category $C$, then for $\tilde{H}_nX$ there exist $\tilde{\partial}$ such that they form a homology theory as well.
-\end{theorem}
+DIAGRAM
+
+where $\partial$ is the composition of the transformation $\partial:H_{n+1}(X,A)\rightarrow H_n A$ and $i^*:H_nA\rightarrow H_n(A,B)$. The other two maps are induced by the inclusions $H_n(A,B)\rightarrow H_n(X,B)$ and $H_n(X,B)\rightarrow H_n(X,A)$.
+
+\begin{prop}
+For a triple $(X,A,B)\in Top_{(3)}$ such that $(X,A),(X,B),(A,B)\in C$, the sequence
+
+DIAGRAM 
+
+is a long exact sequence.
+\end{prop}
+\begin{proof}
+We will start by noting that the diagram above commutes. In any subdiagram of the diagram not involving $\partial$, this follows by noting the subdiagram is induced (via a composition-preserving functor) from a diagram of inclusions which commute by the definition of an admissible category. Any subsquare or triangle involving $\partial$ commutes since $\partial$ is a natural transformation, or by the definition of the special $\partial$ defined above.
+
+After noting the diagram commutes, it becomes easy to show $(2)$ is a chain complex, i.e. that the composition of any two maps is $0$. For two out of three compositions, you can via commutativity choose an alternative path which goes via two consecutive maps in a exact sequence, and is hence $0$. For the final composition
+
+DIAGRAM
+
+note we have the following commutative diagram (commutative since it is induced by the commutative diagram of inclusions):
+
+Since $H_n(A,A)=0$, the composition is $0$, as required. ($\text{https://ncatlab.org/nlab/show/braid+lemma\# Munkres}$) The result is then achieved by an application of the braid lemma.
+\end{proof}
+
+\begin{corollary}
+The sequence
+
+DIAGRAM
+
+is a long exact sequence.
+\end{corollary}
+\begin{proof}
+First note that if $(X,A)\in C$ then by the requirements of an admissable category, $(X,x)$ and $(A,x)\in C$ as well for any $x\in A$. Hence by the previous proposition, and using the isomorphism $\tilde{H}_n X\iso H_n(X,x)$, we get the result.
+\end{proof}
