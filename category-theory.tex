@@ -1,0 +1,15 @@
+\section{Category theory}
+The language of category theory was invented to make homology theory easier to describe (Source MISSING), but has since been used for many areas inside and outside mathematics (Source MISSING). It is a very general construction, as many familiar constructions can be understood as categories, such as groups, rings, vector spaces and topological spaces. Informally, a category is a collection of "objects" and "maps between them".
+
+In many cases we will study the objects are sets and the maps are functions that satisfy some structure-preserving property, however it is important to note that the definition of a category goes beyond this. There are categories whose objects look nothing like sets and whose maps look nothing like functions. Even for a category of sets and functions, the category may have no notion of "elements of a set" or "evaluation a point".
+
+\begin{definition}
+An object $\cat{A}$ is a \def{collection} of objects $ob(\cat{A})$, for each $A,B\in ob(\cat{A})$ a collection of maps $\cat{A}(A,B)$, and a composition rule $\circ$ satisfying the following properties:
+\begin{enumerate}
+\item If $f\in \cat{A}(A,B)$ and $g\in \cat{A}(B,C)$ then $g\circ f\in \cat{A}(A,C)$
+\item For each $A\in ob(\cat{A})$ there is a unique map $id_A\in \cat{A}(A,A)$ with the property that $id_A\circ f$=$f$ and $g\circ id_A=g$ for every $f:B\rightarrow A$ and $g:A\rightarrow B$
+\end{enumerate}
+\end{definition}
+
+The term $\def{collection}$ is similar to a set, but with the important distinction that MISSING.
+
