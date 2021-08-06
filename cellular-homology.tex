@@ -1,0 +1,67 @@
+\section{Cellular homology}
+A common class of spaces is the class of \defn{cell complexes} or \defn{CW complexes}, which are constructed by iteratively gluing copies of $D^n$ in a manner defined by a function defined on the boundary $\partial D^n \iso \S{n-1}$. As will become apparent, CW-complexes have the right structure for establishing a very practical way of calculating their homology groups.
+
+\begin{definition}
+A cell complex $X$ is the union of a sequence of spaces $X^n$, called the \defn{n-skeleta} of $X^n$ defined as follows: $X^0$ is a discrete set, and for each $X^{n-1}$, $X^{n}$ is obtained by gluing copies of $D_{\alpha}^n$, called n-cells, along a map $\phi_{\alpha}:S^{n-1}\rightarrow X^{n-1}$ defined on the boundary of $D_{\alpha}^n$. Explicitly, $X^n$ is the quotient of the disjoint union $X^{n-1}\sqcup_{\alpha} D_{\alpha}^n$ under the identification $x\sim \phi_{\alpha}(x)$ for $x\in S^{n-1}\subset D_{\alpha}^n$. If $X=X^n$ for some $n\in \mathbb{N}^*$, then $X$ is called a \defn{finite cell complex}. Otherwise, $X$ is given the weak topology: a subset $A\subset X$ is open iff $A$ is open in $X^n$ for every $n\in \mathbb{N}^*$.
+\end{definition}
+
+Many familiar spaces naturally arise as cell complexes.
+
+\begin{example}
+$\S{n}$ is a CW-complex with 1 0-cell and 1 $n-cell$ when $n>0$. 
+\end{example}
+
+\begin{example}
+$\RP{2}$ is a CW-complex with 1 0-cell, 1 1-cell and 1 2-cell, and where the attaching map $\phi:S^1\rightarrow X^1$ is the double cover $z\mapsto z^2$. To see this, note that $\RP{2}$ can be thought of as the upper dome of the 2-sphere, with antipodal points on the equator identified. The upper dome is homeomorphic to $D^2$ and for $z\in \S{1}$ the condition $z\sim -z$ is equivalent to the condition $z\sim z^2$. This is immediately obvious from noting that $z$ and $-z$ are both mapped to $z^2$, and conversely if $z^2=y^2$, then $z=\pm y$.
+
+Iteratively, $\RP{n}$ can be understood as a copy of $D^n$ glued to a copy of $\RP{n-1}$ via the projection map $z\mapsto [z]$ along the boundary $\partial D^n$.
+\end{example}
+
+\begin{example}
+The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, noting that the two maps $a$ and $b$ are in fact 1-cells, as the corners are identified as a single point. The identification map $f:S^1\rightarrow X^1$ is then given by the concatenation $a\bullet b\bullet -a \bullet -b$. The Klein bottle, which also arises as a quotient of the square, can be defined in a similar way.
+
+IMAGE MISSING
+\end{example}
+
+We will show that the homology groups of cell complexes can be identified as the homology groups of a certain chain complex of relative homology group $H_n(X^n,X^{n-1})$. This method of "taking homology twice" in essence trims away a lot of fat, making calculations easier. By "homology group of a chain complex" we mean the following:
+
+\begin{definitions}
+Let the following diagram be a chain complex of abelian groups.
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBAfWDAGpiAXxCDS6TLnyEUAJgrU6TVu269ho8djwEiAZnk0GLNok48wAWiEixIDFqlEALAcXH2AHQ9QIOBBrsJbWlkclcjZVMvHz8RBRgoAHN4IlAAMwAnCABbJDCQHAgkMjdIkChzAXVbTJzimkKkOVKTcvNq9KzcxGbGxH0W9greKw6QWu6XAqLEckFKQSA
+\begin{tikzcd}
+\dots \arrow[r] & A_{n+1} \arrow[r, "d_{n+1}"] & A_{n} \arrow[r, "d_{n}"] & A_{n-1} \arrow[r, "d_{n-1}"] & \dots
+\end{tikzcd}
+
+Then the abelian group $\tilde{H}_n(A_n):=Ker(d_n)/Im(d_{n+1})$ is called the \defn{homology group of the chain complex}.
+\end{definition}
+
+\begin{remark}
+Note both $Ker(d_n)$ and $Im(d_{n+1})$ are abelian subgroups, and $Im(d_{n+1}) \subseteq Ker(d_n)$ as we are dealing with a chain complex. (FINISH PROOF)
+\end{remark}
+
+We will restrict our study to finite cell complexes, but the reader is invited to confirm that the established results also hold for general cell complexes (REF). The proof is adapted from (REF HATCHER), with axiomatic replacements to references to singular homology. We first establish some basic results
+
+\begin{lemma}
+The following hold for finite cell complexes $X$:
+\begin{enumerate}[(i)]
+\item $H_n(X^n,X^{n-1})=\mathbb{Z}^m$ where $m$ is the number of n-cells of $X$ and $n\in \mathbb{N}^*$..
+\item $H_m(X^n)=0$ for $m<n$
+\item The inclusion $X^n\xhookrightarrow{}X^{m}$ gives rise to an isomorphism $H_k(X^n)\iso H_k(X^{m})$ whenever $m>n$ and $k>n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}[(i)]
+\item We cover $X^n$ by $A$, identified as $X^n$ punctured at the center of each n-disk, and $B=\sqcup_m D_{1/2}^n$, the disjoint union of the inner disks of radius $\frac{1}{2}$ in the center of each n-cell. Note that $A$ and $B$ satisfy the requirements of the Mayer-Vietoris sequence, with $A\iso X^{n-1}$, $B\iso \sqcup_m \cdot$, and $A\cap B \iso \sqcup_m S^{n-1}$. The reduced Mayer-Vietoris sequence reads:
+
+
+\item
+\item
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+
+REF HATCHER
+\end{theorem}
