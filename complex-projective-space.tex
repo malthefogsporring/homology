@@ -1,0 +1,9 @@
+\section{Complex projective space}
+The complex projective space, $\CP{n}$ is defined similarly to $\RP{n}$ as the space of complex lines in $\mathbb{C}^{n+1}$. Explicitly it is the quotient $\mathbb{C}^{n+1}\setminus \{0\} / \tilde$ where $z\tilde \lambda w$ for $\lamba \in \mathbb{C}$.
+
+It is trivial to see that $\CP{0}=\cdot$, as any $z\tilde 1$ via multiplication by $\frac{1}{z}$. To understand $\CP{1}$, we can first see it as a quotient of $S^3$, thought of as sitting inside $\mathbb{C}^2$. This follows from the identification $$
+\begin{bmatrix} z\\ w \end{bmatrix}\tilde \big|\begin{bmatrix} z\\ w \end{bmatrix}\big| \begin{bmatrix} z\\ w \end{bmatrix}$$
+Here we are using the typical norm $$\big|\begin{bmatrix} x+iy\\ a+ib \end{bmatrix}\big|=\big| \begin{bmatrix} a\\ b\\ c\\ d \end{bmatrix}\big|$$
+Next note that each $\begin{bmatrix} z\\ w \end{bmatrix}\in S^3$ is equivalent to exactly all elements in a circle $S^1\in S^3$. This is because $\{\lambda \begin{bmatrix} z\\ w \end{bmatrix}, |\lambda|=1\}$ is the set of all rotations of  $\begin{bmatrix} z\\ w \end{bmatrix}$ along some direction. We can choose a unique representation of $\begin{bmatrix} z\\ w \end{bmatrix}\in S^3$ which lies on the equator $S^2=\{\begin{bmatrix} z\\ w \end{bmatrix}\in S^3: \text{im}}(w)=0$. This is the unique representative $w^*\begin{bmatrix} z\\ w \end{bmatrix}\tilde \begin{bmatrix} z\\ w \end{bmatrix}$. This defines a homeomorphism $\CP{1}\tilde S^2$.
+
+This approach can be generalised to find a homeomorphism $\CP{n}\cong S^{2n}$, from which the homology of $\CP{n}$ can be directly read off.
