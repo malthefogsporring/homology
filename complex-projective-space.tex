@@ -6,22 +6,45 @@ It is trivial to see that $\CP{0}=\cdot$, as any $z\tilde 1$ via multiplication 
 Here we are using the typical norm $$\big|\begin{bmatrix} x+iy\\ a+ib \end{bmatrix}\big|=\big| \begin{bmatrix} a\\ b\\ c\\ d \end{bmatrix}\big|$$
 Next note that each $\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}\in S^3$ is equivalent to exactly all elements in a circle $S^1\in S^3$. This is because $\{\lambda \begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}, |\lambda|=1\}$ is the set of all rotations of  $\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}$ along some direction.
 
-Consider the case $w\neq 0$. Then, by multiplying by $\frac{\bar{w}^*}{|\bar{w}|}$ we can choose a unique representative $\begin{bmatrix} \tilde{z}\\ \tilde{w} \end{bmatrix}:= \frac{\bar{w}^*}{|\bar{w}|}\begin{bmatrix}\bar{z}\\ \bar{w} \end{bmatrix}$ such that $\tilde{w}> 0$. This can then be identified as an element of the (open) upper disk of the equator $S^2\in S^3$, as the only restriction on $\tilde{z}$ is that $\big|\begin{bmatrix}\tilde{z}\\ \tilde{w} \end{bmatrix} \big|=1$. For example the element $\begin{bmatrix}\tilde{a} \\ \tilde{w}\end{bmatrix} \in S^2$ where $\tilde{w}>0$ is achieved in the previous construction by setting $z=a/(\frac{w^*}{|w|})$. When $w=0$, $\{\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}\}=\CP{0}\cong \cdot$. It follows that $\CP{1}$ is the (closed) upper hemisphere of $S^2$, quotient its equator, which is homeomorphic to $S^2$. So as a cell complex, $\CP{1}$ has 1 0-cell, 1 1-cell and 2 2-cells in the usual way for $S^2$.
+Consider the case $w\neq 0$. Then, by multiplying by $\frac{\bar{w}^*}{|\bar{w}|}$ we can choose a unique representative $\begin{bmatrix} \tilde{z}\\ \tilde{w} \end{bmatrix}:= \frac{\bar{w}^*}{|\bar{w}|}\begin{bmatrix}\bar{z}\\ \bar{w} \end{bmatrix}$ such that $\tilde{w}> 0$. This can then be identified as an element of the (open) upper disk of the equator $S^2\in S^3$, as the only restriction on $\tilde{z}$ is that $\big|\begin{bmatrix}\tilde{z}\\ \tilde{w} \end{bmatrix} \big|=1$. For example the element $\begin{bmatrix}\tilde{a} \\ \tilde{w}\end{bmatrix} \in S^2$ where $\tilde{w}>0$ is achieved in the previous construction by setting $z=a/(\frac{w^*}{|w|})$. When $w=0$, $\{\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}\}=\CP{0}\cong \cdot$. It follows that $\CP{1}$ is the (closed) upper hemisphere of $S^2$, quotient its equator, which is homeomorphic to $S^2$. So as a cell complex, $\CP{1}$ has 1 0-cell and 1 2-cell.
 
-We can use this cell structure to define $\CP{2}$. As before, we can find a representative $\begin{bmatrix}\bar{z}\\ \bar{w}\\ \bar{u}\\ \end{bmatrix}\in S^5$. For $u=0$ this is $\CP{1}$. For $|u|>0$ we can multiply by $\frac{u^*}{|u|}$ to find a representative in the (open) upper hemisphere of the equator $S^4\in S^5$. As previously, this covers the whole open upper hemisphere of $S^4$, as there are no other restrictions on $\bar{z},\bar{w}$. Therefore $\CP{2}$ has the cell structure of $\CP{1}$ with an additional 4-cell. The gluing map is the projection $S^3\subset \mathbb{C}^2 \rightarrow \CP{1}$. Since $\CP{2}$ has no 3-cells, cellular homology asserts that $H_4(\CP{2})=\mathbb{Z}$. For $n\neq 4$, $H_n(\CP{2})=H_n(\S{2})$, as the cellular homology is untouched here. So $H_n(\CP{2})=\mathbb{Z}$ for $n=0,2,4$ and $0$ otherwise.
+We can use this cell structure to define $\CP{2}$. As before, we can find a representative $\begin{bmatrix}\bar{z}\\ \bar{w}\\ \bar{u}\\ \end{bmatrix}\in S^5$. For $u=0$ this is $\CP{1}$. For $|u|>0$ we can multiply by $\frac{u^*}{|u|}$ to find a representative in the (open) upper hemisphere of the equator $S^4\in S^5$. As previously, this covers the whole open upper hemisphere of $S^4$, as there are no other restrictions on $\bar{z},\bar{w}$. Therefore $\CP{2}$ has a $2n$-cell for $0\leq n \leq 2$. The additional gluing map is the projection $S^3\subset \mathbb{C}^2 \rightarrow \CP{1}$. Since $\CP{2}$ has no cells in adjacent dimensions, its homology groups can be directly read of as $$H_n(\CP{2})=\begin{cases}\mathbb{Z} & n=0,2,4\\ 0 & \text{otherwise}\end{cases}$$
 
 The general case can be done by induction.
 
-\begin{theorem}
-As a cell complex, $\CP{n}$ has 1 0-cell, 1 1-cell, 2 2-cells, and 1 2m-cell for $1<m\leq n$. As a consequence,
+\begin{prop}
+As a cell complex, $\CP{n}$ has a 2m-cell for $0<m\leq n$. As a consequence,
 $$H_k(\CP{n})=\begin{cases} 
-      \mathbb{Z} & k even, 0\leq (k/2)\leq n \\
+      \mathbb{Z} & k \text{ even}, 0\leq k \leq 2n \\
       0 & \text{otherwise}
    \end{cases}
 $$
-\end{theorem}
+\end{prop}
 \begin{proof}
-We have proved the case $n=2$. Suppose the statement is true for some $n$. We will then prove it is true for $n+1$. As before, we can identify elements of $\CP{n+1}$ by representatives of $S^{2n+1}$ by dividing by norm. These can furthermore be identified as either elements of $\CP{n}$ as a quotient of the equator of $S^{2n}$ or elements of the open upper $2n$-cell of $S^{2n}$. The gluing map is the projection of $\partial D^{2n}$ onto $\CP{n}$. Therefore $\CP{n+1}$ has the cell structure of $\CP{n}$, with an additionall $2n$-cell. This proves the inductive case.
-
-The statement on homology is then easily achieved by noting that $\CP{n}$ has no adjacent $n-cells$ for $n>2$, whence the homology groups for $n>2$ correspond exactly to the generators on $n-cells$. For $n\leq 2$ the homology groups of $\CP{n}$ are equal to that of $S^2$.
+We have proved the case $n=2$. Suppose the statement is true for some $n$. We will then prove it is true for $n+1$. As before, we can identify elements of $\CP{n+1}$ by representatives of $S^{2n+1}$ by dividing by norm. These can furthermore be identified as either elements of $\CP{n}$ as a quotient of the equator of $S^{2n}$ or elements of the open upper $2n$-cell of $S^{2n}$. The gluing map is the projection of $\partial D^{2n}$ onto $\CP{n}$. Therefore $\CP{n+1}$ has the cell structure of $\CP{n}$, with an additionall $2n$-cell. This proves the inductive case. The homology groups follow from noting $\CP{n}$ has no n-cells in adjacent dimensions.
 \end{proof}
+
+\begin{remark}\label{hopf}
+It is worth looking at the gluing map of the 4-cell of $\CP{2}$ onto $\CP{1}\homeo \S{2}$. Via the homeomorphism, this is a map $\S{{3}\rightarrow \S{2}$ with the property that the pre-image of every point is a great circle of $S^3$. This is because $[\begin{bmatrix}z\\w \end{bmatrix}]\in \CP{1}$ is mapped to by $\{\lambda \begin{bmatrix}z\\w \end{bmatrix} : \lambda\in \mathbb{C},|\lambda|=1\}$, which is a great circle of $\S{3}$. This is exactly what characterises the Hopf map (REFERENCE).
+\end{remark}
+
+\subsection{Quaternionic projective space}
+The 2-dimensionality of $\mathbb{C}$ ensured that the n-cells of $\CP{n}$ were well spread in dimension, leading to an easy homology calculation. One can wonder if the same method can be applied to the higher dimensional extension of $\mathbb{R}$. Indeed we can!
+
+\begin{definition}
+
+\end{definition}
+
+\begin{prop}
+$\HP{n}$ has a cell structure with a $2k$-cell for $0\leq k\leq n$. As a consequence, $$H_k(\HP{n})=\begin{cases}\mathbb{Z} & k \text{ even}, 0\leq k\leq 2n \\ 0 & \text{otherwise}\end{cases}$$
+\end{prop}
+
+\begin{proof}
+As in previous cases, $\HP{0}=\cdot$, as $z\sim 1$ for every $z\in \mathbb{H}$ by division by $z$. For general $\HP{n}$ we will proceed by induction. Let elements of $\HP{n}$ be written as $[z_1,\dots,z_n]\in \HP{n}$. The subset $\{[0,z_2,\dots,z_n]\}\subset \HP{n}$ can be identified with $\HP{n-1}$. The complement $\HP{n-1}^c\in \HP{n}=\{[z_0,z_1,\dots,z_n]:z_1\neq 0\}=\{[1,z_1,\dots,z_n]\}\iso \mathbb{H}^{n-1}\iso D^{4n}$ by multiplication by $1/z_0$ and relabelling. It follows that $\HP{n}$ has the cell structure of $\HP{n-1}$ with an additional $4n$-cell. This completes the identification of the cell structure of $\HP{n}$.
+
+As $\HP{n}$ has no cells in adjacent dimensions, its $k-th$ homology group is either $\mathbb{Z}$ or $0$, depending on whether $\HP{n}$ has a $k$-cell.
+\end{proof}
+
+\begin{remark}
+Notice that $\HP{1}$ has a 0-cell and a 4-cell, and is therefore homeomorphic to $\S{4}$. As in Remark \ref{hopf}, the gluing map of the 8-cell of $\HP{2}$ onto $\HP{1}\iso \S{4}$, therefore gives a "Hopf"-map $S^7\rightarrow S^4$ with the property that the preimage of a point is a "great" copy of $S^3$. If we have real division algebras of $\mathbb{R}$ for every positive power of two we could repeat this process, yielding "Hopf"-maps from $S^{2^n-1}$ to $S^{n-1}$ for all $n>0$. However this turns out to be false, as shown by X (REFERENCE)!!! The non-existence of such maps for $n>4$ proves there are no $2^n$-dimensional division algebras of $\mathbb{R}$ for $n>4$.
+\end{remark}

@@ -42,26 +42,80 @@ Note both $Ker(d_n)$ and $Im(d_{n+1})$ are abelian subgroups, and $Im(d_{n+1}) \
 
 We will restrict our study to finite cell complexes, but the reader is invited to confirm that the established results also hold for general cell complexes (REF). The proof is adapted from (REF HATCHER), with axiomatic replacements to references to singular homology. We first establish some basic results
 
-\begin{lemma}
+\begin{lemma}\label{cell-lemma}
 The following hold for finite cell complexes $X$:
 \begin{enumerate}[(i)]
-\item $H_n(X^n,X^{n-1})=\mathbb{Z}^m$ where $m$ is the number of n-cells of $X$ and $n\in \mathbb{N}^*$..
-\item $H_m(X^n)=0$ for $m<n$
-\item The inclusion $X^n\xhookrightarrow{}X^{m}$ gives rise to an isomorphism $H_k(X^n)\iso H_k(X^{m})$ whenever $m>n$ and $k>n$.
+\item $H_n(X^n,X^{n-1})=\mathbb{Z}^m$ where $m$ is the number of n-cells of $X$ and $n\in \mathbb{N}^*$.
+\item $H_m(X^n)=0$ for $m>n$.
+\item The inclusion $X^n\xhookrightarrow{i} X$ gives rise to an isomorphism $H_k(X^n)\iso H_k(X)$ whenever $k>n$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-\begin{enumerate}[(i)]
-\item We cover $X^n$ by $A$, identified as $X^n$ punctured at the center of each n-disk, and $B=\sqcup_m D_{1/2}^n$, the disjoint union of the inner disks of radius $\frac{1}{2}$ in the center of each n-cell. Note that $A$ and $B$ satisfy the requirements of the Mayer-Vietoris sequence, with $A\iso X^{n-1}$, $B\iso \sqcup_m \cdot$, and $A\cap B \iso \sqcup_m S^{n-1}$. The reduced Mayer-Vietoris sequence reads:
+The statement is trivial for $n=0$. For $n>0$, notice that $X^{n-1}$ is a deformation retract of $A:=X^{n}\setminus \sqcup_m \cdot$, where the $m$ copies of $\cdot$ are the centers of the $m$ $n$-cells of $X$. The subset $B:= X^{n}\setminus \sqcup_m D_{1/2}^n$ satisfies the conditions of excision, where $D_{1/2}^n$ is the disk of radius $1/2$ sitting inside an n-cell.
+It follows that
+$$H_k(X^n,X^{n-1})\iso H_k(X^n,A)\iso H_k(X^n\B,A\setminus B)\iso H_k(\sqcup_m D^n,\sqcup_m S^{n-1})$$
+These homology groups are familiar: $\mathbb{Z}^m$ if $k=n$, and $0$ otherwise, proving (i).
 
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPrAA1pwAaAPWBhOXHiAzY8BIgCZR1es1aIQshZwAUq9QGohnAJRbeegUQDMJ8eZsHJxiMFAA5vBEoABmAE4QALZIZCA4EEgu2vFJmdTpSIbcsQnJiMZpGYg+IZxAA
+\begin{tikzcd}
+0 \arrow[r] & H_{m}X^{n-1} \arrow[r] & H_{m}(X^{n}) \arrow[r] & 0
+\end{tikzcd}
+whenever $m\neq n,n-1$. Therefore, for $m>n$ we have $H_m{X^n}\iso H_m{X^{n-1}}\iso \dots \iso H_m{X^0}=0$, proving (ii). When $m<n$ we have $H_m(X^n)\xhookrightarrow{i} H_m(X^{n+1})$ is an isomorphism. By induction, we get a chain of inclusions, all of which are isomorphisms:
 
-\item
-\item
-\end{enumerate}
+$$H_m(X^n)\xhookrightarrow{i} H_m(X^{n+1})\xhookrightarrow{i}\dots \xhookrightarrow{i} H_m(X^{m})$$
+
+Since the inclusion $H_m(X^n)\xhookrightarrow{i} H_m(X^{m})$ is the composition of the above inclusions, it too is an isomorphism. For finite cell complexes, $X=X^m$ for some $m$, proving (ii). 
 \end{proof}
 
 \begin{theorem}
+The following is a chain complex, where the map $d_n$ is defined as the composition $H_n(X^n,X^{n-1})\xrightarrow{\partial_n}H_{n-1}(X^{n-1})\xhookrightarrow{i} H_{n-1}(X^{n-1},X^{n-2}).$
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12oIcEBfUuky58hFAEZyVWoxZsAEgH1gYPgAoAGgD0wpbSoC04vgEoQAodjwEiAJinV6zVohBLDxzVo8D9YA7am5oIgGFaiRADMDjLObJzcvObSMFAA5vBEoABmAE4QALZIZCA4EEiSsXKuUMpgANTGwTn5RYiVZUj2VS4gtYQWIHmFXdSdiNE9bLU+yXxAA
+\begin{tikzcd}
+\dots \arrow[r, "d_{n+1}"] & {H_{n}(X^n,X^{n-1})} \arrow[r, "d_n"] & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[r, "d_{n-1}"] & \dots
+\end{tikzcd}
+
+We have an isomorphism $Ker(d_n)/Im(d_{n+1})  \iso H_n(X)$
+\end{theorem}
+
+\begin{proof}
+The relative homology sequences of $X^n$ and $X^{n-1}$ for all natural numbers $n$ fit into a "braid-diagram:"
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoBmAXVJADcBDAGwFcYkQAJAfWDAGoAjAF8AFAA0Aer0FDSk3kICUIWeky58hFABYK1Ok1btuC8RLBypYALTDlqkBmx4CRcqWL6GLNok5cwMzB7UjVnTSIANj0abyM-ExthM15bWXkbYiUVUMd1Fy1kXQEvQ19-QIyZELCNVxQyEtiy4wCUpOyHJzrCgFZSbVKfVtTkjLSavPD65AB2DyH4kAAdZagIHAQu-IiUAQHF8tX1zZzagqIADhiDYb9jja3c7ouUAAYbuKO1x7OpnqIul6hxGHXa1iykxeu2Q-TeIISbUkFnGdhU+hgUAA5vAiKAAGYAJwgAFskB8QDgIEgyLclqs0PRCXgmDx+MI-kTSeSaFSkPs6eUoGyZJziWTEAK+Yh3IL2MLCA4uRLadLdHK-FgxdzEKrqZLmncQAArbUS-qU-VZXLK-m8-XRDUrZaM5lYVmKm3ipCO6Wyr7sRhmpCy6WzJXexDXS3kiM60P6gCccYlAgp0reKf5UodWcQ6ulAiylCEQA
+\begin{tikzcd}
+                 &                  &                                                                             &                                          &                                                                 & {H_n(X^n,X^{n-1})}               &                                                  &       &       \\
+                 &                  & H_n(X^{n-1}) \arrow[rd]                                                     &                                          & H_n(X^{n+1}) \arrow[ru]                                         &                                  &                                                  &       &       \\
+                 &                  &                                                                             & H_n(X^n) \arrow[ru, "i"] \arrow[rd, "j"] &                                                                 &                                  &                                                  & \dots &       \\
+\dots \arrow[rr] &                  & {H_{n+1}(X^{n+1},X^{n})} \arrow[ru, "\partial_{n+1}"] \arrow[rr, "d_{n+1}"] &                                          & {H_{n}(X^n,X^{n-1})} \arrow[rr, "d_n"] \arrow[rd, "\partial_n"] &                                  & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[ru] \arrow[rr] &       & \dots \\
+                 & \dots \arrow[ru] &                                                                             &                                          &                                                                 & H_{n-1}(X^{n-1}) \arrow[ru, "l"] &                                                  &       &       \\
+                 &                  &                                                                             &                                          & H_{n-1}(X^{n-2}) \arrow[ru]                                     &                                  &                                                  &       &      
+\end{tikzcd}
+
+Via Lemma \ref{cell-lemma}, we can reduce some groups to $0$, and make an identification with $H_n(X)$:
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoBmAXVJADcBDAGwFcYkQAJAfWDAGoAjAF8AFAA0Aer0FDSk3kICUIWeky58hFABYK1Ok1btuC8RLBypYALTDlqkBmx4CRcqWL6GLNok5cwMzB7UjVnTSIANj0abyM-ExthM15bWXkbYiUVUMd1Fy1kXQEvQ19-QIyZELCNVxQyEtiy9gAGHNqCogBWUm1Sn2MeJNEMtJq88PrkAHYPAfiQAB0lqAgcBAcnOsKBPoXylbWNjsmdogAOGINBvyP1zdztrpRW67jD1YfT54idUm6BzaP3yf2QvVaQL87S2oOmvSaN0W3Eq9n0MCgAHN4ERQAAzABOEAAtkg3iAcBAkGQkZ80PQCXgmMMZKdCSSyTRKUg9rT2FAWcI2UTSYhedzEO4+X4BYQHOzRTSJbppSAsMKOYglVSxc1biAAFYa0W9Ck6rK5BU8rk66Kqlb0xlYZlyy0ipB2iVSj7sRjGpBSiUzeXuxBXM1kkOawM6gCcUdFAnJEtaCZ54ttacQKolAgt+NDOZ1Am9LTuSywcCpQkoQiAA
+\begin{tikzcd}
+                 &                  &                                                                             &                                          &                                                                 & 0                                &                                                  &       &       \\
+                 &                  & 0 \arrow[rd]                                                                &                                          & H_n(X^{n+1}) \arrow[ru] \arrow[r, "\iso"]                       & H_n(X)                           &                                                  &       &       \\
+                 &                  &                                                                             & H_n(X^n) \arrow[ru, "i"] \arrow[rd, "j"] &                                                                 &                                  &                                                  & \dots &       \\
+\dots \arrow[rr] &                  & {H_{n+1}(X^{n+1},X^{n})} \arrow[ru, "\partial_{n+1}"] \arrow[rr, "d_{n+1}"] &                                          & {H_{n}(X^n,X^{n-1})} \arrow[rr, "d_n"] \arrow[rd, "\partial_n"] &                                  & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[ru] \arrow[rr] &       & \dots \\
+                 & \dots \arrow[ru] &                                                                             &                                          &                                                                 & H_{n-1}(X^{n-1}) \arrow[ru, "l"] &                                                  &       &       \\
+                 &                  &                                                                             &                                          & 0 \arrow[ru]                                                    &                                  &                                                  &       &      
+\end{tikzcd}
+
+Since the composition of any two $d_n$ and $d_{n-1}$ includes the compositions of two successive maps of an exact sequence, the composition is $0$. The horizontal sequence is therefore a chain complex.
+
+We have $$im(d_{n+1})=im(j \partial_{n+1})=im(\partial{n+1})=ker(i)$$
+where the second equality comes from the injectivity of $j$, and the third equality from the exact sequence. Similarly,
+
+$$ker(d_n)=ker(l \partial_n)=ker(\partial_n)=im(j)\iso H_n(X^n)$$
+The second equality follows from the injectivity of $l$, the third from the exact sequence, and the fourth from the injectivity of $j$. We therefore have that 
+$ker(d_n)/im(d_{n+1})\iso H_n(X^n)/ker(i)$. Now by the surjectivity of $i$, $im(i)=H_n X$. Without loss of surjectivity, $i$ defines an injective function $i^*$ on $H_n(X^n)/ker(i)$, so that $H_n(X^n)/ker(i)\iso im(i^*)=H_n X$.
 
 REF HATCHER
-\end{theorem}
+\end{proof}
+
+Cellular boundary formula...
+
+Examples... Circle, genus m, Torus with middle circle identified...
