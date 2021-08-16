@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz-cd}
+
 \usepackage{enumerate}
 %\usepackage{mathtools}
 %\usepackage{theoremref}
@@ -19,16 +20,17 @@
 \newtheorem{remark}[thm]{Remark}
 \newtheorem{definition}[thm]{Definition}
 \newtheorem{example}[thm]{Example}
-
+\bibliographystyle{apalike}
 \newcommand{\dsum}{\bigoplus}
 \newcommand{\iso}{\cong}
 \newcommand{\homeo}{\cong}
+\newcommand{\homotopic}{\simeq}
 \newcommand{\defn}[1]{\textit{#1}}
 \newcommand{\cat}[1]{\mathcal{#1}}
 \newcommand{\RP}[1]{\mathbb{RP}^{#1}}
 \newcommand{\CP}[1]{\mathbb{CP}^{#1}}
 \newcommand{\HP}[1]{\mathbb{HP}^{#1}}
-\newcommand{\S}[1]{\mathbb{S}^{#1}}
+\newcommand{\S}[1]{S^{#1}}
 
 \title{Homology Theory and the Borsuk-Ulam Theorem}
 \author{Malthe Sporring}
@@ -37,9 +39,14 @@
 \maketitle
 
 \input{introduction}
+\input{category-theory}
 \input{chain-complexes}
 \input{axioms}
 \input{spheres}
+\input{mayer-vietoris}
+\input{cellular-homology}
 \input{real-projective-space}
 \input{complex-projective-space}
+
+\bibliography{bibtex}
 \end{document}
