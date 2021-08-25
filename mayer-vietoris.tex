@@ -47,7 +47,35 @@ One could hope that we could extend this method to the the wedge of $\mathbb{Z}$
 Before we resume giving calculations from Mayer-Vietoris, it is only right that we examine the proof.
 
 \subsection{Proof of Mayer-Vietoris}
+We follow the approach laid out in \cite{Hatcher}, first proving a lemma. 
 
+\begin{lemma}
+Consider the following diagram.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBxAfXJAF9S6TLnyEUAJlLFqdJq3bdxAcn6CQGbHgJFJAZhkMWbRJy7FVQzaKJkALAbnHT5FQMsjtKclIdGFZ1zUNDzFkb30aQ3kTDnELdWEtULJxX2jOfhkYKABzeCJQADMAJwgAWyRvEBwIJFtIx3ZGM3iS8qQAVhoapF0GvxMACxa3EDaKxCqexDJZAZBmuNHxpElq2sQ+ufThpbUVye6NgDZ+9KweVtKJ0-Xes6cAK0vl69WjpFuopwvzV-bELdpvVtk8Rvs3ogundAQ92Bc9kVIUCNrNvuxnoixpC1tM0Y0TABrLhYg7Q4FwokjSh8IA
+\begin{tikzcd}
+                                                         & G_0 \arrow[ld, "l_1"] \arrow[rd, "l_2"] \arrow[dd, "i_0"] &                                                           \\
+G_1'                                                     &                                                           & G_2'                                                      \\
+                                                         & G \arrow[dd, "j_0"] \arrow[lu, "j_1"] \arrow[ru, "j_2"]   &                                                           \\
+G2 \arrow[rd, "h_1"] \arrow[ru, "i_2"] \arrow[uu, "k_1"] &                                                           & G_1 \arrow[ld, "h_2"] \arrow[lu, "i_1"] \arrow[uu, "k_2"] \\
+                                                         & G_0'                                                      &                                                          
+\end{tikzcd}
+Suppose each triangle is commutative, $k_1,k_2$ are isomorphisms, and the diagonals are exact sequences. Then $h_2k_2^{-1}l_2=-h_1k_1^{-1}l_1$.
+\end{lemma}
+
+\begin{proof}By lemma \ref{dsum-lemma}, $(i_1,i_2):G_1\dsum G_2\rightarrow G$ is an isomorphism, and so is $(j_1,j_2):G\rightarrow(G'_1,G'_2)$.
+
+ in Proposition \cite{direct-sum} 
+\cite{Hatcher}
+\end{proof}
+
+\begin{theorem}[Mayer-Vietoris Sequence]
+
+\end{theorem}
+
+\begin{theorem}
+\end{theorem}
+\begin{proof}
+\end{proof}
 \subsection{Calculations}
 
 \begin{example}

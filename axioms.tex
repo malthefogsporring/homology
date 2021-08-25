@@ -1,27 +1,79 @@
-An admissable category...
+\section{Axioms of homology}
+The axioms for a homology theory were first laid out by Eilenberg and Steenrod \cite{Eilenberg}. However, in this section, we will follow the treatment given in \cite{Werndli}. We define $\Top{2}$ to be the category of pairs of topological spaces $(X,A)$, where $A,B\in \mathbf{Top}$ and $A\subseteq B$. Morphisms $f:(X,A)\rightarrow (Y,B)$ are continuous maps $f:X\rightarrow Y$ such that $f(A)\subseteq B$. It is not hard to see this space satisfies the definitions of a category (MISSING). We can similarly define $\Top{3}$ as the triples of topological spaces $(X,A,B)$ where $B\subseteq A \subseteq X$ and where morphisms $f:(X,A,B)\rightarrow (Y,C,D)$ are maps $f:X\rightarrow Y$ such that $f(A)\subseteq C$ and $f(B)\subseteq D$. We will often make the identification $X\in \mathbf{Top}$ with $(X,\emptyset)\in \Top{2}$, and the identification $(X,A)\in \Top{2}$ with $(X,A,\emptyset)\in \Top{3}$.
 
-The axioms of (generic) homology theory...
+\begin{definition}
+A subset $C\subset \Top{2}$ is \defn{admissible for homology} if the following apply:
+\begin{enumerate}[(a)]
+\item $C$ contains all points in $\mathbf{Top}$. In the language of category theory, $C$ contains all \defn{final objects} in $\mathbf{Top}$, that is, all objects $\cdot\in\mathbf{Top}$ with the property that there is one and only one morphism from any $X\in\mathbf{Top}$ to $\cdot$.
+\item For any $(X,A)\in C$, the following commutative diagram lies in $C$, where all maps are induced by canonical inclusions:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAKAHS5gFs0OAJ5wYOUj36CRYgJQgAvqXSZc+QinIVqdJq3YcAghN4DhonPKUrseAkQBMpYjoYs2iTgA0TU83MVlEAxbdUdSB1c9D05jQysgkLV7FABmbRo3fU8OH3jAm2SNZAAWDN13Ax8vKx0YKABzeCJQADMAJwg+JDIQHAgkcmsQDq7Bmn6kB2HR7sQtPoHEVJnOufTFpBLVscQnTcRtoNmtiaWAVgVKBSA
+\begin{tikzcd}
+                                  &                                       & {(X,\emptyset)} \arrow[rd] &                   &         \\
+{(\emptyset,\emptyset)} \arrow[r] & {(A,\emptyset)} \arrow[ru] \arrow[rd] &                            & {(X,A)} \arrow[r] & {(X,X)} \\
+                                  &                                       & {(A,A)} \arrow[ru]         &                   &        
+\end{tikzcd}
+and also includes all the maps induced on this diagram by a map $f:(X,A)\rightarrow (Y,B)$.
+\item For $(X,A)\in C$, $C$ contains the following diagram:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoANUgQQEoQAX1LpMufIRQBGclVqMWbLgB1leALbwABAEleqjdp0DBcmFADm8IqABmAJwjqkZEDghIZIAEYwwUJABaAGZXemZWRDcAfSkQagY6XwYABTE8AjZ7LAsACxwhERAHJxdqd09qcMUonGjieJ8-AMRQ00EgA
+\begin{tikzcd}
+{(X,A)} \arrow[r, "t_1"', bend right] \arrow[r, "t_0", bend left] & {(X\times I,A\times I)}
+\end{tikzcd}
+Where $t_s(x)=(x,s)$.
+\end{enumerate}
+\end{definition}
 
-\section{Basic results}
+\begin{remark}
+As noted in \cite{Werndli}, the definition certifies (1) that $C$ contains all final objects in $\Top{2}$, that is all maps $(\cdot,\emptyset)\rightarrow (X,A)$, since $C$ contains all maps $(\cdot\,emptyset)\rightarrow (X,\emptyset)$ and also the inclusion $(X,\emptyset)\rightarrow (X,A)$. (2) condition (iii) allows us to include all homotopies $h:f\tilde g$ between spaces in $C$ purely in the language of category theory as a map $h:(X\times I,A\times I)\rightarrow (Y,B)$ such that $ht_0=f$ and $ht_1=g$:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoANUgQQEoQAX1LpMufIRQBGclVqMWbLgB1leALbwABAEleqjdp0Dho7HgJEATLOr1mrRBwCapAEIm5MKAHN4RUAAzACcIdSQyEBwIJBkQACMYMCgkAFoAZkj7RSccAH0pEGoGOkSGAAUxC0kQYKwfAAscIREQELCI6mjYuwVHKLziIoSklMRM0zbQ8MQ47sQbeQc2Bpag6c6omIXqROSkABYATl7lp0C1qY7ESPnFvbHU49OckB9hkrLK8wk2OsbmoIKIIgA
+\begin{tikzcd}
+{(X,A)} \arrow[r, "t_1"', bend right] \arrow[r, "t_0", bend left] \arrow[rr, "f", bend left=49] \arrow[rr, "g"', bend right=49] & {(X\times I,A\times I)} \arrow[r, "h"] & {(Y,B)}
+\end{tikzcd}
+\end{remark}
+
+In this text we will use "space" to denote "topological space", and assume all spaces and maps are admissible unless otherwise stated. We will also use $D^n$ to denote the closed $n$-disk.
+
+We now give the axioms of an (ordinary) homology theory for an admissible category.
+
+\begin{definition}
+An \defn{ordinary homology theory} on an admissible category $C$ is a family of functors $(H_n:\C\rightarrow \mathbf{A})_{\mathbb{Z}}$ to an abelian category $\mathbf{A}$ and a family of natural transformations $\partial_n:H_n\rightarrow H_{n-1}\circ p$, where $p$ is the functor sending $(X,A)$ to $(A,\emptyset)$ and $f:(X,A)\rightarrow (Y,B)$ to $f|A^B:(A,\emptyset)\rigtharrow(B,\emptyset)$. We will often write $f^*$ for $H_n f$, $\partial$ for $\partial_n$ and $H_nX$ for $H_n(X,\emptyset)$ where it is obvious what form they play. $H_n$ and $\partial$ are assumed to hold the following axioms:
+
+\begin{enumerate}[(a)]
+\item (Homotopy invariance) If $f\homotopic g$, then $f^*=g^*$.
+\item (Long exact sequence) The inclusions 
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoBBUgHR5gC2aHAE84MHAEoQAX1LpMufIRQBGclVqMWbdgA1e-IaPFTZ8kBmx4CRAEwbq9Zq0QcDnaTM0woAc3giUAAzACcIASQyEBwIJHUtFzYscxDwyMQE2KQHRJ03ACtZChkgA
+\begin{tikzcd}
+{(A,\emptyset)} \arrow[r, "i"] & {(X,\emptyset)} \arrow[r, "j"] & {(X,A)}
+\end{tikzcd}
+give rise to a long exact sequence
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADVIBBAJQhBpdJlz5CKAEwVqdJq3bcwE2fJAZseAkQDMGmgxZtEnLmFGGFp5UQAs1rXd1OxSRk5NyVzFHIfWx0HV2NFMxVkAFYo7XsQWU0YKABzeCJQADMAJwgAWyRvEBwIJHIQkFKK+ppapDJfGJAAHR60ehK8Jh5+ITjmysRO9sR1LoysAD0AKgmyqfnZqwX2ACtV9ZbEHdnkwUpBIA
+\begin{tikzcd}
+{} \arrow[r] & {H_{n+1}(X,A)} \arrow[r, "\partial_{n+1}"] & H_nA \arrow[r, "i^*"] & H_nX \arrow[r, "j^*"] & {H_n(X,A)} \arrow[r] & {}
+\end{tikzcd}
+
+\item (Excision) If $U\subset A\subset X$ is open in $X$ and satisfies $\overline{U}\subseteq int(A)$, then the inclusion $(X\setminus U,A\setminus U)\rightarrow (X,A)$ gives rise to an isomorphism $H_n(X\setminus U,A\setminus U)\iso H_n(X,A)$.
+\item (Dimension) For any one-point set $\cdot$, $H_n\cdot=\begin{cases}G / n=0\\0&\text{otherwise}\end{cases}$, where $G$ is some fixed group.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}\label{homotopy-isomorphism}
+As $H_n$ is a functor, it preserves commutative diagrams. That is, any commutative diagram of spaces in $\Top{2}$ give rise to a commutative diagram in homology. Furthermore $id^*=id$ by the identity property of functors. Together with axiom (a), this asserts that homology theory can be used to distinguish between homotopy equivalent spaces: If $f:X\rightarrow Y$ is a homotopy equivalence with homotopy inverse $g:Y\rightarrow X$, then as $fg\homotopic id$, $f^*g^*=(fg)^*=id$, so $f^*$ is surjective. Similarly as $gf\homotopic id$, $g^*f^*=id$, so $f^*$ is injective. Hence $f^*:H_nX\rightarrow H_nY$ is an isomorphism.
+\end{remark}
+The extra dimension axiom is what defines an ordinary homology theory, as opposed to a (general) homology theory. It is essential in our study. For the remainder of this section, we will let the choice $G=H_0\cdot$ be arbitrary, but for the sections that follow we will make the choice $G=\mathbb{Z}$, which corresponds to Singular Homology Theory \cite{Hatcher}.
+
+\subsection{Basic results}
 \begin{prop}
 If $A\subset X$ is a deformation retract, then $H_n(X,A)=0$.
 \end{prop}
 \begin{proof}
-If $A\subset X$ is a deformation retract, then the inclusion $i:A\rightarrow X$ is a homotopy equivalence. Let $r:X\rightarrow A$ be the retraction. Then $ir\simeq id_X$ and $ri\simeq id_A$.
-By homotopy invariance of $H_n$ and the identity property of functors, $(ir)_*=(id_{X})_*=id_{H_nX}$ and $(ri)_*=(id_{A})_*=id_{H_nA}$. Since $(ri)_*=r_*i_*$ and vice-versa, we have that $i_*$ is an isomorphism.
-
-Now consider the long exact homology chain:
-
-
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAJAfTAEEQAvqXSZc+QigDMFanSat23MAA1BwkBmx4CRACwyaDFm0SceACmWleASjUit4ogFYDc44q7AwAWgCMAvxCDmI6KH5uRgqm3N4A1AGW1nbBGqLaEsgAbJHyJiAAOgVQEDgIqZqhmeS5HqZFJWWCsjBQAObwRKAAZgBOEAC2SPogOBBINe7RhQVo9L14TPYgfYMTNGNIEVP5WFwAVMurQ4jbm4hkO+wAVgdH-SeX59JX9bPzi4z3a4gv586pY5IHKjcaIXQCSgCIA
+If $A\subset X$ is a deformation retract, then the inclusion $i:A\rightarrow X$ is a homotopy equivalence. By Remark \ref{homotopy-isomorphism}, $i:H_nA\rightarrow H_nX$ is an isomorphism. Now consider the homology sequence for $(X,A)$:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkB9MAQRAF9S6TLnyEUARnJVajFmy5gAGgKEgM2PASIAmadXrNWiDtwAUS0jwCUq4ZrFEAzPtlGFnYGAC0E-n0F7UW0UABZXQ3kTLi9vHX4VfhkYKABzeCJQADMAJwgAWyQpEBwIJD03KJAAKwA9ACo7EFyC8upSpBdK4xAAHV60Ohy8RiaWwsQyErLEYsie-qw4MsDmvImujsRw7rZF5YEKfiA
 \begin{tikzcd}
-\dots \arrow[r] & {H_{n+1}(X,A)} \arrow[r, "\partial"] & H_nA \arrow[r, "i_*"] & H_nX \arrow[r, "j_*"] & {H_n(X,A)} \arrow[r, "\partial"] & H_{n-1}A \arrow[r] & \dots
+H_nA \arrow[r, "\iso"] & H_nX \arrow[r, "j^*"] & {H_n(X,A)} \arrow[r, "\partial"] & H_{n-1}A \arrow[r, "\iso"] & H_{n-2}X
 \end{tikzcd}
 
-Since $i_*$ is an isomorphism, and the chain is exact, $H_nX=im(i_*)=ker(j_*)$ so $0=im(j_*)=ker(\partial)$
-
-However, on the left we also have $0=ker(i_*)=im(\partial)$ since $i_*$ is an isomorphism. It follows that $H_n(X,A)=0$.
-
+By exactness, $ker(j^*)=H_nX$, so $j^*=0$. Similarly, $im(\partial)=0$, so $\partial=0$. However $im(j^*)=0=ker(\partial)$, so $H_n(X,A)=0$ \cite{Werndli}
 \end{proof}
 
 \begin{remark}
@@ -29,19 +81,63 @@ However, on the left we also have $0=ker(i_*)=im(\partial)$ since $i_*$ is an is
 As a special case of this result, $H_n(X,X)=0$, as $X$ is a deformation retract of itself. We are also interested in special case where $A=x$ is a single point, i.e. $X$ is contractible. Then we have $H_n(X,x)=0$.
 \end{remark}
 
-\subsection{Reduced homology}
+\begin{lemma}\label{dsum-lemma}
+Consider the following diagram.
 
-It is possible to reduce the abelian objects $H_nX$ into simpler objects $\tilde{H}_nX$ by in some sense factoring out the object $H_n1$. Furthermore, this can be done without losing any information, i.e. the transformation $H_nX\rightarrow \tilde{H}_nX$ is reversible.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoAmAXVJADcBDAGwFcYkQBBEAX1PU1z5CKMsWp0mrdgCEefEBmx4CRcqTE0GLNohDSA5HP5KhqiuK1TdHQ72OCVKAIyknFyTpAANHuJhQAc3giUAAzACcIAFskMhAcCCQAFk0PdiwjEAjo5JoEpDUJbXYAK0zsmMQ4-MQAZlTi3VDyyMqXeMTEQstPAJacxHaalKKrECxbeQrcjqR60c8S20puIA
+\begin{tikzcd}
+B \arrow[rr, "g"] \arrow[rd, "i'"] &                                    & B' \\
+                                   & X \arrow[ru, "j"] \arrow[rd, "j'"] &    \\
+A \arrow[ru, "i"] \arrow[rr, "f"]  &                                    & A'
+\end{tikzcd}
+
+If $f$ and $g$ are isomorphisms, and the diagonals are exact, then $(i,i'):A\dsum B\rightarrow X$ and $(j,j'):X\rightarrow A'\dsum B'$ are isomorphisms.
+\end{lemma}
+\begin{proof}
+By commutativity, $j'i$ is an isomorphism, so $i$ is injective, and $im(i)\iso A$. Similarly, $ji'$ is an isomorphism, so $j$ is a surjection. By exactness, $im(i)=ker(j)$. $j$ defines an isomorphism $X/ker(j)\iso B'\iso B\iso im(i')$. We therefore get that $X/im(i)\iso im(i')$. This gives the isomorphic representation $$(i,i'):(A,B)\rightarrow X$$
+$$(x,y)\mapsto i(x)+i'(y)$$. (ELABORATE)
+
+Additionally, we have $X/ker(j)\iso ker(j')$ by exactness. Therefore we have an isomorphic representation $$(j,j'):X\rightarrow (A,B)$$
+$$x\mapsto j(x)+j'(x)$$ (ELABORATE)\cite{Werndli}
+\end{proof}
+\end{lemma}
+
+\begin{proposition}\label{disjoint-union}
+The inclusions $i_A:A\rightarrow A\sqcupB,j_B:B\rightarrow A\sqcupB$ induce an isomorphism $(i_A^*,i_B^*):H_n A\dsum H_n B \rightarrow H_n(A\sqcup B)$.
+\end{proposition}
+\begin{proof}
+Consider the following diagram
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoAmAXVJADcBDAGwFcYkQAKAIVIB1eYAWzQ4AnnBg4AlCAC+pdJlz5CKchWp0mrdhwAapAIIz5i7HgJEAjKSuaGLNok4H+QkeMkmFIDOZVEZMT22k6chnwCwmIS0nI+fsqWaqTBNA46zvqkXCaaMFAA5vBEoABmAE4QgkhkIDgQSOpajuxYAPpc8eVVNYgAzDQNTemhbe2G3SCV1SP1jYgALKOtzgBWnVMzfc3DiDYtmSAbk6bTvbVDCwcZYYVbFwNXSMuHYWVylLJAA
+\begin{tikzcd}
+{(A,\emptyset)} \arrow[rd, "i_A"] \arrow[rr, "f"] &                                                     & {(X,B)} \\
+                                                  & {(X,\emptyset)} \arrow[ru, "j_B"] \arrow[rd, "j_A"] &         \\
+{(B,\emptyset)} \arrow[ru, "i_B"] \arrow[rr, "g"] &                                                     & {(X,A)}
+\end{tikzcd}
+
+It induces the following commutative diagram in homology, which satisfies the previous lemma, as the diagonals are part of the exact sequences of $(X,A)$ and $(X,B)$ respectively, and $f^*$ and $g^*$ are isomorphisms by the excision axiom.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoAmAXVJADcBDAGwFcYkQAJAfTACEQAvqXSZc+QinIVqdJq3bcwACgAapAIIBKQcJAZseAkQCMpYzIYs2iTjxU6RB8UTLELc67bDqHe0YYlkKTcaS3kbRVVSXm0BGRgoAHN4IlAAMwAnCABbJDIQHAgkKVkrdiwuXgA9ACpfTJykAGYaQuLQj3KudVr6rNzEErbEABYOspsAK0reoXT+9oKixFNS8JBpnrq5kAaB-OHVsM9E2d095tblsbXPNNnKASA
+\begin{tikzcd}
+H_nA \arrow[rd, "i_A^*"] \arrow[rr, "f^*"] &                                              & {H_n(X,B)} \\
+                                           & H_nX \arrow[ru, "j_B^*"] \arrow[rd, "j_A^*"] &            \\
+H_nB \arrow[ru, "i_B^*"] \arrow[rr, "g^*"] &                                              & {H_n(X,A)}
+\end{tikzcd}
+\cite{Werndli}
+\end{proof}
+
+
+\subsection{Reduced homology}
+As we have seen, results in homology are easy when the associated homology sequence has maps that are isomorphisms, or homology groups that are 0. Therefore, if it is possible to "simplify" a homology sequence by for example replacing some spaces with 0 groups, this is often advantageous. As we will show, it is often possible to factor out $H_n1$ from a homology sequence of $(X,A)$, resulting in a simpler sequence. Furthermore, this transformation is reversible.
 
 First we will need some facts about abelian objects.
 
 \begin{definition}
-If there exist maps $f:A\rightarrow B$ and $g:B\rightarrow A$ between abelian objects such that $g\circ f = id_A$ then $g$ is called a \defn{retraction} of $f$, and $f$ is called a \defn{something} of $g$.
+If there exist maps $f:A\rightarrow B$ and $g:B\rightarrow A$ between abelian objects such that $g\circ f = id_A$ then $g$ is called a \defn{retraction} of $f$.
 \end{definition}
 
 $g$ can be thought of as a one-sided inverse of $f$, as there is no requirement that $g\circ f=id_B$.
 
-\begin{lemma}
+\begin{lemma}\label{retraction}
 If $g:B\rightarrow A$ is a retraction of $f:A\rightarrow B$, then $B\iso im(f)\dsum ker(g)$ 
 \end{lemma}
 
@@ -65,80 +161,130 @@ $$h^{-1}\circ h(x)=f\circ g(x)+x-f\circ g(x)=x$$
 So $h$ and $h^{-1}$ are indeed inverse homomorphisms, and $B\iso im(f)\dsum ker(g)$.
 \end{proof}
 
-We will use this Lemma on the following construction.
+We will use this lemma on the following construction.
 
 \begin{definition}
-$\tilde{H}_n(X)=ker(p^*:H_nX\rightarrow H_n1)$ where $p^*$ is the map induced by the initial map $p:X\rightarrow 1$. $\tilde{H}_nX)$ is called the \defn{reduced homology} of $X$.
+For non-empty $X$, $\tilde{H}_n(X):=ker(p^*:H_nX\rightarrow H_n\cdot)$ where $p^*$ is induced by the initial map $p:X\rightarrow \cdot$. $\tilde{H}_nX)$ is called the \defn{$n$-th reduced homology group} of $X$.
 \end{definition}
 
 \begin{prop}
 \label{reduced-homology}
-For any $x\in X$,
-$H_n(X,A)=\tilde{H}_n(X,A)\dsum H_n1=H_n(X,x)\dsum H_n1$
+For non-empty $X$ and any $x\in X$,
+$H_nX\iso\tilde{H}_nX\dsum H_n1\iso H_n(X,x)\dsum H_n1$
 \end{prop}
-
 \begin{proof}
-For the first equality, consider the following diagram. $x$ exists by assumption MISSING of an admissable category, and $p$ exists since $1$ is an initial object. Notice $p$ is a retraction of $x$.
+Consider the homomorphism $p^*$:
 
-DIAGRAM
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkB9MADRAF9S6TLnyEUARnJVajFmy5gAOkoDGUCDgEyYUAObwioAGYAnCAFskZEDghIps5q0Qg0APQBU2-kA
+\begin{tikzcd}
+H_nX \arrow[r, "p^*"] & H_n\cdot
+\end{tikzcd}
 
-$H_n$ induces the following diagram, and since functors map compositions to compositions and identities to identities, we have that $p^*\circ x^*=id_{H_n1}$, so $p^*$ is a retraction of $x^*$.
+%$p^*$ defines an injective homomorphism on $H_nX/ker(p^*)$, which by the proof of Proposition \ref{short-seq-direct-sum} gives an isomorphism $H_nX\iso ker(p^*)\dsum im(p^*)\iso \tilde{H}_nX\dsum im(p^*)$. If we can show $p^*$ is surjective we have the first desired equality.
 
-DIAGRAM
+Note $p^*$ is a retraction of $i^*:H_n\cdot \rightarrow H_n X$ induced by the inclusion. By Lemma \ref{retraction}, $H_nX\iso im(i^*)\dsum ker(p^*)\iso im(i^*)\dsum \tilde{H}_nX$. If we can show $i^*$ is injective, we have our first equality. When $n\neq0$, the dimension axiom gives $H_n\cdot=0$, so by exactness of the homology sequence for $(X,\cdot)$,
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkB9YMAagEYAvgAoAGqQA6EgMZQIOAJQhBpdJlz5CKfuSq1GLNsWWqQGbHgJEATLur1mrRB05hRJtRc1EAzHf2ObFxgYpIycorKejBQAObwRKAAZgBOEAC2SGQgOBBIQqapGfnUuUi2AYbOWAB6AFRRgkA
+\begin{tikzcd}
+{H_{n+1}(X,\cdot)} \arrow[r] & 0 \arrow[r, "i^*"] & H_nX & {H_n(X,\cdot)}
+\end{tikzcd}
+$i^*$ is injective. This will in turn follow by exactness of the long exact sequence of $(X,\cdot)$ shown below, if we can show that $\partial=0$.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADVIAdCQGMoEHAEoQg0uky58hFACYK1Ok1btuYUctUgM2PASIBmPTQYs2iTlzBTZ882uuaickcDF3ZfS3UbLWQAFmDnIzcTMUkZOUVlfRgoAHN4IlAAMwAnCABbJDIQHAgkXRDEkCwAPQAqcJLypAdq2sRyFSLSisR6mqQ4htcQACs2juGkIN7Kp0NpqTR6YrwmTMEgA
+\begin{tikzcd}
+{} \arrow[r] & {H_{n+1}(X,\cdot)} \arrow[r, "\partial"] & H_nX \arrow[r, "i^*"] & H_n\cdot \arrow[r, "j^*"] & {H_n(X,\cdot)}
+\end{tikzcd}
 
-By \ref{direct-sum-iso}, $$H_nX\iso im(x^*)\dsum ker(p^*)= H_n1\dsum \tilde{H}_nX$$
-where the last equality holds because $p^*\circ x^* = id_{H_n1}$ guarantees that $x^*$ is injective.
+For this, note by naturality of $\partial$ that the following diagram commutes.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkB9YMAagEYAvgAoAGqQA6EgMZQIOAJQhBpdJlz5CKMvyq1GLNlx4CRU2fMky5i5apAZseAkX6ld1es1aIOnMOY2dmpOmq7kel6GvlwB1vLKejBQAObwRKAAZgBOEAC2SGQgOBBIAMyeBj4gUmh02XiMwSA5+UhuxaWIAEyV3my19Y0Mza0FiEUl7X3RDgB6AFSjueMVnUi9+v2+aIuJgkA
+\begin{tikzcd}
+{H_{n+1}(X,\cdot)} \arrow[r, "\partial"] \arrow[d, "p^*"] & H_n\cdot \arrow[d, "p^*"] \\
+{H_{n+1}(\cdot,\cdot)} \arrow[r, "\partial"]              & H_n\cdot                 
+\end{tikzcd}
 
-For the second equality, note any two initial objects are isomorphic. In particular, for $x\in X$, $x\iso 1$. We hence have the following long exact chain
+Since $H_n(\cdot,\cdot)=0$, and $p^*:H_n\cdot\rightarrow H_n\cdot$ is the identity, we see that $\partial:H_{n+1}(X,\cdot)\rightarrow H_n\cdot$ factors through $H_n(\cdot,\cdot)=0$, so $\partial=0$ as required. So $H_nX\iso\tilde{H}_nX \dsum H_n\cdot$.
 
-DIAGRAM
+For the second equality, note that the long exact sequence of $(X,\cdot)$
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADVIAdCQGMoEHAEoQg0uky58hFACYK1Ok1btuYKbPnLVIDNjwEiAZj00GLNok5cwoy2tuaiABZnAzdjLzFJGTlFX2t1Oy1kAFYQ1yMPKRiEFT8NexRyNMN3ECz5HP0YKABzeCJQADMAJwgAWyQikBwIJDJQjJByOJb2vpoepF0B0qwAPQAqEdaOxGnJxCcZ9gArReWxzYnexGDtj2HckFHV1O6T8kFKQSA
+\begin{tikzcd}
+\dots \arrow[r] & {H_{n+1}(X,\cdot)} \arrow[r, "0"] & H_n\cdot \arrow[r, "i^*"] & H_nX \arrow[r, "j^*"] & {H_n(X,\cdot)} \arrow[r, "0"] & \dots
+\end{tikzcd}
+gives a short exact sequence
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPpgAOvIDGUCDi48QGbHgJEATKOr1mrRCFlgAGht46BRAMxHxp6XIAUV0opVqAlLZafLqCyAAsLiaS5hycYjBQAObwRKAAZgBOEAC2SGQgOBBIQtwZ2XmIIoXFiIauMSBYAHoAVEFZuUj1RUjODWYgAFZtHRV91L2I4fGcQA
+\begin{tikzcd}
+0 \arrow[r] & H_n\cdot \arrow[r, "i^*"] & H_nX \arrow[r, "j^*"] & {H_n(X,\cdot)} \arrow[r] & 0
+\end{tikzcd}
 
-From which we can extract a short exact chain
-
-DIAGRAM
-
-By exactness, $H_n1\iso im(x^*)\iso ker(j*)$ and $im(j*)\iso ker(\partial)=H_n(X,x)$. Furthermore, by the first isomorphism theorem, $im(j*)\iso H_nX/ker(j*)$. Therefore, $$H_n(X,x)\iso H_nX/H_n1\iso \tilde{H}_nX\dsum H_n1/H_n1 \iso \tilde{H}_nX$$
-where the last few isomorphisms are done somewhat informally, to be made precise at a future point. MISSING
+Proposition \ref{short-seq-direct-sum} then gives that $H_nX\iso H_n(X,\cdot)\dsum H_n\cdot$.
 \end{proof}
 
 \begin{corollary}
 If $X$ is contractible to $x\in X$, then $H_n(X)=H_n(X,x)\dsum H_n1=0\dsum H_n1\iso H_n1$, by \ref{contractible-0}. It follows that $\tilde{H}_nX=0$
 \end{corollary}
 
-\ref{reduced-homology} shows that $H_n(X,A)$ always carries around a copy of $H_n1$, which can be safely removed by going to the kernel of $p^*$. Gluing a copy of $H_n1$ onto $\tilde{H}_n(X,A)$ recovers the original object.
+Proposition \ref{reduced-homology} shows that $H_n(X,A)$ always carries around a copy of $H_n1$, which can be safely removed by going to the kernel of $p^*$. Taking the direct sum of $H_n1$ with $\tilde{H}_n(X,A)$ recovers the original object.
 
-As we will see, there is a long exact chain for the reduced homology. To define it, we will need the following lemma. Consider an admissable category $C$ and a triple $(X,A,B)\in Top_{(3)}$ such that $(X,A),(X,B),(A,B)\in C$. The long exact sequences, which will be labelled $(1),(3),(4)$ respectively, form a braid diagram as shown below. The sequence $(2)$, called the \defn{long exact homology sequence} for the triple $(X,A,B)$ is defined in such a way that the diagram commutes. Explicitly, it is the sequence
+As we will see, there is a long exact chain for the reduced homology. To define it, we will need the following lemma. Consider an admissible category $C$ and a triple $(X,A,B)\in Top_{(3)}$ such that $(X,A),(X,B),(A,B)\in C$. The long exact sequences, which will be labelled $(1),(3),(4)$ respectively, form the following braid diagram:
 
-DIAGRAM
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAAkB9YMAamIC+ACgAapAIIBKEANLpMufIRRkAzFVqMWbLmABCMuSAzY8BIgFZyG+s1aIO3MAFpBB2fNNLLpddVvaDrqiEtIexgpmysgATKQxNlr2jmDihp6K5iiq1v5JOpxgQuKkemFGJpnROX6adgVgIukRXlnIACzxifVBhSFlzZVRRABsXXk9jjyuAmnhQ94oAAykS92BIIORi8grCRMbW63RK+3ryUdVRADsvucF04LFpeUZwyi3lAfJXI8CTfNtm0ABzjOqHQHHIigtbfNiXd7IUFnOEOGQaGBQADm8CIoAAZgAnCAAWyQKxAOAgSHa4SJpJp1CpSBGdOJZMQY0p1MQORAACMYGAoEhnO0AJxshmIMjcmlSjmdOWICwKpBWZVxAVCkWICVqxAU5kq6iC4U08WokAAHWtaDohLwjGa9I5suNXLNurFkqMrpZTJ51wNt01Bo1xtDAWSWAAegAqF3spCh4186NsABWCaT0r5xuBBq1BYNluVFK95KtQmIrxA-plRp5FIzDiEMTrDeITaQstbICEqk7yZl7p5ssrhur7WHecDva1k59Vtt9sdWGdBtByuIMSL85lfMn+r9I+3xuIqgNl4PxFpp+lN53qofbuL49Zr4Xt-vBLPt6vCgBCAA
+\begin{tikzcd}
+{} \arrow[rd, "(1)"]                   &                                                                &                            &                                                       &                                         &                                                             &                                           &                                      & {} \\
+                                       & {H_{n+1}(X,A)} \arrow[rd] \arrow[rr, "\partial", bend left=49] &                            & {H_n(A,B)} \arrow[rr, bend left=49] \arrow[rd, "i^*"] &                                         & H_{n-1}B \arrow[rd] \arrow[rr, bend left=49]                &                                           & H_{n-1}X \arrow[rd] \arrow[ru]       &    \\
+{} \arrow[ru, "(2)"] \arrow[rd, "(3)"] &                                                                & H_nA \arrow[rd] \arrow[ru] &                                                       & {H_n(X,B)} \arrow[ru] \arrow[rd, "j^*"] &                                                             & H_{n-1}A \arrow[rd] \arrow[ru] \arrow[ru] &                                      & {} \\
+                                       & H_nB \arrow[ru] \arrow[rr, bend right=49]                      &                            & H_nX \arrow[rr, bend right=49] \arrow[ru]             &                                         & {H_n(X,A)} \arrow[ru] \arrow[rr, "\partial", bend right=49] &                                           & {H_{n-1}(A,B)} \arrow[rd] \arrow[ru] &    \\
+{} \arrow[ru, "(4)"]                   &                                                                &                            &                                                       &                                         &                                                             &                                           &                                      & {}
+\end{tikzcd}
 
-where $\partial$ is the composition of the transformation $\partial:H_{n+1}(X,A)\rightarrow H_n A$ and $i^*:H_nA\rightarrow H_n(A,B)$. The other two maps are induced by the inclusions $H_n(A,B)\rightarrow H_n(X,B)$ and $H_n(X,B)\rightarrow H_n(X,A)$.
+The sequences $(1),(3),(4)$ commute with each other. The sequence $(2)$ is called the \defn{long exact homology sequence} for the triple $(X,A,B)$. The map $\partial:H_n(X,A)\rightarrow H_{n-1}(A,B)$ is defined so the diagram commutes, and all other maps in the sequence are induced by the canonical inclusions, which it is easy to see also commute with the diagram, either by looking at inclusions or the naturality of $\partial$.
 
 \begin{prop}
-For a triple $(X,A,B)\in Top_{(3)}$ such that $(X,A),(X,B),(A,B)\in C$, the sequence
+For a triple $(X,A,B)\in Top_{(3)}$, the sequence
 
-DIAGRAM 
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADVIBBAJQhBpdJlz5CKAEwVqdJq3bcwwiaQBCMuQux4CRAMwaaDFm0Scu+8SdnyQGC8qIAWOy1HXVcxSVMvHyUrFHIghx1nAB1kqAgcBDNvRUsVZABWBO0nEFT0zNlNGCgAc3giUAAzACcIAFskQJAcCCRybNaO-ppepDJgpLLktHoWvCZPZrbOxAmxxHVJ0qwAPQAqJZAh1a2N2232ACsDo5OkC42iy5SZuYXGKsEgA
+\begin{tikzcd}
+\dots \arrow[r] & {H_{n+1}(X,A)} \arrow[r, "\partial"] & {H_n(A,B)} \arrow[r, "i^*"] & {H_n(X,B)} \arrow[r, "j^*"] & {H_n(X,A)} \arrow[r, "\partial"] & \dots
+\end{tikzcd}
+
 
 is a long exact sequence.
 \end{prop}
 \begin{proof}
-We will start by noting that the diagram above commutes. In any subdiagram of the diagram not involving $\partial$, this follows by noting the subdiagram is induced (via a composition-preserving functor) from a diagram of inclusions which commute by the definition of an admissible category. Any subsquare or triangle involving $\partial$ commutes since $\partial$ is a natural transformation, or by the definition of the special $\partial$ defined above.
+We first note that $(2)$ is a chain complex. First note that the compositions $i\partial$ and $\partial j$ of any two consecutive maps factor through two consecutive maps in a long exact sequence via the braid diagram, and are hence $0$. For $j^*i^*$, note that $i$ and $j$ factor through $(A,A)$:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoBBUgIQEoQAX1LpMufIRRkAjFVqMWbdgA1eA4aOx4CRMgCY59Zq0QdVndSJAYtEotNKzqRxaa6kLQuTCgBzeESgAGYAThAAtkhkIDgQSA7yxmxYQlahEfHUsUh6zgomIABWqcFhkYjR2YgAzHlJpgDWJSDp5bUxcYi5ia4gABZegkA
+\begin{tikzcd}
+{(A,B)} \arrow[d, "i"] \arrow[rd, "k"] &                         \\
+{(X,B)} \arrow[d, "j"]                 & {(A,A)} \arrow[ld, "h"] \\
+{(X,A)}                                &                        
+\end{tikzcd}
 
-After noting the diagram commutes, it becomes easy to show $(2)$ is a chain complex, i.e. that the composition of any two maps is $0$. For two out of three compositions, you can via commutativity choose an alternative path which goes via two consecutive maps in a exact sequence, and is hence $0$. For the final composition
+In homology, this means $j^*i^*$ factors through $H_n(A,A)=0$, so $j^*i^*=0$.
 
-DIAGRAM
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkB9MACgEFSAIQCUIAL6l0mXPkIoyARiq1GLNl14ANIaIlTseAkTIAmZfWatEHbj219dkkBgOyiC0kuoW114uOUYKABzeCJQADMAJwgAWyQyEBwIJA8VSzYsAD0AKnEnaLjU6mSkE29VKxAAK1z8yJj4xETSxABmCoy-epBCpo6klMRy9N8QfzEKMSA
+\begin{tikzcd}
+{H_n(A,B)} \arrow[d, "i^*"] \arrow[rd, "0"] &                   \\
+{H_n(X,B)} \arrow[d, "j^*"]                 & 0 \arrow[ld, "0"] \\
+{H_n(X,A)}                                  &                  
+\end{tikzcd}
 
-note we have the following commutative diagram (commutative since it is induced by the commutative diagram of inclusions):
+The result then follows by an application of the Braid Lemma (Lemma \ref{braid-lemma}.
 
-Since $H_n(A,A)=0$, the composition is $0$, as required. ($\text{https://ncatlab.org/nlab/show/braid+lemma\# Munkres}$) The result is then achieved by an application of the braid lemma.
+\cite{Werndli}
 \end{proof}
 
 \begin{corollary}
 The sequence
 
-DIAGRAM
-
-is a long exact sequence.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADVIBBAJQhBpdJlz5CKAEwVqdJq3YAdXXkaxgHQVzATZ8kBmx4CRAMwaaDFm0Qh9h46fOirBTtlIgAWFy13dm4wMUkZOSClBxQAVgi3HU99KAgcBESbRXsVZHIM7Q8vXVz82U0YKABzeCJQADMAJwgAWyRykBwIJDJIrOq0ek68JkCQLt6RmiGkdTGqrAA9ACo5hb7ENZXEZ3X2ACsdve6D0+Pws+zdSemsWcL9pHTB4cRyQUogiAA
+\begin{tikzcd}
+\dots \arrow[r] & {H_{n+1}(X,A)} \arrow[r, "\partial"] & \tilde{H}_nA \arrow[r, "i^*"] & \tilde{H}_nX \arrow[r, "j^*"] & {H_n(X,A)} \arrow[r, "\partial"] & \dots
+\end{tikzcd}
+is a long exact sequence. Via the isomorphisms $\tilde{H}_n X\iso H(X,x)$, we can consider the maps $i^*\tilde{H}_nA\rightarrow \tilde{H}_nX$ to be induced up to isomorphism from the inclusions $(A,x)\rightarrow (X,x)$, and similarly for $j^*$.
 \end{corollary}
 \begin{proof}
-First note that if $(X,A)\in C$ then by the requirements of an admissable category, $(X,x)$ and $(A,x)\in C$ as well for any $x\in A$. Hence by the previous proposition, and using the isomorphism $\tilde{H}_n X\iso H_n(X,x)$, we get the result.
+We may assume that $A$ is non-empty, as otherwise the result is immediate. Letting $x\in A$, the long exact sequence for the triple $(X,A,x)$ is
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADVIBBAJQhBpdJlz5CKAEwVqdJq3YdhE0gA8ZchdjwEiAZg00GLNok5ijJ+SAznlRACy2tDrpcYC7Ssu6eSpYoAKz+9jpOADpJUBA4CKYeihYqyOTx2o4gKWkZspowUADm8ESgAGYAThAAtkgFIDgQSGQBiSVJaPRNeEzhjS3tiH3dSOr9xVgAegBUEyDNbfM0c4g2i+wAVmsbW9MHe36HyUMjY4xnU0hxXT2I5IKUgkA
+\begin{tikzcd}
+\dots \arrow[r] & {H_{n+1}(X,A)} \arrow[r, "\partial"] & {H(A,x)} \arrow[r, "i^*"] & {H(X,x)} \arrow[r, "j^*"] & {H_n(X,A)} \arrow[r, "\partial"] & \dots
+\end{tikzcd}
+
+When composing the inclusions with the isomorphisms $\tilde{H}_nX\iso H(X,x)$ and $\tilde{H}_n A \iso H(A,x)$, we get the required long exact sequence. 
 \end{proof}

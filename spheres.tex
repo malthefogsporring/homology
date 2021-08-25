@@ -1,2 +1,37 @@
-\section{Homology of $\S{n}$}
+\subsection{Homology of $\S{n}$}
+We will now perform a calculation of the groups $H_kS^{n}$ from the axioms. Our approach will be an adaptation of that taken in cite{Werndli}. 
 
+\begin{lemma}\label{sphere-isomorphism} For all $n\in \mathbb{Z}$,
+$$\tilde(H)_kS^n\iso \tilde{H}_{k-1}S^{n-1}$$
+\end{lemma}
+\begin{proof}
+Consider first the pair $(D^n,S^{n-1})$, where $S^{n-1}$ is the boundary of $D^n$. Since $D^n$ is contractible, the reduced homology sequence reads:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAJAfQGsAKACIA9MKQDKQ4GAC0ARgC+AShDzS6TLnyEUAZgrU6TVuwA6JvI1jAO8rsB5z5EqY5VqQGbHgJEALPpoGFjZEEHI3dS8tIlkAw2D2cNVIzR8Ucjig41CzKAgcBGSPDW9tZABWTKMQkFz8woMYKABzeCJQADMAJwgAWyQ9EBwIJHIi7r7RmmGkBXcJ-sRYoZHEYnGexf8VgY3JtenV8vlKeSA
+\begin{tikzcd}
+\dots \arrow[r] & 0 \arrow[r] & {H_k(D^n,S^{n-1})} \arrow[r] & \tilde{H}_{k-1}S^{n-1} \arrow[r] & 0 \arrow[r] & \dots
+\end{tikzcd}
+This gives an isomorphism
+$$H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-1}$$
+
+Additionally, we have the pair $(S^n,D^n)$, where $D^n$ is identified as the closed lower hemisphere of $S^n$. Since $D^n$ is contractible, $H_k(S^n,D^n)\iso H_k(S^n,\cdot)\iso\tilde{H}_kS^n$.  The open disk $D_{1/2}$ of radius $1/2$ is a subset of $D^n$ which can be excised from the pair $(S^n,D^n)$. The resulting space deformation retracts to the pair $(D^n,S^{n-1})$, where $D^n$ is the upper hemisphere and $S^{n-1}$ its boundary. By the excision axiom,
+
+$$\tilde{H}_kS^n\iso H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})$$
+Together with our previous isomorphism, we have
+$$\tilde{H}_kS^n\iso H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-1}$$
+as required.
+
+
+\end{proof}
+
+\begin{proposition}
+For $n>0$,
+$$H_kS^n=\begin{cases}G&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
+\end{proposition}
+\begin{proof}
+We identify $S^{0}=\cdot \sqcup \cdot$. By proposition (MISSING), $$H_k S^{0}=H_k\cdot \bigoplus H_k \cdot=\begin{cases}G\timesG &=0\\ 0 & \text{otherwise}\end{cases}$$. It follows that $\tilde{H}_0S^{0}=G$ and $\tilde{H}_kS^{0}=0$ when $k\neq 0$. By Lemma \ref{sphere-isomorphism}, $$\tilde{H}_kS^n=\tilde{H}_{k-n}S^{0}=\begin{cases}G & n=k\\0 & \text{otherwise}\end{cases}$$
+This implies the result.
+\end{proof}
+
+\begin{remark}
+For the sake of these calculations, the choice of coefficients $H_0\cdot=\mathbb{Z}$ was arbitrary and played no role. The result could be written more generally as $H_nS^n=\begin{cases}H_0\cdot & n=k\\0 & \text{otherwise}\end{cases}$ for ordinary homology theories. This will be important in section (MISSING), where we use these results for a homology theory with coefficients $H_0 \cdot=\mathbb{Z}/2\mathbb{Z}$.
+\end{remark}

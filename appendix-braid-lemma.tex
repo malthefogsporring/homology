@@ -1,0 +1,31 @@
+\subsection{Proof of Braid Lemma}
+In this section we give the rest of the proof of Lemma \ref{braid}.
+
+\begin{proof}
+Recall the following commutative braid lemma diagram, where we have assumed the sequence indexed by $f_i$ is a chain complex, and the other sequences are exact sequences. 
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAzFVqMWbAELdeIDNjwEiAVnLj6zVohABxOXyWC1pMdS1TdACUML+yocgBMpZ5sk6QAYTuKBKigiGhaebAAifg4mQWYe2mwAolHGgcgALG7xViAAYikBTgBsWaEJugCSBY5EAAyktdle1THI9e5lOQDyLWn16U1svU4A7HGdXgDSw0RjlBNsAFLc4jBQAObwRKAAZgBOEAC2SPUgOBBImRLlIDsA+sR2+0eX1OdIJdc5985PB8eIT7vRDBEAAIxgYCgSAAtOkAJwLXT3ER-F6IMhnC6IK6WLwACweaIBV2B6i+BLuvx4u3+SHJwNc4Mh0JxiIpbEJqJptzpiFOZOoEKhl3ZeLY6yJPOeAMxwM+wtZcLFYV0ACspfIZR83tixhz1VTiUh9YykSANdytXyGXrzZLqdb0absaDxbpJVbaejQcCABzm+7pY2IJn+82E4PSvns4GnRVIES1aPo4gC7Gnd0gSW1ENp3VITFZjW5lOyuXYzEJxAwpNlpABrGFplZwmqEON4HEN2q253dv10MFjE9m4a4NClmiwe+yst3uSifMkU1hFcChcIA
+\begin{tikzcd}
+{} \arrow[rd, bend left]              &                                                      &                                       &                                                      &                                       &                                                      &                                       &   \\
+                                      & A \arrow[rd, "f_1"] \arrow[rr, "g_1", bend left=49]  &                                       & D \arrow[rr, "h_3", bend left=49] \arrow[rd, "g_2"]  &                                       & G \arrow[rd, "h_4"] \arrow[rr, "j_4", bend left=49]  &                                       & J \\
+O \arrow[ru, "g_0"] \arrow[rd, "j_0"] &                                                      & C \arrow[rd, "f_2"] \arrow[ru, "h_2"] &                                                      & F \arrow[ru, "j_3"] \arrow[rd, "g_3"] &                                                      & I \arrow[rd, "h_5"] \arrow[ru, "f_5"] &   \\
+                                      & B \arrow[ru, "h_1"] \arrow[rr, "j_1", bend right=49] &                                       & E \arrow[rr, "f_3", bend right=49] \arrow[ru, "j_2"] &                                       & H \arrow[ru, "f_4"] \arrow[rr, "g_4", bend right=49] &                                       & K \\
+{} \arrow[ru, bend right]             &                                                      &                                       &                                                      &                                       &                                                      &                                       &  
+\end{tikzcd}
+
+We have shown that $ker(f_2)\subseteq im(f_1)$ and need to show that $ker(f_3)\subseteq im(f_1)$ and $ker(f_4)\subseteq im(f_3)$.
+
+\begin{enumerate}[(a)]
+\item $ker(f_3)\subseteq im(f_1)$.
+
+Let $x\in E$ be s.t. $f_3(x)=0$. By commutativity, $g_3j_2(x)=0$, so $j_2(x)\in ker(g_3)=im(g_2)$. Then $\exists x_1\in D$ s.t. $g_2(x_1)=j_2(x)$. It satisfies $h_3(x_1)=j_3g_2(x_1)=j_3j_2(x)=0$, since $(j_i)$ is a chain complex. So $x_1\in ker(h_3)=im(h_2)$. Therefore there exists $x_2\in C$ s.t. $h_2(x_2)=x_1$. This element is such that $j_2f_2(x_2)=g_2h_2(x_2)=g_2(x_1)=j_2(x)$. We therefore have $j_2(f_2(x_2)-x)=0$.
+
+Let $x_3:=f_2(x_2)-x$. Then $x_3\in ker(j_2)=im(j_1)$. Let $x_4\in B$ be s.t. $j_1(x_4)=x_3$. $x_4$ is such that $f_2h_1(x_4)=j_1(x_4)=x_3=f_2(x_2)-x$.
+Finally, we see that $x=f_2(x_2-h_1(x_4),$ so $x\in im(f_2)$ as required.
+
+\item $ker(f_4\subseteq im(f_3)$. 
+
+Let $x\in H$ be s.t. $f_4(x)=0$. Then $0=h_5f_4(x)=g_4(x)$. So $x\in ker(g_4)=im(g_3)$. Let $x_1\in F$ be s.t. $g_3(x_1)=x$. Then $h_4j_3(x_1)=f_4g_3(x_1)=f_4(x)=0$
+So $j_3(x_1)\in ker(h_4)=im(h_3)$. Let $x_2\in D$ be s.t. $h_3(x_2)=j_3(x_1)$. Then $j_3(x_1)=j_2g_2(x_2)$, s.t. $x_3:=g_2(x_2)-x_1\in \ker(j_3)=im(j_2)$. Let $x_4\in E$ be s.t. $j_2(x_4)=x_3$. Then $f_3(x_4)=g_3j_2(x_4)=g_3(x_3)=g_3(g_2(x_2)-x_1)=-g_3(x_1)=-x$. Therefore $x=f_3(-x_4)$, and $x\in im(f_3)$ as required.
+\end{enumerate}
+\end{proof}

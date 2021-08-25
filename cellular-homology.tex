@@ -115,14 +115,15 @@ where the second equality comes from the injectivity of $j$, and the third equal
 
 $$ker(d_n)=ker(l \partial_n)=ker(\partial_n)=im(j)\iso H_n(X^n)$$
 The second equality follows from the injectivity of $l$, the third from the exact sequence, and the fourth from the injectivity of $j$. We therefore have that 
-$ker(d_n)/im(d_{n+1})\iso H_n(X^n)/ker(i)$. Now by the surjectivity of $i$, $im(i)=H_n X$. Without loss of surjectivity, $i$ defines an injective function $i^*$ on $H_n(X^n)/ker(i)$, so that $H_n(X^n)/ker(i)\iso im(i^*)=H_n X$.
+$ker(d_n)/im(d_{n+1})\iso H_n(X^n)/ker(i)$. Now by the surjectivity of $i$, $im(i)=H_n X$. Without loss of surjectivity, $i$ defines an injective function $i^*$ on $H_n(X^n)/ker(i)$, so that $H_n(X^n)/ker(i)\iso im(i^*)=H_n X$.\cite{Hatcher}\end{proof}
 
-REF HATCHER
-\end{proof}
-
-Cellular boundary formula...
-\begin{theorem}\label{boundary-formula}
+We furthermore have a method of calculating the boundary maps $d_n$ from degree calculations:
+\begin{theorem}\label{boundary-formula} Let $(e^{\alpha}_n)_{\alpha\in A}$ represent the generating elements of the $\alpha$ $n$-cells. Then 
+$d_{n+1}(e^{\alpha}_{n+1})=\sum_{\beta} d_{\alpha,\beta} e^{\beta}_{n}$, where $d{\alpha,\beta}$ is the degree of the map $S^{n}\alpha\rightarrow X^n\rightarrow S^n\beta$, that is the composition of the gluing map of $e^{\alpha}_n$ with the quotient map identifying $X^n\setminus e^{\beta}_n$. (This can be identified with $S^n$, as $S^n$ is the one-point compactification of $\mathbb{R}^n\iso e^{\beta}_n$.
 \end{theorem}
+\begin{proof}
+Omitted. See \cite{Hatcher}.
+\end{proof}
 
 \subsection{Immediate consequences}
 We now give a number of easy calculations of homology groups of CW-complexes. The following corollary becomes very useful.
@@ -140,9 +141,20 @@ Suppose $X$ has $m>0$ $n$-cells. The chain complex reads:
 It follows that $H_n(X)=Ker(d_n)/Im(d_{n+1})=\mathbb{Z}^m$.
 \end{proof}
 
-\begin{remark}
-MISSING: d_1=0
-\end{remark}
+\begin{proposition}
+If $X$ is path-connected then $H_0(X)=\mathbb{Z}$. 
+\end{proposition}
+\begin{proof}
+$X$ must \textit{either} be a single point (from which the result is obvious), or have at least one $1$-cell, as there is no way to glue an $n$-sphere for $n>1$ onto two disconnected spaces, as the former is connected.
+MISSING
+\end{proof}
+
+\begin{corollary}
+If $X$ is path-connected and has only one $0$-cell, then $d_1=0$.
+\end{corollary}
+\begin{proof}
+By the previous result, $\mathbb{Z}=H_nX=\mathbb{Z}/im(d_1)$. However, the only subgroups of $\mathbb{Z}$ are $m\mathbb{Z}$ for integers $m$, and the only isomorphism $\mathbb{Z}\iso \mathbb{Z}/m\mathbb{Z}$ is for $m=0$. Hence $d_1=0$.
+\end{proof}
 
 \begin{example}[$\S{n}$]
 Cellular homology gives a very easy calculation of the homology groups of $\S{n}$ for $n>1$. $S^n$ has a cell structure of 1 0-cell and 1 n-cell, and therefore has no cells in adjacent dimension. By Corollary \ref{cell-adjacent}, $$H_m S^n=\begin{cases}\mathbb{Z} & m=0,n\\ 0 & \text{otherwise} \end{cases}$$
@@ -186,4 +198,3 @@ $$H_0 X= ker(d_0)=0$$
 
 and $H_n X=0$ for all other values of $n$.
 \end{example}
-

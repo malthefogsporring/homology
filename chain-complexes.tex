@@ -2,19 +2,78 @@
 A \defn{chain complex} is a sequence of algebraic objects and homomorphisms between them, such that for any consecutive $f_{i},f_{i+1}$ we have that $im(f_i)\subset ker(f_{i+1})$. If we have equality instead of inclusion, the construction is called an \defn{exact sequence}.
 \end{definition}
 
-**MISSING: Not actually sequences, as they can be infinite in both directions
-
-We also distinguish between \defn{short} and \defn{long exact sequences}, where the former is finite sequences of three or fewer nonzero elements, and the latter is all other sequences.
+We will often use "exact sequence" to describe both sequences and families indexed by integers of algebraic objects. We also distinguish between \defn{short} and \defn{long exact sequences}, where the former is finite sequences of three or fewer nonzero elements, and the latter is all other sequences.
 
 \begin{example}
-For any objects $A_1,A_2,\dots$ the following is a long exact sequence:
-DIAGRAM MISSING
+For any group $A$ the following is a long exact sequence:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBEAX1PU1z5CKAEwVqdJq3Zde-bHgJEAzOJoMWbRJx58QGBUKIAWNZM3sAOpagQcCOfoGLhycmY3Tt12-Z4SYKABzeCJQADMAJwgAWyR3EBwIJDJzLxAsKF0I6LjEVKSkMTStEHJskCjYoppCxFUS9kyKqrzTROTEBM9S8u5KbiA
+\begin{tikzcd}
+\dots \arrow[r, "0"] & A \arrow[r, "id"] & A \arrow[r, "0"] & A \arrow[r, "id"] & \dots
+\end{tikzcd}
 \end{example}
 
 \begin{remark}
 The requirement that $im(f_i)\subseteq ker(f_{i+1})$ for all $i\in \mathbb{Z}$ is equivalent to the requirement that $f_{i+1}\circ f_i=0$ for all $i\in \mathbb{Z}$. This is clear from the definition; if $im(f_i)\subseteq ker(f_{i+1})$ then $f_{i+1}\circ f_i (A_i)=f_{i+1}(im(f_i))=0$. Conversely, if $f_{i+1}\circ f_i=0$ then $f_{i+1}(im(f_i))=0$.
 \end{remark}
 
-\begin{lemma}[Braid lemma]
+It is important to build up intuition for how exact sequences behave. 
 
+\begin{example}
+Suppose the following is a short exact sequence of groups.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbAELdeIDNjwEiAJjHV6zVohABhOXyWCiAZg0TtbACLdxMKAHN4RUADMAThAC2SMiBwIJFFLKV1iQxBPH2DqQKR1UJ0oyOjfRET4xHMktgiuCi4gA
+\begin{tikzcd}
+A \arrow[r, "0"] & B \arrow[r, "f"] & C \arrow[r, "0"] & D
+\end{tikzcd}
+
+We will often draw the following diagram instead, as it carries the same information.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAhLjxAZseAkQBMo6vWatEIAMKzeigUQDM68VrYdOYmFADm8IqABmAJwgBbJCJA4ISGoWkjouBiDuXkhkfgGIQtyuHt6IQf5IJjacQA
+\begin{tikzcd}
+0 \arrow[r] & B \arrow[r, "f"] & C \arrow[r] & 0
+\end{tikzcd}
+Since $0=im(0)=ker(f)$, $f$ is injective. Since $im(f)=ker(0)=C$, $f$ is surjective. Therefore $f$ is an isomorphism.
+
+\end{example}
+
+\begin{proposition}\label{short-seq-direct-sum}
+Let the following be a short exact sequence
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKACzkqtRizYduvbHgJEAjKOr1mrRCACCXHiAxyBRAEwrx6tgCFds-gpQBmM2smaAwlzEwoAc3hFQADMAJwgAWyQyEBwIJGMZEBDwpBFo2MRFBKSIxFM0pCdzV0SbRNCcwpiU1QkNEB9PTiA
+\begin{tikzcd}
+0 \arrow[r] & A \arrow[r, "f"] & B \arrow[r, "g"] & C \arrow[r] & 0
+\end{tikzcd}
+Then $B\iso A\bigoplus C$.
+\end{proposition}
+
+\begin{proof}
+Since $0=im(0)=ker(f)$, $f$ is injective. It follows that $im(f)\iso A$. Since $im(g)=ker(0)=C$, $g$ is surjective. $g$ defines an injective function $[g]:B/ker(g)\rightarrow C$, $[b]\mapsto [g(b)]$. This gives an isomorphism $B/ker(g)\iso im(g)$, from which we define an isomorphism $B\iso ker(g)\bigoplus im(g)$ by the isomorphism $$h:B\rightarrow ker(g)\bigoplus im(g)$$
+$$x\mapsto \begin{cases}(x,0) & g(x)=0\\ (0,g(x)) & \text{otherwise}\end{cases}$$
+Since $ker(g)$ and $im(g)$ are subgroups, $h$ is a homomorphism. $h$ is furthermore injective and surjective, since $g$ is injective and surjective on $B/ker(g)$, and since $h$ is the identity on $ker(g)$. So $h$ is an isomorphism. Finally, $B\iso im(g)\bigoplus C\iso A\bigoplus C$.
+\end{proof}
+
+We finish this section with a technical lemma that will become useful in the future.
+
+\begin{lemma}[Braid lemma]\label{braid-lemma}
+Suppose three long exact sequences and a chain complex make the following commutative diagram.
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAzFVqMWbAELdeIDNjwEiAVnLj6zVohABxOXyWC1pMdS1TdACUML+yocgBMpZ5sk6QAYTuKBKigiGhaebAAifg4mQWYe2mwAolHGgcgALG7xViAAYikBTgBsWaEJugCSBY5EAAyktdle1THI9e5lOQDyLWn16U1svcUNg7rDRCUDnc1c4jBQAObwRKAAZgBOEAC2SPUgOBBImRLlIGsA+sR2mzvH1IdIJac5l843W7uIz4+IwSAAIxgYCgSAAtOkAJwzNiXEQfO6IMgHI6IE6WLwACyuCK+J1+6heWIu7x460+SEJv1cgOBoLR0KJbGx8LJ5wpiH2BOoQJBx0ZGLYixxbNuX2Rv2evPpEIFYV0ACsRfIxU8HqiAOwwxUk3FILUopA0wU61kqjlUzXakDC0nmxEG37-E02i5m8mI-6-AAc1su6T1iBpPut2IDoo5jN++2lSBEtQjiOIXNR+xdwtqgeT6qQyJdSszifFEtRyNjiDB8aLRpzSJp5fj1qV4ftXy9pf+5craflrvDFC4QA
+\begin{tikzcd}
+{} \arrow[rd, bend left]              &                                                      &                                       &                                                      &                                       &                                                   & {} \\
+                                      & A \arrow[rd, "f_1"] \arrow[rr, "g_1", bend left=49]  &                                       & D \arrow[rr, "h_3", bend left=49] \arrow[rd, "g_2"]  &                                       & G \arrow[rd, "h_4"] \arrow[ru, "j_4", bend left]  &    \\
+O \arrow[ru, "g_0"] \arrow[rd, "j_0"] &                                                      & C \arrow[rd, "f_2"] \arrow[ru, "h_2"] &                                                      & F \arrow[ru, "j_3"] \arrow[rd, "g_3"] &                                                   & I  \\
+                                      & B \arrow[ru, "h_1"] \arrow[rr, "j_1", bend right=49] &                                       & E \arrow[rr, "f_3", bend right=49] \arrow[ru, "j_2"] &                                       & H \arrow[ru, "f_4"] \arrow[rd, "g_4", bend right] &    \\
+{} \arrow[ru, bend right]             &                                                      &                                       &                                                      &                                       &                                                   & {}
+\end{tikzcd}
+
+Then the chain complex is also a long exact sequence.
 \end{lemma}
+\begin{proof}
+By symmetry of the diagram, it does not matter which sequence is the chain complex. We can assume it is the sequence with homomorphisms $f_i$. We are given that $im(f_i)\subseteq ker(f_{i+1})$, and need to show that $ker(f{i+1})\subseteq im(f_i)$. By the symmetry of the diagram, it is enough to show this for $i=1,2,3$. We will show that $ker(f_2)\subseteq im(f_1)$ here, and do the other two cases in Appendix (MISSING).
+
+Let $x\in ker(f_2)$. Then $0=f_2(x)=j_2f_2(x)=g_2h_2(x)$ by commutativity. It follows that $h_2(x)\in ker(g_2)=im(g_1)$. So $\exists x_1\in A$ s.t. $g_1 x_1=h_2(x)$. By commutativity, $g_1x_1=h_2f_1 x_1$. So we have that $0=g_1 (x_1)-h_2(x)=h_2(f_1 (x_1)-x)$. So $x_2:=f_1(x_1)-x\in ker(h_2)=im(h_1)$. So $\exists x_3\in B$ s.t. $h_1(x_3)=x_2$.
+
+Now note that $$j_1(x_3)=f_2h_1(x_3)=f_2(x_2)=f_2(f_1(x_1)-x)=0$$
+Where the last equality follows from $f_2f_1(-)=0$ and $f_2(x)=0$. We therefore have that $x_3\in ker(j_1)=im(j_0)$. So there exists $x_4\in O$ s.t. $j_0(x_4)=x_3$. Consider $g_0(x_4).$ It satisfies $f_1g_0(x_4)=h_1j_0(x_4)=h_1(x_3)=x_2=f_1(x_1)-x$. Therefore we have
+$$x=f_1(x_1-g_0(x_4))$$
+Which shows $x\in im(f_1)$ as required.
+
+\cite{Eilenberg}
+\end{proof}

@@ -1,2 +1,60 @@
-\section{Homology of $\S{n}$}
+\subsection{The Borsuk-Ulam Theorem}
 
+The Borsuk-Ulam theorem is a fascinating fixed-point result, which can be proven via cellular homology and a technical homotopy remark. It states that every odd map $f:\S^n\rightarrow \mathbb{R}^n$ maps two antipodal points to the same point. A popular interpretation of this statement is that there are always two antipodal points on Earth with the same temperature and barometric pressure. This follows from Borsuk-Ulam, where we are assuming the Earth is a 2-sphere, and temperature and barometric pressure are continuous functions on the surface of Earth (although both of these assumptions are dubious).
+
+The proof of Borsuk-Ulam demonstrates the advantage of an axiomatic approach to homology. Since in section (MISSING), we proved the homology groups of the spheres in terms of the homology group of $H_0 \cdot$, we immediately get their homology groups in any other coefficients. In this section we will work with a homology theory over the coefficients $\mathbb{Z}/2\mathbb{Z}$. We will assume there is a homology theory with these coefficients. One piece of work left is to show that our work on degrees can be extended to these new coefficients.
+
+\begin{proposition}
+If $f:S^n\rightarrow S^n$ has degree $m$, then the induced map in $\mathbb{Z}/p\mathbb{Z}$ coefficients, where $p$ is a prime, is multiplication by $m \Mod p$.
+\end{proposition}
+\begin{proof}
+MISSING
+\end{proof}
+
+Our proof of Borsuk-Ulam follows the approach in \cite{borsuk}. We will need the following technical result.
+
+\begin{theorem}[Cellular approximation]\label{cellular-approximation}
+Every map $f:X\rightarrow Y$ is homotopic to a cellular map $g$, that is a map such that $g(X^n)\subseteq Y^n$ for each $n$. If $g$ is already cellular on a subcomplex of $X$, the homotopy can be taken to be relative on the subcomplex.
+\end{theorem}
+\begin{proof}
+Omitted. See \cite{Hatcher}.
+\end{proof}
+
+Instead of proving Borsuk-Ulam, we prove the following stronger result.
+
+\begin{theorem}
+Odd maps $f:S^n\rightarrow S^n, n\geq 1$ have odd degree.
+\end{theorem}
+\begin{proof}
+We prove this by induction on $n$. For $n>0$, an odd map $f:S^{n-1}\rightarrow S^{n-1}$ has odd degree if and only if it induces an isomorphism. We can take this to be the induction property, and note that it hold trivially for $n=0$.  Suppose the statement holds for $n-1$. We can give $S^n$ a cell structure with $1$ $0$-cell and $1$ $n-1$-cell corresponding to the equatorial sphere $S^{n-1}$, and $2$ $n$-cells corresponding to the upper and lower hemispheres of $S^n$, glued by the identity map on the boundary onto $S^{n-1}$. Note this is not the usual cell-structure of $S^n$ with $1$ $0$-cell and $1$ $n$-cell. By Theorem \ref{cellular-approximation}, $f\homotopic g$ where $g$ is cellular.$f^*=g^*$, $f^*$ inherits the properties of both an odd map and a cellular map. We may therefore assume $f$ is both odd and cellular.
+
+$f(\S{n-1})\subseteq \S{n-1}$, $f$ gives a map from the homology sequence of $(S^n,S^{n-1}$ to itself. This looks as follows: 
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAJAfTAAoBlAHphSQ4GAC0ARgC+AShAzS6TLnyEUAZgrU6TVu27jpMsZNmLlIDNjwEiAFh00GLNohAAdT1Ag4ESiq26kRSznpuhjwABEKEgdaqdhrI5OGuBh7klkFq9ihpUroZ7iDZCTZ5KU5FLvql3r7+OYnB+chhtRGZnDFxLZXJRGRdJVF8caKCxrIKFUkhWqSj9VEzptPmMoq6MFAA5vBEoABmAE4QALZITiA4EEiaCedXjzT3SGndpVgtL9eIL4fRBhb7sbxoehnPBMP4XAGg4HEZ7wpAAVneD0QAHYUa8cZikAAOOqRDy-PEAkl3LEATlJPQhUJhjDh+PpNKQADZKW9OQSwR4ToIAFRsgFArHUsZC0XipCIukMhqeLBwB4ySgyIA
+\begin{tikzcd}
+0 \arrow[r] & H_n S^n \arrow[r, "i"] \arrow[d, "f^*"] & {H_n(S^n,S^{n-1})} \arrow[r, "\partial"] \arrow[d, "f^*"] & H_{n-1}S^{n-1} \arrow[r] \arrow[d, "\iso"] & \dots \\
+0 \arrow[r] & H_n S^n \arrow[r, "i"]                  & {H_n(S^n,S^{n-1})} \arrow[r, "\partial"]                  & H_{n-1}S^{n-1} \arrow[r]                   & \dots
+\end{tikzcd}
+
+The homology groups $H_n(S^n,S^{n-1}$ are $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ with generators corresponding to the upper and lower hemispheres, as $S^n$ is a CW-complex with two $n$-cells glued onto a copy of $S^{n-1}$.
+
+In coefficients, the above diagram becomes:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAdDgW3pwAsARoOAAtAL4B6Yl14DhY8Vzzd4AAll8hIidM3yd4kONLpMufIRQBmCtTpNW7ABIB9YGAC0ARnEBlAD0PHyMTM2w8AiIAFjsaBhY2RE4OKAgcBDCQDAjLIm84h0T2fW1FPR4tBQljU2zzSKtkckKEp2TyWvCLKJQW73s2pJBOrJyeptiB+MdhrjSMrvrc3uQC6aL2lLky3RlKg0Ul8caiMg2hkoPdqX2d6qUOFXVSh4r7w2OGvJtSC9mXO4vL5AsFfMZ7DAoABzeBEUAAMwAThBuEhYiAcBAkNYssjUTiaFikC1NsMsEt8WjEKTiYgCmSrmh6Ei8ExKSjqQy6cQ8ZykABWInYxAAdj5BLFwqQAA4ZsVkhSJdS5ZiRQBOeVbLjM1lYdnKpCatVIABshsQthNUsZyQRAQAVBzJbSRarLnbHc6udLEMaPSksHBseJKOIgA
+\begin{tikzcd}
+0 \arrow[r] & \mathbb{Z}/2\mathbb{Z} \arrow[r, "i"] \arrow[d, "f^*"] & \mathbb{Z}/2\mathbb{Z}\times \mathbb{Z}/2\mathbb{Z} \arrow[r, "\partial"] \arrow[d, "f^*"] & H_{n-1}S^{n-1} \arrow[r] \arrow[d, "\iso"] & \dots \\
+0 \arrow[r] & \mathbb{Z}/2\mathbb{Z} \arrow[r, "i"]                  & \mathbb{Z}/2\mathbb{Z}\times \mathbb{Z}/2\mathbb{Z} \arrow[r, "\partial"]                  & H_{n-1}S^{n-1} \arrow[r]                   & \dots
+\end{tikzcd}
+
+$f^*\neq (0,0)$ by commutativity as $\partial$ is injective, hence not $0$. $f$ commutes with the antipodal map by oddness: $f(-id)=(-id)f$. It follows that $f^*(-id)^*=(-id)^*f^*$. Note that the antipodal map also gives a map between these sequences, and that it swaps the hemispheres (REFERENCE): $(-id)^*(x,y)=(y,x).$ So $f^*(x,0)=(-id)^*f^*(0,y)$. Since $f^*\neq (0,0)$, $f^*(x,0)=(x,0)$ or $(0,x)$ and $f^*(0,y)$ is the other one. So $f^*$ is an isomorphism.
+
+By commutativity in the left square, since $i$ is injective, and $f^*i$ is injective, $f^*:S^n\rightarrow S^n$ is also injective, hence is an isomorphism. This implies the degree $m$ of $f:S^n\rightarrow S^n$ is s.t. $m mod 2=1$, i.e. $m$ is odd.
+
+
+
+%There are few options for $\partial$. It cannot be the zero map, as it is surjective. That leaves $\partial(x,y)=x,y$ or $x+y$. However, note that the antipodal map also gives a map between these sequences, and that it swaps the hemispheres (REFERENCE). Therefore we have the following commutative diagram, which disallows $\partial(x,y)=x,y$. 
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12BbOnACwBGA4AC0AvgHoATJx78hosZzxd4AAlm9Bw8dM3ydYkGNLpMufIRQBGclVqMWbfdsV7uWheOOmQGbHgERGTW9vTMrIgcHgZuMjGu4spYqnAaCV6S8XKJRiZmAZZEtqHU4U5RLpnuOZnG9jBQAObwRKAAZgBOEFxIZCA4EEi2DhHO7Gh0nXiMPh3dvYhS1INIAMxljpHRk9NYs-kgXT19K0NLm2NRABQAnqQAHgCUc0cLw2frlxUgWFD1YiAA
+
+%Therefore $\partial(x,y)=x+y$. $f^*:\mathbb{Z}/2\mathbb{Z}\rightarrow \mathbb{Z}/2\mathbb{Z}$ is not the zero map, as $id \partial\neq 0$. Furthermore, $f^*$ commutes with the antipodal map by oddness: $f(-id)=(-id)f$. It follows that $f^*(-id)^*=(-id)^*f^*$. So $f^*(x,0)=(-id)^*f^*(0,y)$ 
+\cite{borsuk}
+\end{proof}

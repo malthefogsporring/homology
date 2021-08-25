@@ -1,2 +1,81 @@
 \section{Homology of $\S{n}$}
+The only group homomorphisms $g: \mathbb{Z} to \mathbb{Z}$ (or any other free group) are multiplication by an integer $m$, called the degree of $g$. For maps $f:S^n\rightarrow S^n,n>0$, we can therefore define the \def{degree} $deg(f)$ as the degree of the induced map $f^*: \mathbb{Z}\rightarrow \mathbb{Z}$. It is clear from the definition that $deg(id)=1$, as $id^*=id$. Additionally, $f\homotopic g$, then $f^*=g^*$, so $deg(f)=deg(g)$. Furthermore, $deg(fg)=deg(f)deg(g)$, as $(fg)^*=f^*g^*$. Some special cases of $f$ we are interested in follow:
 
+\begin{proposition}
+$deg(r_i)=-1$ where $r:S^n\rightarrow S^n$ is the reflection in the $i-th$ coordinate:
+$$(x_1,x_2,\dots,x_i,\dots x_{n+1})\mapsto (x_1,x_2,\dots,-x_i,\dots x_{n+1})$$
+\end{proposition}
+\begin{proof}
+By composing with a rotation, we can assume $r_i$ is the reflection in the $(n+1)$th degree, which maps the north-pole $N$ to the south-pole $S$, keeping the equator $S^{n-1}$ fixed. We denote this map by $r$. Consider the Mayer-Vietoris cover of $S^n$ by $A=S^n\setminus\{N\}\homotopic \cdot$, $B=S^n\setminus\{S\}\homotopic \cdot$ with $A\cap B \homotopic S^{n-1}$. $r$ gives a map between the Mayer-Vietoris sequence of $(S^n,A,B)$ and $(S^n,B,A)$. For $n>0$, this gives the diagram:
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfTAGUA9QgF9S6TLnyEUAJgrU6TVu27AwAWmJCBqjUJAix2PASLk5NBizaIQ5faJAYjkogGZzCq+wA63qBBwEA0dxYylkM2J5SyUbO2CnCRMUdyiLRWsQX39A+0Mk8LI0z1jOHgFhB0SwollimMyVdU1tZr0heRgoAHN4IlAAMwAnCABbJDMQHAgkADZ0rxsh-gAqPJBhsaQyKZnEAHYF0qwodc3xxFldieDziZpp7aPM3zR6IbwmM5GLncfEVy3H5IAAsDz2syBW0Q82uB2ePm8bw+WCYAHJvtDDnCAKwdIRAA
+\begin{tikzcd}
+0 \arrow[r] & H_nS^n \arrow[d, "r^*"] \arrow[r, "\partial"] & H_{n-1}S^{n-1} \arrow[d, "id"] \arrow[r] & \dots \\
+0 \arrow[r] & H_nS^n \arrow[r, "\partial'"]                 & H_{n-1}S^{n-1} \arrow[r]                 & \dots
+\end{tikzcd}
+
+Recall from (MISSING - Eilenberg) that swapping the order of $A$ and $B$ changes the sign of the boundary map, so $\partial$=$-\partial'$. By the commutativity of the diagram, $r^*=-id$, so $deg(r)=-1$.
+
+\end{proof}
+
+\begin{corollary}\label{antipodal-degree}
+$deg(-id)=(-1)^{n+1}$ where $(-id):S^n\rightarrow S^n$ is the antipodal map.
+\begin{corollary}
+\begin{proof}
+\item Since $(-id)$ is the composition $r_1\circ r_2 \circ \dots \circ r_{n+1}$, $deg(-id)=deg(r_1)deg(r_2)\dots deg(r_n{+1})=(-1)^{n+1}$
+\cite{Hatcher}
+\end{proof}
+
+\begin{corollary}
+If $f:S^n\rightarrow S^n$ has no fixed points, $deg(f)=(-1)^{n+1}$
+\end{corollary}
+\begin{proof}
+Since $f(x)\neq x$, the line segment from $f(x)$ to $-x$ does not pass through $0$. We can therefore define a homotopy $f(x)\homotopic (-id)$, which takes each $f(x)$ to $x$ along an arc segment. Therefore $deg(f(x))=(-1)^{n+1}$\cite{Hatcher}
+\end{proof}
+
+\begin{remark}
+Note that the antipodal map commutes with the projection $p:S^n\rightarrow \RP{n}$:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAGUA9QgX1PUy58hFGQCMVWoxZsuvfiAzY8BImPKT6zVohAAdPQCUACsDA8QfAcuFrSE6lpm6DJsxZ6SYUAObwioABmAE4QALZIZCA4EEgATI7SOoqWCiHhSOrRsYgAzInabGipQaERiAnZSPlShbpYUCUg6eVRMZkFziAAFAC0DQCUlhQ8QA
+\begin{tikzcd}
+S^n \arrow[r, "p"] \arrow[d, "(-id)"] & \RP{n} \arrow[d, "id"] \\
+S^n \arrow[r, "p"]                    & \RP{n}                
+\end{tikzcd}
+When $n$ is odd, this gives rise to a commutative map in homology
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12BbOnACwBGA4AC0AviDGl0mXPkIoyARiq1GLNpx78hoiVJnY8BIkvKr6zVohAAJAPphOAJQAKwMPukgMR+adIVaksNGwcndjcPfVUYKABzeCJQADMAJwguJDIQHAgkACZg9WsfAD0AKklvdMykM1z8xABmYqs2NErq1IysxCLGpFa1dpssKG6QWr6cvPq20JAAWgAPSQoxIA
+\begin{tikzcd}
+\mathbb{Z} \arrow[r, "p^*"] \arrow[d, "-x"] & H_n\RP{n} \arrow[d, "id"] \\
+\mathbb{Z} \arrow[r, "p^*"]                 & H_n\RP{n}                
+\end{tikzcd}
+
+But this means $p^*=-p^*$, so $p^*=0$ when $n$ is odd. This is the first hint that for $\RP{n}$ there is something fundamentally different between the case $n$ is odd and $n$ is even. 
+
+\end{remark}
+
+
+Brouwer's fixed point theorem can be proven from degree theory.
+
+\begin{theorem}[Brouwer's fixed-point theorem]
+Every continuous $f:D^n\rightarrow D^n$ has a fixed point.
+\end{theorem}
+\begin{proof}
+Suppose $f$ has no fixed points. $f$ defines a map $g:S^n\rightarrow S^n$ by first applying the quotient map of the identification $(x_1,\dots,x_n)\tilde (y_1,\dots,-x_n)$, identifying the codomain as $D^n$, applying $f$ and finally identifying the codomain as the upper hemisphere of $S^n$. Notice that $g$ also has no fixed points. By result (MISSING), $deg(g)=(-1)^{n+1}$. The same will be true if we made the identification with the lower hemisphere. However, this corresponds to composing $g$ with the reflection in the $(n+1)$th coordinate, i.e. the map $r:(x_1,\dots,x_n)\mapsto (x_1\dots,-x_n)$, which has degree $(-1)$ by prop (MISSING). This implies
+$$(-1)^{n+1}=deg(g)=deg(rg)=deg(r)deg(g)=(-1)^{n}$$
+which is a contradiction.
+\end{proof}
+
+%\begin{proposition}
+%$H_n(\RP{2})=\begin{cases}\mathbb{Z} & n=0,2\\ \mathbb{Z}/2\mathbb{Z} & n=1\\ 0 &\text{otherwise}\end{cases}$
+%\end{proposition}
+%\begin{proof}
+%Consider the pair ($(\RP{2},\RP{1}$). Since $\RP{1}\homotopic \S{1}$ (MISSING);
+%\end{proof}
+
+There is a convenient way for calculating degrees of maps $f:S^n\rightarrow S^n$. Suppose that $f$ has the property that for some $x\in S^n$, $f^{-1}(x)$ is a finite set $\{y_i}_{i\in J}$. Then define the \defn{local degree} of $f$, $deg(f)|{y_i}$ at $y_i$ as the degree of the map $f:U_i\setminus \{y_i\}\rightarrow V\setminus\{x\}$, where $U_i$ are disjoint open neighbourhoods of respectively the $y_i$'s and $V$ is an open neighbourhood they are all mapped into. By the metric space structure of $S^n$ we may take the $U_i$'s to be sufficiently small $n$-disks, and $V$ some small $n$-disk containing their images. This shows that $f:U_i\setminus \{y_i\}\rightarrow V\setminus\{x\}$ gives a map $f:S^{n-1}\rightarrow S^{n-1}$ as desired.
+
+\begin{proposition}
+If $f$ is as proposed, then $$deg(f)=\sum_{i\in J}deg(f)|{y_i}$$
+\end{proposition}
+\begin{proof}
+Omitted. See \cite{Hatcher}
+\end{proof}
