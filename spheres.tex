@@ -1,37 +1,40 @@
-\subsection{Homology of $\S{n}$}
-We will now perform a calculation of the groups $H_kS^{n}$ from the axioms. Our approach will be an adaptation of that taken in cite{Werndli}. 
+\subsection{Homology of $S^{n}$}
+We will now perform a calculation of the groups $H_kS^{n}$ from the axioms. Our approach will be an adaptation of that taken in \cite{Werndli}. We write $S^n$ for the $n$-sphere, $$S^n=\{\mathbf{x}\in \mathbb{R}^n:|\mathbf{x}|=1\},$$ and $D^n$ for the closed $n$-disk, 
+$$D^n=\{\mathbf{x}\in \mathbb{R}^n:|\mathbf{x}|\leq1\}.$$
 
-\begin{lemma}\label{sphere-isomorphism} For all $n\in \mathbb{Z}$,
-$$\tilde(H)_kS^n\iso \tilde{H}_{k-1}S^{n-1}$$
+\begin{lemma}\label{sphere-isomorphism} For every $n\in \mathbb{Z}$,
+$$\tilde{H}_kS^n\iso \tilde{H}_{k-1}S^{n-1}$$
 \end{lemma}
 \begin{proof}
 Consider first the pair $(D^n,S^{n-1})$, where $S^{n-1}$ is the boundary of $D^n$. Since $D^n$ is contractible, the reduced homology sequence reads:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAJAfQGsAKACIA9MKQDKQ4GAC0ARgC+AShDzS6TLnyEUAZgrU6TVuwA6JvI1jAO8rsB5z5EqY5VqQGbHgJEALPpoGFjZEEHI3dS8tIlkAw2D2cNVIzR8Ucjig41CzKAgcBGSPDW9tZABWTKMQkFz8woMYKABzeCJQADMAJwgAWyQ9EBwIJHIi7r7RmmGkBXcJ-sRYoZHEYnGexf8VgY3JtenV8vlKeSA
-\begin{tikzcd}
-\dots \arrow[r] & 0 \arrow[r] & {H_k(D^n,S^{n-1})} \arrow[r] & \tilde{H}_{k-1}S^{n-1} \arrow[r] & 0 \arrow[r] & \dots
-\end{tikzcd}
+\[\begin{tikzcd}
+ 0 \arrow[r] & {H_k(D^n,S^{n-1})} \arrow[r] & \tilde{H}_{k-1}S^{n-1} \arrow[r] & 0 
+\end{tikzcd}\]
 This gives an isomorphism
 $$H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-1}$$
 
-Additionally, we have the pair $(S^n,D^n)$, where $D^n$ is identified as the closed lower hemisphere of $S^n$. Since $D^n$ is contractible, $H_k(S^n,D^n)\iso H_k(S^n,\cdot)\iso\tilde{H}_kS^n$.  The open disk $D_{1/2}$ of radius $1/2$ is a subset of $D^n$ which can be excised from the pair $(S^n,D^n)$. The resulting space deformation retracts to the pair $(D^n,S^{n-1})$, where $D^n$ is the upper hemisphere and $S^{n-1}$ its boundary. By the excision axiom,
+Additionally, we have the pair $(S^n,D^n)$, where $D^n$ is identified as the closed lower hemisphere of $S^n$. Since $\tilde{H}_kD^n=0$, the reduced homology sequence for this pair reads
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAdDvR2YACQC+AfQDWAZQB6hQaXSZc+QinIVqdJq3bkQs+djwEiAJjU0GLNohD8xACilhSAEWkBKXXJAYDSogGYzDUttXXUYKABzeCJQADMAJwgAWyQyEBwIJHI9EESU7JpMpGNc-NTEUwysxH9BSkEgA
+\[\begin{tikzcd}
+0 \arrow[r] & \tilde{H}_kS^n \arrow[r] & {H_k(S^n,D^n)} \arrow[r] & 0
+\end{tikzcd}\]
+which gives an isomorphism $\tilde{H}_kS^k\iso H_k(S^n,D^n)$.
 
-$$\tilde{H}_kS^n\iso H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})$$
-Together with our previous isomorphism, we have
-$$\tilde{H}_kS^n\iso H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-1}$$
-as required.
+The open disk $D_{1/2}$ of radius $1/2$ is a subset of $D^n$ which can be excised from the pair $(S^n,D^n)$. The resulting space deformation retracts to the pair $(D^n,S^{n-1})$, where $D^n$ is the upper hemisphere and $S^{n-1}$ its boundary. By the excision axiom,
+$$H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})$$
+All in all,
+$$\tilde{H}_kS^n\iso H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-1}.$$
 
 
 \end{proof}
 
-\begin{proposition}
+\begin{prop}
 For $n>0$,
-$$H_kS^n=\begin{cases}G&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
-\end{proposition}
+$$H_kS^n=\begin{cases}\mathbb{Z}&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
+\end{prop}
 \begin{proof}
-We identify $S^{0}=\cdot \sqcup \cdot$. By proposition (MISSING), $$H_k S^{0}=H_k\cdot \bigoplus H_k \cdot=\begin{cases}G\timesG &=0\\ 0 & \text{otherwise}\end{cases}$$. It follows that $\tilde{H}_0S^{0}=G$ and $\tilde{H}_kS^{0}=0$ when $k\neq 0$. By Lemma \ref{sphere-isomorphism}, $$\tilde{H}_kS^n=\tilde{H}_{k-n}S^{0}=\begin{cases}G & n=k\\0 & \text{otherwise}\end{cases}$$
-This implies the result.
+We identify $S^{0}=\bullet \sqcup \bullet$. By Proposition \ref{disjoint-union}, $$H_k S^{0}=H_k\bullet \dsum H_k \bullet=\begin{cases}\mathbb{Z}\times \mathbb{Z} &k=0\\ 0 & \text{otherwise}\end{cases}$$ It follows that $\tilde{H}_0S^{0}=\mathbb{Z}$ and $\tilde{H}_kS^{0}=0$ when $k\neq 0$. By Lemma \ref{sphere-isomorphism}, $$\tilde{H}_kS^n=\tilde{H}_{k-n}S^{0}=\begin{cases}\mathbb{Z} & k=n\\0 & \text{otherwise}\end{cases}$$
+By Proposition \ref{reduced-homology}, $$H_kS^n=\tilde{H}_kS^n\dsum H_k\bullet=\begin{cases}\mathbb{Z}&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
+\cite{Werndli}
 \end{proof}
-
-\begin{remark}
-For the sake of these calculations, the choice of coefficients $H_0\cdot=\mathbb{Z}$ was arbitrary and played no role. The result could be written more generally as $H_nS^n=\begin{cases}H_0\cdot & n=k\\0 & \text{otherwise}\end{cases}$ for ordinary homology theories. This will be important in section (MISSING), where we use these results for a homology theory with coefficients $H_0 \cdot=\mathbb{Z}/2\mathbb{Z}$.
-\end{remark}
