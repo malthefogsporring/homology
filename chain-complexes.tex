@@ -1,55 +1,105 @@
+\section{Chain Complexes}\label{sec-chain-complexes}
 \begin{definition}
-A \defn{chain complex} is a sequence of algebraic objects and homomorphisms between them, such that for any consecutive $f_{i},f_{i+1}$ we have that $im(f_i)\subset ker(f_{i+1})$. If we have equality instead of inclusion, the construction is called an \defn{exact sequence}.
+A \defn{chain complex} is a family $(A_i)_{i\in\mathbb{Z}}$ of abelian groups, as well as a family $(f_i:A_i\rightarrow A_{i+1})_{i\in \mathbb{Z}}$ of homomorphisms between consecutive groups, such that $im(f_i)\subset ker(f_{i+1})$. If we have equality instead of inclusion, the family is called an \defn{exact sequence}.
 \end{definition}
 
-We will often use "exact sequence" to describe both sequences and families indexed by integers of algebraic objects. We also distinguish between \defn{short} and \defn{long exact sequences}, where the former is finite sequences of three or fewer nonzero elements, and the latter is all other sequences.
+We distinguish between \defn{short} and \defn{long exact sequences}, where short exact sequences are exact sequences with three or fewer consecutive non-zero groups, i.e. sequences of the form
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYBBLjxAZseAkQBMo6vWatEIAEKzeigUQDM68VrYBhA-L5LByACznNknR05iYUAObwiUAAzACcIAFskMhAcCCQRC3d2W1CI+OpYpDVE7RAglLDIxGzMxDMctl8CtLKMuMQXCo8uCk4gA
+\[\begin{tikzcd}
+0 \arrow[r, "0"] & A \arrow[r, "f"] & B \arrow[r, "g"] & C \arrow[r, "0"] & 0
+\end{tikzcd}\]
+All other exact sequences are called long exact sequences. 
 
 \begin{example}
-For any group $A$ the following is a long exact sequence:
+For any abelian group $A$ the following is a long exact sequence:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBEAX1PU1z5CKAEwVqdJq3Zde-bHgJEAzOJoMWbRJx58QGBUKIAWNZM3sAOpagQcCOfoGLhycmY3Tt12-Z4SYKABzeCJQADMAJwgAWyR3EBwIJDJzLxAsKF0I6LjEVKSkMTStEHJskCjYoppCxFUS9kyKqrzTROTEBM9S8u5KbiA
-\begin{tikzcd}
+\[\begin{tikzcd}
 \dots \arrow[r, "0"] & A \arrow[r, "id"] & A \arrow[r, "0"] & A \arrow[r, "id"] & \dots
-\end{tikzcd}
+\end{tikzcd}\]
 \end{example}
 
 \begin{remark}
-The requirement that $im(f_i)\subseteq ker(f_{i+1})$ for all $i\in \mathbb{Z}$ is equivalent to the requirement that $f_{i+1}\circ f_i=0$ for all $i\in \mathbb{Z}$. This is clear from the definition; if $im(f_i)\subseteq ker(f_{i+1})$ then $f_{i+1}\circ f_i (A_i)=f_{i+1}(im(f_i))=0$. Conversely, if $f_{i+1}\circ f_i=0$ then $f_{i+1}(im(f_i))=0$.
+The requirement that $im(f_i)\subseteq ker(f_{i+1})$  is equivalent to the requirement that $f_{i+1}\circ f_i=0$. This is clear from the definition: if $im(f_i)\subseteq ker(f_{i+1})$ then $$\forall x\in A_i, f_{i+1}\circ f_i (x)\in f_{i+1}(im(f_i))=\{0\}.$$ Conversely, if $\forall x\in A_i, f_{i+1}\circ f_i=0$ then $f_{i+1}(im(f_i))=\{0\}$.
 \end{remark}
 
-It is important to build up intuition for how exact sequences behave. 
 
 \begin{example}
-Suppose the following is a short exact sequence of groups.
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbAELdeIDNjwEiAJjHV6zVohABhOXyWCiAZg0TtbACLdxMKAHN4RUADMAThAC2SMiBwIJFFLKV1iQxBPH2DqQKR1UJ0oyOjfRET4xHMktgiuCi4gA
-\begin{tikzcd}
-A \arrow[r, "0"] & B \arrow[r, "f"] & C \arrow[r, "0"] & D
-\end{tikzcd}
-
-We will often draw the following diagram instead, as it carries the same information.
+Suppose the following is part of a long exact sequence of groups.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBEAX1PU1z5CKAEwVqdJq3YAhHnxAZseAkQDM4mgxZtEIAMLz+yoUQAsmyTvYARI4oErhyAKyXt0vQB0vUCDgReY0FVFHJ3KV0QHz8AngkYKABzeCJQADMAJwgAWyRwkBwIJDIrTxByeyzckpoipDEyqPSq7LzERvrEDSb2SqCQavaerrMBoaQ3QuLEcm5KbiA
+\[\begin{tikzcd}
+\dots \arrow[r] & A \arrow[r, "0"] & B \arrow[r, "f"] & C \arrow[r, "0"] & D \arrow[r] & \dots
+\end{tikzcd}\]
+We say this \defn{gives rise to} the following short exact sequence, as they carry the same information.
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAhLjxAZseAkQBMo6vWatEIAMKzeigUQDM68VrYdOYmFADm8IqABmAJwgBbJCJA4ISGoWkjouBiDuXkhkfgGIQtyuHt6IQf5IJjacQA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r] & B \arrow[r, "f"] & C \arrow[r] & 0
-\end{tikzcd}
-Since $0=im(0)=ker(f)$, $f$ is injective. Since $im(f)=ker(0)=C$, $f$ is surjective. Therefore $f$ is an isomorphism.
-
+\end{tikzcd}\]
+We often omit specifying any homomorphisms out of or into $0$, as there is only one: the $0$ homomorphism. Since $0=im(0)=ker(f)$, $f$ is injective. Since $im(f)=ker(0)=C$, $f$ is surjective. Therefore $f$ is an isomorphism.
 \end{example}
 
-\begin{proposition}\label{short-seq-direct-sum}
+\begin{definition}
+If there exist maps $f:A\rightarrow B$ and $g:B\rightarrow A$ between abelian groups such that $g\circ f = id_A$ then $g$ is called a \defn{retraction} of $f$. If alternatively $f\circ g=id_B$, then $f$ is called a \defn{section} of $f$.
+\end{definition}
+This definition formalises the idea of a "one-sided inverse".
+
+\begin{prop}\label{short-seq-direct-sum}
 Let the following be a short exact sequence
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKACzkqtRizYduvbHgJEAjKOr1mrRCACCXHiAxyBRAEwrx6tgCFds-gpQBmM2smaAwlzEwoAc3hFQADMAJwgAWyQyEBwIJGMZEBDwpBFo2MRFBKSIxFM0pCdzV0SbRNCcwpiU1QkNEB9PTiA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r] & A \arrow[r, "f"] & B \arrow[r, "g"] & C \arrow[r] & 0
-\end{tikzcd}
-Then $B\iso A\bigoplus C$.
-\end{proposition}
+\end{tikzcd}\]
+\begin{enumerate}[(a)]
+    \item If there exists a \defn{section} $s:C\rightarrow B$ of $g$, then $f$ and $s$ define an isomorphism $$(f+s):A\dsum C\iso B$$
+$$(a,c)\mapsto f(a)+s(c).$$
+\item If there exists a \defn{retraction} $r:B\rightarrow A$ of $f$, then $r$ and $g$ define an isomorphism $$(r,g):B\rightarrow A\dsum C$$
+$$b\mapsto (r(b),g(b))$$
+\end{enumerate}
+\end{prop}
 
 \begin{proof}
-Since $0=im(0)=ker(f)$, $f$ is injective. It follows that $im(f)\iso A$. Since $im(g)=ker(0)=C$, $g$ is surjective. $g$ defines an injective function $[g]:B/ker(g)\rightarrow C$, $[b]\mapsto [g(b)]$. This gives an isomorphism $B/ker(g)\iso im(g)$, from which we define an isomorphism $B\iso ker(g)\bigoplus im(g)$ by the isomorphism $$h:B\rightarrow ker(g)\bigoplus im(g)$$
-$$x\mapsto \begin{cases}(x,0) & g(x)=0\\ (0,g(x)) & \text{otherwise}\end{cases}$$
-Since $ker(g)$ and $im(g)$ are subgroups, $h$ is a homomorphism. $h$ is furthermore injective and surjective, since $g$ is injective and surjective on $B/ker(g)$, and since $h$ is the identity on $ker(g)$. So $h$ is an isomorphism. Finally, $B\iso im(g)\bigoplus C\iso A\bigoplus C$.
+\begin{enumerate}[(a)]
+\item First we show that $(f+s)$ is injective. By exactness we have that $f$ is injective, as $0=im(0)=ker(f)$, and that $g$ is surjective, as $im(g)=ker(0)=C$.
+
+Suppose $0=f(a)+s(c)$. Then $$g(0)=g(f(a)+s(c))=gf(a)+gs(c)=c$$
+Which implies $c=0$. But then $0=f(a)$, which implies $a=0$ as $f$ is injective. $ker(f+s)=0$, so $(f+s)$ is injective.
+
+Now we show $(f,s)$ is surjective. Now let $b\in B$. Let $c=g(b)\in C$ and $a\in A$ be the unique element that maps to $b-sg(b)$. This element is in $im(f)=ker(g)$, since $g(b-s(g(b)))=g(b)-g(b)=0$, and is unique by injectivity of $f$. Then $f(a)+s(c)=b-sg(b)+sg(b)=b$. Therefore $(f,s)$ is surjective, so it is an isomorphism.
+
+\item First we show that $(r,g)$ is injective. Suppose $(r(b),g(b))=(0,0)$. Then $g(b)=0,$ so $b\in ker(g)=im(f)$. Now $r$ is injective on $im(f)$, since $rf=id_A$. Therefore $r(b)=0\implies b=0$. So $(r,g)$ is injective.
+
+Now we show $(r,g)$ is surjective. Let $(a,c)\in A\dsum C$. Since $r$ is a retraction of $f$, $r(f(a))=a$. Now $g$ is surjective, so there exists $b\in B$ such that $c=g(b)$. Now since $im(f)=ker(g)$, $g(f(a))=0$. 
+
+Consider $fr(b)\in B$. It also has the property $g(fr(b))=0$, as $gf(-)=0$. However, $r(fr(b))=r(b)$. We can therefore let $y=a+b-fr(b)\in B$. Then $g(y)=g(a)+g(b)+g(fr(b))=g(b)=c$, and $r(y)=r(f(a))+r(b)-r(fr(b))=a$. So $(r,g)$ is surjective. Hence it is an isomorphism.
+
+
+\end{enumerate}
+
 \end{proof}
 
-We finish this section with a technical lemma that will become useful in the future.
+\begin{corollary}\label{retraction-iso}
+If $f:A\rightarrow B$ admits a retraction $g:B\rightarrow A$, then $$B\iso im(f)\dsum ker(g)$$
+\end{corollary}
+
+\begin{proof}
+We can define $r|:=r|_{im(f)}:im(f)\rightarrow A$, which is injective since $rf$ is an isomorphism. Trivially we can define $f:A\rightarrow im(f)$, which by abuse of notation we give the same name as $f:A\rightarrow B$. The composition $fr|(x):im(f)\rightarrow B$ is injective, as $$fr|(x)=0\implies r|(x)=r(0)=0\implies x=0$$
+as $r|$ is injective.
+
+We can also define a homomorphism $$h:B\rightarrow ker(r)$$
+$$x\mapsto x-fr(x)$$
+since $r(x-fr(x))=r(x)-r(x)=0$. Note $h$ is surjective, as if $r(x)=0$, then $fr(x)=0$, so $x=x-fr(x)=h(x)$, where by abuse of notation, we are considering $x$ to be both in $ker(r)$ and $B$.
+
+Note $h(fr|)(x)=fr|(x)-fr(fr|(x))=fr|(x)-fr|(x)=0$, as $rf=id_B$. So $im(f)\subseteq ker(h)$. Additionally, if $x-fr|(x)=0$, then $x=fr|(x)$, so $ker(h)\subseteq im(f)$. The horizontal part of the following commutative diagram is therefore a short exact sequence:
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAhEAX1PU1z5CKAIwVqdJq3ZYAtgAoAZgEoefEBmx4CRMSIkMWbRCACCa-lqFFy4moeknyFjQO3DkAZjuSj7ANYwAE7yQaq8loI6KAAsPg7GIM7cEjBQAObwRKCKQRCySGQgOBBIYr6OIIogNABGMGBQSDEAnBFVeQWI5SWFdQ1NiLYViUEAPi65+X3FpUP2UonV-Y1Iw4z09YwACm7WJkFY6QAWOJOdazS9iEUJ7EE1IPWriK3tU13D13Ej7Mfn026VzmwzuJlyE3eF0Q3lmZShgJ+1wArCluEA
+\[\begin{tikzcd}
+0 \arrow[r] & im(f) \arrow[d, "r|"] \arrow[r, "fr|"]          & B \arrow[ld, "r", bend left=49] \arrow[r, "h"] & ker(r) \arrow[r] & 0 \\
+            & A \arrow[u, "f", bend left=49] \arrow[ru, "f"'] &                                                &                  &  
+\end{tikzcd}\]
+Since $fr$ is a retraction of $fr|$, Proposition \ref{short-seq-direct-sum} gives an isomorphism $(fr,h):B\rightarrow im(f)\dsum ker(g)$
+\end{proof}
+
+We finish this section with a technical lemma that will become useful in section \ref{sec-axioms}.
 
 \begin{lemma}[Braid lemma]\label{braid-lemma}
 Suppose three long exact sequences and a chain complex make the following commutative diagram.
@@ -66,14 +116,13 @@ O \arrow[ru, "g_0"] \arrow[rd, "j_0"] &                                         
 Then the chain complex is also a long exact sequence.
 \end{lemma}
 \begin{proof}
-By symmetry of the diagram, it does not matter which sequence is the chain complex. We can assume it is the sequence with homomorphisms $f_i$. We are given that $im(f_i)\subseteq ker(f_{i+1})$, and need to show that $ker(f{i+1})\subseteq im(f_i)$. By the symmetry of the diagram, it is enough to show this for $i=1,2,3$. We will show that $ker(f_2)\subseteq im(f_1)$ here, and do the other two cases in Appendix (MISSING).
+By symmetry of the diagram, it does not matter which sequence is the chain complex. We can assume it is the sequence with homomorphisms $f_i$. We are given that $im(f_i)\subseteq ker(f_{i+1})$, and need to show that $ker(f_{i+1})\subseteq im(f_i)$. By the symmetry of the diagram, it is enough to show this for $i=1,2,3$. We will show that $ker(f_2)\subseteq im(f_1)$ here, and do the other two cases in the Appendix.
 
-Let $x\in ker(f_2)$. Then $0=f_2(x)=j_2f_2(x)=g_2h_2(x)$ by commutativity. It follows that $h_2(x)\in ker(g_2)=im(g_1)$. So $\exists x_1\in A$ s.t. $g_1 x_1=h_2(x)$. By commutativity, $g_1x_1=h_2f_1 x_1$. So we have that $0=g_1 (x_1)-h_2(x)=h_2(f_1 (x_1)-x)$. So $x_2:=f_1(x_1)-x\in ker(h_2)=im(h_1)$. So $\exists x_3\in B$ s.t. $h_1(x_3)=x_2$.
+Let $x\in ker(f_2)$. Then $0=f_2(x)=j_2f_2(x)=g_2h_2(x)$ by commutativity. It follows that $h_2(x)\in ker(g_2)=im(g_1)$. So $\exists x_1\in A$ s.t. $g_1 (x_1)=h_2(x)$. By commutativity, $g_1(x_1)=h_2f_1 (x_1)$. So we have that $0=g_1 (x_1)-h_2(x)=h_2(f_1 (x_1)-x)$. Let $x_2:=f_1(x_1)-x\in ker(h_2)=im(h_1)$. Then $\exists x_3\in B$ s.t. $h_1(x_3)=x_2$.
 
 Now note that $$j_1(x_3)=f_2h_1(x_3)=f_2(x_2)=f_2(f_1(x_1)-x)=0$$
 Where the last equality follows from $f_2f_1(-)=0$ and $f_2(x)=0$. We therefore have that $x_3\in ker(j_1)=im(j_0)$. So there exists $x_4\in O$ s.t. $j_0(x_4)=x_3$. Consider $g_0(x_4).$ It satisfies $f_1g_0(x_4)=h_1j_0(x_4)=h_1(x_3)=x_2=f_1(x_1)-x$. Therefore we have
 $$x=f_1(x_1-g_0(x_4))$$
 Which shows $x\in im(f_1)$ as required.
-
 \cite{Eilenberg}
 \end{proof}

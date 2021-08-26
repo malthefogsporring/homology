@@ -1,43 +1,45 @@
-\section{Category theory}
-The language of category theory was invented specifically for homology theory, but has since then become an entire field of itself with many applications \cite{Marquis}. It is a very general construction, as many familiar constructions can be understood as categories, such as groups, rings, vector spaces and topological spaces. Informally, a category is a collection of "objects" and "maps between them".
-
-In many cases we will study the objects are sets and the maps are functions that satisfy some structure-preserving property, however it is important to note that the definition of a category goes beyond this. There are categories whose objects look nothing like sets and whose maps look nothing like functions. Even for a category of sets and functions, the category may have no notion of "elements of a set" or "evaluation a point".
+\section{Category theory}\label{sec-category-theory}
+The language of category theory was invented specifically for homology theory, but has since then become an entire field of itself with many applications \cite{Marquis}. It is a very general construction, as many familiar constructions can be understood as categories, such as groups, rings, vector spaces and topological spaces. Informally, a category is a collection of "objects" and "maps between them". In these cases, the objects are sets with some structure, and the maps are functions that satisfy some structure-preserving property. However, the definition of a category is more general and this, and there are categories whose objects look nothing like sets and whose maps look nothing like functions between sets.
 
 \begin{definition}
-An object $\cat{A}$ is a \def{collection} of objects $ob(\cat{A})$, for each $A,B\in ob(\cat{A})$ a collection of maps $\cat{A}(A,B)$, and a composition rule $\circ$ satisfying the following properties:
-\begin{enumerate}
-\item If $f\in \cat{A}(A,B)$ and $g\in \cat{A}(B,C)$ then $g\circ f\in \cat{A}(A,C)$
-\item For each $A\in ob(\cat{A})$ there is a unique map $id_A\in \cat{A}(A,A)$ with the property that $id_A\circ f$=$f$ and $g\circ id_A=g$ for every $f:B\rightarrow A$ and $g:A\rightarrow B$
+A category $\cat{A}$ is
+\begin{itemize}
+    \item a \defn{collection}\footnote{The term \defn{collection} is similar to a set, with some technical distinguishing properties laid out in \cite{Leinster}.} of objects $ob(\cat{A})$,
+    \item for each $A,B\in ob(\cat{A})$ a collection $\cat{A}(A,B)$ of maps from $A$ to $B$,
+    \item a composition function $\circ:\cat{A}(A,B)\times \cat{A}(B,C)\rightarrow \cat{A}(A,C)$,
+\end{itemize}
+which satisfy the following properties:
+
+\begin{enumerate}[(a)]
+\item \textbf{Associativity}: $(f\circ g)\circ h=f\circ(g\circ f)$,
+\item \textbf{Identity laws}: For each $A\in ob(\cat{A})$ there is a unique map $id_A\in \cat{A}(A,A)$ with the property that $id_A\circ f$=$f$ and $g\circ id_A=g$ for every $f\in \cat{A}(B,A)$ and $g\in \cat{A}(A,B)$
 \end{enumerate}
 \end{definition}
-
-The term $\def{collection}$ is similar to a set, with some technical distinguishing properties laid out in \cite{Leinster}.
-
-Categories are best understood through examples.
+Note we often write $A\in \cat{A}$ to mean $A\in ob(\cat{A})$, and $fg$ to mean $f\circ g$.
+\par Categories are best understood through examples, of which we give a few. Many more examples are given in \cite{Leinster}.
 
 \begin{example}
 The following are categories.
 \begin{enumerate}[(a)]
 
-\item The empty category $\emptyset$ with no objects and homomorphisms
+\item The empty category $\emptyset$ with no objects and homomorphisms.
 \item A one-object category $\{A\}$ with only the identity map $id_A$.
 
-\item $\mathbf{Top}$ is a category, where spaces are topological spaces, and maps are continuous maps. This is because the identity map is always continuous, and compositions of continuous maps are continuous.
+\item $\mathbf{Top}$ is a category, where spaces are topological spaces, and the maps are all continuous maps. This is because the identity map is always continuous, and compositions of continuous maps are continuous.
 
 \item We have similar constructions for other "sets with structure" and "structure-preserving maps" such as $\mathbf{Vec}$ the category of vector spaces and linear maps, and $\mathbf{Grp}$, the category of groups and homomorphisms.
-\item Many categories can be found as subcategories of previous examples. For example, we have the categories of compact topological sets and all continuous maps between them.
-\item Here is an example of a category that cannot be interpreted as "sets" and "structure-preserving maps": 
+\item Many categories can be found as subcategories of previous examples. For example, we have the subcategory $\mathbf{Ab}\subset \mathbf{Grp}$ of all abelian groups and homomorphisms between them.
+\item Finally, here is an example of a category that cannot be interpreted as "sets" and "structure-preserving maps": 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQAmclVqMWbAELdxMKAHN4RUADMAThAC2SMiBwQ91BhAhoiZNYzgxxDOgCMYDAAr88BNhqyKAFjgg1PTMrIggWFAA+pw86lq6iACM1IZIKSCm5pak1gy29k4u7tieQiA+-oHBkmER0bJxIJo6xgZGyTWhbGpBIM5gUEgAzMRNLYkZaYj6A0OIo11S4YrcvM0JbdP6WRYoSQAcVjZ2JkVuHoLevgF9Icsgir1cFFxAA
-\begin{tikzcd}
+\[\begin{tikzcd}
 A \arrow["id_A"', loop, distance=2em, in=305, out=235] \arrow[rr, "f", bend left] \arrow["gf"', loop, distance=2em, in=125, out=55] &  & B \arrow["id_B"', loop, distance=2em, in=305, out=235] \arrow[ll, "g", bend left]
-\end{tikzcd}
-If we tried to interpret this as two one-element sets $A$ and $B$ together with the only maps $f,g$ between them we run into trouble, as there are two distinct maps from $A$ to itself! However this category satisfies the definitions: we have identities, and for every two maps we have defined their compositions
-$$fg=id_B, f(gf)=f,(gf)g=g,(gf)(gf)=id_A$$
-One might object that $(gf)(gf)=g(fg)f=g(id_B)f=gf\neq id_A$, but there is no requirement that categories are commutative.
-\end{enumerate}\end{example}
-Many more examples are given in \cite{Leinster}.
+\end{tikzcd}\]
+If we tried to interpret this as two one-element sets $A$ and $B$ together with the only maps $f,g$ between them, we run into trouble, as there are two distinct maps from $A$ to itself! However this category satisfies the definitions: we have identities, and for every two maps we have defined their compositions
+$$fg=id_B, f(gf)=f,(gf)g=g,(gf)(gf)=gf$$
+These compositions are forced upon us by the associativity requirement, for example $f(gf)=(fg)f=(id_A)f=f$, and $(gf)(gf)=g(fg)f=gf$. One might think $gf$ contradicts the uniqueness of the identity requirement, but it does not, as $(gf)id_A=gf\neq id_A$. 
 
-Two definitions that will play a big role in our study are notions of "maps between categories" and "maps between maps between categories". These are called \defn{functors} and \defn{natural transformations}, respectively.
+\end{enumerate}\end{example}
+\par Two definitions that will play a big role in our study are notions of "maps between categories" and "maps between maps between categories". These are called \defn{functors} and \defn{natural transformations}, respectively.
 
 \begin{definition}
 A \defn{functor} $F:\cat{C}\rightarrow\cat{H}$ between two categories is a function assigning each $X\in ob(\cat{C})$ to some $F(X)\in ob(\cat{H})$, and each $f\in \cat{C}(A,B)$ to some $F(f)\in \cat{C}(F(A),F(B))$, such that
@@ -47,27 +49,31 @@ A \defn{functor} $F:\cat{C}\rightarrow\cat{H}$ between two categories is a funct
 \end{enumerate}
 \end{definition}
 
-An essential property of functors is that it preserves identities, and preserves commutative diagrams. I.e. if the following commutative diagram is in $\cat{C}$
+The definition of a functor is set up such that it takes commutative diagrams to commutative diagrams. I.e. if this commutative diagram is in $\cat{C}$,
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbAELdeIDNjwEio4ePrNWiEAGE5fJYKJl11TVJ0ARbuJhQA5vCKgAZgCcIAWyRkQOCCRRCS02VwMQD28g6gCkACZzSW0QBwion0Q-OMQAZiTQnQArEGoGOgAjGAYABX5lIRAGGFccdM9M-P9AxESQyxAAC1suIA
-\begin{tikzcd}
+\[\begin{tikzcd}
 A \arrow[r, "f"] \arrow[d, "j"] & B \arrow[d, "g"] \\
 D \arrow[r, "h"]                & C               
-\end{tikzcd}
-then the following commutative diagram is in $\cat{H}$
+\end{tikzcd}\]
+then the following commutative diagram is in $\cat{H}$:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRADEAKAQQEoQAvqXSZc+QigCM5KrUYs2XAEL8hI7HgJFpk2fWatEHTgGFVwkBg3iiZXdX0KjXACKrZMKAHN4RUADMAJwgAWyQyEBwIJGk5A0VOf3MA4LDEWKikACYHeUNjL2SQINDw6kzEAGZc+OdOACt+agY6ACMYBgAFUU0JEAYYfxxBCxK06sjoxBy4p2MAC3cBIA
-\begin{tikzcd}
+\[\begin{tikzcd}
 F(A) \arrow[r, "F(f)"] \arrow[d, "F(j)"] & F(B) \arrow[d, "F(g)"] \\
 F(D) \arrow[r, "F(h)"]                   & F(C)                  
-\end{tikzcd}
+\end{tikzcd}\]
+
+%TODO: Add examples
 
 \begin{definition}
-A \defn{natural transformation} $\alpha:F\rightarrow G$ between functors $F,G:\cat{A}\rightarrow \cat{B}$ is a family of functions $(\alpha_A:F(A)\rightarrow G(A))_{A\in \cat{A}}$ of maps in $\cat{B}$ such that any map $f:A\rightarrow B$ in $\cat{A}$ gives rise to a commutative diagram
+A \defn{natural transformation} $\alpha:F\rightarrow G$ between functors $F,G:\cat{A}\rightarrow \cat{B}$ is a family of functions $(\alpha_A:F(A)\rightarrow G(A))_{A\in \cat{A}}$ between objects in $\cat{B}$ such that any map $f:A\rightarrow B$ in $\cat{A}$ gives rise to a commutative diagram
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRADEAKAQQEoQAvqXSZc+QijIBGKrUYs2XAEL8hI7HgJEppGdXrNWiDpxWDhIDBvHbysgwuMBxHqtkwoAc3hFQAMwAnCABbJDIQHAgkAGZ9eSMQAB1ExjQACzoAfW5zfyDQxB0IqMQAJjjDNmTUjMylXJBAkLDqSKQihwSuP1ULJoLY4qRyuUrnTh7BCgEgA
-\begin{tikzcd}
+\[\begin{tikzcd}
 F(A) \arrow[r, "\alpha_A"] \arrow[d, "F(f)"] & G(A) \arrow[d, "G(f)"] \\
 F(B) \arrow[r, "\alpha_B"]                   & F(B)                  
-\end{tikzcd}
+\end{tikzcd}\]
 \end{definition}
 
-Functors and natural transformations are explored in depth in \cite{Leinster}. For now we will make do with the definitions. The properties we will use the most are that functors are maps between categories that preserve commutative diagrams, and that natural transformations are maps between two functors of a category that satisfies the above commutative diagram. In non-axiomatic homology theory a key exercise is to show that the specific homology theory satisfies these properties, but in this text we will take this as given, so the reader is welcome to take the properties at face-value.
+%TODO: Add examples
+
+Functors and natural transformations are explored in depth in \cite{Leinster}. For now we will make do with the definitions. The properties we will use the most are that \textit{functors preserve commutative diagrams}, and that \textit{natural transformations commute with functors} in the way specified by the above diagram. 
