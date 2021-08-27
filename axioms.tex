@@ -195,24 +195,24 @@ If $X$ is contractible to $x\in X$, then $\tilde{H}_n(X)=H_n(X,x)=0$ by the prev
 
 As we will see, the reduced homology group also come with a long exact sequence. To define it, we will need a lemma. Consider an admissible category $C$ and a triple $(X,A,B)\in \Top{3}$ such that $(X,A),(X,B),(A,B)\in C$. The homology sequences of these three pairs, which will be labelled $(1),(3),(4)$ respectively, form the following braid diagram:
 
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAAkB9YMAamIC+ACgAapAIIBKEANLpMufIRRkAzFVqMWbLmABCMuSAzY8BIgFZyG+s1aIO3MAFpBB2fNNLLpddVvaDrqiEtIexgpmysgATKQxNlr2jmDihp6K5iiq1v5JOpxgQuKkemFGJpnROX6adgVgIukRXlnIACzxifVBhSFlzZVRRABsXXk9jjyuAmnhQ94oAAykS92BIIORi8grCRMbW63RK+3ryUdVRADsvucF04LFpeUZwyi3lAfJXI8CTfNtm0ABzjOqHQHHIigtbfNiXd7IUFnOEOGQaGBQADm8CIoAAZgAnCAAWyQKxAOAgSHa4SJpJp1CpSBGdOJZMQY0p1MQORAACMYGAoEhnO0AJxshmIMjcmlSjmdOWICwKpBWZVxAVCkWICVqxAU5kq6iC4U08WokAAHWtaDohLwjGa9I5suNXLNurFkqMrpZTJ51wNt01Bo1xtDAWSWAAegAqF3spCh4186NsABWCaT0r5xuBBq1BYNluVFK95KtQmIrxA-plRp5FIzDiEMTrDeITaQstbICEqk7yZl7p5ssrhur7WHecDva1k59Vtt9sdWGdBtByuIMSL85lfMn+r9I+3xuIqgNl4PxFpp+lN53qofbuL49Zr4Xt-vBLPt6vCgBCAA
-\[\begin{tikzcd}
-{} \arrow[rd, "(1)"]                   &                                                                &                            &                                                       &                                         &                                                             &                                           &                                      & {} \\
-                                       & {H_{n+1}(X,A)} \arrow[rd] \arrow[rr, "\partial", bend left=49] &                            & {H_n(A,B)} \arrow[rr, bend left=49] \arrow[rd, "i^*"] &                                         & H_{n-1}B \arrow[rd] \arrow[rr, bend left=49]                &                                           & H_{n-1}X \arrow[rd] \arrow[ru]       &    \\
-{} \arrow[ru, "(2)"] \arrow[rd, "(3)"] &                                                                & H_nA \arrow[rd] \arrow[ru] &                                                       & {H_n(X,B)} \arrow[ru] \arrow[rd, "j^*"] &                                                             & H_{n-1}A \arrow[rd] \arrow[ru] \arrow[ru] &                                      & {} \\
-                                       & H_nB \arrow[ru] \arrow[rr, bend right=49]                      &                            & H_nX \arrow[rr, bend right=49] \arrow[ru]             &                                         & {H_n(X,A)} \arrow[ru] \arrow[rr, "\partial", bend right=49] &                                           & {H_{n-1}(A,B)} \arrow[rd] \arrow[ru] &    \\
-{} \arrow[ru, "(4)"]                   &                                                                &                            &                                                       &                                         &                                                             &                                           &                                      & {}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAAkB9YMAamIC+ACgAapAIIBKEANLpMufIRRkAzFVqMWbLmABCMuSAzY8BIgFZyG+s1aIO3MAFpBB2fNNLLpddVvaDrqiEtIexgpmysgATKQxNlr2jmDihp6K5iiq1v5JOpxgQuKkemFGJpnROX6adgVgIukRXlnIACzxifVBhSFlzZVRRABsXXk9IIOR3igADKRz3YFT4UOzyAsJEyvTrdEL7cvJe1WjpEc7J2szbWNLV2wyGjBQAObwRKAAZgBOEABbJALEA4CBIdrhP6AiHUMFIEZQ-5AxBjUHgxA5EAAIxgYCgSGc7QAnEiYYgyOiIWSUZ0qYgLDSkFZ6XEcXiCYgSUzECD4QzqLj8RDiY8HAAdcVoOi-PCMZrQlGU-looWcomkoyKhFwjEAdh5et1SBiPJZ-KNdRWWAAegAqBXIpCW-lYgLJABW9sd5Kx-IAHDy2QGeaL6SC1cCxSAhMRyj8nRS+RiQe62EIYvGQNqk8aKdGhKoszniMqMZTI7yC+1i4m-eXTVrE8Hy6oBBQBEA
+\[\begin{tikzcd}[row sep=small,column sep=small]
+{} \arrow[rd, "(1)"]                   &                                                                &                            &                                                       &                                         &                                  & {} \\
+                                       & {H_{n+1}(X,A)} \arrow[rd] \arrow[rr, "\partial", bend left=49] &                            & {H_n(A,B)} \arrow[rr, bend left=49] \arrow[rd, "i^*"] &                                         & H_{n-1}B \arrow[rd] \arrow[ru]   &    \\
+{} \arrow[ru, "(2)"] \arrow[rd, "(3)"] &                                                                & H_nA \arrow[rd] \arrow[ru] &                                                       & {H_n(X,B)} \arrow[ru] \arrow[rd, "j^*"] &                                  & {} \\
+                                       & H_nB \arrow[ru] \arrow[rr, bend right=49]                      &                            & H_nX \arrow[rr, bend right=49] \arrow[ru]             &                                         & {H_n(X,A)} \arrow[ru] \arrow[rd] &    \\
+{} \arrow[ru, "(4)"]                   &                                                                &                            &                                                       &                                         &                                  & {}
 \end{tikzcd}\]
 
-The sequences $(1),(3),(4)$ commute with each other. The sequence $(2)$ is called the \defn{long exact homology sequence} for the triple $(X,A,B)$. The map $\partial:H_n(X,A)\rightarrow H_{n-1}(A,B)$ is defined so the diagram commutes, and all other maps in the sequence are induced by the canonical inclusions, which it is easy to see also commute with the diagram, either by looking at inclusions or the naturality of $\partial$.
+The sequences $(1),(3),(4)$ commute with each other. The sequence $(2)$ is called the \defn{long exact homology sequence} for the triple $(X,A,B)$. The map $\partial:H_{n+1}(X,A)\rightarrow H_{n}(A,B)$ is defined so the diagram commutes, and all other maps in the sequence are induced by the canonical inclusions, which it is easy to see also commute with the diagram, either by looking at inclusions or the naturality of $\partial$.
 
 \begin{prop}
 For a triple $(X,A,B)\in \Top{3}$, the sequence
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADVIBBAJQhBpdJlz5CKAEwVqdJq3bcwwiaQBCMuQux4CRAMwaaDFm0Scu+8SdnyQGC8qIAWOy1HXVcxSVMvHyUrFHIghx1nAB1kqAgcBDNvRUsVZABWBO0nEFT0zNlNGCgAc3giUAAzACcIAFskQJAcCCRybNaO-ppepDJgpLLktHoWvCZPZrbOxAmxxHVJ0qwAPQAqJZAh1a2N2232ACsDo5OkC42iy5SZuYXGKsEgA
-\begin{tikzcd}
+\[\begin{tikzcd}
 \dots \arrow[r] & {H_{n+1}(X,A)} \arrow[r, "\partial"] & {H_n(A,B)} \arrow[r, "i^*"] & {H_n(X,B)} \arrow[r, "j^*"] & {H_n(X,A)} \arrow[r, "\partial"] & \dots
-\end{tikzcd}
+\end{tikzcd}\]
 
 
 is a long exact sequence.

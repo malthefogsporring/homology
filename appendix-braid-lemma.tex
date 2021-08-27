@@ -18,7 +18,7 @@ We have shown that $ker(f_2)\subseteq im(f_1)$ and need to show that $ker(f_3)\s
 \begin{enumerate}[(a)]
 \item $ker(f_3)\subseteq im(f_1)$.
 
-Let $x\in E$ be s.t. $f_3(x)=0$. By commutativity, $g_3j_2(x)=0$, so $j_2(x)\in ker(g_3)=im(g_2)$. Then $\exists x_1\in D$ s.t. $g_2(x_1)=j_2(x)$. It satisfies $h_3(x_1)=j_3g_2(x_1)=j_3j_2(x)=0$, since $(j_i)$ is a chain complex. So $x_1\in ker(h_3)=im(h_2)$. Therefore there exists $x_2\in C$ s.t. $h_2(x_2)=x_1$. This element is such that $j_2f_2(x_2)=g_2h_2(x_2)=g_2(x_1)=j_2(x)$. We therefore have $j_2(f_2(x_2)-x)=0$.
+Let $x\in E$ be s.t. $f_3(x)=0$. By commutativity, $g_3j_2(x)=0$, so $j_2(x)\in ker(g_3)=im(g_2)$. Then $\exists x_1\in D$ s.t. $g_2(x_1)=j_2(x)$. It satisfies $h_3(x_1)=j_3g_2(x_1)=j_3j_2(x)=0$, as $(j_i)$ is a chain complex. So $x_1\in ker(h_3)=im(h_2)$. Therefore there exists $x_2\in C$ s.t. $h_2(x_2)=x_1$. This element is such that $j_2f_2(x_2)=g_2h_2(x_2)=g_2(x_1)=j_2(x)$. We therefore have $j_2(f_2(x_2)-x)=0$.
 
 Let $x_3:=f_2(x_2)-x$. Then $x_3\in ker(j_2)=im(j_1)$. Let $x_4\in B$ be s.t. $j_1(x_4)=x_3$. $x_4$ is such that $f_2h_1(x_4)=j_1(x_4)=x_3=f_2(x_2)-x$.
 Finally, we see that $x=f_2(x_2-h_1(x_4),$ so $x\in im(f_2)$ as required.
@@ -27,5 +27,4 @@ Finally, we see that $x=f_2(x_2-h_1(x_4),$ so $x\in im(f_2)$ as required.
 
 Let $x\in H$ be s.t. $f_4(x)=0$. Then $0=h_5f_4(x)=g_4(x)$. So $x\in ker(g_4)=im(g_3)$. Let $x_1\in F$ be s.t. $g_3(x_1)=x$. Then $h_4j_3(x_1)=f_4g_3(x_1)=f_4(x)=0$
 So $j_3(x_1)\in ker(h_4)=im(h_3)$. Let $x_2\in D$ be s.t. $h_3(x_2)=j_3(x_1)$. Then $j_3(x_1)=j_2g_2(x_2)$, s.t. $x_3:=g_2(x_2)-x_1\in \ker(j_3)=im(j_2)$. Let $x_4\in E$ be s.t. $j_2(x_4)=x_3$. Then $f_3(x_4)=g_3j_2(x_4)=g_3(x_3)=g_3(g_2(x_2)-x_1)=-g_3(x_1)=-x$. Therefore $x=f_3(-x_4)$, and $x\in im(f_3)$ as required.
-\end{enumerate}
-\end{proof}
+\end{enumerate}\end{proof}

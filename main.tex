@@ -9,6 +9,7 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{tikz-cd}
+\usepackage{url}
 
 \usepackage{enumerate}
 %\usepackage{mathtools}
@@ -16,6 +17,10 @@
 \usepackage{amsthm}
 \newcounter{thm}
 \numberwithin{thm}{section}
+
+\tikzcdset{scale cd/.style={every label/.append style={scale=#1},
+    cells={nodes={scale=#1}}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[thm]
@@ -29,7 +34,9 @@
 %\theoremstyle{remark}
 \newtheorem{remark}[thm]{Remark}
 \newtheorem{example}[thm]{Example}
+
 \bibliographystyle{apalike}
+
 \newcommand{\dsum}{\oplus}
 \newcommand{\iso}{\cong}
 \newcommand{\homeo}{\cong}
@@ -65,7 +72,9 @@
 \input{cellular-homology}
 \input{real-projective-space}
 \input{complex-projective-space}
-\input{borsuk-ulam}
+\subsection{The Borsuk-Ulam Theorem}
+%\input{borsuk-ulam}
+\newpage
 \section{Appendix}
 \input{appendix-braid-lemma}
 \newpage\bibliography{bibtex}

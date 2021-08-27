@@ -1,53 +1,51 @@
 \section{Cellular homology}\label{sec-cellular-homology}
 \subsection{CW-complexes}
-A common class of spaces is the class of \defn{cell complexes} or \defn{CW complexes}, which are constructed by iteratively gluing copies of $D^n$ in a manner defined by a function defined on the boundary $\partial D^n \iso S^{n-1}$. As will become apparent, CW-complexes have the right structure for establishing a very practical way of calculating their homology groups.
+A common class of spaces is the class of \defn{cell complexes} or \defn{CW complexes}, which are constructed by iteratively gluing copies of $D^n$ in a manner defined by a "gluing map" on the boundary $\partial D^n \iso S^{n-1}$. As will become apparent, CW-complexes have the right structure for establishing a very practical way of calculating their homology groups.
 
 \begin{definition}
-A CW-complex $X$ is the union of a sequence of spaces $X^n$, called the \defn{n-skeleta} of $X^n$ defined as follows: $X^0$ is a discrete set, and for each $X^{n-1}$, $X^{n}$ is obtained by gluing copies of $D_{\alpha}^n$, called n-cells, along a map $\phi_{\alpha}:S^{n-1}\rightarrow X^{n-1}$ defined on the boundary of $D_{\alpha}^n$. Explicitly, $X^n$ is the quotient of the disjoint union $X^{n-1}\sqcup_{\alpha} D_{\alpha}^n$ under the identification $x\sim \phi_{\alpha}(x)$ for $x\in S^{n-1}\subset D_{\alpha}^n$. If $X=X^n$ for some $n\in \mathbb{N}^*$, then $X$ is called a \defn{finite cell complex}. Otherwise, $X$ is given the weak topology: a subset $A\subset X$ is open iff $A$ is open in $X^n$ for every $n\in \mathbb{N}^*$.
+A CW-complex $X$ is the union of a sequence of spaces $X^n$, called the \defn{n-skeleta} of $X^n$ defined as follows: $X^0$ is a discrete set, and for each $X^{n-1}$, $X^{n}$ is obtained by gluing copies of $D_{\alpha}^n$, called $n$-cells, along a \defn{gluing map} $\phi_{\alpha}:S_{\alpha}^{n-1}\rightarrow X^{n-1}$ defined on the boundary of $D_{\alpha}^n$. Explicitly, $X^n$ is the quotient of the disjoint union $X^{n-1}\sqcup_{\alpha} D_{\alpha}^n/\sim$ under the identification $x\sim \phi_{\alpha}(x)$ for $x\in S_{\alpha}^{n-1}\subset D_{\alpha}^n$. If $X=X^n$ for some $n\in \mathbb{N}\cup\{0\}$, then $X$ is called a \defn{finite cell complex}. Otherwise, $X$ is given the weak topology: a subset $A\subset X$ is open iff $A$ is open in $X^n$ for every $n\in \mathbb{N}\cup \{0\}$.
 \end{definition}
 
 Many familiar spaces naturally arise as cell complexes.
 
 \begin{example}
-$S^{n}$ is a CW-complex with 1 0-cell and 1 $n-cell$ when $n>0$. 
+$S^{n}$ is a CW-complex with 1 0-cell and 1 $n$-cell when $n>0$. 
 \end{example}
 
 \begin{example}
-$\RP{2}$ is a CW-complex with 1 0-cell, 1 1-cell and 1 2-cell, and where the attaching map $\phi:S^1\rightarrow X^1$ is the double cover $z\mapsto z^2$. To see this, note that $\RP{2}$ can be thought of as the upper dome of the 2-sphere, with antipodal points on the equator identified. The upper dome is homeomorphic to $D^2$ and for $z\in S^{1}$ the condition $z\sim -z$ is equivalent to the condition $z\sim z^2$. This is immediately obvious from noting that $z$ and $-z$ are both mapped to $z^2$, and conversely if $z^2=y^2$, then $z=\pm y$.
-
-Iteratively, $\RP{n}$ can be understood as a copy of $D^n$ glued to a copy of $\RP{n-1}$ via the projection map $z\mapsto [z]$ along the boundary $\partial D^n$.
+$\RP{2}$ is a CW-complex with 1 0-cell, 1 1-cell and 1 2-cell, and where the gluing map $\phi:S^1\rightarrow X^1=\RP{1}$ is the projection $z\mapsto [z]$. Iteratively, $\RP{n}$ can be understood as a copy of $D^n$ glued to a copy of $\RP{n-1}$ via the projection map $z\mapsto [z]$ along the boundary $\partial D^n$. So $\RP{n}$ as a $k$-cell for $0\leq k \leq n$.
 \end{example}
 
 \begin{example}
-The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, noting that the two maps $a$ and $b$ are in fact 1-cells, as the corners are identified as a single point. The identification map $f:S^1\rightarrow X^1$ is then given by the concatenation $a\cdot b\cdot -a \cdot -b$. The Klein bottle, which also arises as a quotient of the square, can be defined in a similar way.
+The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, where the two $1$-cells $a$ and $b$ have their endpoints glued to a single $0$-cell, as the corners are identified to a single point. The gluing map $\phi:S^1\rightarrow X^1$ is then the concatenation $a\cdot b\cdot -a \cdot -b$, where we are thinking of $a$ and $b$ as paths. The Klein bottle, which also arises as a quotient of the square, can be defined in a similar way.
 
 IMAGE MISSING
 \end{example}
 
 \begin{remark}
-The cell structure of a CW-complex need not be unique. For example an alternative cell structure of $S^2$ is one 0-cell, 1 1-cell, and two 2-cells (the upper and lower hemispheres) both glued via the identity map on their boundaries.
+The cell structure of a CW-complex need not be unique. For example an alternative cell structure of $S^2$ is one 0-cell, 1 1-cell, and two 2-cells (the upper and lower hemispheres) both glued onto the hemisphere via the identity map on their boundaries.
 \end{remark}
 
 \subsection{Cellular homology groups}
 
-We will show that the homology groups of CW-complexes can be identified as the homology groups of a certain chain complex of relative homology group $H_n(X^n,X^{n-1})$. This method of "taking homology twice" in essence trims away a lot of fat, making calculations easier. By "homology group of a chain complex" we mean the following:
+We will show that the homology groups of CW-complexes can be identified as the homology groups of a certain chain complex of relative homology group $H_n(X^n,X^{n-1})$. This method of "taking homology twice" trims away some fat, making calculations easier. By "homology group of a chain complex" we mean the following:
 
 \begin{definition}
 Let the following diagram be a chain complex of abelian groups.
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBAfWDAGpiAXxCDS6TLnyEUAJgrU6TVu269ho8djwEiAZnk0GLNok48wAWiEixIDFqlEALAcXH2AHQ9QIOBBrsJbWlkclcjZVMvHz8RBRgoAHN4IlAAMwAnCABbJDCQHAgkMjdIkChzAXVbTJzimkKkOVKTcvNq9KzcxGbGxH0W9greKw6QWu6XAqLEckFKQSA
-\begin{tikzcd}
+\[\begin{tikzcd}
 \dots \arrow[r] & A_{n+1} \arrow[r, "d_{n+1}"] & A_{n} \arrow[r, "d_{n}"] & A_{n-1} \arrow[r, "d_{n-1}"] & \dots
-\end{tikzcd}
+\end{tikzcd}\]
 
 Then the abelian group $\tilde{H}_n(A_n):=Ker(d_n)/Im(d_{n+1})$ is called the \defn{homology group of the chain complex}.
 \end{definition}
 
 \begin{remark}
-Note both $Ker(d_n)$ and $Im(d_{n+1})$ are abelian subgroups, and $Im(d_{n+1}) \subseteq Ker(d_n)$ as we are dealing with a chain complex. (FINISH PROOF)
+Note both $Ker(d_n)$ and $Im(d_{n+1})$ are abelian subgroups, and $Im(d_{n+1}) \subseteq Ker(d_n)$ as we are dealing with a chain complex. By \cite{proof-wiki}, a subgroup of an abelian group is normal, so $Ker(d_n)/Im(d_{n+1})$ is well-defined, and this group is also abelian.
 \end{remark}
 
-We will restrict our study to finite cell complexes, but the reader is invited to confirm that the established results also hold for general cell complexes (REF). The proof is adapted from (REF HATCHER), with axiomatic replacements to references to singular homology. We first establish some basic results
+We will restrict our study to finite cell complexes, but the reader is invited to confirm that the established results also hold for general cell complexes \cite{Hatcher}. The proof is adapted from \cite{Hatcher}, with axiomatic replacements to references to singular homology. We first establish some basic results
 
 \begin{lemma}\label{cell-lemma}
 The following hold for finite cell complexes $X$:
@@ -59,70 +57,78 @@ The following hold for finite cell complexes $X$:
 \end{lemma}
 
 \begin{proof}
-The statement is trivial for $n=0$. For $n>0$, notice that $X^{n-1}$ is a deformation retract of $A:=X^{n}\setminus \sqcup_m \cdot$, where the $m$ copies of $\cdot$ are the centers of the $m$ $n$-cells of $X$. The subset $B:= X^{n}\setminus \sqcup_m D_{1/2}^n$ satisfies the conditions of excision, where $D_{1/2}^n$ is the disk of radius $1/2$ sitting inside an n-cell.
+\begin{enumerate}[(i)]
+    \item The statement is trivial for $n=0$. For $n>0$, notice that $X^{n-1}$ is a deformation retract of $A:=X^{n}\setminus \sqcup_m \bullet$, where the $m$ copies of $\bullet$ are the centers of the $m$ $n$-cells of $X$. The subset $B:= X^{n}\setminus \sqcup_m D_{1/2}^n$ satisfies the conditions of excision, where $D_{1/2}^n$ is the disk of radius $\frac{1}{2}$ sitting inside an n-cell.
 It follows that
 $$H_k(X^n,X^{n-1})\iso H_k(X^n,A)\iso H_k(X^n\setminus B,A\setminus B)\iso H_k(\sqcup_m D^n,\sqcup_m S^{n-1})$$
-These homology groups are familiar: $\mathbb{Z}^m$ if $k=n$, and $0$ otherwise, proving (i).
-
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPrAA1pwAaAPWBhOXHiAzY8BIgCZR1es1aIQshZwAUq9QGohnAJRbeegUQDMJ8eZsHJxiMFAA5vBEoABmAE4QALZIZCA4EEgu2vFJmdTpSIbcsQnJiMZpGYg+IZxAA
-\begin{tikzcd}
+These homology groups are familiar: they are $\mathbb{Z}^m$ if $k=n$, and $0$ otherwise.
+\item By the previous result, the homology sequence for $(X^n,X^{n-1})$ reads% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPrAA1pwAaAPWBhOXHiAzY8BIgCZR1es1aIQshZwAUq9QGohnAJRbeegUQDMJ8eZsHJxiMFAA5vBEoABmAE4QALZIZCA4EEgu2vFJmdTpSIbcsQnJiMZpGYg+IZxAA
+\[\begin{tikzcd}
 0 \arrow[r] & H_{m}X^{n-1} \arrow[r] & H_{m}(X^{n}) \arrow[r] & 0
-\end{tikzcd}
-whenever $m\neq n,n-1$. Therefore, for $m>n$ we have $H_m{X^n}\iso H_m{X^{n-1}}\iso \dots \iso H_m{X^0}=0$, proving (ii). When $m<n$ we have $H_m(X^n)\xhookrightarrow{i} H_m(X^{n+1})$ is an isomorphism. By induction, we get a chain of inclusions, all of which are isomorphisms:
+\end{tikzcd}\]
+whenever $m\neq n,n-1$. Therefore, for $m>n$ we have $$H_m{X^n}\iso H_m{X^{n-1}}\iso \dots \iso H_m{X^0}=0.$$
+\item By the previous diagram, when $m<n$ we have that $$H_m(X^n)\xhookrightarrow{i} H_m(X^{n+1})$$ is an isomorphism. By induction, we get a chain of inclusions, all of which are isomorphisms:
 
 $$H_m(X^n)\xhookrightarrow{i} H_m(X^{n+1})\xhookrightarrow{i}\dots \xhookrightarrow{i} H_m(X^{m})$$
 
-Since the inclusion $H_m(X^n)\xhookrightarrow{i} H_m(X^{m})$ is the composition of the above inclusions, it too is an isomorphism. For finite cell complexes, $X=X^m$ for some $m$, proving (ii). 
+Since the inclusion $H_m(X^n)\xhookrightarrow{i} H_m(X^{m})$ is the composition of the above inclusions, it too is an isomorphism. For finite cell complexes, $X=X^m$ for some $m$, proving (iii).
+\end{enumerate}
 \end{proof}
 
 \begin{theorem}
 The following is a chain complex, where the map $d_n$ is defined as the composition $H_n(X^n,X^{n-1})\xrightarrow{\partial_n}H_{n-1}(X^{n-1})\xhookrightarrow{i} H_{n-1}(X^{n-1},X^{n-2}).$
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12oIcEBfUuky58hFAEZyVWoxZsAEgH1gYPgAoAGgD0wpbSoC04vgEoQAodjwEiAJinV6zVohBLDxzVo8D9YA7am5oIgGFaiRADMDjLObJzcvObSMFAA5vBEoABmAE4QALZIZCA4EEiSsXKuUMpgANTGwTn5RYiVZUj2VS4gtYQWIHmFXdSdiNE9bLU+yXxAA
-\begin{tikzcd}
+\[\begin{tikzcd}
 \dots \arrow[r, "d_{n+1}"] & {H_{n}(X^n,X^{n-1})} \arrow[r, "d_n"] & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[r, "d_{n-1}"] & \dots
-\end{tikzcd}
+\end{tikzcd}\]
 
-We have an isomorphism $Ker(d_n)/Im(d_{n+1})  \iso H_n(X)$
+Furthermore, $Ker(d_n)/Im(d_{n+1})  \iso H_n(X)$
 \end{theorem}
 
 \begin{proof}
-The relative homology sequences of $X^n$ and $X^{n-1}$ for all natural numbers $n$ fit into a "braid-diagram:"
+The relative homology sequences of $X^n$ and $X^{n-1}$ for all natural numbers $n$ fit into the following commutative diagram:
 
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoBmAXVJADcBDAGwFcYkQAJAfWDAGoAjAF8AFAA0Aer0FDSk3kICUIWeky58hFABYK1Ok1btuC8RLBypYALTDlqkBmx4CRcqWL6GLNok5cwMzB7UjVnTSIANj0abyM-ExthM15bWXkbYiUVUMd1Fy1kXQEvQ19-QIyZELCNVxQyEtiy4wCUpOyHJzrCgFZSbVKfVtTkjLSavPD65AB2DyH4kAAdZagIHAQu-IiUAQHF8tX1zZzagqIADhiDYb9jja3c7ouUAAYbuKO1x7OpnqIul6hxGHXa1iykxeu2Q-TeIISbUkFnGdhU+hgUAA5vAiKAAGYAJwgAFskB8QDgIEgyLclqs0PRCXgmDx+MI-kTSeSaFSkPs6eUoGyZJziWTEAK+Yh3IL2MLCA4uRLadLdHK-FgxdzEKrqZLmncQAArbUS-qU-VZXLK-m8-XRDUrZaM5lYVmKm3ipCO6Wyr7sRhmpCy6WzJXexDXS3kiM60P6gCccYlAgp0reKf5UodWcQ6ulAiylCEQA
-\begin{tikzcd}
-                 &                  &                                                                             &                                          &                                                                 & {H_n(X^n,X^{n-1})}               &                                                  &       &       \\
-                 &                  & H_n(X^{n-1}) \arrow[rd]                                                     &                                          & H_n(X^{n+1}) \arrow[ru]                                         &                                  &                                                  &       &       \\
-                 &                  &                                                                             & H_n(X^n) \arrow[ru, "i"] \arrow[rd, "j"] &                                                                 &                                  &                                                  & \dots &       \\
-\dots \arrow[rr] &                  & {H_{n+1}(X^{n+1},X^{n})} \arrow[ru, "\partial_{n+1}"] \arrow[rr, "d_{n+1}"] &                                          & {H_{n}(X^n,X^{n-1})} \arrow[rr, "d_n"] \arrow[rd, "\partial_n"] &                                  & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[ru] \arrow[rr] &       & \dots \\
-                 & \dots \arrow[ru] &                                                                             &                                          &                                                                 & H_{n-1}(X^{n-1}) \arrow[ru, "l"] &                                                  &       &       \\
-                 &                  &                                                                             &                                          & H_{n-1}(X^{n-2}) \arrow[ru]                                     &                                  &                                                  &       &      
-\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoBmAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADQB6vAYNITeggJQgZ6TLnyEU5CtTpNW7brwC0QsZLCmZcywCZFy0qux4CRW6Vu6GLNok5cYOZgSiogGC4aRNrE3vp+AUE20qFO4WqumsgADKQALHG+7AA6xVAQOAhhEepuKHmk2YUG-txJ4mCyFlapzrVZHrE0Pi2J5iZCvemRdcgeVMPxhoHBXRMO1RlRKB4Fi0WtPJZmNj2OfZlEDQt6ByCl5ZXn0-1EZACszQlGxyKn9lMapd6p4viUyhUqmkgdscjp9qMHpDlLoYFAAObwIigABmACcIABbJC5EA4CBIDy3RHFND0PF4JhHaTPfFEyk0clIbTUhJYVkE4mIBpkimIbJhNlCnlcxDvSWCpAANk5YvsaSlJNVSAA7AiElBmUIBezEFTZXreewAFYmoWW2UADn14LpDKwTMICtNDrFZCt-kNXo1isQztFSH9IwSjDtke1iAAnC7A0crHHEMRSU7vUL-bLiEIQ6biOaxRLKIIgA
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoBmAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADQB6vAYNITeggJQgZ6TLnyEU5CtTpNW7brwC0QsZLCmZcywCZFy0qux4CRW6Vu6GLNok5cYOZgSiogGC4aRNrE3vp+AUE20qFO4WqumsgADKQALHG+7I7O6m4oeaTZhQb+3EniYLIWVqmlme6ksTQ+tYnmJkJt6ZHlyB5UPfGGgcHNgw5hEWVZHgVTRXU8lmY2rSUjK0SVk3qbIAfLHShkAKw1CUY7Inv2w1dRFZ4PxUsZnzkdBs+spdDAoABzeBEUAAMwAThAALZIXIgHAQJAeM59AA6uLQ9HheCY22kBwRyKxNAxSG0OISWApiJRiEq6MxiGyYUprPptMQtx5LKQADYaZz7GleaiJUgAOzAhJQMlCZlUxDYgWKhnsABW6tZOoFAA4lex8YTiVhSYRhRrjZyyLr-Cq7dKRYgzRykM7eglGIbfXLEABOc2u7ZWIOIYho0321nOgXEIQejXELWc7mUQRAA
+\[\begin{tikzcd}[row sep =normal, column sep=normal]
+              &                                                                            &                                                             &                                                            & {H_n(X^n,X^{n-1})} \\
+              &                                                                            & H_n(X^{n-1}) \arrow[d]                                      & H_n(X^{n+1}) \arrow[ru]                                    &                    \\
+              &                                                                            & H_n(X^n) \arrow[ru, "i"] \arrow[d, "j"]                     &                                                            & {}                 \\
+{} \arrow[r]  & {H_{n+1}(X^{n+1},X^{n})} \arrow[ru, "\partial_{n+1}"] \arrow[r, "d_{n+1}"] & {H_n(X^n,X^{n-1})} \arrow[d, "\partial_n"] \arrow[r, "d_n"] & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[r, "d_{n-1}"] \arrow[ru] & {}                 \\
+{} \arrow[ru] &                                                                            & H_{n-1}(X^{n-1}) \arrow[ru, "l"]                            &                                                            &                    \\
+              & H_{n-1}(X^{n-2}) \arrow[ru]                                                &                                                             &                                                            &                   
+\end{tikzcd}\]
 
 Via Lemma \ref{cell-lemma}, we can reduce some groups to $0$, and make an identification with $H_n(X)$:
 
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoBmAXVJADcBDAGwFcYkQAJAfWDAGoAjAF8AFAA0Aer0FDSk3kICUIWeky58hFABYK1Ok1btuC8RLBypYALTDlqkBmx4CRcqWL6GLNok5cwMzB7UjVnTSIANj0abyM-ExthM15bWXkbYiUVUMd1Fy1kXQEvQ19-QIyZELCNVxQyEtiy9gAGHNqCogBWUm1Sn2MeJNEMtJq88PrkAHYPAfiQAB0lqAgcBAcnOsKBPoXylbWNjsmdogAOGINBvyP1zdztrpRW67jD1YfT54idUm6BzaP3yf2QvVaQL87S2oOmvSaN0W3Eq9n0MCgAHN4ERQAAzABOEAAtkg3iAcBAkGQkZ80PQCXgmMMZKdCSSyTRKUg9rT2FAWcI2UTSYhedzEO4+X4BYQHOzRTSJbppSAsMKOYglVSxc1biAAFYa0W9Ck6rK5BU8rk66Kqlb0xlYZlyy0ipB2iVSj7sRjGpBSiUzeXuxBXM1kkOawM6gCcUdFAnJEtaCZ54ttacQKolAgt+NDOZ1Am9LTuSywcCpQkoQiAA
-\begin{tikzcd}
-                 &                  &                                                                             &                                          &                                                                 & 0                                &                                                  &       &       \\
-                 &                  & 0 \arrow[rd]                                                                &                                          & H_n(X^{n+1}) \arrow[ru] \arrow[r, "\iso"]                       & H_n(X)                           &                                                  &       &       \\
-                 &                  &                                                                             & H_n(X^n) \arrow[ru, "i"] \arrow[rd, "j"] &                                                                 &                                  &                                                  & \dots &       \\
-\dots \arrow[rr] &                  & {H_{n+1}(X^{n+1},X^{n})} \arrow[ru, "\partial_{n+1}"] \arrow[rr, "d_{n+1}"] &                                          & {H_{n}(X^n,X^{n-1})} \arrow[rr, "d_n"] \arrow[rd, "\partial_n"] &                                  & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[ru] \arrow[rr] &       & \dots \\
-                 & \dots \arrow[ru] &                                                                             &                                          &                                                                 & H_{n-1}(X^{n-1}) \arrow[ru, "l"] &                                                  &       &       \\
-                 &                  &                                                                             &                                          & 0 \arrow[ru]                                                    &                                  &                                                  &       &      
-\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoBmAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAUADQB6vAYNITeggJQgZ6TLnyEU5CtTpNW7brwC0QsZLCmZcywCZFy0qux4CRW6Vu6GLNok5cYOZgSiogGC4aRNrE3vp+AUE20qFO4WqumsgADKQALHG+7I7O6m4oeaTZhQb+2SXpkeXIHrE0PrUg9WERZVkeVO3xhoHBshZWqaWZ7vk1CUaWZjaTDb0zFTpDRf5rGVEoZACs8+zdaesHyJVe2517TVm5g3o7IA99RJVtr53cYAACUTKXQwKAAc3gRFAADMAE4QAC2SFyIBwECQHl+CQAOji0PQ4XgmDx+EIGvCkZiaOikNpsewsBSEcjEJU0RjENkwpTWfTaYgjjyWUgAGw0zn2NK8lESpAAdjuCSgpOkzKpiCxAsVDP8ACt1aydQKABxK9h4glErAkwjCjXGzlkXUgFV26UixBmjlIZ0dBKMQ2+uWIACc5v8KpM5PtrOIqNNseDPsQxCEHo1xC1nO5Gb5IeI9P9FpxWDgGMElEEQA
+\[\begin{tikzcd}[row sep=normal, column sep=normal]
+              &                                                                            &                                                             &                                                            & 0     \\
+              &                                                                            & 0 \arrow[d]                                                 & H_n(X^{n+1}) \arrow[ru] \arrow[r, "\iso"]                  & H_n X \\
+              &                                                                            & H_n(X^n) \arrow[ru, "i"] \arrow[d, "j"]                     &                                                            & {}    \\
+{} \arrow[r]  & {H_{n+1}(X^{n+1},X^{n})} \arrow[ru, "\partial_{n+1}"] \arrow[r, "d_{n+1}"] & {H_n(X^n,X^{n-1})} \arrow[d, "\partial_n"] \arrow[r, "d_n"] & {H_{n-1}(X^{n-1},X^{n-2})} \arrow[r, "d_{n-1}"] \arrow[ru] & {}    \\
+{} \arrow[ru] &                                                                            & H_{n-1}(X^{n-1}) \arrow[ru, "l"]                            &                                                            &       \\
+              & 0 \arrow[ru]                                                               &                                                             &                                                            &      
+\end{tikzcd}\]
 
-Since the composition of any two $d_n$ and $d_{n-1}$ includes the compositions of two successive maps of an exact sequence, the composition is $0$. The horizontal sequence is therefore a chain complex.
+Since the composition of any two $d_n$ and $d_{n-1}$ factors through the compositions of two successive maps of an exact sequence, the composition is $0$. The horizontal sequence is therefore a chain complex.
 
-We have $$im(d_{n+1})=im(j \partial_{n+1})=im(\partial{n+1})=ker(i)$$
+We have $$im(d_{n+1})=im(j \partial_{n+1})=im(\partial_{n+1})=ker(i)$$
 where the second equality comes from the injectivity of $j$, and the third equality from the exact sequence. Similarly,
 
 $$ker(d_n)=ker(l \partial_n)=ker(\partial_n)=im(j)\iso H_n(X^n)$$
-The second equality follows from the injectivity of $l$, the third from the exact sequence, and the fourth from the injectivity of $j$. We therefore have that 
-$ker(d_n)/im(d_{n+1})\iso H_n(X^n)/ker(i)$. Now by the surjectivity of $i$, $im(i)=H_n X$. Without loss of surjectivity, $i$ defines an injective function $i^*$ on $H_n(X^n)/ker(i)$, so that $H_n(X^n)/ker(i)\iso im(i^*)=H_n X$.\cite{Hatcher}\end{proof}
+The second equality follows from the injectivity of $l$, the third from the exact sequence, and the fourth from the injectivity of $j$. 
 
-We furthermore have a method of calculating the boundary maps $d_n$ from degree calculations:
+
+
+We therefore have that 
+$$ker(d_n)/im(d_{n+1})\iso H_n(X^n)/ker(i).$$ By the first isomorphism theorem, and since $i$ is injective, $$H_n(X^n)/ker(i)\iso im(i)\iso H_n X.$$ 
+Therefore $$ker(d_n)/im(d_{n+1})\iso H_nX.$$\cite{Hatcher}\end{proof}
+
+We also have a method of calculating the boundary maps $d_n$ from degree calculations:
 \begin{theorem}\label{boundary-formula} Let $(e^{\alpha}_n)_{\alpha\in A}$ represent the generating elements of the $\alpha$ $n$-cells. Then 
-$d_{n+1}(e^{\alpha}_{n+1})=\sum_{\beta} d_{\alpha,\beta} e^{\beta}_{n}$, where $d{\alpha,\beta}$ is the degree of the map $S^{n}\alpha\rightarrow X^n\rightarrow S^n\beta$, that is the composition of the gluing map of $e^{\alpha}_n$ with the quotient map identifying $X^n\setminus e^{\beta}_n$. (This can be identified with $S^n$, as $S^n$ is the one-point compactification of $\mathbb{R}^n\iso e^{\beta}_n$.
+$d_{n+1}(e^{\alpha}_{n+1})=\sum_{\beta} d_{\alpha,\beta} e^{\beta}_{n}$, where $d_{\alpha,\beta}$ is the degree of the map $S^{n}\alpha\rightarrow X^n\rightarrow S^n\beta$, that is the composition of the gluing map of $e^{\alpha}_n$ with the quotient map identifying $X^n\setminus e^{\beta}_n$. (This can be identified with $S^n$, as $S^n$ is the one-point compactification of $\mathbb{R}^n\iso e^{\beta}_n$.
 \end{theorem}
 \begin{proof}
 Omitted. See \cite{Hatcher}.
@@ -163,13 +169,13 @@ By the previous result, $\mathbb{Z}=H_nX=\mathbb{Z}/im(d_1)$. However, the only 
 %Cellular homology gives a very easy calculation of the homology groups of $S^{n}$ for $n>1$. $S^n$ has a cell structure of 1 0-cell and 1 n-cell, and therefore has no cells in adjacent dimension. By Corollary \ref{cell-adjacent}, $$H_m S^n=\begin{cases}\mathbb{Z} & m=0,n\\ 0 & \text{otherwise} \end{cases}$$
 %\end{example}
 
-\begin{example}[Orientable surface of genus g, $M_g$]
-$M_g$ is the orientable surface with $g$ "holes". It is known that it can be identified as a quotient of the regular 4g-sided polygon, where side $i$ is identified with the opposite of side $i+2$ (counted clockwise). In pictures,  $M_1$ is the torus $T^2$, identified as the familiar quotient of the square. $M_2$ is the shown quotient of the 8-sided polygon. It is clear that $M_g$ should be given a CW-complex structure with $1$ $0$ cell, $2g$ $1$-cells and $1$ $2-cell$ glued along the map $f: a_1\cdot a_2 \cdot -a_1 \cdot -a_2 \cdot a_3 \cdot \dots \cdot -a_{2g-1} \cdot -a_{2g}$. According to Theorem \ref{boundary-formula}, we should calculate the degree of the composition of $f$ with the map collapsing everything but the circle $a_i$. This is the map $a_i\cdot -a_i\homotopic 0$, so $d_2=0$. The chain complex is:
+\begin{example}[Orientable surface of genus $g$]
+$M_g$ is the orientable surface with $g$ "holes". It is known that it can be identified as a quotient of the regular $4g$-sided polygon, where side $i$ is identified with the opposite of side $i+2$ (counted clockwise). In pictures,  $M_1$ is the torus $T^2$, identified as the familiar quotient of the square, and $M_2$ is the given quotient of the 8-sided polygon. It is clear that $M_g$ should be given a CW-complex structure with $1$ $0$-cell, $2g$ $1$-cells and $1$ $2-cell$ glued along the concatenation $f=a_1\cdot a_2 \cdot -a_1 \cdot -a_2 \cdot a_3 \cdot \dots \cdot -a_{2g-1} \cdot -a_{2g}$. According to Theorem \ref{boundary-formula}, we should calculate the degree of the composition of $f$ with the map collapsing everything but the circle $a_i$. This is the map $a_i\cdot -a_i\homotopic 0$, so $d_2=0$. The chain complex is:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanLjxAZseAkQBMo6vWatEIGfKWqNnAHrAjAcy3de+gUQDMp8QtpOQUVNU1tL35DFAAWAPNJKw5OMRgoV3giUAAzACcIWSQyEBwIJBFApPZIkHzCiuoypBMqyxrPOoKixFbmxH82thSdep7B-vih5K4KTiA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r, "0"] & \mathbb{Z} \arrow[r, "0"] & \mathbb{Z}^{2g} \arrow[r, "0"] & \mathbb{Z} \arrow[r, "0"] & 0
-\end{tikzcd}
+\end{tikzcd}\]
 
 Since all maps are $0$, the homology groups can be read as:
 $$H_n(M_g)=\begin{cases}\mathbb{Z} & n=0\\
@@ -179,24 +185,24 @@ $$H_n(M_g)=\begin{cases}\mathbb{Z} & n=0\\
 \end{example}
 
 \begin{example}[Klein bottle]
-The Klein bottle $K$ is the following quotient of the $2$-disk:
+The Klein bottle $K$ is the following quotient of the square with its interior:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAPEAX1PU1z5CKcqWLU6TVuy69+2PASJlxNBizaJOPPiAwKhRUVTVTN27hJhQA5vCKgAZgCcIAWyQAmGjghJRkhrs9DpOrh6IZCC+SADMNIz0AEYwjAAKAorCIIwwjjggpkFaIXIgLu7+Pn6I8YHSWkmh5eFIUTGI3vXmTZbcQA
-\begin{tikzcd}
+\[\begin{tikzcd}
 x \arrow[r, "a"]                & x \arrow[d, "b"] \\
 x \arrow[r, "a"] \arrow[u, "b"] & x               
-\end{tikzcd}
+\end{tikzcd}\]
 
-We can therefore give it a CW-complex structure of $1 0$-cell (the point $x$), $2 1$-cells corresponding to the paths $a$ and $b$, and one $2$-cell glued along the path $f=a\cdot b\cdot -a \cdot b$. By Theorem \ref{boundary-formula}, we should calculate the degree of $f$ composed with the quotient collapsing respectively $b$ and $a$ to a point. The first of these is $a\cdot -a \homotopic 0$, and the second is $b\cdot b\homotopic z^2$. It follows that $d_2(x)=(0,2x)$. The chain complex reads:
+We can therefore give it a CW-complex structure of $1 0$-cell (the point $x$), $2$ $1$-cells corresponding to the paths $a$ and $b$, and one $2$-cell glued along the path $f=a\cdot b\cdot -a \cdot b$. By Theorem \ref{boundary-formula}, we should calculate the degree of $f$ composed with the quotient collapsing respectively $b$ and $a$ to a point. The first of these is $a\cdot -a \homotopic 0$, and the second is $b\cdot b\homotopic z^2$. It follows that $d_2(x)=(0,2x)$. The chain complex reads:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanLjxAZseAkQBMo6vWatEIGfKWqNnGXlnwABDYUq1m7b30CiAGZTcQtpOU97H24-fkMUABYQ80krDk4xGCgAc3giUAAzACcIWSQyEBwIJBFQ1PZfEGLSmuoqpBM6yxAACjIjAA8ASkbmssRO9sRgrrZ0nTGkGamk2bSuCk4gA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r, "0"] & \mathbb{Z} \arrow[r, "{(0,2x)}"] & \mathbb{Z}\times \mathbb{Z} \arrow[r, "0"] & \mathbb{Z} \arrow[r, "0"] & 0
-\end{tikzcd}
+\end{tikzcd}\]
 
 We simply read off:
 $$H_2 X=ker(d_2)=0$$
-$$H_1 X= ker(d_1)/im(d_2)\iso \mathbb{Z}\times \mathbb{Z}/0\times 2\mathbb{Z}\iso \mathbb{Z}\times \mathbb{Z}/2\mathbb{Z}$$
+$$H_1 X= ker(d_1)/im(d_2)\iso (\mathbb{Z}\times \mathbb{Z})/(0\times 2\mathbb{Z})\iso \mathbb{Z}\times \mathbb{Z}/2\mathbb{Z}$$
 $$H_0 X= ker(d_0)=0$$
 
 and $H_n X=0$ for all other values of $n$.

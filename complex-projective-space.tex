@@ -1,19 +1,14 @@
-\subsection{Complex projective space $\CP{n}$}
-The complex projective space, $\CP{n}$ is defined similarly to $\RP{n}$ as the space of complex lines in $\mathbb{C}^{n+1}$. Explicitly it is the quotient $\mathbb{C}^{n+1}\setminus \{0\}  \sim$ where $z\sim \lambda w$ for $\lambda \in \mathbb{C}$.
+\subsection{Complex projective space $\CP{n}$}\label{sec-complex-projective-space}
+The complex projective space, $\CP{n}$ is defined similarly to $\RP{n}$ as the space of complex lines in $\mathbb{C}^{n+1}$. Explicitly it is the quotient $\mathbb{C}^{n+1}\setminus \{0\}  \sim$ where $z\sim \lambda w$ for $\forall\lambda \in \mathbb{C}$.
 
-It is trivial to see that $\CP{0}=\cdot$, as any $z\sim 1$ via multiplication by $\frac{1}{z}$. To understand $\CP{1}$, we can first see it as a quotient of $S^3$, thought of as sitting inside $\mathbb{C}^2$. This follows from the identification $$
-\begin{bmatrix} z\\ w \end{bmatrix}\sim \big|\begin{bmatrix} z\\ w \end{bmatrix}\big| \begin{bmatrix} z\\ w \end{bmatrix}:=\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}$$
-Here we are using the typical norm $$\big|\begin{bmatrix} x+iy\\ a+ib \end{bmatrix}\big|=\big| \begin{bmatrix} a\\ b\\ c\\ d \end{bmatrix}\big|$$
-Next note that each $\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}\in S^3$ is equivalent to exactly all elements in a circle $S^1\in S^3$. This is because $\{\lambda \begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}, |\lambda|=1\}$ is the set of all rotations of  $\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}$ along some direction.
-
-Consider the case $w\neq 0$. Then, by multiplying by $\frac{\bar{w}^*}{|\bar{w}|}$ we can choose a unique representative $\begin{bmatrix} \tilde{z}\\ \tilde{w} \end{bmatrix}:= \frac{\bar{w}^*}{|\bar{w}|}\begin{bmatrix}\bar{z}\\ \bar{w} \end{bmatrix}$ such that $\tilde{w}> 0$. This can then be identified as an element of the (open) upper disk of the equator $S^2\in S^3$, as the only restriction on $\tilde{z}$ is that $\big|\begin{bmatrix}\tilde{z}\\ \tilde{w} \end{bmatrix} \big|=1$. For example the element $\begin{bmatrix}\tilde{a} \\ \tilde{w}\end{bmatrix} \in S^2$ where $\tilde{w}>0$ is achieved in the previous construction by setting $z=a/(\frac{w^*}{|w|})$. When $w=0$, $\{\begin{bmatrix} \bar{z}\\ \bar{w} \end{bmatrix}\}=\CP{0}\cong \cdot$. It follows that $\CP{1}$ is the (closed) upper hemisphere of $S^2$, quotient its equator, which is homeomorphic to $S^2$. So as a cell complex, $\CP{1}$ has 1 0-cell and 1 2-cell.
-
-We can use this cell structure to define $\CP{2}$. As before, we can find a representative $\begin{bmatrix}\bar{z}\\ \bar{w}\\ \bar{u}\\ \end{bmatrix}\in S^5$. For $u=0$ this is $\CP{1}$. For $|u|>0$ we can multiply by $\frac{u^*}{|u|}$ to find a representative in the (open) upper hemisphere of the equator $S^4\in S^5$. As previously, this covers the whole open upper hemisphere of $S^4$, as there are no other restrictions on $\bar{z},\bar{w}$. Therefore $\CP{2}$ has a $2n$-cell for $0\leq n \leq 2$. The additional gluing map is the projection $S^3\subset \mathbb{C}^2 \rightarrow \CP{1}$. Since $\CP{2}$ has no cells in adjacent dimensions, its homology groups can be directly read of as $$H_n(\CP{2})=\begin{cases}\mathbb{Z} & n=0,2,4\\ 0 & \text{otherwise}\end{cases}$$
+It is trivial to see that $\CP{0}\homeo\bullet$, as any $z\sim 1$ via multiplication by $\frac{1}{z}$. $\CP{1}$ is the quotient $\mathbb{C}^2/\sim$
+$$\begin{bmatrix} z\\ w \end{bmatrix}\sim \lambda \begin{bmatrix} z\\ w \end{bmatrix}.$$
+If $w\neq 0,$ $$\begin{bmatrix} z\\ w\end{bmatrix}\sim \frac{1}{w}\begin{bmatrix} z\\ w\end{bmatrix}=\begin{bmatrix} z/w\\ 1\end{bmatrix}$$ We can relabel $u=z/w$, and note that any complex number can be written in this way. So $\{\begin{bmatrix} u\\ 1\end{bmatrix}\}\homeo \mathbb{C}\homeo \mathbb{R}^2$. The boundary of this subset of $\RP{1}$ is the set $\{\begin{bmatrix} z\\ 0\end{bmatrix}\}/\sim\homeo \CP{0}\homeo\bullet$. Therefore $\RP{1}$ is the one-point compactification of $\mathbb{R}^2$, which homeomorphic to $S^2$. We can therefore give it a CW-complex structure of $1$ $0$-cell and $1$ $2$-cell, and its homology groups are the same as that of the $2$-sphere.
 
 The general case can be done by induction.
 
 \begin{prop}
-As a cell complex, $\CP{n}$ has a 2m-cell for $0<m\leq n$. As a consequence,
+As a cell complex, $\CP{n}$ has a $2m$-cell for $0<m\leq n$. As a consequence,
 $$H_k(\CP{n})=\begin{cases} 
       \mathbb{Z} & k \text{ even}, 0\leq k \leq 2n \\
       0 & \text{otherwise}
@@ -21,30 +16,35 @@ $$H_k(\CP{n})=\begin{cases}
 $$
 \end{prop}
 \begin{proof}
-We have proved the case $n=2$. Suppose the statement is true for some $n$. We will then prove it is true for $n+1$. As before, we can identify elements of $\CP{n+1}$ by representatives of $S^{2n+1}$ by dividing by norm. These can furthermore be identified as either elements of $\CP{n}$ as a quotient of the equator of $S^{2n}$ or elements of the open upper $2n$-cell of $S^{2n}$. The gluing map is the projection of $\partial D^{2n}$ onto $\CP{n}$. Therefore $\CP{n+1}$ has the cell structure of $\CP{n}$, with an additionall $2n$-cell. This proves the inductive case. The homology groups follow from noting $\CP{n}$ has no n-cells in adjacent dimensions.
+We have proved the case $n=1$. In general $\CP{n}=\mathbb{C}^{n+1}/\sim$
+$$(z_1,z_2,\dots,z_{n+1})\sim \lambda (z_1,z_2,\dots,z_{n+1}), \lambda \in \mathbb{C}$$ If $z_{n+1}\neq 0$, we can let $\lambda=1/z_{n+1}$ to find a set of unique representatives
+$$\{(u_1,u_2,\dots,1)\}\homeo C^{n}\homeo int(D^{2n})$$
+after relabeling $u_k=z_k/z_{n+1}$ for $0\leq k \leq n$.
+The boundary of this set in $\CP{n}$ is $$\{(z_1,z_2,\dots,z_n,0)\}/\sim \homeo \CP{n}$$ We can therefore give $\CP{n}$ the CW-structure of $\CP{n-1}$, with an additional $2n$-cell glued on the boundary by the projection on its boundary $p:S^{n-1}\rightarrow \CP{n-1}$. The result follows by induction. As $\CP{n}$ has no two $m$-cells in adjacent dimensions, its $m-th$ homology group is the free abelian group generated by its $m$-cell (or lack thereof).
 \end{proof}
 
 \begin{remark}\label{hopf}
-It is worth looking at the gluing map of the 4-cell of $\CP{2}$ onto $\CP{1}\homeo S^{2}$. Via the homeomorphism, this is a map $S^{3}\rightarrow S^{2}$ with the property that the pre-image of every point is a great circle of $S^3$. This is because $[\begin{bmatrix}z\\w \end{bmatrix}]\in \CP{1}$ is mapped to by $\{\lambda \begin{bmatrix}z\\w \end{bmatrix} : \lambda\in \mathbb{C},|\lambda|=1\}$, which is a great circle of $S^{3}$. This is exactly what characterises the Hopf map (REFERENCE).
+It is worth looking at the gluing map of the 4-cell of $\CP{2}$ onto $\CP{1}\homeo S^{2}$. Via the homeomorphism, this is a map $S^{3}\rightarrow S^{2}$ with the property that the pre-image of every point is a great circle of $S^3$. This is because $\begin{bmatrix}z\\w \end{bmatrix}\in \CP{1}$, chosen as the representative with norm $1$, is mapped to by $$\{\lambda \begin{bmatrix}z\\w \end{bmatrix} : \lambda\in \mathbb{C},|\lambda|=1\},$$ which is a great circle of $S^{3}$. This is exactly what characterises the famous Hopf map $h:S^3\rightarrow S^2$. (IMAGE MISSING)
 \end{remark}
 
+
 \subsection{Quaternionic projective space $\HP{n}$ and beyond}
-The 2-dimensionality of $\mathbb{C}$ ensured that the n-cells of $\CP{n}$ were well spread in dimension, leading to an easy homology calculation. One can wonder if the same method can be applied to the higher dimensional extension of $\mathbb{R}$. Indeed we can!
-
-\begin{definition}
-
-\end{definition}
+The 2-dimensionality of $\mathbb{C}$ ensured that the n-cells of $\CP{n}$ were well spread in dimension, leading to an easy homology calculation. One can wonder if the same method can be applied to the higher dimensional extension of $\mathbb{R}$. Indeed we can! The quaternions $\mathbb{H}$ is a four-dimensional extension of $\mathbb{R}$. It is \textit{not} a field, as it is not commutative. However, it retains all the other requirements of a field, importantly does not have zero-divisors. Rings where every nonzero element has a multiplicative inverse are called \defn{division algebras}. The fact that $\mathbb{H}$ is a division algebra is what allows us to use the same argument as before on the Quaternionic projective space $\HP{n}$.
 
 \begin{prop}
-$\HP{n}$ has a cell structure with a $2k$-cell for $0\leq k\leq n$. As a consequence, $$H_k(\HP{n})=\begin{cases}\mathbb{Z} & k \text{ even}, 0\leq k\leq 2n \\ 0 & \text{otherwise}\end{cases}$$
+$\HP{n}$ has a cell structure with a $4k$-cell for $0\leq k\leq n$. As a consequence, $$H_k(\HP{n})=\begin{cases}\mathbb{Z} & k=0\text{ mod } 4 , 0\leq k\leq 4n \\ 0 & \text{otherwise}\end{cases}$$
 \end{prop}
 
 \begin{proof}
-As in previous cases, $\HP{0}=\cdot$, as $z\sim 1$ for every $z\in \mathbb{H}$ by division by $z$. For general $\HP{n}$ we will proceed by induction. Let elements of $\HP{n}$ be written as $[z_1,\dots,z_n]\in \HP{n}$. The subset $\{[0,z_2,\dots,z_n]\}\subset \HP{n}$ can be identified with $\HP{n-1}$. The complement $\HP{n-1}\complement\in \HP{n}=\{[z_0,z_1,\dots,z_n]:z_1\neq 0\}=\{[1,z_1,\dots,z_n]\}\iso \mathbb{H}^{n-1}\iso D^{4n}$ by multiplication by $1/z_0$ and relabelling. It follows that $\HP{n}$ has the cell structure of $\HP{n-1}$ with an additional $4n$-cell. This completes the identification of the cell structure of $\HP{n}$.
-
-As $\HP{n}$ has no cells in adjacent dimensions, its $k-th$ homology group is either $\mathbb{Z}$ or $0$, depending on whether $\HP{n}$ has a $k$-cell.
+As in previous cases, $\HP{0}=\bullet$, as $z\sim 1$ for every $z\in \mathbb{H}$ by division by $z$. For general $\HP{n}$ we will proceed by induction. $\HP{n}=\mathbb{H}^{n+1}/\sim$
+$$(z_1,\dots,z_{n+1})\sim h(z_1,\dots,z_{n+1}), \forall h\in \mathbb{H}$$
+If $z_{n+1}\neq 0$, we can divide by $z_{n+1}$ to find a set of unique representations
+$$\{(u_1,\dots,u_n,1)\}\homeo \mathbb{H}^n\homeo int(D^{4n})$$
+The boundary of this set in $\HP{n}$ is the quotient 
+$$\{(z_1,\dots,z_n,0)\}/\sim \homeo \HP{n-1}$$
+We can therefore give $\HP{n}$ the CW-structure of $\HP{n-1}$, with an additional $4n$-cell, mapped onto $\HP{n-1}$ via the projection on its boundary $p:S^{4n-1}\rightarrow \HP{n-1}$. By induction, $\HP{n}$ has the CW-structure stated in the proposition. Since $\HP{n}$ has no $m$-cells in adjacent dimensions, its $m$-th homology group is the free abelian group generated by its $m$-cell (or lack thereof).
 \end{proof}
 
 \begin{remark}
-Notice that $\HP{1}$ has a 0-cell and a 4-cell, and is therefore homeomorphic to $S^{4}$. As in Remark \ref{hopf}, the gluing map of the 8-cell of $\HP{2}$ onto $\HP{1}\iso S^{4}$, therefore gives a "Hopf"-map $S^7\rightarrow S^4$ with the property that the preimage of a point is a "great" copy of $S^3$. If we have real division algebras of $\mathbb{R}$ for every positive power of two we could repeat this process, yielding "Hopf"-maps from $S^{2^n-1}$ to $S^{n-1}$ for all $n>0$. However this turns out to be false, as shown by X (REFERENCE)!!! The non-existence of such maps for $n>4$ proves there are no $2^n$-dimensional division algebras of $\mathbb{R}$ for $n>4$.
+Notice that $\HP{1}$ has a 0-cell and a 4-cell, and is therefore homeomorphic to $S^{4}$. As in Remark \ref{hopf}, the gluing map of the 8-cell of $\HP{2}$ onto $\HP{1}\iso S^{4}$, therefore gives a "Hopf"-map $S^7\rightarrow S^4$ with the property that the preimage of a point is a "great" copy of $S^3$. If there was a way to keep extending $\mathbb{R}$ to a division algebra for every positive power of two we could repeat this process, yielding "Hopf"-maps from $S^{2^n-1}$ to $S^{n-1}$ for all $n>0$. However this turns out to be false, as shown by (REFERENCE)!!! The non-existence of such maps for $n>4$ proves there are no $2^n$-dimensional division algebras of $\mathbb{R}$ for $n>4$.
 \end{remark}

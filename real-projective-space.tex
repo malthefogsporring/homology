@@ -7,31 +7,23 @@ $$H_k(\RP{n})=\begin{cases}\mathbb{Z} & k=0 \\
 \mathbb{Z}/2\mathbb{Z} & 0<k<n \text{ and } k \text{ odd.} \end{cases}$$
 \end{proposition}
 \begin{proof}
-By theorem (MISSING), the degree of $d_{n+1}:(\RP{n+1},\RP{n})\rightarrow (\RP{n},\RP{n-1})$ is the degree of the composition
+By theorem \ref{boundary-formula}, the degree of $d_{n+1}:(\RP{n+1},\RP{n})\rightarrow (\RP{n},\RP{n-1})$ is the degree of the composition
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAGUA9QgX1PUy58hFAEZyVWoxZsAOrIBKABWBgeIPgOx4CRAEwTq9Zq0QduGyTCgBzeEVAAzAE4QAtkjIgcEJOKkmbGga-CAu7n7UPkgGATJmAI6WPEA
-\begin{tikzcd}
+\[\begin{tikzcd}
 S^n \arrow[r, "p"] & \RP{n} \arrow[r, "q"] & S^n
-\end{tikzcd}
-where $p$ is the projection map and $q$ is the quotient map $\RP{n}\rightarrow \RP{n}/\RP{n-1}\homeo S^{n}$. 
-
-Note that the map applies the identity on the upper hemisphere and the antipodal map on the lower hemisphere, then identifies the equator. The pre-image of a neighbourhood of the North pole $N$ is two neighbourhoods of $N$ and $S$. The neighbourhood near $N$ is mapped via the identity, and the neighbourhood near $S$ is mapped via the antipodal map. By the local degree proposition (MISSING), $deg(d_{n+1})=deg(qp)=1+(-1)^{n+1}=\begin{cases}2 & n \text{ odd}\\0 & n\text{ even}\end{cases}$
-
-The cellular chain complex for $\RP{n}$ is therefore
-
+\end{tikzcd}\]
+where $p$ is the projection map and $q$ is the quotient map $\RP{n}\rightarrow \RP{n}/\RP{n-1}\homeo S^{n}$. Note that the map applies the identity on the upper hemisphere and the antipodal map on the lower hemisphere, then identifies the equator. The pre-image of a neighbourhood of the north pole $N$ is two neighbourhoods of $N$ and $S$. The neighbourhood near $N$ is mapped via the identity, and the neighbourhood near $S$ is mapped via the antipodal map. By the Proposition \ref{local-degree}, $$deg(d_{n+1})=deg(qp)=1+(-1)^{n+1}=\begin{cases}2 & n \text{ odd}\\0 & n\text{ even}\end{cases}$$
+The cellular chain complex for $\RP{n}$ therefore reads
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAdDgW3pwAsARoOAAtAL4hxpdJlz5CKchWp0mrduSkyQGbHgJEATCpoMWbRJx58hIidtn6FRAMym1F9l14DhYyWkneUMUABYPcw0rLigIHAQg3TkDRWQAVkj1S2tfOwDHZOdQ5AA2LK8Ymz97QJ09ELSAdgrokC1xVRgoAHN4IlAAMwAnCG4kMhAcCCRyJJGx2ZpppBNPNqNChfHENZXEd3Wcjp1tpAipmcRMo-ZN+dGdm-3y26sTocekQ-2LqJz7qcvohXvsmp1xEA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r] & \mathbb{Z} \arrow[r, "2"] & \mathbb{Z} \arrow[r, "0"] & \mathbb{Z} \arrow[r, "2"] & \dots \arrow[r, "2"] & \mathbb{Z} \arrow[r, "0"] & \mathbb{Z} \arrow[r] & 0
-\end{tikzcd}
-
+\end{tikzcd}\]
 when $n$ is even, and
-
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAdDgW3pwAsARoOAAtAL4hxpdJlz5CKchWp0mrduSkyQGbHgJEATCpoMWbRJx58hIidtn6FRAMym1F9l14DhYyWkneUMUABYPcw0rLigIHAQg3TkDRWQAVkj1S2tfOwDHZOdQ5AA2LK8Ymz97QJ09ELSAdgrokC1xVRgoAHN4IlAAMwAnCG4kMhAcCCRyJJGx2ZpppBNPNo6dBfHENZXEd3Wco0LtpAipmcRMo-YT+dGdm-3y26tNocekQ-2LqJyPiAzohXvsmp1xEA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r] & \mathbb{Z} \arrow[r, "0"] & \mathbb{Z} \arrow[r, "2"] & \mathbb{Z} \arrow[r, "0"] & \dots \arrow[r, "2"] & \mathbb{Z} \arrow[r, "0"] & \mathbb{Z} \arrow[r] & 0
-\end{tikzcd}
-
+\end{tikzcd}\]
 when $n$ is odd. The result can be read off directly.
-
 \cite{Hatcher}
 \end{proof}
