@@ -1,111 +1,117 @@
-\section{The Mayer-Vietoris Sequence}
-When the boundary maps $i^*,j^*$ are not homotopic to the identity and/or the homology groups of $A$ and $X$ are not immediate, it can be difficult to calculate the homology groups directly from the axioms. However, in many cases it is possible to cover $X$ by two spaces $A$ and $B$ whose homology groups and/or inclusion maps are easy to identify. In these cases the following result makes calculation very convenient:
+\section{The Mayer-Vietoris Sequence}\label{sec-mayer-vietoris}
+\subsection{Statement and proof}
+In the previous section, we relied heavily on identifying homomorphisms in a long exact sequence as either isomorphisms of the $0$-map. This is not the case in general, and it can feel like the axioms give very little help with identifying homology groups and their maps when they are not trivial. However, in many cases we can cover a space $X$ by the interiors two spaces $A$ and $B$ whose homology groups we know. In this case we say that $(A,B)$ is a Mayer-Vietoris cover of $X$. The excision axiom gives us a very convenient method for relating the homology groups of $X$ to the homology groups of its Mayer-Vietoris cover:
 
 \begin{theorem}\label{mayer-vietoris}
-Let $A,B$ be subsets of $X$ whose interiors cover $X$, Then there is a long exact sequence:
+Let $A$ and $B$ be subsets of $X$ whose interiors cover $X$. 
+Then there is a long exact sequence:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAaIQaXSZc+QigBMFanSat23MAAoAggB0dAY3poABACEAlGIkgM2PASIBmRTQYs2iTlzDGtxvQBGWADmEGgscMbqZlaSdjJEACwuyu5q3sai4nHSDijkKW6qnnpQEDgI2TZS9rLIAKyFKh4gpeWVSjBQwfBEoABmAE4QALZIySA4EEjkVUOjMzRTSGSpxa06aPSDeEw8-EKxIPNjiKvLiAprLRpYAHoAVKQAVo+Wc8OnVxfO1+wA1o8ALSMR5HE5IX4XeqCSiCIA
-\begin{tikzcd}
+\[\begin{tikzcd}
 \dots \arrow[r] & H_{n+1}X \arrow[r, "\partial_{n+1}"] & H_n(A\cap B) \arrow[r, "{(i^*,j^*)}"] & H_n A \bigoplus H_n B \arrow[r, "k^*-l^*"] & H_n X \arrow[r] & \dots
+\end{tikzcd}\]
+called the \defn{Mayer-Vietoris sequence}. The maps $i^*,j^*,k^*,l^*$ are induced by the inclusions:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQBBAHS4GN60AAgBCIAL6l0mXPkIoyxanSat2HcZJAZseAkXIUlDFm0QhREqTtn7SimsdVmAGuKUwoAc3hFQAMwAnCABbJDIQHAgkA2UTdiwNfyDQxHDIpAAmBxVTEAArRJBAkOiadMQAZmy4swBrQuKUrIioyuqnEEY3MSA
+\[\begin{tikzcd}
+A \arrow[r, "k"]                      & X                \\
+A\cap B \arrow[u, "i"] \arrow[r, "j"] & B \arrow[u, "l"]
+\end{tikzcd}\]
+
+
+If $A\cap B\neq \emptyset$, there is furthermore a long exact sequence of reduced homology, called the \defn{reduced Mayer-Vietoris sequence}: 
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAdDvR2YACQC+AfWBgA1MUEANEINLpMufIRQAmCtTpNW7Ljz5DhYABQBBLgGN6aAAQAhAJRyFIDNjwEiAZk00GLGyInNxYvDACImC2ZrZcAEZYAOYQaCxwtvzGDi6KHipEACx+2oF6oeGR2bLyecpeKOQlAbrBXFAQOAi1bkqeqsgArM06QSEdXXJaMFBJ8ESgAGYAThAAtkjFIDgQSOQ9K+t7NDtIZKWtIWj0y3hMohJSuSCHG4jnp4gaF2MmWAB6ACpSAArIHOA6rN7fT6+H7sADWQIAtIwgc9Xkg4Z9BoJKIIgA
+\begin{tikzcd}
+\dots \arrow[r] & \tilde{H}_{n+1}X \arrow[r, "\partial_{n+1}"] & \tilde{H}_n(A\cap B) \arrow[r, "{(i^*,j^*)}"] & \tilde{H}_n A \bigoplus H_n B \arrow[r, "k^*-l^*"] & \tilde{H}_n X \arrow[r] & \dots
 \end{tikzcd}
-
-The maps $i^*,j^*,k^*,l^*$ are induced by the inclusions $i:A\capB\rightarrow A$, $j:A\capB\rightarrow A$, $k:A\rightarrow X$, $l:B\rightarrow X$.
-
-
-There is furthermore a long exact sequence for reduced homology: (MISSING)
-
+By Proposition \ref{reduced-homology}, the maps $i^*,j^*,k^*,l^*$ can be thought of as induced by the inclusions
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAKAQQB0eBjemgAEAIVIAPAJQgAvqXSZc+QijLFqdJq3bdJM+Yux4CRchU0MWbRJ3HS5CkBmMqzpDTSs7bHABr6cpowUADm8ESgAGYAThAAtkhkIDgQSOZa1uxYjtFxiYjJqUgATF7aNiAAVrkgsQnpNMWIAMzlWbYA1rX1BWUpaa3tPiCMQbJAA
+\[\begin{tikzcd}
+{(A,x)} \arrow[r, "k"]                      & {(X,x)}                \\
+{(A\cap B,x)} \arrow[u, "i"] \arrow[r, "j"] & {(B,x)} \arrow[u, "l"]
+\end{tikzcd}\]
 \end{theorem}
 
-Before diving into the proof, let us consider a few examples showcasing how convenient this theorem can be.
-
-\begin{example}
-The theorem gives a very easy proof that $H_n(X\sqcup Y)=H_nX \bigoplus H_n Y$ via the obvious cover $A=X$, $B=Y$, $A\cap B=\emptyset$. Since $H_n \emptyset=0$ for all $n$, Mayer-Vietoris gives the isomorphism $H_nX \bigoplus H_nY \iso H_n(X\sqcup Y)$.
-\end{example}
-
-\begin{example}[One-point wedges of circles]
-Consider the figure eight $X_2=S^1\wedge S^1$ where $\wedge$ is the wedge product. We can cover $X$ by $A=(S^1\setminus D^1_+)\wedge S^1$ and $B=S^1\wedge(S^1\setminus D^1_-)$ where $D^1_+$ and $D^1_-$ are the open top and bottom semicircles of $S^1$. It is easy to confirm this covering satisfies the requirements of the Mayer-Vietoris sequence. $A\cap B \homotopic \cdot$, as $A\cap B$ is star-shaped, hence contractible. Additionally, $A\homotopic B \homotopic S^1$. Since $\tilde{H}_n \cdot=0$, the reduced Mayer-vietoris sequence gives
-$$\tilde{H}_n (S^1\wedge S^1) \homeo \tilde{H}_n S^1\bigoplus \tilde{H}_n$$
-It follows that
-$$H_n(S^1\wedge S^1)=
-\begin{cases}
-\mathbb{Z}\bigoplus \mathbb{Z} & n= 0,1\\
-0 & \text{otherwise}
-\end{cases}$$
-
-This argument can easily be extended by induction to the wedge of m circles (wedged at the same point) has homology group 
-$$H_n(\bigwedge_m S^1)=
-\begin{cases}
-\mathbb{Z}^m & n= 0,1\\
-0 & \text{otherwise}
-\end{cases}$$
-\end{example}
-
-\begin{remark}
-One could hope that we could extend this method to the the wedge of $\mathbb{Z}$ copies of $S^1$, $X_{\infty}\bigwedge_{\mathbb{Z}} S^1:=\bigsqcup_{i\in \mathbb{Z}} S^1_i/\sim$ where $N_i \sim N_{j}$ for $i,j\in \mathbb{Z}$. It also has a Mayer-Vietoris covering $A=S^1_0\cup_{i\neq 0} D^1_{i,+}\homeo S^1$, $B=X_{\infty}\setminus D^1_{1,+}\iso X_{\infty}$, $A\cap B \homeo \cdot$, giving the isomorphism $\tilde{H}_n S^1 \bigoplus \tilde{H}_n X_{\infty} \iso \tilde{H}_n X_{\infty}$. For $n=0,1$ this gives $\mathbb{Z} \bigoplus H_n X_{\infty} \iso H_n X_{\infty}$. It seems obvious that the homology groups should be $\mathbb{Z}^{\infty}$ for $n=0,1$ and $0$ otherwise, however, this does not follow directly from Mayer-Vietoris.
-\end{remark}
-
-Before we resume giving calculations from Mayer-Vietoris, it is only right that we examine the proof.
-
-\subsection{Proof of Mayer-Vietoris}
-We follow the approach laid out in \cite{Hatcher}, first proving a lemma. 
+To prove this theorem, we follow the approach laid out in \cite{Eilenberg}, first proving a lemma. 
 
 \begin{lemma}
 Consider the following diagram.
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBxAfXJAF9S6TLnyEUAJlLFqdJq3bdxAcn6CQGbHgJFJAZhkMWbRJy7FVQzaKJkALAbnHT5FQMsjtKclIdGFZ1zUNDzFkb30aQ3kTDnELdWEtULJxX2jOfhkYKABzeCJQADMAJwgAWyRvEBwIJFtIx3ZGM3iS8qQAVhoapF0GvxMACxa3EDaKxCqexDJZAZBmuNHxpElq2sQ+ufThpbUVye6NgDZ+9KweVtKJ0-Xes6cAK0vl69WjpFuopwvzV-bELdpvVtk8Rvs3ogundAQ92Bc9kVIUCNrNvuxnoixpC1tM0Y0TABrLhYg7Q4FwokjSh8IA
-\begin{tikzcd}
+\[\begin{tikzcd}
                                                          & G_0 \arrow[ld, "l_1"] \arrow[rd, "l_2"] \arrow[dd, "i_0"] &                                                           \\
 G_1'                                                     &                                                           & G_2'                                                      \\
                                                          & G \arrow[dd, "j_0"] \arrow[lu, "j_1"] \arrow[ru, "j_2"]   &                                                           \\
 G2 \arrow[rd, "h_1"] \arrow[ru, "i_2"] \arrow[uu, "k_1"] &                                                           & G_1 \arrow[ld, "h_2"] \arrow[lu, "i_1"] \arrow[uu, "k_2"] \\
                                                          & G_0'                                                      &                                                          
-\end{tikzcd}
+\end{tikzcd}\]
 Suppose each triangle is commutative, $k_1,k_2$ are isomorphisms, and the diagonals are exact sequences. Then $h_2k_2^{-1}l_2=-h_1k_1^{-1}l_1$.
 \end{lemma}
 
-\begin{proof}By lemma \ref{dsum-lemma}, $(i_1,i_2):G_1\dsum G_2\rightarrow G$ is an isomorphism, and so is $(j_1,j_2):G\rightarrow(G'_1,G'_2)$.
-
-(MISSING)
-
-Proposition \cite{direct-sum} 
-\cite{Hatcher}
-\end{proof}
-
-\begin{theorem}[Mayer-Vietoris Sequence]
-
-\end{theorem}
 \begin{proof}
+MISSING
+%By lemma \ref{dsum-lemma}, $(i_1,i_2):G_1\dsum G_2\rightarrow G$ is an isomorphism, and so is $(j_1,j_2):G\rightarrow(G'_1,G'_2)$.
+\cite{Eilenberg}
 \end{proof}
-\subsection{Calculations}
+
+
+\begin{proof}[Proof of Theorem \ref{mayer-vietoris}]
+
+MISSING \cite{Eilenberg}
+\end{proof}
+\subsection{Examples}
+
+In this section we show a few examples of how convenient the Mayer-Vietoris sequence can be for calculating homology groups.
+
+\begin{example}[One-point wedges of circles]
+Consider the figure eight $8=S^1\wedge S^1$ where $\wedge$ is the wedge product identifying the south-pole $S$ of the top circle with the north-pole $N$ of the lower circle. We can cover $8$ by the puncture $A=8\setminus \{N\}\homotopic S^1$, where $N$ is the north-pole of the top circle, and $B=D^+\homotopic \bullet$, the upper half circle of the top circle. Then $A\cap B= D^+\setminus\{N\}\homotopic \bullet \sqcup \bullet$. It is easy to see that this cover satisfies Mayer-Vietoris. Now note that $$H_n(\bullet \sqcup \bullet)=\begin{cases}\mathbb{Z}\times\mathbb{Z} & n=0\\ 0 & \text{otherwise}\end{cases}$$ by Proposition \ref{disjoint-union}. Since $\tilde{H}_0S^1\dsum \tilde{H}_0\bullet=0$, the reduced Mayer-Vietoris sequence reads 
+
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanLjxAZseAkQBMo6vWatEIGXgaxgACU4B9IQA5tvfQKIBmU+IW0nIKKmqanrp8BoLIACwB5pJWHNxe-IYoAKyJEpbWUrb2Ts7EHmlR3pnIAGy5QSlcYjBQAObwRKAAZgBOELJIZCA4EEhCFb39Y9QjSCaBySAA1gB6AFSRkwOI87OI-gv5Mmh0PXiMm33bB3txE1dICcOjiFn3U68zLzWcFJxAA
+\[\begin{tikzcd}
+0 \arrow[r] & \mathbb{Z} \arrow[r, "k^*"] & \tilde{H}_18 \arrow[r, "\partial"] & \mathbb{Z} \arrow[r] & 0 \arrow[r] & \tilde{H}_08 \arrow[r] & 0
+\end{tikzcd}\]
+Therefore $\tilde{H}_08=0$, so by Proposition \ref{reduced-homology}, $H_08=\mathbb{Z}$. Furthermore, note that the fold $f:8\rightarrow S^1$, which is the identity on the lower circle, and the reflection on the upper circle, is a retraction of the inclusion $k:S^1\rightarrow 8$ of the lower circle. Since $H_n$ is a functor, $f^*$ is a retraction of $k^*$. By Proposition \ref{retraction-iso}, $H_18\iso \mathbb{Z}\times\mathbb{Z}$. The rest of the Mayer-Vietoris sequence easily gives $H_n8=0$ whenever $n\neq 0,1$.
+
+This approach can easily be generalised to the wedge of $m$ circles (wedged at the same point), . We cover 
+
+
+This argument can easily be extended by induction to show the wedge of $m$ circles (wedged at the same point) $\bigwedge_m S^1$ has homology groups $H_1\bigwedge_m S^1=\mathbb{Z}^m$ and $H_0\bigwedge_m S^1=\mathbb{Z}$. Let $A=\bigwedge_{m} S^1\setminus\{x\}\homotopic \bigwedge_{m-1} S^1$, the puncture of some point in one of the circles (not the wedge point), and $B=I\homotopic \bullet$, a small interval of the punctured circle containing the puncture in its interior and not intersecting the wedge point. Then $A$ and $B$ easily satisfy Mayer-Vietoris, and $A\cap B\homotopic \bullet \sqcup \bullet$. By induction, the reduced Mayer-Vietoris sequence reads:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanAHrAATLIC0uzlx4gM2PASK7R1es1aIQMvA1jAAEpwD6QgBymvJYCRADMduKO0nIKKmqaQeZ8VoLIACyRDpLOHNzB-NYoAKxZEk4uUm4e3j7EgfnJIUXIAGxl0blcYjBQAObwRKAAZgBOELJIZCA4EEhCjWMT89SzSLZROSAA1loAVElLk4gba4gRmxUyaHSjeIyH48cXZ+mLT0iZM3OIxe-Lv1WP1anAonCAA
+\[\begin{tikzcd}
+0 \arrow[r] & \mathbb{Z}^{m-1} \arrow[r, "k^*"] & \tilde{H}_18 \arrow[r, "\partial"] & \mathbb{Z} \arrow[r] & 0 \arrow[r] & \tilde{H}_08 \arrow[r] & 0
+\end{tikzcd}\]
+
+This shows $\tilde{H}_0 \bigwedge_m S^1=0$. Again  $k:S^1\rightarrow \bigwedge_m S^1$ admits a retraction $r:\bigwedge_m S^1\rightarrow S^1$ which is the identity on every circle except the one that got punctured, and which folds the circle that was punctured onto any other circle. Therefore Proposition \ref{retraction-iso} gives that $H_1 \bigwedge_m S^1\iso \mathbb{Z}^{m}$.
+\end{example}
 
 \begin{example}
-Another space whose homology groups are easily calculated from Mayer-Vietoris is the quotient of the torus $T^2:= S^1 \times S^1$ under the quotient identifying one copy of $S^1$ to a point, i.e. $(N,x)\sim (N,y)$ for all $x,y \in S^1$. It can be visualised as in the MISSING image.
+Consider the quotient of the torus $T^2:= S^1 \times S^1/\sim$ where $(N,x)\sim (N,y)$ for all $x,y \in S^1$. It can be visualised as in the MISSING image.
 
-A cover that can easily be seen to satisfy Mayer-Vietoris is $A=D^1_+ \times S^1 \homeo \cdot$, $B=(T^2/\sim) \setminus\{[N,x]\}\homeo S^1$ with $A\cap B \homeo S^1\sqcup S^1$, as in the MISSING image. The deformation retraction $B\homotopic S^1$ composes with the inclusion $i:A\cap B\rightarrow B$ such that $i|_A=i|_B =id_{S^1}$. It should be clear that the inclusion induces the map $i^*:\mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}, (x,y)\mapsto x+y$, but for sake of completeness this can be seen from the following commutative diagram, where the inclusions $i_1,i_2$ are as one expects:
+A cover that can easily be seen to satisfy Mayer-Vietoris is $A=D^1_+ \times S^1 \homotopic \bullet$, $B=(T^2/\sim) \setminus\{[N,x]\}\homeo S^1$, with $A\cap B \homeo S^1\sqcup S^1$, as in the MISSING image. The deformation retraction $B\homotopic S^1$ composes with the inclusion $i:A\cap B\rightarrow B$ such that $i|_A=i|_B =id_{S^1}$. We expect that inclusion induces the map $i^*:\mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}, (x,y)\mapsto x+y$, and indeed this can be shown from the following commutative diagram, where the inclusions $i_1,i_2$ are as one expects:
 
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAGUA9YgAgB0+cAI4BjJmh5diIAL6l0mXPkIoyABiq1GLNlNnyQGbHgJE1pAEyb6zVog7d9C48qIXL17XYfSZmmFAA5vBEoABmAE4QALZI5iA4EEhkWrZsWE4gkTFI7glJiPE2OvZYAPq+BtmxiADM1Ilx1MXe5RaZ1Uj1+cnNXulQHVE1eY2IKS0DshQyQA
-\begin{tikzcd}
-                                        & S^1                           &                                         \\
-                                        & S^1 \sqcup S^1 \arrow[u, "i"] &                                         \\
-S^1 \arrow[ru, "i_1"] \arrow[ruu, "id"] &                               & S^1 \arrow[lu, "i_2"] \arrow[luu, "id"]
-\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAGUA9YgAgB0+cAI4BjJmh5diIAL6l0mXPkIoyABiq1GLNlNnyQGbHgJE1pAEyb6zVog7d9C48qIXL17XYfSZmmFAA5vBEoABmAE4QALZI5iA4EEhkWrZsWE4gkTFI7glJiPE2OvZYAPrS1Ax0AEYwDAAKiiYqIBFYgQAWOJnZsYgAzNSJcdTF3uUWvVH9Q-nJY17pUCBVtfVNLqb27V09cuEzucMFKePLshQyQA
+\[\begin{tikzcd}
+                                         & S^1                           &                                          \\
+                                         & S^1 \sqcup S^1 \arrow[u, "i"] &                                          \\
+S^1 \arrow[ru, "i_1"'] \arrow[ruu, "id"] &                               & S^1 \arrow[lu, "i_2"] \arrow[luu, "id"']
+\end{tikzcd}\]
 
 It induces the following commutative map in homology (for n=0,1), from which the formula for $i^*$ can be easily read. 
 
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAB12BbOnACwBGA4AC0Avpzxd4AAk49+Q0WJBjS6TLnyEUZAAxVajFm3m9Bw8avUgM2PASJ7SAJkP1mrRB27mlVtQ17bSIXV3djLx8FC2VVQxgoAHN4IlAAMwAnCC4kZxAcCCQyI082LGsM7NzEMIKixHyPE28ACgAPUj0ASkqQLJykAGZqQrzqZqjWgE8u3sD+6uHRhpLJtmm+gZq6scQ1yLZ2+LEgA
-\begin{tikzcd}
-                                                  & \mathbb{Z}                                 &                                                   \\
-                                                  & \mathbb{Z}\times \mathbb{Z} \arrow[u, "i"] &                                                   \\
-\mathbb{Z} \arrow[ru, "{(x,0)}"] \arrow[ruu, "x"] &                                            & \mathbb{Z} \arrow[lu, "{(y,0)}"] \arrow[luu, "y"]
-\end{tikzcd}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAB12BbOnACwBGA4AC0Avpzxd4AAk49+Q0WJBjS6TLnyEUZAAxVajFm3m9Bw8avUgM2PASJ7SAJkP1mrRB27mlVtQ17bSIXV3djLx8FC2VVQxgoAHN4IlAAMwAnCC4kZxAcCCQyI082LGsM7NzEMIKixHyPE28ACgAPUj0AShBqBjoBGAYABU0HHRBMrCS+HEqQLJykAGZqQrzqZqjWgE8u3sDF6tX1hpLttl2+kAGh0fGQ72nZ+aOlmrqNxAvItnb4mIgA
+\[\begin{tikzcd}
+                                                   & \mathbb{Z}                                 &                                                    \\
+                                                   & \mathbb{Z}\times \mathbb{Z} \arrow[u, "i"] &                                                    \\
+\mathbb{Z} \arrow[ru, "{(x,0)}"'] \arrow[ruu, "x"] &                                            & \mathbb{Z} \arrow[lu, "{(y,0)}"] \arrow[luu, "y"']
+\end{tikzcd}\]
 
-The fact that $i_1^*=(x,0)$ (and the similar statement for $i_2$) follows from the direct sum theorem (REFERENCE).
+The fact that $i_1^*(x)=(x,0)$ and $i_2^*(y)=(0,y)$ follows from Proposition \ref{disjoint-union}.
 
 The Mayer-Vietoris sequence reads as follows:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPoAmAAQANLjxAZseAkTmjq9Zq0QgAOiYC2dHAAsARreAAtTmbzn4Cs5Zv2nnVbyaAkQAzHrihmxeVnYOzgHqfFqCyAAs4QaSxrJCKtyB-NooAKwZEkamJlAQOAicYjBQAObwRKAAZgBOEOZIZCA4EEhC+SBdPcPUg0i6EVmVaHSdeIzyCeO9iLPTiGFzFVgAegBUALwAHgDUAJ7r3Zt7O+n7bADWJ3cTiM87pS-GZkWyywqyEXAonCAA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r] & H_2 X \arrow[r, "\partial_2"] & \mathbb{Z}\times \mathbb{Z} \arrow[r, "i^*=x+y"] & \mathbb{Z} \arrow[r, "k^*"] & H_1X \arrow[r, "\partial_1"] & \dots
-\end{tikzcd}
+\end{tikzcd}\]
 
 Now $ker(i^*)=<(x,-x)>\iso \mathbb{Z}=im(\partial_2)$ by exactness. Since $\partial_2$ is injective, $H_2 X\iso \mathbb{Z}$. Additionally, since $i^*$ is surjective, $k^*=0$. Therefore, the rest of the sequence reads:
 
