@@ -1,5 +1,6 @@
-\section{Cellular homology}
-A common class of spaces is the class of \defn{cell complexes} or \defn{CW complexes}, which are constructed by iteratively gluing copies of $D^n$ in a manner defined by a function defined on the boundary $\partial D^n \iso \S{n-1}$. As will become apparent, CW-complexes have the right structure for establishing a very practical way of calculating their homology groups.
+\section{Cellular homology}{sec-cellular-homology}
+\subsection{CW-complexes}
+A common class of spaces is the class of \defn{cell complexes} or \defn{CW complexes}, which are constructed by iteratively gluing copies of $D^n$ in a manner defined by a function defined on the boundary $\partial D^n \iso S^{n-1}$. As will become apparent, CW-complexes have the right structure for establishing a very practical way of calculating their homology groups.
 
 \begin{definition}
 A CW-complex $X$ is the union of a sequence of spaces $X^n$, called the \defn{n-skeleta} of $X^n$ defined as follows: $X^0$ is a discrete set, and for each $X^{n-1}$, $X^{n}$ is obtained by gluing copies of $D_{\alpha}^n$, called n-cells, along a map $\phi_{\alpha}:S^{n-1}\rightarrow X^{n-1}$ defined on the boundary of $D_{\alpha}^n$. Explicitly, $X^n$ is the quotient of the disjoint union $X^{n-1}\sqcup_{\alpha} D_{\alpha}^n$ under the identification $x\sim \phi_{\alpha}(x)$ for $x\in S^{n-1}\subset D_{\alpha}^n$. If $X=X^n$ for some $n\in \mathbb{N}^*$, then $X$ is called a \defn{finite cell complex}. Otherwise, $X$ is given the weak topology: a subset $A\subset X$ is open iff $A$ is open in $X^n$ for every $n\in \mathbb{N}^*$.
@@ -8,17 +9,17 @@ A CW-complex $X$ is the union of a sequence of spaces $X^n$, called the \defn{n-
 Many familiar spaces naturally arise as cell complexes.
 
 \begin{example}
-$\S{n}$ is a CW-complex with 1 0-cell and 1 $n-cell$ when $n>0$. 
+$S^{n}$ is a CW-complex with 1 0-cell and 1 $n-cell$ when $n>0$. 
 \end{example}
 
 \begin{example}
-$\RP{2}$ is a CW-complex with 1 0-cell, 1 1-cell and 1 2-cell, and where the attaching map $\phi:S^1\rightarrow X^1$ is the double cover $z\mapsto z^2$. To see this, note that $\RP{2}$ can be thought of as the upper dome of the 2-sphere, with antipodal points on the equator identified. The upper dome is homeomorphic to $D^2$ and for $z\in \S{1}$ the condition $z\sim -z$ is equivalent to the condition $z\sim z^2$. This is immediately obvious from noting that $z$ and $-z$ are both mapped to $z^2$, and conversely if $z^2=y^2$, then $z=\pm y$.
+$\RP{2}$ is a CW-complex with 1 0-cell, 1 1-cell and 1 2-cell, and where the attaching map $\phi:S^1\rightarrow X^1$ is the double cover $z\mapsto z^2$. To see this, note that $\RP{2}$ can be thought of as the upper dome of the 2-sphere, with antipodal points on the equator identified. The upper dome is homeomorphic to $D^2$ and for $z\in S^{1}$ the condition $z\sim -z$ is equivalent to the condition $z\sim z^2$. This is immediately obvious from noting that $z$ and $-z$ are both mapped to $z^2$, and conversely if $z^2=y^2$, then $z=\pm y$.
 
 Iteratively, $\RP{n}$ can be understood as a copy of $D^n$ glued to a copy of $\RP{n-1}$ via the projection map $z\mapsto [z]$ along the boundary $\partial D^n$.
 \end{example}
 
 \begin{example}
-The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, noting that the two maps $a$ and $b$ are in fact 1-cells, as the corners are identified as a single point. The identification map $f:S^1\rightarrow X^1$ is then given by the concatenation $a\bullet b\bullet -a \bullet -b$. The Klein bottle, which also arises as a quotient of the square, can be defined in a similar way.
+The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, noting that the two maps $a$ and $b$ are in fact 1-cells, as the corners are identified as a single point. The identification map $f:S^1\rightarrow X^1$ is then given by the concatenation $a\cdot b\cdot -a \cdot -b$. The Klein bottle, which also arises as a quotient of the square, can be defined in a similar way.
 
 IMAGE MISSING
 \end{example}
@@ -27,9 +28,11 @@ IMAGE MISSING
 The cell structure of a CW-complex need not be unique. For example an alternative cell structure of $S^2$ is one 0-cell, 1 1-cell, and two 2-cells (the upper and lower hemispheres) both glued via the identity map on their boundaries.
 \end{remark}
 
+\subsection{Cellular homology groups}
+
 We will show that the homology groups of CW-complexes can be identified as the homology groups of a certain chain complex of relative homology group $H_n(X^n,X^{n-1})$. This method of "taking homology twice" in essence trims away a lot of fat, making calculations easier. By "homology group of a chain complex" we mean the following:
 
-\begin{definitions}
+\begin{definition}
 Let the following diagram be a chain complex of abelian groups.
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBBAfWDAGpiAXxCDS6TLnyEUAJgrU6TVu269ho8djwEiAZnk0GLNok48wAWiEixIDFqlEALAcXH2AHQ9QIOBBrsJbWlkclcjZVMvHz8RBRgoAHN4IlAAMwAnCABbJDCQHAgkMjdIkChzAXVbTJzimkKkOVKTcvNq9KzcxGbGxH0W9greKw6QWu6XAqLEckFKQSA
@@ -58,7 +61,7 @@ The following hold for finite cell complexes $X$:
 \begin{proof}
 The statement is trivial for $n=0$. For $n>0$, notice that $X^{n-1}$ is a deformation retract of $A:=X^{n}\setminus \sqcup_m \cdot$, where the $m$ copies of $\cdot$ are the centers of the $m$ $n$-cells of $X$. The subset $B:= X^{n}\setminus \sqcup_m D_{1/2}^n$ satisfies the conditions of excision, where $D_{1/2}^n$ is the disk of radius $1/2$ sitting inside an n-cell.
 It follows that
-$$H_k(X^n,X^{n-1})\iso H_k(X^n,A)\iso H_k(X^n\B,A\setminus B)\iso H_k(\sqcup_m D^n,\sqcup_m S^{n-1})$$
+$$H_k(X^n,X^{n-1})\iso H_k(X^n,A)\iso H_k(X^n\setminus B,A\setminus B)\iso H_k(\sqcup_m D^n,\sqcup_m S^{n-1})$$
 These homology groups are familiar: $\mathbb{Z}^m$ if $k=n$, and $0$ otherwise, proving (i).
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPrAA1pwAaAPWBhOXHiAzY8BIgCZR1es1aIQshZwAUq9QGohnAJRbeegUQDMJ8eZsHJxiMFAA5vBEoABmAE4QALZIZCA4EEgu2vFJmdTpSIbcsQnJiMZpGYg+IZxAA
@@ -125,7 +128,7 @@ $d_{n+1}(e^{\alpha}_{n+1})=\sum_{\beta} d_{\alpha,\beta} e^{\beta}_{n}$, where $
 Omitted. See \cite{Hatcher}.
 \end{proof}
 
-\subsection{Immediate consequences}
+\subsection{Examples}
 We now give a number of easy calculations of homology groups of CW-complexes. The following corollary becomes very useful.
 
 \begin{corollary}\label{cell-adjacent} If a CW-complex $X$ has no cells in adjacent dimensions, then $H_n X$ is the free abelian group generated by the $n-$cells of $X$.
@@ -156,12 +159,12 @@ If $X$ is path-connected and has only one $0$-cell, then $d_1=0$.
 By the previous result, $\mathbb{Z}=H_nX=\mathbb{Z}/im(d_1)$. However, the only subgroups of $\mathbb{Z}$ are $m\mathbb{Z}$ for integers $m$, and the only isomorphism $\mathbb{Z}\iso \mathbb{Z}/m\mathbb{Z}$ is for $m=0$. Hence $d_1=0$.
 \end{proof}
 
-\begin{example}[$\S{n}$]
-Cellular homology gives a very easy calculation of the homology groups of $\S{n}$ for $n>1$. $S^n$ has a cell structure of 1 0-cell and 1 n-cell, and therefore has no cells in adjacent dimension. By Corollary \ref{cell-adjacent}, $$H_m S^n=\begin{cases}\mathbb{Z} & m=0,n\\ 0 & \text{otherwise} \end{cases}$$
-\end{example}
+%\begin{example}[$S^{n}$]
+%Cellular homology gives a very easy calculation of the homology groups of $S^{n}$ for $n>1$. $S^n$ has a cell structure of 1 0-cell and 1 n-cell, and therefore has no cells in adjacent dimension. By Corollary \ref{cell-adjacent}, $$H_m S^n=\begin{cases}\mathbb{Z} & m=0,n\\ 0 & \text{otherwise} \end{cases}$$
+%\end{example}
 
 \begin{example}[Orientable surface of genus g, $M_g$]
-$M_g$ is the orientable surface with $g$ "holes". It is known that it can be identified as a quotient of the regular 4g-sided polygon, where side $i$ is identified with the opposite of side $i+2$ (counted clockwise). In pictures,  $M_1$ is the torus $T^2$, identified as the familiar quotient of the square. $M_2$ is the shown quotient of the 8-sided polygon. It is clear that $M_g$ should be given a CW-complex structure with $1$ $0$ cell, $2g$ $1$-cells and $1$ $2-cell$ glued along the map $f: a_1\cdot \a_2 \cdot -a_1 \cdot -a_2 \cdot a_3 \cdot \dots \cdot -a_{2g-1} \cdot -a_{2g}$. According to Theorem \ref{boundary-formula}, we should calculate the degree of the composition of $f$ with the map collapsing everything but the circle $a_i$. This is the map $a_i\cdot -a_i\homotopic 0$, so $d_2=0$. The chain complex is:
+$M_g$ is the orientable surface with $g$ "holes". It is known that it can be identified as a quotient of the regular 4g-sided polygon, where side $i$ is identified with the opposite of side $i+2$ (counted clockwise). In pictures,  $M_1$ is the torus $T^2$, identified as the familiar quotient of the square. $M_2$ is the shown quotient of the 8-sided polygon. It is clear that $M_g$ should be given a CW-complex structure with $1$ $0$ cell, $2g$ $1$-cells and $1$ $2-cell$ glued along the map $f: a_1\cdot a_2 \cdot -a_1 \cdot -a_2 \cdot a_3 \cdot \dots \cdot -a_{2g-1} \cdot -a_{2g}$. According to Theorem \ref{boundary-formula}, we should calculate the degree of the composition of $f$ with the map collapsing everything but the circle $a_i$. This is the map $a_i\cdot -a_i\homotopic 0$, so $d_2=0$. The chain complex is:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanLjxAZseAkQBMo6vWatEIGfKWqNnAHrAjAcy3de+gUQDMp8QtpOQUVNU1tL35DFAAWAPNJKw5OMRgoV3giUAAzACcIWSQyEBwIJBFApPZIkHzCiuoypBMqyxrPOoKixFbmxH82thSdep7B-vih5K4KTiA
 \begin{tikzcd}

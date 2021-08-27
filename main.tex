@@ -6,6 +6,7 @@
 \usepackage{mathptmx} % Use Times Font
 %\usepackage{listings}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{tikz-cd}
 
@@ -41,6 +42,7 @@
 \newcommand{\Top}[1]{\mathbf{Top}_{#1}}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 \newcommand{\C}{\mathbf{C}}
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
 
 \title{Axiomatic Homology Theory}
 \author{Malthe Sporring\\ Supervised by Clark Barwick}
@@ -59,6 +61,7 @@
 \input{axioms}
 \input{spheres}
 \input{mayer-vietoris}
+\input{degree-maps}
 %\input{cellular-homology}
 %\input{real-projective-space}
 %\input{complex-projective-space}

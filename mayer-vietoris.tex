@@ -34,7 +34,7 @@ By Proposition \ref{reduced-homology}, the maps $i^*,j^*,k^*,l^*$ can be thought
 
 To prove this theorem, we follow the approach laid out in \cite{Eilenberg}, first proving a lemma. 
 
-\begin{lemma}
+\begin{lemma}\label{mayer-vietoris-lemma}
 Consider the following diagram.
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBxAfXJAF9S6TLnyEUAJlLFqdJq3bdxAcn6CQGbHgJFJAZhkMWbRJy7FVQzaKJkALAbnHT5FQMsjtKclIdGFZ1zUNDzFkb30aQ3kTDnELdWEtULJxX2jOfhkYKABzeCJQADMAJwgAWyRvEBwIJFtIx3ZGM3iS8qQAVhoapF0GvxMACxa3EDaKxCqexDJZAZBmuNHxpElq2sQ+ufThpbUVye6NgDZ+9KweVtKJ0-Xes6cAK0vl69WjpFuopwvzV-bELdpvVtk8Rvs3ogundAQ92Bc9kVIUCNrNvuxnoixpC1tM0Y0TABrLhYg7Q4FwokjSh8IA
 \[\begin{tikzcd}
@@ -60,6 +60,12 @@ MISSING \cite{Eilenberg}
 \end{proof}
 \subsection{Examples}
 
+\begin{prop}
+Maps between Mayer-Vietoris covers induce maps between Mayer-Vietoris sequences...
+\end{prop}
+\begin{proof}
+MISSING
+\end{proof}
 In this section we show a few examples of how convenient the Mayer-Vietoris sequence can be for calculating homology groups.
 
 \begin{example}[One-point wedges of circles]
@@ -70,9 +76,6 @@ Consider the figure eight $8=S^1\wedge S^1$ where $\wedge$ is the wedge product 
 0 \arrow[r] & \mathbb{Z} \arrow[r, "k^*"] & \tilde{H}_18 \arrow[r, "\partial"] & \mathbb{Z} \arrow[r] & 0 \arrow[r] & \tilde{H}_08 \arrow[r] & 0
 \end{tikzcd}\]
 Therefore $\tilde{H}_08=0$, so by Proposition \ref{reduced-homology}, $H_08=\mathbb{Z}$. Furthermore, note that the fold $f:8\rightarrow S^1$, which is the identity on the lower circle, and the reflection on the upper circle, is a retraction of the inclusion $k:S^1\rightarrow 8$ of the lower circle. Since $H_n$ is a functor, $f^*$ is a retraction of $k^*$. By Proposition \ref{retraction-iso}, $H_18\iso \mathbb{Z}\times\mathbb{Z}$. The rest of the Mayer-Vietoris sequence easily gives $H_n8=0$ whenever $n\neq 0,1$.
-
-This approach can easily be generalised to the wedge of $m$ circles (wedged at the same point), . We cover 
-
 
 This argument can easily be extended by induction to show the wedge of $m$ circles (wedged at the same point) $\bigwedge_m S^1$ has homology groups $H_1\bigwedge_m S^1=\mathbb{Z}^m$ and $H_0\bigwedge_m S^1=\mathbb{Z}$. Let $A=\bigwedge_{m} S^1\setminus\{x\}\homotopic \bigwedge_{m-1} S^1$, the puncture of some point in one of the circles (not the wedge point), and $B=I\homotopic \bullet$, a small interval of the punctured circle containing the puncture in its interior and not intersecting the wedge point. Then $A$ and $B$ easily satisfy Mayer-Vietoris, and $A\cap B\homotopic \bullet \sqcup \bullet$. By induction, the reduced Mayer-Vietoris sequence reads:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanAHrAATLIC0uzlx4gM2PASK7R1es1aIQMvA1jAAEpwD6QgBymvJYCRADMduKO0nIKKmqaQeZ8VoLIACyRDpLOHNzB-NYoAKxZEk4uUm4e3j7EgfnJIUXIAGxl0blcYjBQAObwRKAAZgBOELJIZCA4EEhCjWMT89SzSLZROSAA1loAVElLk4gba4gRmxUyaHSjeIyH48cXZ+mLT0iZM3OIxe-Lv1WP1anAonCAA
