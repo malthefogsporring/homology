@@ -86,10 +86,10 @@ We have shown $im(k^*-l^*)\subseteq ker(\partial)$ and $ker(\partial)\subseteq i
 We would like to also show, in a similar vein to regular homology sequences, that maps between Mayer-Vietoris covers induce maps between Mayer-Vietoirs sequences. We say that $f:(X;X_1,X_2)\rightarrow (Y;Y_1,Y_2)$ is a \defn{map between the Mayer-Vietoris covers of X and Y} if $f(X_1)\subseteq Y_1$ and $f(X_2)\subseteq Y_2$. Note this necessarily implies $f(X_1\cap X_2)\subseteq Y_1\cap Y_2$.
 
 \begin{prop} Let $f:(X;X_1,X_2)\rightarrow (Y;Y_1,Y_2)$ be map between the Mayer-Vietoris covers of $X$ and $Y$. Then $f$ induces maps between their Mayer-Vietoris sequences, which commute with the sequence.
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAaIQaXSZc+QigBMFanSat23MAAphXYgB1dAY3poABNrkBKMRJAZseAkQDMimgxZtEnLmG17dUHDMALYm6ubWkvYyRAAsrsoeaj6i4lHSjihkxEruql7cvAKCAJqRtlIOssgKOW4qnt6aJTr6RqYtluV2GdUudYn5TS3+gSFhPp3dlTEo8QN5jeplaRXRmcjkpAsN7NPr1VtU9Ule+71EAKwJi3urPVVEAGzbubtngkowUADm8ESgABmACcIMEkFsQDgIEh4oNGoCAHoAKnKILBSDIUJhiGu8PYSNRq3R4MQCmxSBe+K8hLRoNJLgpiAA7CchrTifSITRoZjORjEFjeWT+aTycKnKLKTyccypbiZZT5XDhZd5QAORWIWLygCcWvI8sZwuIhpsJKQrKZxCElEEQA
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAaIQaXSZc+QigBMFanSat23MAAphXYgB1dAY3poABNrkBKMRJAZseAkQDMimgxZtEnLmG17dUHDMALYm6ubWkvYyRAAsrsoeaj6i4lHSjihkxEruql7cvAKCAJqRtlIOssgKOW4qnt6aJTr6RqYtluV2GdUudYn5TS3+gSFhPp3dlTEo8QN5jeplaRXRmcjkpAsN7NPr1VtU9Ule+71EAKwJi3urPVVX27m7Z4JKMFAA5vBEoABmACcIMEkFsQDgIEh4oNGv8AHoAKnKQJBSDIEKhiGusPYCORq1RoMQCkxSAAbCchviUcDiS4yYgAOxUuFI2loxDgyHowl09E0Hkkvmc0lCpwi4mUxlMyVIHFC8lyxAwoWXZUADkFWNiyoAnNqwcqGULiORlSzGcQhJRBEA
 \[\begin{tikzcd}
-{} \arrow[r] & H_{n+1}X \arrow[d, "f^*"] \arrow[r] & H_n(X_1\cap X_2) \arrow[d, "f^*"] \arrow[r] & H_nX_1\dsum H_nX_2 \arrow[d, "f^*"] \arrow[r] & H_nX \arrow[d, "f^*"] \arrow[r] & {} &    \\
-{} \arrow[r] & H_{n+1}Y \arrow[r]                  & H_n(Y_1\cap Y_2) \arrow[r]                  & H_nY_1\dsum H_nY_2 \arrow[r]                  & H_nY \arrow[rr]                 &    & {}
+{} \arrow[r] & H_{n+1}X \arrow[d, "f^*"] \arrow[r] & H_n(X_1\cap X_2) \arrow[d, "f^*"] \arrow[r] & H_nX_1\dsum H_nX_2 \arrow[d, "f^*"] \arrow[r] & H_nX \arrow[d, "f^*"] \arrow[r] & {} \\
+{} \arrow[r] & H_{n+1}Y \arrow[r]                  & H_n(Y_1\cap Y_2) \arrow[r]                  & H_nY_1\dsum H_nY_2 \arrow[r]                  & H_nY \arrow[r]                  & {}
 \end{tikzcd}\]
 The map $f^*:(X_1\cap X_2)\rightarrow (Y_1\cap Y_2)$ is induced by the restriction $f|_{X_1\cap X_2}$, and $f^*:H_n X_1\dsum H_n X_2 \rightarrow H_n Y_1\dsum H_n Y_2$ is induced by $(f|_{X_1},f|_{X_2})$.
 \end{prop}
