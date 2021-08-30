@@ -6,15 +6,23 @@ $deg(r_i)=-1$ where $r_i:S^n\rightarrow S^n$ is the reflection in the $i-th$ coo
 $$(x_1,x_2,\dots,x_i,\dots x_{n+1})\mapsto (x_1,x_2,\dots,-x_i,\dots x_{n+1})$$
 \end{proposition}
 \begin{proof}
-By composing with a rotation, we can assume $r_i$ is the reflection in the $(n+1)$th degree which maps the north-pole $N$ to the south-pole $S$, keeping the equator $S^{n-1}$ fixed. We denote this map by $r$. Consider the following Mayer-Vietoris cover of $S^n$:  $A=S^n\setminus\{N\}\homotopic \cdot$, $B=S^n\setminus\{S\}\homotopic \cdot$ and $A\cap B \homotopic S^{n-1}$. $r$ gives a map between the Mayer-Vietoris sequence of $(S^n,A,B)$ and $(S^n,B,A)$. For $n>0$, this gives the diagram:
+By composing with a rotation, we can assume $r_i$ is the reflection in the $(n+1)$th degree which maps the north-pole $N$ to the south-pole $S$, keeping the equator $S^{n-1}$ fixed. We denote this map by $r$. Consider the following Mayer-Vietoris cover of $S^n$:  $A=S^n\setminus D^n_+\homotopic \bullet$, $B=S^n\setminus D^n_-\homotopic \bullet$ and $A\cap B \homotopic S^{n-1}$. $r$ gives a map between the Mayer-Vietoris sequence of $(S^n;A,B)$ and $(S^n;B,A)$. For $n>0$, this gives the commutative diagram:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfTAGUA9QgF9S6TLnyEUAJgrU6TVu27AwAWmJCBqjUJAix2PASLk5NBizaIQ5faJAYjkogGZzCq+wA63qBBwEA0dxYylkM2J5SyUbO2CnCRMUdyiLRWsQX39A+0Mk8LI0z1jOHgFhB0SwollimMyVdU1tZr0heRgoAHN4IlAAMwAnCABbJDMQHAgkADZ0rxsh-gAqPJBhsaQyKZnEAHYF0qwodc3xxFldieDziZpp7aPM3zR6IbwmM5GLncfEVy3H5IAAsDz2syBW0Q82uB2ePm8bw+WCYAHJvtDDnCAKwdIRAA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r] & H_nS^n \arrow[d, "r^*"] \arrow[r, "\partial"] & H_{n-1}S^{n-1} \arrow[d, "id"] \arrow[r] & \dots \\
 0 \arrow[r] & H_nS^n \arrow[r, "\partial'"]                 & H_{n-1}S^{n-1} \arrow[r]                 & \dots
-\end{tikzcd}
+\end{tikzcd}\]
+Recall that $\partial=\partial_1k_1^{*-1}l_1^*=-\partial_2k_2^{*-1}l_2^*$ in the following diagram.
 
-Recall from Lemma \ref{mayer-vietoris-lemma} that swapping the order of $A$ and $B$ changes the sign of the boundary map, so $\partial$=$-\partial'$. By the commutativity of the diagram, $r^*=-id$, so $deg(r)=-1$.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfTAAIANEAF9S6TLnyEU5UsWp0mrdtzAAKfqQCCASmGiQGbHgJEATLPkMWbRJx7rSAIV0ixRyWdIBmS4pt21TS0AHWCAY3o0Xmc9NwkTaW9fa2V7RxDwyOiXfUN4qRJSABZkpVtuYDAAWmIhVU1QiKiY1wNxYwKyU1L-FQcGzOaXeRgoAHN4IlAAMwAnCABbJBkQHAgkMgUU20YuYgA9ACpYkDnF5Zo1pHMtspBd0yOTs6XEL0v1xBurO4BrLkex1aLyQRQ+GxoP38-wOQP0IMQYNWnwAbJC-OwsACnsD5q80cjrujtiAAFbYuEzPFIAlXRCbKHscmw57Ut7gxAExm2LEs3HnRArOlcjG2MA4+FspF0gCsxLuoTQ9FmeCYe1ZAvehMQctu-kVytVDw1+I5uu5ICgwkoQiAA
+\[\begin{tikzcd}
+                                                                                  & H_n X \arrow[ld, "l_1^*"] \arrow[rd, "l_2^*"] \arrow[dd, "n^*"]          &                                                                                   \\
+{H_n(X,A)}                                                                        &                                                                          & {H_n(X,B)}                                                                        \\
+                                                                                  & {H_n(X,A\cap B)} \arrow[ru, "j_2^*"] \arrow[lu, "j_1^*"] \arrow[dd, "d"] &                                                                                   \\
+{H_n(B,A\cap B)} \arrow[uu, "k_1^*"] \arrow[ru, "i_2^*"] \arrow[rd, "\partial_1"] &                                                                          & {H_n(A,A\cap B)} \arrow[uu, "k_2^*"] \arrow[lu, "i_1^*"] \arrow[ld, "\partial_2"] \\
+                                                                                  & H_{n-1}(A\cap B)                                                         &                                                                                  
+\end{tikzcd}\] Swapping the order of $A$ and $B$ corresponds to a horizontal reflection in the diagram, which therefore changes the sign of the boundary map. It follows that $\partial$=$-\partial'$. By commutativity, $r^*=-id$, so $deg(r)=-1$.
 
 \end{proof}
 
