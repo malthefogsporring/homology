@@ -166,19 +166,14 @@ This shows $\tilde{H}_0 \bigwedge_m S^1=0$. Again  $k:S^1\rightarrow \bigwedge_m
 \end{example}
 
 \begin{example}
-Consider the quotient of the torus $T^2:= S^1 \times S^1/\sim$ where $(N,x)\sim (N,y)$ for all $x,y \in S^1$. It can be visualised as in the MISSING image.
-
-A cover that can easily be seen to satisfy Mayer-Vietoris is $A=D^1_+ \times S^1 \homotopic \bullet$, $B=(T^2/\sim) \setminus\{[N,x]\}\homeo S^1$, with $A\cap B \homeo S^1\sqcup S^1$, as in the MISSING image. The deformation retraction $B\homotopic S^1$ composes with the inclusion $i:A\cap B\rightarrow B$ such that $i|_A=i|_B =id_{S^1}$. We expect that inclusion induces the map $i^*:\mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}, (x,y)\mapsto x+y$, and indeed this can be shown from the following commutative diagram, where the inclusions $i_1,i_2$ are as one expects:
-
+Let X be the quotient of the $2$-sphere which identifies the North and South poles: $S^2/\sim$, $S \sim N$. The following is easily seen to be a Mayer-Vietoris cover: $A=(D^2_{2\epsilon,+}\cup D^2_{2\epsilon,-})/\sim\homotopic \bullet$, two small closed disks in the north and south hemispheres with identified centers $S\sim N$, and $B=S^2\setminus(int(D^2_{\epsilon,+}) \cup int(D^2_{\epsilon,-}))/\sim \homotopic S^1$, a large closed belt of $S^2$. For this cover, $A\cap B \homeo S^1\sqcup S^1$, as in the MISSING image. The deformation retraction $B\homotopic S^1$ composes with the inclusion $i:A\cap B\rightarrow B$ such that $i|_A=i|_B =id_{S^1}$. We expect that inclusion induces the map $i^*:\mathbb{Z}\times \mathbb{Z}\rightarrow \mathbb{Z}, (x,y)\mapsto x+y$, and indeed this can be shown from the following commutative diagram, where the inclusions $i_1,i_2$ are as one expects:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAGUA9YgAgB0+cAI4BjJmh5diIAL6l0mXPkIoyABiq1GLNlNnyQGbHgJE1pAEyb6zVog7d9C48qIXL17XYfSZmmFAA5vBEoABmAE4QALZI5iA4EEhkWrZsWE4gkTFI7glJiPE2OvZYAPrS1Ax0AEYwDAAKiiYqIBFYgQAWOJnZsYgAzNSJcdTF3uUWvVH9Q-nJY17pUCBVtfVNLqb27V09cuEzucMFKePLshQyQA
 \[\begin{tikzcd}
                                          & S^1                           &                                          \\
                                          & S^1 \sqcup S^1 \arrow[u, "i"] &                                          \\
 S^1 \arrow[ru, "i_1"'] \arrow[ruu, "id"] &                               & S^1 \arrow[lu, "i_2"] \arrow[luu, "id"']
 \end{tikzcd}\]
-
-It induces the following commutative map in homology (for n=0,1), from which the formula for $i^*$ can be easily read. 
-
+It induces the following commutative map in homology (for $n=0,1$), from which the formula for $i^*$ can be easily read. 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAB12BbOnACwBGA4AC0Avpzxd4AAk49+Q0WJBjS6TLnyEUZAAxVajFm3m9Bw8avUgM2PASJ7SAJkP1mrRB27mlVtQ17bSIXV3djLx8FC2VVQxgoAHN4IlAAMwAnCC4kZxAcCCQyI082LGsM7NzEMIKixHyPE28ACgAPUj0AShBqBjoBGAYABU0HHRBMrCS+HEqQLJykAGZqQrzqZqjWgE8u3sDF6tX1hpLttl2+kAGh0fGQ72nZ+aOlmrqNxAvItnb4mIgA
 \[\begin{tikzcd}
                                                    & \mathbb{Z}                                 &                                                    \\
@@ -198,9 +193,9 @@ The Mayer-Vietoris sequence reads as follows:
 Now $ker(i^*)=<(x,-x)>\iso \mathbb{Z}=im(\partial_2)$ by exactness. Since $\partial_2$ is injective, $H_2 X\iso \mathbb{Z}$. Additionally, since $i^*$ is surjective, $k^*=0$. Therefore, the rest of the sequence reads:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPpCABAA0uPEBmx4CRAEyjq9Zq0QgAOiYC2dHAAsARreAAtTmbzn48s5Zv2nnFbwaAkQAzHrihmxeVnYOzgFqfJqCyAAs4QaSxrLEytyB-FooAKwZEkbsXGIwUADm8ESgAGYAThDmSGQgOBBIQvkgre191D1IuhFZpiZodC14jHIJQx2IE2OIYZMVWAB6AFQAvAAeANQAnsttq1sb6dtsANYHV8OI9xvFnBScQA
-\begin{tikzcd}
+\[\begin{tikzcd}
 0 \arrow[r] & H_1 X \arrow[r, "\partial_1"] & \mathbb{Z}\times \mathbb{Z} \arrow[r, "i^*=x+y"] & \mathbb{Z} \arrow[r, "k^*"] & H_0X \arrow[r] & 0
-\end{tikzcd}
+\end{tikzcd}\]
 
 This diagram is similar to the previous diagram, giving us $H_1 X=\mathbb{Z}$ and $H_0 X= 0$. $H_nX =0$ for all other values of $x$.
 \end{example}
