@@ -9,6 +9,10 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{tikz-cd}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{graphicx,caption}
 \usepackage{url}
 
 \usepackage{enumerate}
@@ -35,7 +39,7 @@
 \newtheorem{remark}[thm]{Remark}
 \newtheorem{example}[thm]{Example}
 
-\bibliographystyle{apalike}
+\bibliographystyle{amsplain}
 
 \newcommand{\dsum}{\oplus}
 \newcommand{\iso}{\cong}
@@ -49,6 +53,7 @@
 \newcommand{\Top}[1]{\mathbf{Top}_{#1}}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 \newcommand{\C}{\mathbf{C}}
+\newcommand{\Zmod}{\mathbb{Z}/2\mathbb{Z}}
 \newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
 
 \title{Axiomatic Homology Theory}
@@ -72,8 +77,8 @@
 \input{cellular-homology}
 \input{real-projective-space}
 \input{complex-projective-space}
-\subsection{The Borsuk-Ulam Theorem}
-%\input{borsuk-ulam}
+%\input{other-coefficients}
+\input{borsuk-ulam}
 \newpage
 \section{Appendix}
 \input{appendix-braid-lemma}
