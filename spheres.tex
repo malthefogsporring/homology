@@ -29,7 +29,7 @@ $$\tilde{H}_kS^n\iso H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-
 
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{homology-spheres}
 For $n>0$,
 $$H_kS^n=\begin{cases}\mathbb{Z}&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
 \end{prop}
@@ -38,3 +38,5 @@ We identify $S^{0}=\bullet \sqcup \bullet$. By Proposition \ref{disjoint-union},
 By Proposition \ref{reduced-homology}, $$H_kS^n=\tilde{H}_kS^n\dsum H_k\bullet=\begin{cases}\mathbb{Z}&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
 \cite{Werndli}
 \end{proof}
+
+All the results in this section hold true for homology theories with any choice of coefficients $G=H_0\bullet$. For the remainder of the text, unless stated otherwise, we will make the choice $G=\mathbb{Z}$, which corresponds to Singular Homology Theory \cite{Hatcher}. Making this choice will simplify some of our arguments, and in Section \ref{sec-degree-maps} allow us to define the \defn{degree} of $f:S^n\rightarrow S^n$ as the integer $f^*(1)\in\mathbb{Z}$.

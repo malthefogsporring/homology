@@ -17,9 +17,13 @@ $\RP{2}$ is a CW-complex with 1 0-cell, 1 1-cell and 1 2-cell, and where the glu
 \end{example}
 
 \begin{example}
-The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, where the two $1$-cells $a$ and $b$ have their endpoints glued to a single $0$-cell, as the corners are identified to a single point. The gluing map $\phi:S^1\rightarrow X^1$ is then the concatenation $a\cdot b\cdot -a \cdot -b$, where we are thinking of $a$ and $b$ as paths. The Klein bottle, which also arises as a quotient of the square, can be defined in a similar way.
-
-IMAGE MISSING
+The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, where the two $1$-cells $a$ and $b$ have their endpoints glued to a single $0$-cell, as the corners are identified to a single point. 
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAA8QBfU9TXfIRQBGclVqMWbTjz7Y8BImWHj6zVog7deIDPMFFRK6mqmaZ4mFADm8IqABmAJwgBbJGRA4ISURPVsdNqOLu6Ift5IAMwmkhogAEbBIM5uSABM1JGIMf5mIEGyKaEeWT6ImXnxSVwUXEA
+\[\begin{tikzcd}
+x \arrow[r, "a"] \arrow[d, "b"] & x \arrow[d, "b"] \\
+x \arrow[r, "a"]                & x               
+\end{tikzcd}\]
+The gluing map $\phi:S^1\rightarrow X^1$ is then the concatenation $a\cdot b\cdot -a \cdot -b$, where we are thinking of $a$ and $b$ as paths.
 \end{example}
 
 \begin{remark}
@@ -128,7 +132,7 @@ Therefore $$ker(d_n)/im(d_{n+1})\iso H_nX.$$\cite{Hatcher}\end{proof}
 
 We also have a method of calculating the boundary maps $d_n$ from degree calculations:
 \begin{theorem}\label{boundary-formula} Let $(e^{\alpha}_n)_{\alpha\in A}$ represent the generating elements of the $\alpha$ $n$-cells. Then 
-$d_{n+1}(e^{\alpha}_{n+1})=\sum_{\beta} d_{\alpha,\beta} e^{\beta}_{n}$, where $d_{\alpha,\beta}$ is the degree of the map $S^{n}\alpha\rightarrow X^n\rightarrow S^n\beta$, that is the composition of the gluing map of $e^{\alpha}_n$ with the quotient map identifying $X^n\setminus e^{\beta}_n$. (This can be identified with $S^n$, as $S^n$ is the one-point compactification of $\mathbb{R}^n\iso e^{\beta}_n$.
+$d_{n+1}(e^{\alpha}_{n+1})=\sum_{\beta} d_{\alpha,\beta} e^{\beta}_{n}$, where $d_{\alpha,\beta}$ is the degree of the map $S^{n}\alpha\rightarrow X^n\rightarrow S^n\beta$, that is the composition of the gluing map of $e^{\alpha}_n$ with the quotient map identifying $X^n\setminus e^{\beta}_n$. (This can be identified with $S^n$, as $S^n$ is the one-point compactification of $\mathbb{R}^n\iso e^{\beta}_n$).
 \end{theorem}
 \begin{proof}
 Omitted. See \cite{Hatcher}.
@@ -151,18 +155,10 @@ It follows that $H_n(X)=Ker(d_n)/Im(d_{n+1})=\mathbb{Z}^m$.
 \end{proof}
 
 \begin{proposition}
-If $X$ is path-connected then $H_0(X)=\mathbb{Z}$. 
+If $X$ has only one $0$-cell, then $d_1=0$.
 \end{proposition}
 \begin{proof}
-$X$ must \textit{either} be a single point (from which the result is obvious), or have at least one $1$-cell, as there is no way to glue an $n$-sphere for $n>1$ onto two disconnected spaces, as the former is connected.
-MISSING
-\end{proof}
-
-\begin{corollary}
-If $X$ is path-connected and has only one $0$-cell, then $d_1=0$.
-\end{corollary}
-\begin{proof}
-By the previous result, $\mathbb{Z}=H_nX=\mathbb{Z}/im(d_1)$. However, the only subgroups of $\mathbb{Z}$ are $m\mathbb{Z}$ for integers $m$, and the only isomorphism $\mathbb{Z}\iso \mathbb{Z}/m\mathbb{Z}$ is for $m=0$. Hence $d_1=0$.
+The inclusion $j:H_1(X^1)\rightarrow H_1(X^1,\bullet)$ is an isomorphism by prop \ref{reduced-homology}. By exactness, $\partial_1=0,$ so $d_1=l\partial_1=0$.
 \end{proof}
 
 %\begin{example}[$S^{n}$]
@@ -170,7 +166,21 @@ By the previous result, $\mathbb{Z}=H_nX=\mathbb{Z}/im(d_1)$. However, the only 
 %\end{example}
 
 \begin{example}[Orientable surface of genus $g$]
-$M_g$ is the orientable surface with $g$ "holes". It is known that it can be identified as a quotient of the regular $4g$-sided polygon, where side $i$ is identified with the opposite of side $i+2$ (counted clockwise). In pictures,  $M_1$ is the torus $T^2$, identified as the familiar quotient of the square, and $M_2$ is the given quotient of the 8-sided polygon. It is clear that $M_g$ should be given a CW-complex structure with $1$ $0$-cell, $2g$ $1$-cells and $1$ $2-cell$ glued along the concatenation $f=a_1\cdot a_2 \cdot -a_1 \cdot -a_2 \cdot a_3 \cdot \dots \cdot -a_{2g-1} \cdot -a_{2g}$. According to Theorem \ref{boundary-formula}, we should calculate the degree of the composition of $f$ with the map collapsing everything but the circle $a_i$. This is the map $a_i\cdot -a_i\homotopic 0$, so $d_2=0$. The chain complex is:
+$M_g$ is the orientable surface with $g$ "holes". It is known that it can be identified as a quotient of the regular $4g$-sided polygon, where side $i$ is identified with the opposite of side $i+2$ (counted clockwise). In pictures,  $M_1$ is the torus $T^2$, identified as the familiar quotient of the square:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAA8QBfU9TXfIRQBGclVqMWbTjz7Y8BImWHj6zVog7deIDPMFFRK6mqmaZ4mFADm8IqABmAJwgBbJGRA4ISURPVsdAD6wtqOLu6IAMzU3r4mkhogwQBMYSDObkgpsT7RCQGawaGyGRHZuR4FZslBaVwUXEA
+\[\begin{tikzcd}
+x \arrow[r, "a_1"]                  & x                  \\
+x \arrow[r, "a_1"] \arrow[u, "a_2"] & x \arrow[u, "a_2"]
+\end{tikzcd}\]
+$M_2$ is the similar quotient of the 8-sided polygon:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoBmAXVJADcBDAGwFcYkQAPEAX1PU1z5CKAEwVqdJq3Zde-bHgJFypERIYs2iTjz4gMCoctLF1UrTrn6Bi4cjEAGM5pm75gpSjJOaG6dtk9Aw87BxNnf0sgmyMUMLVfc1duCRgoAHN4IlAAMwAnCABbJDCQHAgkMkkXbXoAfWIQGkZ6ACMYRgAFGM8QRhgcnDcQfKLKmnKkMWrI+pFh0eLEFTKKxGm-C3rGq0WkABYJtZXN9jmmvraO7sNe-sGFgqXD1aQAVkSakHryR7HED6vRAANk+szq+z+SwA7EckKCZls6r9dk8SnDELDEWcITxKNwgA
+\[\begin{tikzcd}
+                   & x \arrow[ld, "a_4"]                  & x \arrow[rd, "a_2"] \arrow[l, "a_3"] &                    \\
+x                  &                                      &                                      & x \arrow[d, "a_1"] \\
+x \arrow[u, "a_3"] &                                      &                                      & x                  \\
+                   & x \arrow[r, "a_1"] \arrow[lu, "a_4"] & x \arrow[ru, "a_2"]                  &                   
+\end{tikzcd}\]
+It is clear that $M_g$ should be given a CW-complex structure with $1$ $0$-cell, $2g$ $1$-cells and $1$ $2-cell$ glued along the concatenation $f=a_1\cdot a_2 \cdot -a_1 \cdot -a_2 \cdot a_3 \cdot \dots \cdot -a_{2g-1} \cdot -a_{2g}$. According to Theorem \ref{boundary-formula}, we should calculate the degree of the composition of $f$ with the map collapsing everything but the circle $a_i$. This is the map $a_i\cdot -a_i\homotopic 0$, so $d_2=0$. The chain complex is:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanLjxAZseAkQBMo6vWatEIGfKWqNnAHrAjAcy3de+gUQDMp8QtpOQUVNU1tL35DFAAWAPNJKw5OMRgoV3giUAAzACcIWSQyEBwIJBFApPZIkHzCiuoypBMqyxrPOoKixFbmxH82thSdep7B-vih5K4KTiA
 \[\begin{tikzcd}

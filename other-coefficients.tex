@@ -1,0 +1,34 @@
+\subsection{Cellular homology in other coefficients}
+
+
+Given cellular chain complexes that are $G-$modules for some ring (so far we have dealt with $G=\mathbb{Z}$), and a group homomorphism $f:G\rightarrow H$, we can construct a cellular chain complex of $H$-modules by the functor $F_H:C^*_G\rightarrow C^*_H$ that sends $G^n$ to $H^n$ and 
+
+
+
+As all groups in cellular chain complexes are $\mathbb{Z}$-modules, i.e. direct sums of copies of $\mathbb{Z}$, it is easy to construct chain complexes with coefficients in any other ring $G$ by the Functor $F_G:C^*_{\mathbb{Z}}$
+via any homomorphism $f:\mathbb{Z}\rightarrow G$.
+
+by sending every copy of $\mathbb{Z}^m$ to $R^m$, and any $h:\mathbb{Z}^n\rightarrow \mathbb{Z}^n$ to . In this section we will make this construction precise for CW-complexes, and show that the construction inherits many properties one would expect, for example exact homology sequences.
+
+It will become clear that we are only interested in whether $f^*$ and the associated induced maps have odd or even degree. We can therefore greatly simplify matters by replacing every instance of $\mathbb{Z}$ with $\mathbb{Z}/2\mathbb{Z}$ and every map $f^*:\mathbb{Z}\rightarrow \mathbb{Z}$ with $f^* \mod 2:\mathbb{Z}/2\mathbb{Z}\rightarrow \mathbb{Z}/2\mathbb{Z}$, as then $f^* \mod 2=id$ iff $f$ has odd degree, and $f^* \mod 2=0$ iff $f$ has even degree. We can employ a purely category theory argument for why this is possible for CW-complexes.
+%Consider the chain complex for a CW-complex $X$, $C^*_{X;\mathbb{Z}}$ where we specify the coefficients as $\mathbb{Z}$:
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfTAAoANAHphSQ4GAC0xAL4BuADryAtvRwALAEYbgALWkBKENNLpMufIRQAmCtTpNW7buKnSBglzNEfJVuYpV1LV0DIxMQDGw8AiIAZlsaBhY2RBBFKAgcBGNTKIsicgT7ZPZ0zOy7GCgAc3giUAAzACcIJSRCkBwIJDJix1SoHjDGlrbEXq6kGz6UkEHPaWGQZtakeM7uxA6k-rmucQBqGSNKaSA
+%\[\begin{tikzcd}
+%\dots \arrow[r, "d_{n+1}"] & {H_n(X^n,X^{n-1};\mathbb{Z})} \arrow[r, "d_n"] & %{H_{n-1}(X^{n-1},X^{n-2};\mathbb{Z})} \arrow[r, "d_{n-1}"] & \dots
+%\end{tikzcd}\]
+
+We have a category of \defn{chain complexes} of CW-complexes with coefficients in an abelian group $\mathbb{G}$, called $C^*(G)$. The maps between cellular chain complexes are the maps $f^*$ induced by induced by cellular maps $f:X\rightarrow Y$, such that $f(X^n)\subseteq Y^n$, as these then induce maps $f^*:H_n(X^n,X^{n-1})\rightarrow H_n(Y^n,Y^{n-1})$ for all $n$.
+
+Consider the category of left $R$-modules, $R-\mathbf{Mod}$, for some ring $R$. Any ring homomorphism $f:R\rightarrow S$ into a subring $S\subset R$ induces a functor $F:R-\mathbf{Mod}\rightarrow S-\mathbf{Mod}$ $$rM\mapsto f(r)M$$ and
+$$(g:rM\rightarrow sN)\mapsto fg:f(r)M\rightarrow f(s)N.$$ This functor furthermore extends to a functor $F:C^*(R)\rightarrow C^*(S)$, which maps a chain complex with coefficients $R$ to a chain complex with coefficients $S$, where every $R^n$ is mapped to $S^n$, and every $d:R^n\rightarrow R^m$ maps to $fd:S^n\rightarrow S^m$, the map that first identifies $S^n\subset R^n$, applies $d$, and then applies $f$ on each component of the image in $R^m$.
+
+A specific case is $R=\mathbb{Z}$, $S=\mathbb{Z}/2\mathbb{Z}$, $f:\mathbb{Z}\rightarrow \mathbb{Z}/2\mathbb{Z}$ $$x\mapsto x\Mod 2.$$ This induces a Functor $F:C^*(\mathbb{Z})\rightarrow C^*(\mathbb{Z}/2)$ which replaces every $\mathbb{Z}^n$ with $(\mathbb{Z}/2)^n$, and every $d:\mathbb{Z}^n\rightarrow \mathbb{Z}^m$ with $d\Mod 2:(\mathbb{Z}/2)^n\rightarrow (\mathbb{Z}/2)^m$ defined in the obvious way. 
+
+The induced functor $F:\mathbb{Z}-Mod\rightarrow \mathbb{Z}/2-Mod$ takes $C^*_{X;\mathbb{Z}}$ to $C^*_{X;\mathbb{Z}/2}$, which maps $\mathbb{Z}^m$ to $(\mathbb{Z}/2)^m$ and $f:\mathbb{Z}^m\rightarrow \mathbb{Z}^m$ to $f\Mod 2:(\mathbb{Z}/2)^m\rightarrow (\mathbb{Z}/2)^n$, thought of as applying $\Mod 2$ to every component of $f$.
+
+\begin{proposition}
+If $f:S^n\rightarrow S^n$ has degree $m$, then the induced map in $\mathbb{Z}/p\mathbb{Z}$ coefficients, where $p$ is a prime, is multiplication by $m \Mod p$.
+\end{proposition}
+\begin{proof}
+MISSING
+\end{proof}

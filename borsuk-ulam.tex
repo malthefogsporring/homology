@@ -1,90 +1,78 @@
-The Borsuk-Ulam theorem is a fascinating fixed-point result, which can be proven via cellular homology and a technical homotopy remark. It states that every odd map $f:S^n\rightarrow \mathbb{R}^n$ maps two antipodal points to the same point. A popular interpretation of this statement is that there are always two antipodal points on Earth with the same temperature and barometric pressure. This follows from Borsuk-Ulam, where we are assuming the Earth is a 2-sphere, and temperature and barometric pressure are continuous functions on the surface of Earth (although both of these assumptions are dubious).
+\subsection{The Borsuk-Ulam Theorem}
+An advantage of taking an axiomatic approach is that our results in Section \ref{sec-axioms} immediately pass over to homology theories in other coefficients.  In this section we show why this is sometimes useful. We will be interested in a homology theory with coefficients $G=\mathbb{Z}/2\mathbb{Z}$. Such a homology theory exists by \cite{Hatcher}, and in fact it can be constructed in the same way Singular Homology is constructed. Proposition \ref{homology-spheres} immediately gives us that
+$$H_m(S^n;\Zmod)=\begin{cases}\Zmod&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
+where we have specified the coefficients of the homology group. As one expects, if $f:S^n\rightarrow S^n,n>0$ gives rise to $f^*:\mathbb{Z}\rightarrow \mathbb{Z}$, $1\mapsto m$ in homology with coefficients $\mathbb{Z}$, then it gives rise to 
+$f^*:\Zmod\rightarrow \Zmod$, $1\mapsto m\Mod 2$. This intuitive result is proven in \cite{Hatcher}. The induced map $f^*:H_n(S^n;\Zmod)\rightarrow H_n(S^n;\Zmod)$ is therefore an isomorphism if $f$ is odd, and the zero map otherwise.
+
+With this construction, we can prove the fascinating Borsuk-Ulam theorem. It states that every odd map $f:S^n\rightarrow \mathbb{R}^n$ maps two antipodal points to the same point. A popular interpretation of this statement is that there are always two antipodal points on Earth with the same temperature and barometric pressure. This follows from Borsuk-Ulam, where we are assuming the Earth is a 2-sphere, and temperature and barometric pressure are continuous functions on the surface of Earth (although both of these assumptions are dubious).
 
 Instead of proving Borsuk-Ulam, we will prove the following stronger result:
 \begin{theorem}\label{strong-borsuk-ulam}
 Odd maps $f:S^n\rightarrow S^n, n\geq 1$ have odd degree.
 \end{theorem}
 
-Before we examine the proof, let us first see how this implies Borsuk-Ulam.
+Before we examine the proof, let us first see how it implies Borsuk-Ulam.
 
 \begin{corollary}[The Borsuk-Ulam Theorem]
 For every odd map $f:S^n\rightarrow \mathbb{R}^n$ there exists $x\in S^n$ such that $f(x)=-f(-x)$.
 \end{corollary}
 \begin{proof}
-Suppose $f$ is odd but has no such point. Then $g:S^n\rightarrow \mathbb{R}^n$ defined as $g(x)=f(x)-f(-x)$ is never zero. We can therefore define $$h(x)=\frac{g(x)}{|g(x)|}:S^n\rightarrow S^{n-1}.$$ $h|_{S^{n-1}}$ has no fixed points, and is therefore homotopic to the antipodal map by Corollary \ref{fixed-points}. However, the restriction $h|_{D_+^n}$ of $h$ to the upper hemisphere of $S^n$ is null-homotopic, as $D_+^n$ is contractible, via the homotopy
+Suppose $f$ is odd but has no such point. Then $g:S^n\rightarrow \mathbb{R}^n$ defined as $g(x)=f(x)-f(-x)$ has no zeroes. We can therefore define $$h(x)=\frac{g(x)}{|g(x)|}:S^n\rightarrow S^{n-1}.$$ $h|_{S^{n-1}}$ has no fixed points, and is therefore homotopic to the antipodal map by Corollary \ref{fixed-points}. However, the restriction $h|_{D_+^n}$ of $h$ to the upper hemisphere of $S^n$ is null-homotopic, as $D_+^n$ is contractible, via the homotopy
 $$j(x,t):D^n\times I\rightarrow S^n$$
 $$(x,t)\mapsto h(\tilde{j}(x,t))$$
-where $\tilde{j}$ is the homotopy $\tilde{j}:id_{D^n}\homotopic c$, and $c$ is a constant function. Since the restriction of a homotopy is also a homotopy, $j|{S^{n-1}\times I}$ defines a homotopy $h|_{S^{n-1}}\homotopic c\not\homotopic (-id)$, a contradiction.
+where $\tilde{j}$ is the homotopy $\tilde{j}:id_{D^n}\homotopic c$, and $c$ is a constant function. Since the restriction of a homotopy is also a homotopy, $j|_{S^{n-1}\times I}$ defines a homotopy $h|_{S^{n-1}}\homotopic c\not\homotopic (-id)$, a contradiction.
 \cite{Hatcher}
 \end{proof}
 
-We will now look at Theorem \ref{strong-borsuk-ulam}. The proof will involve the diagram induced by $f^*$ on the homology sequence of $(S^n,S^{n-1})$ to itself, where we are yet to show that $f^*$ induced such a diagram. It will become clear that we are only interested in whether $f^*$ and the associated induced maps have odd or even degree. We can therefore greatly simplify matters by replacing every instance of $\mathbb{Z}$ with $\mathbb{Z}/2\mathbb{Z}$ and every map $f^*:\mathbb{Z}\rightarrow \mathbb{Z}$ with $f^* \mod 2:\mathbb{Z}/2\mathbb{Z}\rightarrow \mathbb{Z}/2\mathbb{Z}$, as then $f^* \mod 2=id$ iff $f$ has odd degree, and $f^* \mod 2=0$ iff $f$ has even degree. We can employ a purely category theory argument for why this is possible for CW-complexes.
-
-
-
-%Consider the chain complex for a CW-complex $X$, $C^*_{X;\mathbb{Z}}$ where we specify the coefficients as $\mathbb{Z}$:
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfTAAoANAHphSQ4GAC0xAL4BuADryAtvRwALAEYbgALWkBKENNLpMufIRQAmCtTpNW7buKnSBglzNEfJVuYpV1LV0DIxMQDGw8AiIAZlsaBhY2RBBFKAgcBGNTKIsicgT7ZPZ0zOy7GCgAc3giUAAzACcIJSRCkBwIJDJix1SoHjDGlrbEXq6kGz6UkEHPaWGQZtakeM7uxA6k-rmucQBqGSNKaSA
+We will now look at Theorem \ref{strong-borsuk-ulam}. The proof will involve the diagram induced by $f^*$ on the homology sequence of $(S^n,S^{n-1})$ to itself, where we are yet to show that $f^*$ induced such a diagram. It will become clear that we are only interested in whether $f^*$ and the associated induced maps have odd or even degree.
+%, and we will therefore find it useful to reduce $\mathbb{Z}$ coefficients to $\mathbb{Z}/2$ coefficients. The exact sequence in question reads
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAdDgW3pwAsARoOAAtAL5c83eF14DhY8SHGl0mXPkIoAzBWp0mrdnL5CRElWpAZseAkQAs+mgxZtEnDlAg4Eq9TstIgBGF0N3Ex4zRUsAmw17bWRycLdjT3IrQM0HFGcQg3SPEBUDGCgAc3giUAAzACcIbiRnEBwIJB14xuaumg6kVIiMkCwAPQAqbJBelsRhwcQwkZKuNHoGvCYZuaQVpeIepvmAVgHOxHOQRggINCJUuqY4GANGekEYRgAFRODPA0sJV+DgyuIgA
 %\[\begin{tikzcd}
-%\dots \arrow[r, "d_{n+1}"] & {H_n(X^n,X^{n-1};\mathbb{Z})} \arrow[r, "d_n"] & %{H_{n-1}(X^{n-1},X^{n-2};\mathbb{Z})} \arrow[r, "d_{n-1}"] & \dots
+%0 \arrow[r] & \mathbb{Z} \arrow[r, "i^*"] & \mathbb{Z}\times\mathbb{Z} \arrow[r, "\partial"] & \mathbb{Z} \arrow[r] & \dots                                          \\
+%            &                             &                                                  &                      & {} \arrow[loop, distance=2em, in=305, out=235]
 %\end{tikzcd}\]
-
-We have a category of \defn{chain complexes} of CW-complexes with coefficients in an abelian group $\mathbb{G}$, called $C^*(G)$. The maps between cellular chain complexes are the maps $f^*$ induced by induced by cellular maps $f:X\rightarrow Y$, such that $f(X^n)\subseteq Y^n$, as these then induce maps $f^*:H_n(X^n,X^{n-1})\rightarrow H_n(Y^n,Y^{n-1})$ for all $n$.
-
-Consider the category of left $R$-modules, $R-\mathbf{Mod}$, for some ring $R$. Any ring homomorphism $f:R\rightarrow S$ into a subring $S\subset R$ induces a functor $F:R-\mathbf{Mod}\rightarrow S-\mathbf{Mod}$ $$rM\mapsto f(r)M$$ and
-$$(g:rM\rightarrow sN)\mapsto fg:f(r)M\rightarrow f(s)N.$$ This functor furthermore extends to a functor $F:C^*(R)\rightarrow C^*(S)$, which maps a chain complex with coefficients $R$ to a chain complex with coefficients $S$, where every $R^n$ is mapped to $S^n$, and every $d:R^n\rightarrow R^m$ maps to $fd:S^n\rightarrow S^m$, the map that first identifies $S^n\subset R^n$, applies $d$, and then applies $f$ on each component of the image in $R^m$.
-
-A specific case is $R=\mathbb{Z}$, $S=\mathbb{Z}/2\mathbb{Z}$, $f:\mathbb{Z}\rightarrow \mathbb{Z}/2\mathbb{Z}$ $$x\mapsto x\Mod 2.$$ This induces a Functor $F:C^*(\mathbb{Z})\rightarrow C^*(\mathbb{Z}/2)$ which replaces every $\mathbb{Z}^n$ with $(\mathbb{Z}/2)^n$, and every $d:\mathbb{Z}^n\rightarrow \mathbb{Z}^m$ with $d\Mod 2:(\mathbb{Z}/2)^n\rightarrow (\mathbb{Z}/2)^m$ defined in the obvious way. 
-
-The induced functor $F:\mathbb{Z}-Mod\rightarrow \mathbb{Z}/2-Mod$ takes $C^*_{X;\mathbb{Z}}$ to $C^*_{X;\mathbb{Z}/2}$, which maps $\mathbb{Z}^m$ to $(\mathbb{Z}/2)^m$ and $f:\mathbb{Z}^m\rightarrow \mathbb{Z}^m$ to $f\Mod 2:(\mathbb{Z}/2)^m\rightarrow (\mathbb{Z}/2)^n$, thought of as applying $\Mod 2$ to every component of $f$.
-
-\begin{proposition}
-If $f:S^n\rightarrow S^n$ has degree $m$, then the induced map in $\mathbb{Z}/p\mathbb{Z}$ coefficients, where $p$ is a prime, is multiplication by $m \Mod p$.
-\end{proposition}
-\begin{proof}
-MISSING
-\end{proof}
-
-Our proof of Theorem \ref{strong-borsuk-ulam} the approach in \cite{borsuk}. We will need the following technical result.
+%Note that all the groups are direct sums of $\mathbb{Z}$, so this exact sequence sits inside the category of $\mathbb{Z}-$Modules, $\mathbb{Z}-\mathbf{Mod}$. There is a functor $F:\mathbb{Z}-\mathbf{Mod}\rightarrow \mathbb{Z}/2-\mathbf{Mod}$, which maps $\mathbb{Z}^m\mapsto (\mathbb{Z}/2)^n$, and $f:\mathbb{Z}^n\rightarrow \mathbb{Z}^m$ to $(f \Mod 2):(\mathbb{Z}/2)^n\rightarrow (\mathbb{Z}/2)^m$, which includes $(\mathbb{Z}/2)^n$ in $\mathbb{Z}^n$, applies $f$, and then applies $\Mod 2$ in every dimension. This is trivially a 
+Using coefficients in $\Zmod$ is therefore useful, as by the comments at the start of this section, the induced map $f^*$ is $id$ if $f$ has odd degree, and $0$ if $f$ has even degree. Our proof of Theorem \ref{strong-borsuk-ulam} follows the approach in \cite{borsuk}. We will need the following technical result.
 
 \begin{theorem}[Cellular approximation]\label{cellular-approximation}
-Every map $f:X\rightarrow Y$ is homotopic to a cellular map $g$, that is a map such that $g(X^n)\subseteq Y^n$ for each $n$. If $g$ is already cellular on a subcomplex of $X$, the homotopy can be taken to be relative on the subcomplex.
+Every map $f:X\rightarrow Y$ is homotopic to a \defn{cellular map} $g$, that is a map such that $g(X^n)\subseteq Y^n$ for each $n$. If $g$ is already cellular on a subcomplex of $X$, the homotopy can be taken to be relative on the subcomplex.
 \end{theorem}
 \begin{proof}
 Omitted. See \cite{Hatcher}.
 \end{proof}
 
-
-
 \begin{proof}[Proof of Theorem \ref{strong-borsuk-ulam}]
-We prove this by induction on $n$. For $n>0$, an odd map $f:S^{n-1}\rightarrow S^{n-1}$ has odd degree if and only if it induces an isomorphism. We can take this to be the induction property, and note that it hold trivially for $n=0$.  Suppose the statement holds for $n-1$. We can give $S^n$ a cell structure with $1$ $0$-cell and $1$ $n-1$-cell corresponding to the equatorial sphere $S^{n-1}$, and $2$ $n$-cells corresponding to the upper and lower hemispheres of $S^n$, glued by the identity map on the boundary onto $S^{n-1}$. Note this is not the usual cell-structure of $S^n$ with $1$ $0$-cell and $1$ $n$-cell. By Theorem \ref{cellular-approximation}, $f\homotopic g$ where $g$ is cellular.$f^*=g^*$, $f^*$ inherits the properties of both an odd map and a cellular map. We may therefore assume $f$ is both odd and cellular.
+We prove this by induction on $n$, assuming it holds for $n-1$. By assumption, $f^*:H_{n-1}(S^{n-1};\Zmod)\rightarrow f^*:H_{n-1}(S^{n-1};\Zmod)$ is an isomorphism. This is trivially true for $n=0$, as the only odd map on $S^0$ is the antipodal map, which is an isomorphism. We can give $S^n$ a cell structure with $1$ $0$-cell, $1$ $n-1$-cell corresponding to the equatorial sphere $S^{n-1}$, and $2$ $n$-cells corresponding to the upper and lower hemispheres of $S^n$, glued by the identity map on their boundaries. By Theorem \ref{cellular-approximation}, $f\homotopic g$ where $g$ is cellular. As $f^*=g^*$, $f^*$ inherits the properties of both an odd map and a cellular map. We may therefore assume $f$ is both odd and cellular.
 
-$f(S^{n-1})\subseteq S^{n-1}$, $f$ gives a map from the homology sequence of $(S^n,S^{n-1}$ to itself. This looks as follows: 
+As $f(S^{n-1})\subseteq S^{n-1}$, $f$ gives a map from the homology sequence of $(S^n,S^{n-1})$ to itself:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAJAfTAAoBlAHphSQ4GAC0ARgC+AShAzS6TLnyEUAZgrU6TVu27jpMsZNmLlIDNjwEiAFh00GLNohAAdT1Ag4ESiq26kRSznpuhjwABEKEgdaqdhrI5OGuBh7klkFq9ihpUroZ7iDZCTZ5KU5FLvql3r7+OYnB+chhtRGZnDFxLZXJRGRdJVF8caKCxrIKFUkhWqSj9VEzptPmMoq6MFAA5vBEoABmAE4QALZITiA4EEiaCedXjzT3SGndpVgtL9eIL4fRBhb7sbxoehnPBMP4XAGg4HEZ7wpAAVneD0QAHYUa8cZikAAOOqRDy-PEAkl3LEATlJPQhUJhjDh+PpNKQADZKW9OQSwR4ToIAFRsgFArHUsZC0XipCIukMhqeLBwB4ySgyIA
-\begin{tikzcd}
-0 \arrow[r] & H_n S^n \arrow[r, "i"] \arrow[d, "f^*"] & {H_n(S^n,S^{n-1})} \arrow[r, "\partial"] \arrow[d, "f^*"] & H_{n-1}S^{n-1} \arrow[r] \arrow[d, "\iso"] & \dots \\
-0 \arrow[r] & H_n S^n \arrow[r, "i"]                  & {H_n(S^n,S^{n-1})} \arrow[r, "\partial"]                  & H_{n-1}S^{n-1} \arrow[r]                   & \dots
-\end{tikzcd}
+\[\begin{tikzcd}[column sep=small]
+0 \arrow[r] & H_n (S^n;\Zmod) \arrow[r, "i"] \arrow[d, "f^*"] & {H_n(S^n,S^{n-1};\Zmod)} \arrow[r, "\partial"] \arrow[d, "f^*"] & H_{n-1}(S^{n-1};\Zmod) \arrow[r] \arrow[d, "\iso"] & \dots \\
+0 \arrow[r] & H_n (S^n;\Zmod) \arrow[r, "i"]                  & {H_n(S^n,S^{n-1};\Zmod)} \arrow[r, "\partial"]                  & H_{n-1}(S^{n-1};\Zmod) \arrow[r]                   & \dots
+\end{tikzcd}\]
 
-The homology groups $H_n(S^n,S^{n-1}$ are $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ with generators corresponding to the upper and lower hemispheres, as $S^n$ is a CW-complex with two $n$-cells glued onto a copy of $S^{n-1}$.
-
-In coefficients, the above diagram becomes:
+By excision, $$H_k(S^n,S^{n-1};\Zmod)\iso H_k\big((D^n_+,S^{n-1};\Zmod)\sqcup(D^n_-,S^{n-1};\Zmod)\big)$$
+By Proposition \ref{disjoint-union} and the proof of Lemma \ref{sphere-isomorphism}, this equals
+$$H_k(D^n,S^{n-1};\Zmod)\dsum H_k(D^n,S^{n-1};\Zmod)=\begin{cases}\Zmod \times \Zmod&k=n\\0&\text{otherwise}\end{cases}$$
+The above diagram therefore reads:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAJgBoAGAXVJADcBDAGwFcYkQAdDgW3pwAsARoOAAtAL4B6Yl14DhY8Vzzd4AAll8hIidM3yd4kONLpMufIRQBmCtTpNW7ABIB9YGAC0ARnEBlAD0PHyMTM2w8AiIAFjsaBhY2RE4OKAgcBDCQDAjLIm84h0T2fW1FPR4tBQljU2zzSKtkckKEp2TyWvCLKJQW73s2pJBOrJyeptiB+MdhrjSMrvrc3uQC6aL2lLky3RlKg0Ul8caiMg2hkoPdqX2d6qUOFXVSh4r7w2OGvJtSC9mXO4vL5AsFfMZ7DAoABzeBEUAAMwAThBuEhYiAcBAkNYssjUTiaFikC1NsMsEt8WjEKTiYgCmSrmh6Ei8ExKSjqQy6cQ8ZykABWInYxAAdj5BLFwqQAA4ZsVkhSJdS5ZiRQBOeVbLjM1lYdnKpCatVIABshsQthNUsZyQRAQAVBzJbSRarLnbHc6udLEMaPSksHBseJKOIgA
-\begin{tikzcd}
-0 \arrow[r] & \mathbb{Z}/2\mathbb{Z} \arrow[r, "i"] \arrow[d, "f^*"] & \mathbb{Z}/2\mathbb{Z}\times \mathbb{Z}/2\mathbb{Z} \arrow[r, "\partial"] \arrow[d, "f^*"] & H_{n-1}S^{n-1} \arrow[r] \arrow[d, "\iso"] & \dots \\
-0 \arrow[r] & \mathbb{Z}/2\mathbb{Z} \arrow[r, "i"]                  & \mathbb{Z}/2\mathbb{Z}\times \mathbb{Z}/2\mathbb{Z} \arrow[r, "\partial"]                  & H_{n-1}S^{n-1} \arrow[r]                   & \dots
-\end{tikzcd}
+\[\begin{tikzcd}
+0 \arrow[r] & \mathbb{Z}/2\mathbb{Z} \arrow[r, "i"] \arrow[d, "f^*"] & \mathbb{Z}/2\mathbb{Z}\times \mathbb{Z}/2\mathbb{Z} \arrow[r, "\partial"] \arrow[d, "f^*"] & H_{n-1}(S^{n-1};\Zmod) \arrow[r] \arrow[d, "\iso"] & \dots \\
+0 \arrow[r] & \mathbb{Z}/2\mathbb{Z} \arrow[r, "i"]                  & \mathbb{Z}/2\mathbb{Z}\times \mathbb{Z}/2\mathbb{Z} \arrow[r, "\partial"]                  & H_{n-1}(S^{n-1};\Zmod) \arrow[r]                   & \dots
+\end{tikzcd}\]
 
-$f^*\neq (0,0)$ by commutativity as $\partial$ is injective, hence not $0$. $f$ commutes with the antipodal map by oddness: $f(-id)=(-id)f$. It follows that $f^*(-id)^*=(-id)^*f^*$. Note that the antipodal map also gives a map between these sequences, and that it swaps the hemispheres (REFERENCE): $(-id)^*(x,y)=(y,x).$ So $f^*(x,0)=(-id)^*f^*(0,y)$. Since $f^*\neq (0,0)$, $f^*(x,0)=(x,0)$ or $(0,x)$ and $f^*(0,y)$ is the other one. So $f^*$ is an isomorphism.
+The middle $f^*\neq (0,0)$ by commutativity as $\partial$ is non-zero ($i$ is not an isomorphism). $f$ commutes with the antipodal map by oddness: $f(-id)=(-id)f$. It follows that $f^*(-id)^*=(-id)^*f^*$. The antipodal map is cellular, so also gives a map between these sequences. Intuitively, it is easy to see why $(-id)^*(x,y)=(y,x)$, as $(-id)$ is an isomorphism that flips the two hemispheres. The argument can be made specific by noting $(-id)$ gives rise to the following commutative diagram, where all forms of $(-id)$ are isomorphisms.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAKAEQD0wB9ALSkAyj2BhB5AL4BKENNLpMufIRTlSxanSat23PkNHjJM2QB0LcAI4BjZmgAEhgQGoTEqXIVKQGbDwCIgAmCh0GFjZETl53TzMfRWVAtSJNEIi9aNijYTEvcytbB2dXfg8CxPlk-xUg9RJSAGYsqIM4ioTvGr8A1WCUMNaaSP0Y8vzTHoUdGCgAc3giUAAzACcIAFskMhAcCCRNXXaYgGtfNc2dxDD9w8RjsZzGS5AN7aQAFhoDpGbRtl2K9ah8bgBWX4PAEncYgC6g65HKH-QGnTiCLBQeQ0RhYMA5KD0OAAC3mbzBuxRiB+sJyHEx2JAuPxhOJZKgFKRt2pkLpBkZOJAeIJ7CJpPJ0ko0iAA
+\[\begin{tikzcd}
+                                                              & {(D^n_-,S^{n-1})\sqcup (D^n_+,S^{n-1})} \arrow[dd, "(-id)", dashed] &                                                               \\
+{(D^n_-,S^{n-1})} \arrow[ru, "k"] \arrow[dd, "(-id)", dashed] &                                                                     & {(D^n_+,S^{n-1})} \arrow[lu, "l"] \arrow[dd, "(-id)", dashed] \\
+                                                              & {(D^n_-,S^{n-1})\sqcup (D^n_+,S^{n-1})}                             &                                                               \\
+{(D^n_+,S^{n-1})} \arrow[ru, "l"]                             &                                                                     & {(D^n_-,S^{n-1})} \arrow[lu, "k"]                            
+\end{tikzcd}\]
+The diagram induced in homology easily shows that $(-id)^*(x,0)=(0,y)$ and $(-id)^*(0,y)=(x,0)$.
 
-By commutativity in the left square, since $i$ is injective, and $f^*i$ is injective, $f^*:S^n\rightarrow S^n$ is also injective, hence is an isomorphism. This implies the degree $m$ of $f:S^n\rightarrow S^n$ is s.t. $m mod 2=1$, i.e. $m$ is odd.
+If $f^*(x,y)=(f_1(x,y),f_2(x,y))$, then commutativity with $(-id)^*$ gives that $f_1(x,y)=f_2(y,x)$. This leaves only the options $f_1(x,y)=x,f_2(x,y)=y$ and $f_1(x,y)=y,f_2(x,y)=x$, both of which imply $f^*$ is an isomorphism.
 
-
-
-%There are few options for $\partial$. It cannot be the zero map, as it is surjective. That leaves $\partial(x,y)=x,y$ or $x+y$. However, note that the antipodal map also gives a map between these sequences, and that it swaps the hemispheres (REFERENCE). Therefore we have the following commutative diagram, which disallows $\partial(x,y)=x,y$. 
-
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12BbOnACwBGA4AC0AvgHoATJx78hosZzxd4AAlm9Bw8dM3ydYkGNLpMufIRQBGclVqMWbfdsV7uWheOOmQGbHgERGTW9vTMrIgcHgZuMjGu4spYqnAaCV6S8XKJRiZmAZZEtqHU4U5RLpnuOZnG9jBQAObwRKAAZgBOEFxIZCA4EEi2DhHO7Gh0nXiMPh3dvYhS1INIAMxljpHRk9NYs-kgXT19K0NLm2NRABQAnqQAHgCUc0cLw2frlxUgWFD1YiAA
-
-%Therefore $\partial(x,y)=x+y$. $f^*:\mathbb{Z}/2\mathbb{Z}\rightarrow \mathbb{Z}/2\mathbb{Z}$ is not the zero map, as $id \partial\neq 0$. Furthermore, $f^*$ commutes with the antipodal map by oddness: $f(-id)=(-id)f$. It follows that $f^*(-id)^*=(-id)^*f^*$. So $f^*(x,0)=(-id)^*f^*(0,y)$ 
-\cite{borsuk}
+By commutativity in the left square, since $i$ is injective and $f^*i$ is injective, $f^*:S^n\rightarrow S^n$ is also injective, hence is an isomorphism. This implies the degree $m$ of $f:S^n\rightarrow S^n$ is s.t. $m \Mod 2=1$, i.e. $m$ is odd. \cite{borsuk}
 \end{proof}
