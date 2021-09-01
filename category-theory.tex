@@ -1,5 +1,5 @@
 \section{Category theory}\label{sec-category-theory}
-The language of category theory was invented specifically for homology theory but has since then become an entire field of itself with many applications \cite{Marquis}. It is a very general construction, as many familiar constructions can be understood as categories, such as groups, rings, vector spaces and topological spaces. Informally, a category is a collection of "objects" and "maps between them". In these cases, the objects are sets with some structure, and the maps are functions that satisfy some structure-preserving property. However, the definition of a category is more general than this, and there are categories whose objects look nothing like sets and whose maps look nothing like functions between sets.
+The language of category theory was invented specifically for homology theory but has since then become an entire field of itself with many applications \cite{Marquis}. It is a very general construction, as many familiar constructions form categories, including groups, rings, vector spaces and topological spaces. Informally, a category is a collection of "objects" and "maps between them". In above-mentioned cases, the objects are sets with some structure, and the maps are functions that satisfy some structure-preserving property. However, the definition of a category is more general than this, and there are categories whose objects look nothing like sets and whose maps look nothing like functions between sets.
 
 \begin{definition}
 A category $\cat{A}$ is
@@ -12,23 +12,23 @@ which satisfy the following properties:
 
 \begin{enumerate}[(a)]
 \item \textbf{Associativity}: $(f\circ g)\circ h=f\circ(g\circ f)$,
-\item \textbf{Identity laws}: For each $A\in ob(\cat{A})$ there is a unique map $id_A\in \cat{A}(A,A)$ with the property that $id_A\circ f$=$f$ and $g\circ id_A=g$ for every $f\in \cat{A}(B,A)$ and $g\in \cat{A}(A,B)$
+\item \textbf{Identity laws}: For each $A\in ob(\cat{A})$ there is a unique map $id_A\in \cat{A}(A,A)$ with the property that $id_A\circ f$=$f$ and $g\circ id_A=g$ for every $f\in \cat{A}(B,A)$ and $g\in \cat{A}(A,B)$.
 \end{enumerate}
 \end{definition}
-Note we often write $A\in \cat{A}$ to mean $A\in ob(\cat{A})$, and $fg$ to mean $f\circ g$.
+We often write $A\in \cat{A}$ to mean $A\in ob(\cat{A})$, and $fg$ to mean $f\circ g$.
 \par Categories are best understood through examples, of which we give a few. Many more examples are given in \cite{Leinster}.
 
 \begin{example}
 The following are categories.
 \begin{enumerate}[(a)]
 
-\item The empty category $\emptyset$ with no objects and homomorphisms.
+\item The empty category $\emptyset$ with no objects and no maps.
 \item A one-object category $\{A\}$ with only the identity map $id_A$.
 
 \item $\mathbf{Top}$ is a category, where spaces are topological spaces, and the maps are all continuous maps. This is because the identity map is always continuous, and compositions of continuous maps are continuous.
 
 \item We have similar constructions for other "sets with structure" and "structure-preserving maps" such as $\mathbf{Vec}$ the category of vector spaces and linear maps, and $\mathbf{Grp}$, the category of groups and homomorphisms.
-\item Many categories can be found as subcategories of previous examples. For example, we have the subcategory $\mathbf{Ab}\subset \mathbf{Grp}$ of all abelian groups and homomorphisms between them.
+\item Many categories can be found as subcategories of previous examples. For example, we have the subcategory $\mathbf{Ab}\subset \mathbf{Grp}$ of abelian groups and homomorphisms between them.
 \item Finally, here is an example of a category that cannot be interpreted as "sets" and "structure-preserving maps": 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQAmclVqMWbAELdxMKAHN4RUADMAThAC2SMiBwQ91BhAhoiZNYzgxxDOgCMYDAAr88BNhqyKAFjgg1PTMrIggWFAA+pw86lq6iACM1IZIKSCm5pak1gy29k4u7tieQiA+-oHBkmER0bJxIJo6xgZGyTWhbGpBIM5gUEgAzMRNLYkZaYj6A0OIo11S4YrcvM0JbdP6WRYoSQAcVjZ2JkVuHoLevgF9Icsgir1cFFxAA
 \[\begin{tikzcd}
@@ -39,16 +39,15 @@ $$fg=id_B, f(gf)=f,(gf)g=g,(gf)(gf)=gf$$
 These compositions are forced upon us by the associativity requirement, for example $f(gf)=(fg)f=(id_A)f=f$, and $(gf)(gf)=g(fg)f=gf$. One might think $gf$ contradicts the uniqueness of the identity requirement, but it does not, as $(gf)id_A=gf\neq id_A$. 
 
 \end{enumerate}\end{example}
-\par Two definitions that will play a big role in our study are notions of "maps between categories" and "maps between maps between categories". These are called \defn{functors} and \defn{natural transformations}, respectively.
+\par Two definitions that will play a big role in our study are the notions of "maps between categories" and "maps between maps between categories". These are called \defn{functors} and \defn{natural transformations}, respectively.
 
 \begin{definition}
-A \defn{functor} $F:\cat{C}\rightarrow\cat{H}$ between two categories is a function assigning each $X\in ob(\cat{C})$ to some $F(X)\in ob(\cat{H})$, and each $f\in \cat{C}(A,B)$ to some $F(f)\in \cat{C}(F(A),F(B))$, such that
+A \defn{functor} $F:\cat{C}\rightarrow\cat{H}$ between two categories is a function assigning each $X\in ob(\cat{C})$ to some $F(X)\in ob(\cat{H})$, and each $f\in \cat{C}(A,B)$ to some $F(f)\in \cat{H}(F(A),F(B))$, such that
 \begin{enumerate}[(a)]
 \item $F(f\circ g)=F(f)\circ F(g)$
 \item $F(id_A)=id_{F(A)}$
 \end{enumerate}
 \end{definition}
-
 The definition of a functor is set up such that it takes commutative diagrams to commutative diagrams. I.e. if this commutative diagram is in $\cat{C}$,
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbAELdeIDNjwEio4ePrNWiEAGE5fJYKJl11TVJ0ARbuJhQA5vCKgAZgCcIAWyRkQOCCRRCS02VwMQD28g6gCkACZzSW0QBwion0Q-OMQAZiTQnQArEGoGOgAjGAYABX5lIRAGGFccdM9M-P9AxESQyxAAC1suIA
 \[\begin{tikzcd}
@@ -62,7 +61,13 @@ F(A) \arrow[r, "F(f)"] \arrow[d, "F(j)"] & F(B) \arrow[d, "F(g)"] \\
 F(D) \arrow[r, "F(h)"]                   & F(C)                  
 \end{tikzcd}\]
 
-%TODO: Add examples
+\begin{example}
+There is a functor $F:\mathbf{Grp}\rightarrow \mathbf{Set}$ which forgets the group structure. Explicitly, it maps each group $G\in \mathbf{Grp}$ to the underlying set in $\mathbf{Set}$, and each homomorphism $f$ to the underlying function between sets. This functor is appropriately named the \defn{forgetful functor}.
+\end{example}
+
+\begin{example}
+There is a functor $\mathbf{Top}:\mathbf{Grp}$ which takes each topological space $X$ to its fundamental group $\pi_1(X)$.\footnote{Technically, the domain should be the category of \defn{based Topological spaces} $\mathbf{Top_{\bullet}}$, whose objects are spaces with a point, and whose maps are base-point preserving maps.} This is well-defined since continuous maps $f$ give rise to homomorphisms $f^*$ between fundamental groups, the identity map gives rise to the identity homomorphism, and $(fg)^*=f^*g^*$.
+\end{example}
 
 \begin{definition}
 A \defn{natural transformation} $\alpha:F\rightarrow G$ between functors $F,G:\cat{A}\rightarrow \cat{B}$ is a family of functions $(\alpha_A:F(A)\rightarrow G(A))_{A\in \cat{A}}$ between objects in $\cat{B}$ such that any map $f:A\rightarrow B$ in $\cat{A}$ gives rise to a commutative diagram
@@ -73,7 +78,4 @@ F(A) \arrow[r, "\alpha_A"] \arrow[d, "F(f)"] & G(A) \arrow[d, "G(f)"] \\
 F(B) \arrow[r, "\alpha_B"]                   & F(B)                  
 \end{tikzcd}\]
 \end{definition}
-
-%TODO: Add examples
-
 Functors and natural transformations are explored in-depth in \cite{Leinster}. For now, we will make do with the definitions. The properties we will use the most are that \textit{functors preserve commutative diagrams} and that \textit{natural transformations commute with functors} in the way specified by the above diagram. 
