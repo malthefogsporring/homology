@@ -3,7 +3,7 @@
 A \defn{chain complex} is a family $(A_i)_{i\in\mathbb{Z}}$ of abelian groups, as well as a family $(f_i:A_i\rightarrow A_{i+1})_{i\in \mathbb{Z}}$ of homomorphisms between consecutive groups, such that $im(f_i)\subset ker(f_{i+1})$. If we have equality instead of inclusion, the family is called an \defn{exact sequence}.
 \end{definition}
 
-We distinguish between \defn{short} and \defn{long exact sequences}, where short exact sequences are exact sequences with three or fewer consecutive non-zero groups, i.e. sequences of the form
+We distinguish between \defn{short} and \defn{long exact sequences}, where short exact sequences are sequences with three or fewer consecutive non-zero groups, i.e. sequences of the form
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYBBLjxAZseAkQBMo6vWatEIAEKzeigUQDM68VrYBhA-L5LByACznNknR05iYUAObwiUAAzACcIAFskMhAcCCQRC3d2W1CI+OpYpDVE7RAglLDIxGzMxDMctl8CtLKMuMQXCo8uCk4gA
 \[\begin{tikzcd}
@@ -20,7 +20,7 @@ For any abelian group $A$ the following is a long exact sequence:
 \end{example}
 
 \begin{remark}
-The requirement that $im(f_i)\subseteq ker(f_{i+1})$  is equivalent to the requirement that $f_{i+1}\circ f_i=0$. This is clear from the definition: if $im(f_i)\subseteq ker(f_{i+1})$ then $$\forall x\in A_i, f_{i+1}\circ f_i (x)\in f_{i+1}(im(f_i))=\{0\}.$$ Conversely, if $\forall x\in A_i, f_{i+1}\circ f_i=0$ then $f_{i+1}(im(f_i))=\{0\}$.
+The requirement that $im(f_i)\subseteq ker(f_{i+1})$  is equivalent to the requirement that $f_{i+1}\circ f_i=0$. This is clear from the definition: if $im(f_i)\subseteq ker(f_{i+1})$ then $$\forall x\in A_i, f_{i+1}\circ f_i (x)\in f_{i+1}(im(f_i))=\{0\}.$$ Additionally, if $\forall x\in A_i, f_{i+1}\circ f_i=0$ then $f_{i+1}(im(f_i))=\{0\}$.
 \end{remark}
 
 
@@ -35,7 +35,7 @@ We say this \defn{gives rise to} the following short exact sequence, as they car
 \[\begin{tikzcd}
 0 \arrow[r] & B \arrow[r, "f"] & C \arrow[r] & 0
 \end{tikzcd}\]
-We often omit specifying any homomorphisms out of or into $0$, as there is only one: the $0$ homomorphism. Since $0=im(0)=ker(f)$, $f$ is injective. Since $im(f)=ker(0)=C$, $f$ is surjective. Therefore $f$ is an isomorphism.
+Note we can omit specifying any homomorphisms from or into $0$, as there is only one: the $0$-homomorphism. Since $0=im(0)=ker(f)$, $f$ is injective. Since $im(f)=ker(0)=C$, $f$ is surjective. Therefore $f$ is an isomorphism.
 \end{example}
 
 \begin{definition}
@@ -50,33 +50,28 @@ Let the following be a short exact sequence
 0 \arrow[r] & A \arrow[r, "f"] & B \arrow[r, "g"] & C \arrow[r] & 0
 \end{tikzcd}\]
 \begin{enumerate}[(a)]
-    \item If there exists a \defn{section} $s:C\rightarrow B$ of $g$, then $f$ and $s$ define an isomorphism $$(f+s):A\dsum C\iso B$$
+    \item If there exists a \defn{section} $s:C\rightarrow B$ of $g$, then $f$ and $s$ define an isomorphism $$(f+s):A\dsum C\rightarrow B$$
 $$(a,c)\mapsto f(a)+s(c).$$
 \item If there exists a \defn{retraction} $r:B\rightarrow A$ of $f$, then $r$ and $g$ define an isomorphism $$(r,g):B\rightarrow A\dsum C$$
-$$b\mapsto (r(b),g(b))$$
+$$b\mapsto (r(b),g(b)).$$
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
 \begin{enumerate}[(a)]
-\item First we show that $(f+s)$ is injective. By exactness we have that $f$ is injective, as $0=im(0)=ker(f)$, and that $g$ is surjective, as $im(g)=ker(0)=C$.
+\item First we show that $(f+s)$ is injective. By exactness we have that $f$ is injective, as $0=im(0)=ker(f)$, and that $g$ is surjective, as $im(g)=ker(0)=C$. Suppose $f(a)+s(c)=0$. Then $$0=g(0)=g(f(a)+s(c))=gf(a)+gs(c)=c$$
+Which implies $c=0$. But then $0=f(a)$, which implies $a=0$ as $f$ is injective. Therefore $ker(f+s)=0$, so $(f+s)$ is injective.
 
-Suppose $0=f(a)+s(c)$. Then $$g(0)=g(f(a)+s(c))=gf(a)+gs(c)=c$$
-Which implies $c=0$. But then $0=f(a)$, which implies $a=0$ as $f$ is injective. $ker(f+s)=0$, so $(f+s)$ is injective.
-
-Now we show $(f,s)$ is surjective. Now let $b\in B$. Let $c=g(b)\in C$ and $a\in A$ be the unique element that maps to $b-sg(b)$. This element is in $im(f)=ker(g)$, since $g(b-s(g(b)))=g(b)-g(b)=0$, and is unique by injectivity of $f$. Then $f(a)+s(c)=b-sg(b)+sg(b)=b$. Therefore $(f,s)$ is surjective, so it is an isomorphism.
+Next we show $(f+s)$ is surjective. Let $b\in B$, $c=g(b)\in C$ and $a\in A$ be the unique element that maps to $b-sg(b)\in B$. This element exists, since $$g(b-s(g(b)))=g(b)-g(b)=0,$$ so $b-sg(b)\in ker(g)=im(f)$. It is unique by the injectivity of $f$. It follows that $$f(a)+s(c)=b-sg(b)+sg(b)=b,$$ so $(f,s)$ is surjective. It is therefore an isomorphism.
 
 \item First we show that $(r,g)$ is injective. Suppose $(r(b),g(b))=(0,0)$. Then $g(b)=0,$ so $b\in ker(g)=im(f)$. Now $r$ is injective on $im(f)$, since $rf=id_A$. Therefore $r(b)=0\implies b=0$. So $(r,g)$ is injective.
 
-Now we show $(r,g)$ is surjective. Let $(a,c)\in A\dsum C$. Since $r$ is a retraction of $f$, $r(f(a))=a$. Now $g$ is surjective, so there exists $b\in B$ such that $c=g(b)$. Now since $im(f)=ker(g)$, $g(f(a))=0$. 
-
-Consider $fr(b)\in B$. It also has the property $g(fr(b))=0$, as $gf(-)=0$. However, $r(fr(b))=r(b)$. We can therefore let $y=a+b-fr(b)\in B$. Then $g(y)=g(a)+g(b)+g(fr(b))=g(b)=c$, and $r(y)=r(f(a))+r(b)-r(fr(b))=a$. So $(r,g)$ is surjective. Hence it is an isomorphism.
-
-
+Next we show $(r,g)$ is surjective. Let $(a,c)\in A\dsum C$. Since $g$ is surjective, there exists $b\in B$ such that $c=g(b)$. Let $x=f(a)+b-fr(b)\in B$. Then $g(x)=g(b)$, as $gf(-)=0$ by exactness. Additionally, $$r(x)=rf(a)+r(b)-rfr(b)=a+r(b)-r(b)=a,$$
+since $rf=id_A$. It follows that $(r,g)$ is also surjective, so it is an isomorphism.
 \end{enumerate}
 
 \end{proof}
-
+%TRASH PROPOSITION
 \begin{corollary}\label{retraction-iso}
 If $f:A\rightarrow B$ admits a retraction $g:B\rightarrow A$, then $$B\iso im(f)\dsum ker(g)$$
 \end{corollary}
@@ -120,9 +115,9 @@ By symmetry of the diagram, it does not matter which sequence is the chain compl
 
 Let $x\in ker(f_2)$. Then $0=f_2(x)=j_2f_2(x)=g_2h_2(x)$ by commutativity. It follows that $h_2(x)\in ker(g_2)=im(g_1)$. So $\exists x_1\in A$ s.t. $g_1 (x_1)=h_2(x)$. By commutativity, $g_1(x_1)=h_2f_1 (x_1)$. So we have that $0=g_1 (x_1)-h_2(x)=h_2(f_1 (x_1)-x)$. Let $x_2:=f_1(x_1)-x\in ker(h_2)=im(h_1)$. Then $\exists x_3\in B$ s.t. $h_1(x_3)=x_2$.
 
-Now note that $$j_1(x_3)=f_2h_1(x_3)=f_2(x_2)=f_2(f_1(x_1)-x)=0$$
-Where the last equality follows from $f_2f_1(-)=0$ and $f_2(x)=0$. We therefore have that $x_3\in ker(j_1)=im(j_0)$. So there exists $x_4\in O$ s.t. $j_0(x_4)=x_3$. Consider $g_0(x_4).$ It satisfies $f_1g_0(x_4)=h_1j_0(x_4)=h_1(x_3)=x_2=f_1(x_1)-x$. Therefore we have
-$$x=f_1(x_1-g_0(x_4))$$
-Which shows $x\in im(f_1)$ as required.
+Now note that $$j_1(x_3)=f_2h_1(x_3)=f_2(x_2)=f_2(f_1(x_1)-x)=0,$$
+where the last equality follows from $f_2f_1(-)=0$ and $f_2(x)=0$. We therefore have that $x_3\in ker(j_1)=im(j_0)$. So there exists $x_4\in O$ s.t. $j_0(x_4)=x_3$. Consider $g_0(x_4).$ It satisfies $f_1g_0(x_4)=h_1j_0(x_4)=h_1(x_3)=x_2=f_1(x_1)-x$. Therefore we have
+$$x=f_1(x_1-g_0(x_4)).$$
+This shows $x\in im(f_1)$ as required.
 \cite{Eilenberg}
 \end{proof}
