@@ -6,7 +6,7 @@ The axioms for a homology theory were first laid out by Eilenberg and Steenrod i
 $\Top{2}$ is a category.
 \end{lemma}
 \begin{proof}
-It is easy to see that the identity map $id_X$ satisfies the requirement for each $(X,A)$, as $id_X(A)=A$. Furthermore, if $f\in \Top{2}((X,A),(Y,B)$ and $g\in \Top{2}((Y,B),(Z,C)$, then $gf$ is continuous and $gf(A)= g(f(A))\subseteq g(B)\subseteq C$ as required. The associativity and identity properties are satisfied because $\mathbb{Top}$ is a category.
+It is easy to see that the identity map $id_X$ satisfies the requirement for each $(X,A)$, as $id_X(A)=A$. Furthermore, if $f\in \Top{2}((X,A),(Y,B)$ and $g\in \Top{2}((Y,B),(Z,C)$, then $gf$ is continuous and $gf(A)= g(f(A))\subseteq g(B)\subseteq C$ as required. The associativity and identity properties are satisfied because $\mathbf{Top}$ is a category.
 \end{proof}
 
 We can similarly define $\Top{3}$ as the triples of topological spaces $(X,A,B)$ where $B\subseteq A \subseteq X$ and where morphisms $f:(X,A,B)\rightarrow (Y,C,D)$ are maps $f:X\rightarrow Y$ such that $f(A)\subseteq C$ and $f(B)\subseteq D$. We identify $X\in \mathbf{Top}$ with $(X,\emptyset)\in \Top{2}$, and $(X,A)\in \Top{2}$ with $(X,A,\emptyset)\in \Top{3}$.
@@ -45,7 +45,7 @@ As noted in \cite{Werndli}, the definition certifies that
 
 \end{remark}
 
-In this text we will assume all spaces and maps are admissible, unless otherwise stated. We will also use "space" to denote "topological space". 
+In this text, we will assume all spaces and maps are admissible unless otherwise stated. We will also use "space" to denote "topological space". 
 
 We now give the axioms of an (ordinary) homology theory for an admissible category.
 
@@ -113,7 +113,7 @@ If $f$ and $g$ are isomorphisms, and the diagonals are exact, then there exist i
 \begin{proof}
 By commutativity, $ji'=g,$ so $ji'g^{-1}=id_{B'}$. Therefore $i'g^{-1}$ is a section of $j$. By Proposition \ref{short-seq-direct-sum}, we have an isomorphism $$(i+i'g^{-1}):A\dsum B'\rightarrow X$$
 $$(a,b)\mapsto i(a)+i'g^{-1}(b)$$
-Since $g^{-1}$ is an isomorphism, $(i+i'):A\dsum B\rightarrow X$ is also an isomorphism in the obvious way.
+Since $g^{-1}$ is an isomorphism, $(i+i'):A\dsum B\rightarrow X$ is also an isomorphism in an obvious way.
 
 Similarly, $f^{-1}j'$ is a retraction of $i$. Again, by Proposition \ref{short-seq-direct-sum}, we have an isomorphism $$(f^{-1}j',j):X\rightarrow A\dsum B'$$
 $$x\mapsto (f^{-1}j'(x),j(x))$$

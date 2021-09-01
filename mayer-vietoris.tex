@@ -1,6 +1,6 @@
 \section{The Mayer-Vietoris Sequence}\label{sec-mayer-vietoris}
 \subsection{Statement and proof}
-In the previous section, we relied heavily on identifying homomorphisms in a long exact sequence as either isomorphisms of the $0$-map. This is not the case in general, and it can feel like the axioms give very little help with identifying homology groups and their maps when they are not trivial. However, in many cases we can cover a space $X$ by the interiors two spaces $A$ and $B$ whose homology groups we know. In this case we say that $(A,B)$ is a Mayer-Vietoris cover of $X$. The excision axiom gives us a very convenient method for relating the homology groups of $X$ to the homology groups of its Mayer-Vietoris cover:
+In the previous section, we relied heavily on identifying homomorphisms in a long exact sequence as either isomorphisms or $0$-maps. This is not the case in general, and it can feel like the axioms give very little help with identifying homology groups and their maps when they are not trivial. However, in many cases we can cover a space $X$ by the interiors two spaces $A$ and $B$ whose homology groups we know. In this case, we say that $(A,B)$ is a Mayer-Vietoris cover of $X$. The excision axiom gives us a very convenient method for relating the homology groups of $X$ to the homology groups of its Mayer-Vietoris cover:
 
 \begin{theorem}\label{mayer-vietoris}
 Let $A$ and $B$ be closed subsets of $X$ whose interiors cover $X$. Suppose furthermore that  
@@ -70,7 +70,7 @@ H_nB \arrow[rd, "l^*"]                                                          
                                                                                   & H_{n-1}(A\cap B)                                                         &                                                                                  
 \end{tikzcd}\]
 
-First we need to show that the lower diagram satisfies the requirements of Lemma \ref{mayer-vietoris-lemma}. The diagonals are exact because they come from homology sequences of triples (or pairs, in the case of the vertical sequence). The upper four triangles commute because they are induced by commutative triangles of inclusions, and the lower two triangles commute by definition. Finally $k_1$ and $k_2$ are isomorphisms by Remark \ref{mayer-vietoris-excision}. We can therefore define $\partial:H_nX\rightarrow H_{n-1}(A\cap B)$ as the composition $\partial_1k_1^{*-1}l_1^*=-\partial_2k_2^{*-1}l_2^*$. The remainder of the proof is showing that the Mayer-Vietoris sequence is exact. This results to a diagram-chasing challenge. We will show that $H_nA\dsum H_nB \rightarrow H_nX \rightarrow H_{n-1}(A\cap B)$ is exact, and refer to \cite{Eilenberg} for the rest of the pairs. 
+First, we need to show that the lower diagram satisfies the requirements of Lemma \ref{mayer-vietoris-lemma}. The diagonals are exact because they come from homology sequences of triples (or pairs, in the case of the vertical sequence). The upper four triangles commute because they are induced by commutative triangles of inclusions, and the lower two triangles commute by definition. Finally $k_1$ and $k_2$ are isomorphisms by Remark \ref{mayer-vietoris-excision}. We can therefore define $\partial:H_nX\rightarrow H_{n-1}(A\cap B)$ as the composition $\partial_1k_1^{*-1}l_1^*=-\partial_2k_2^{*-1}l_2^*$. The remainder of the proof is showing that the Mayer-Vietoris sequence is exact. This results to a diagram-chasing challenge. We will show that $H_nA\dsum H_nB \rightarrow H_nX \rightarrow H_{n-1}(A\cap B)$ is exact, and refer to \cite{Eilenberg} for the rest of the pairs. 
 
 We start by showing $\partial(k^*-l^*)=0$. This follows from the two decompositions of $\partial$:
 $$\partial k^*-\partial l^*=\partial_1k_1^{*-1}l_1^*k^*+\partial_2k_2^{*-1}l_2^*l^*.$$ Both summands contain two consecutive maps in an exact sequence, and are hence $0$.
@@ -145,7 +145,7 @@ Omitted. See \cite{Spanier}.
 \end{proof}
 
 \subsection{Examples}
-In this section we show a few examples of how convenient the Mayer-Vietoris sequence can be for calculating homology groups.
+In this section, we show a few examples of how convenient the Mayer-Vietoris sequence can be for calculating homology groups.
 
 \begin{example}[One-point wedges of circles]
 Consider the figure eight $8=S^1\wedge S^1$ where $\wedge$ is the wedge product identifying the south-pole $S$ of the top circle with the north-pole $N$ of the lower circle. Let $U_N$ be a small open neighbourhood of $N$, the north-pole of the top circle.We can cover $8$ by $A=8\setminus U_N\homotopic S^1$, and $B=D^+\homotopic \bullet$, the upper half circle of the top circle. Then $A\cap B= D^+\setminus U_N\homotopic \bullet \sqcup \bullet$. It is easy to see that this cover satisfies Mayer-Vietoris. Now note that $$H_n(\bullet \sqcup \bullet)=\begin{cases}\mathbb{Z}\times\mathbb{Z} & n=0\\ 0 & \text{otherwise}\end{cases}$$ by Proposition \ref{disjoint-union}. Since $\tilde{H}_0S^1\dsum \tilde{H}_0\bullet=0$, the reduced Mayer-Vietoris sequence reads 
@@ -162,7 +162,7 @@ This argument can easily be extended by induction to show the wedge of $m$ circl
 0 \arrow[r] & \mathbb{Z}^{m-1} \arrow[r, "k^*"] & \tilde{H}_18 \arrow[r, "\partial"] & \mathbb{Z} \arrow[r] & 0 \arrow[r] & \tilde{H}_08 \arrow[r] & 0
 \end{tikzcd}\]
 
-This shows $\tilde{H}_0 \bigwedge_m S^1=0$. Again  $k:S^1\rightarrow \bigwedge_m S^1$ admits a retraction $r:\bigwedge_m S^1\rightarrow S^1$ which is the identity on every circle except the one that had $U_x$ removed, and which folds final circle onto any other circle. Therefore Proposition \ref{retraction-iso} gives that $H_1 \bigwedge_m S^1\iso \mathbb{Z}^{m}$.
+This shows $\tilde{H}_0 \bigwedge_m S^1=0$. Again  $k:S^1\rightarrow \bigwedge_m S^1$ admits a retraction $r:\bigwedge_m S^1\rightarrow S^1$ which is the identity on every circle except the one that had $U_x$ removed, and which folds the final circle onto any other circle. Therefore Proposition \ref{retraction-iso} gives that $H_1 \bigwedge_m S^1\iso \mathbb{Z}^{m}$.
 \end{example}
 
 \begin{example}
