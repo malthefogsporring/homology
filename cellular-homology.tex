@@ -18,11 +18,24 @@ $\RP{2}$ is a CW-complex with 1 0-cell, 1 1-cell and 1 2-cell, and where the glu
 
 \begin{example}
 The torus $T^2$ has a cellular structure composed of 1 0-cell, 2 1-cells and 1 2-cell. We can use the familiar identification of $T^2$ as a quotient of the square, where the two $1$-cells $a$ and $b$ have their endpoints glued to a single $0$-cell, as the corners are identified to a single point. 
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAA8QBfU9TXfIRQBGclVqMWbTjz7Y8BImWHj6zVog7deIDPMFFRK6mqmaZ4mFADm8IqABmAJwgBbJGRA4ISURPVsdNqOLu6Ift5IAMwmkhogAEbBIM5uSABM1JGIMf5mIEGyKaEeWT6ImXnxSVwUXEA
-\[\begin{tikzcd}
-x \arrow[r, "a"] \arrow[d, "b"] & x \arrow[d, "b"] \\
-x \arrow[r, "a"]                & x               
-\end{tikzcd}\]
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \filldraw [black] (0,0) circle (1.5pt) node [left,scale=1] {$x$} 
+    -- (3,0) circle (1.5pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,below,scale=1]{$a$} 
+    -- (3,3) circle (1.5pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{} node[pos=0.5,right,scale=1]{$b$}
+    -- (0,3) circle (1.5pt) node [left,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,above,scale=1]{$a$}
+    -- (0,0) circle (0pt) 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{}
+    node[pos=0.5,left,scale=1]{$b$};
+\end{tikzpicture}
+\end{center}
+
 The gluing map $\phi:S^1\rightarrow X^1$ is then the concatenation $a\cdot b\cdot -a \cdot -b$, where we are thinking of $a$ and $b$ as paths.
 \end{example}
 
@@ -167,19 +180,52 @@ The inclusion $j:H_1(X^1)\rightarrow H_1(X^1,\bullet)$ is an isomorphism by prop
 
 \begin{example}[Orientable surface of genus $g$]
 $M_g$ is the orientable surface with $g$ "holes". It is known that it can be identified as a quotient of the regular $4g$-sided polygon, where side $i$ is identified with the opposite of side $i+2$ (counted clockwise). In pictures,  $M_1$ is the torus $T^2$, identified as the familiar quotient of the square:
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAA8QBfU9TXfIRQBGclVqMWbTjz7Y8BImWHj6zVog7deIDPMFFRK6mqmaZ4mFADm8IqABmAJwgBbJGRA4ISURPVsdAD6wtqOLu6IAMzU3r4mkhogwQBMYSDObkgpsT7RCQGawaGyGRHZuR4FZslBaVwUXEA
-\[\begin{tikzcd}
-x \arrow[r, "a_1"]                  & x                  \\
-x \arrow[r, "a_1"] \arrow[u, "a_2"] & x \arrow[u, "a_2"]
-\end{tikzcd}\]
-$M_2$ is the similar quotient of the 8-sided polygon:
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoBmAXVJADcBDAGwFcYkQAPEAX1PU1z5CKAEwVqdJq3Zde-bHgJFypERIYs2iTjz4gMCoctLF1UrTrn6Bi4cjEAGM5pm75gpSjJOaG6dtk9Aw87BxNnf0sgmyMUMLVfc1duCRgoAHN4IlAAMwAnCABbJDCQHAgkMkkXbXoAfWIQGkZ6ACMYRgAFGM8QRhgcnDcQfKLKmnKkMWrI+pFh0eLEFTKKxGm-C3rGq0WkABYJtZXN9jmmvraO7sNe-sGFgqXD1aQAVkSakHryR7HED6vRAANk+szq+z+SwA7EckKCZls6r9dk8SnDELDEWcITxKNwgA
-\[\begin{tikzcd}
-                   & x \arrow[ld, "a_4"]                  & x \arrow[rd, "a_2"] \arrow[l, "a_3"] &                    \\
-x                  &                                      &                                      & x \arrow[d, "a_1"] \\
-x \arrow[u, "a_3"] &                                      &                                      & x                  \\
-                   & x \arrow[r, "a_1"] \arrow[lu, "a_4"] & x \arrow[ru, "a_2"]                  &                   
-\end{tikzcd}\]
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \filldraw [black] (0,0) circle (1.5pt) node [left,scale=1] {$x$} 
+    -- (3,0) circle (1.5pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,below,scale=1]{$a_1$} 
+    -- (3,3) circle (1.5pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{} node[pos=0.5,right,scale=1]{$a_2$}
+    -- (0,3) circle (1.5pt) node [left,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,above,scale=1]{$a_1$}
+    -- (0,0) circle (0pt) 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,left,scale=1]{$a_2$};
+\end{tikzpicture}
+\end{center}
+
+$M_2$ is the similar quotient of the octagon:\begin{center}
+\begin{tikzpicture}[scale=1]
+    \filldraw [black] (-1,1+1*1.41) circle (1pt) node [left,scale=1] {$x$} 
+    -- (1,1+1*1.41) circle (1pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,above,scale=1]{$a_1$} 
+    -- (1+1*1.41,1) circle (1pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{} node[pos=0.5,right,scale=1]{$a_2$}
+    -- (1+1*1.41,-1) circle (1pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{}
+    node[pos=0.5,right,scale=1]{$a_1$}
+    -- (1,-1-1.41) circle (1pt) node [below,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,right,scale=1]{$a_2$}
+    -- (-1,-1-1.41) circle (1pt) node [below,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{}
+    node[pos=0.5,below,scale=1]{$a_3$}
+    -- (-1-1.41,-1) circle (1pt) node [left,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{}
+    node[pos=0.5,left,scale=1]{$a_4$}
+    -- (-1-1.41,1) circle (1pt) node [left,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{}
+    node[pos=0.5,left,scale=1]{$a_3$}
+    -- (-1,1+1.41) circle (0pt)
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{}
+    node[pos=0.5,left,scale=1]{$a_4$};
+\end{tikzpicture}
+\end{center}
 It is clear that $M_g$ should be given a CW-complex structure with $1$ $0$-cell, $2g$ $1$-cells and $1$ $2-cell$ glued along the concatenation $f=a_1\cdot a_2 \cdot -a_1 \cdot -a_2 \cdot a_3 \cdot \dots \cdot -a_{2g-1} \cdot -a_{2g}$. According to Theorem \ref{boundary-formula}, we should calculate the degree of the composition of $f$ with the map collapsing everything but the circle $a_i$. This is the map $a_i\cdot -a_i\homotopic 0$, so $d_2=0$. The chain complex is:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanLjxAZseAkQBMo6vWatEIGfKWqNnAHrAjAcy3de+gUQDMp8QtpOQUVNU1tL35DFAAWAPNJKw5OMRgoV3giUAAzACcIWSQyEBwIJBFApPZIkHzCiuoypBMqyxrPOoKixFbmxH82thSdep7B-vih5K4KTiA
@@ -197,11 +243,22 @@ $$H_n(M_g)=\begin{cases}\mathbb{Z} & n=0\\
 \begin{example}[Klein bottle]
 The Klein bottle $K$ is the following quotient of the square with its interior:
 
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAPEAX1PU1z5CKcqWLU6TVuy69+2PASJlxNBizaJOPPiAwKhRUVTVTN27hJhQA5vCKgAZgCcIAWyQAmGjghJRkhrs9DpOrh6IZCC+SADMNIz0AEYwjAAKAorCIIwwjjggpkFaIXIgLu7+Pn6I8YHSWkmh5eFIUTGI3vXmTZbcQA
-\[\begin{tikzcd}
-x \arrow[r, "a"]                & x \arrow[d, "b"] \\
-x \arrow[r, "a"] \arrow[u, "b"] & x               
-\end{tikzcd}\]
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \filldraw [black] (0,0) circle (1.5pt) node [left,scale=1] {$x$} 
+    -- (3,0) circle (1.5pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,below,scale=1]{$a$} 
+    -- (3,3) circle (1.5pt) node [right,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{} node[pos=0.5,right,scale=1]{$b$}
+    -- (0,3) circle (1.5pt) node [left,scale=1] {$x$} 
+    node[currarrow,pos=0.5, xscale=1,sloped,scale=1.5]{}
+    node[pos=0.5,above,scale=1]{$a$}
+    -- (0,0) circle (0pt) 
+    node[currarrow,pos=0.5, xscale=-1,sloped,scale=1.5]{}
+    node[pos=0.5,left,scale=1]{$b$};
+\end{tikzpicture}
+\end{center}
 
 We can therefore give it a CW-complex structure of $1 0$-cell (the point $x$), $2$ $1$-cells corresponding to the paths $a$ and $b$, and one $2$-cell glued along the path $f=a\cdot b\cdot -a \cdot b$. By Theorem \ref{boundary-formula}, we should calculate the degree of $f$ composed with the quotient collapsing respectively $b$ and $a$ to a point. The first of these is $a\cdot -a \homotopic 0$, and the second is $b\cdot b\homotopic z^2$. It follows that $d_2(x)=(0,2x)$. The chain complex reads:
 

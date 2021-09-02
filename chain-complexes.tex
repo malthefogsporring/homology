@@ -71,12 +71,21 @@ since $rf=id_A$. It follows that $(r,g)$ is also surjective, so it is an isomorp
 \end{enumerate}
 
 \end{proof}
-%TRASH PROPOSITION
-\begin{corollary}\label{retraction-iso}
+
+The next proposition is not necessarily about chain complexes, but is very much in the flavour of Proposition \ref{short-seq-direct-sum} and will be very useful in our study of chain complexes.
+
+\begin{proposition}\label{retraction-iso}
 If $f:A\rightarrow B$ admits a retraction $g:B\rightarrow A$, then $$B\iso im(f)\dsum ker(g)$$
-\end{corollary}
+\end{proposition}
 
 \begin{proof}
+We define a homomorphism $$h:B\rightarrow im(f)\dsum ker(g)$$
+$$b\mapsto (fg(b),b-fg(b))$$
+This is well defined as $fg(b)\in im(f)$ trivially, and $g(b-fg(b))=g(b)-g(b)=0$.
+First we show $h$ is injective. Let $(fg(b),b-fg(b))=(0,0)$. Then $b-fg(b)=b=0$, as $fg(b)=0$, so $h$ is injective. Next we show $h$ is surjective. Let $(x,y)\in im(f)\dsum ker(g)$, and $a\in A$ be such that $f(a)=x$. Then $h(g(b),$ (MISSING.........)
+
+
+
 We can define $r|:=r|_{im(f)}:im(f)\rightarrow A$, which is injective since $rf$ is an isomorphism. Trivially we can define $f:A\rightarrow im(f)$, which by abuse of notation we give the same name as $f:A\rightarrow B$. The composition $fr|(x):im(f)\rightarrow B$ is injective, as $$fr|(x)=0\implies r|(x)=r(0)=0\implies x=0$$
 as $r|$ is injective.
 
