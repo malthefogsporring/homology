@@ -89,27 +89,25 @@ It follows that $h$ is surjective, so it is in fact an isomorphism.\end{proof}
 We finish this section with a technical lemma that will become useful in section \ref{sec-axioms}.
 
 \begin{lemma}[Braid lemma]\label{braid-lemma}
-Suppose three long exact sequences and a chain complex make the following commutative diagram.
-
+Suppose three long exact sequences and a chain complex make the following commutative diagram:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAzFVqMWbAELdeIDNjwEiAVnLj6zVohABxOXyWC1pMdS1TdACUML+yocgBMpZ5sk6QAYTuKBKigiGhaebAAifg4mQWYe2mwAolHGgcgALG7xViAAYikBTgBsWaEJugCSBY5EAAyktdle1THI9e5lOQDyLWn16U1svcUNg7rDRCUDnc1c4jBQAObwRKAAZgBOEAC2SPUgOBBImRLlIGsA+sR2mzvH1IdIJac5l843W7uIz4+IwSAAIxgYCgSAAtOkAJwzNiXEQfO6IMgHI6IE6WLwACyuCK+J1+6heWIu7x460+SEJv1cgOBoLR0KJbGx8LJ5wpiH2BOoQJBx0ZGLYixxbNuX2Rv2evPpEIFYV0ACsRfIxU8HqiAOwwxUk3FILUopA0wU61kqjlUzXakDC0nmxEG37-E02i5m8mI-6-AAc1su6T1iBpPut2IDoo5jN++2lSBEtQjiOIXNR+xdwtqgeT6qQyJdSszifFEtRyNjiDB8aLRpzSJp5fj1qV4ftXy9pf+5craflrvDFC4QA
-\begin{tikzcd}
+\[\begin{tikzcd}
 {} \arrow[rd, bend left]              &                                                      &                                       &                                                      &                                       &                                                   & {} \\
                                       & A \arrow[rd, "f_1"] \arrow[rr, "g_1", bend left=49]  &                                       & D \arrow[rr, "h_3", bend left=49] \arrow[rd, "g_2"]  &                                       & G \arrow[rd, "h_4"] \arrow[ru, "j_4", bend left]  &    \\
 O \arrow[ru, "g_0"] \arrow[rd, "j_0"] &                                                      & C \arrow[rd, "f_2"] \arrow[ru, "h_2"] &                                                      & F \arrow[ru, "j_3"] \arrow[rd, "g_3"] &                                                   & I  \\
                                       & B \arrow[ru, "h_1"] \arrow[rr, "j_1", bend right=49] &                                       & E \arrow[rr, "f_3", bend right=49] \arrow[ru, "j_2"] &                                       & H \arrow[ru, "f_4"] \arrow[rd, "g_4", bend right] &    \\
 {} \arrow[ru, bend right]             &                                                      &                                       &                                                      &                                       &                                                   & {}
-\end{tikzcd}
-
+\end{tikzcd}\]
 Then the chain complex is also a long exact sequence.
 \end{lemma}
 \begin{proof}
-By symmetry of the diagram, it does not matter which sequence is the chain complex. We can assume it is the sequence with homomorphisms $f_i$. We are given that $im(f_i)\subseteq ker(f_{i+1})$, and need to show that $ker(f_{i+1})\subseteq im(f_i)$. By the symmetry of the diagram, it is enough to show this for $i=1,2,3$. We will show that $ker(f_2)\subseteq im(f_1)$ here, and do the other two cases in the Appendix.
+By symmetry of the diagram, it does not matter which sequence is the chain complex. We can assume it is the sequence with homomorphisms $f_i$. We are given that $im(f_i)\subseteq ker(f_{i+1})$ and need to show that $ker(f_{i+1})\subseteq im(f_i)$. By the symmetry of the diagram, it is enough to show this for $i=1,2,3$. We will show that $ker(f_2)\subseteq im(f_1)$ here, and do the other two cases in the Appendix.
 
 Let $x\in ker(f_2)$. Then $0=f_2(x)=j_2f_2(x)=g_2h_2(x)$ by commutativity. It follows that $h_2(x)\in ker(g_2)=im(g_1)$. So $\exists x_1\in A$ s.t. $g_1 (x_1)=h_2(x)$. By commutativity, $g_1(x_1)=h_2f_1 (x_1)$. So we have that $0=g_1 (x_1)-h_2(x)=h_2(f_1 (x_1)-x)$. Let $x_2:=f_1(x_1)-x\in ker(h_2)=im(h_1)$. Then $\exists x_3\in B$ s.t. $h_1(x_3)=x_2$.
 
 Now note that $$j_1(x_3)=f_2h_1(x_3)=f_2(x_2)=f_2(f_1(x_1)-x)=0,$$
 where the last equality follows from $f_2f_1(-)=0$ and $f_2(x)=0$. We therefore have that $x_3\in ker(j_1)=im(j_0)$. So there exists $x_4\in O$ s.t. $j_0(x_4)=x_3$. Consider $g_0(x_4).$ It satisfies $f_1g_0(x_4)=h_1j_0(x_4)=h_1(x_3)=x_2=f_1(x_1)-x$. Therefore we have
 $$x=f_1(x_1-g_0(x_4)).$$
-This shows $x\in im(f_1)$ as required.
+This shows that $x\in im(f_1)$ as required.
 \cite{Eilenberg}
 \end{proof}

@@ -1,6 +1,6 @@
 \section{The Mayer-Vietoris Sequence}\label{sec-mayer-vietoris}
 \subsection{Statement and proof}
-In the previous section, we relied heavily on identifying homomorphisms in a long exact sequence as either isomorphisms or $0$-maps. This is not the case in general, and it can feel like the axioms give very little help with identifying homology groups and their maps when they are not trivial. However, in many cases we can cover a space $X$ by the interiors two spaces $A$ and $B$ whose homology groups we know. In this case, we say that $(A,B)$ is a Mayer-Vietoris cover of $X$. The excision axiom gives us a very convenient method for relating the homology groups of $X$ to the homology groups of its Mayer-Vietoris cover:
+In the previous section, we relied heavily on identifying homomorphisms in a long exact sequence as either isomorphisms or $0$-maps. In more general cases, it is difficult to calculate homology groups directly from the axioms. However, in many cases, we can cover a space $X$ by two spaces $A$ and $B$ whose homology groups we know. Provided $A$ and $B$ satisfy certain conditions, we say that $(A,B)$ is a \defn{Mayer-Vietoris cover} of $X$. The excision axiom gives us a very convenient method for relating the homology groups of $X$ to the homology groups of its Mayer-Vietoris cover:
 
 \begin{theorem}\label{mayer-vietoris}
 Let $A$ and $B$ be closed subsets of $X$ whose interiors cover $X$. Suppose furthermore that  
@@ -23,7 +23,7 @@ A\cap B \arrow[u, "i"] \arrow[r, "j"] & B \arrow[u, "l"]
 
 
 \begin{remark}\label{mayer-vietoris-excision}
-The definition is set up such that the inclusions $(B,A\cap B)\rightarrow(X,A)$ and $(A,A\cap B)\rightarrow(X,B)$ are excisions, and hence induce isomorphisms in homology. In the first case, $A\setminus A\cap B$ is open since its complement, is closed. This set satisfies excision, since $\overline{A\setminus(A\cap B)}\subseteq (\overline{B\setminus(A\cap B)})^{\mathsf{c}}=int(A)$ by assumption. A similar argument shows that the second inclusion is an excision.
+The definition is set up such that the inclusions $(B,A\cap B)\rightarrow(X,A)$ and $(A,A\cap B)\rightarrow(X,B)$ are excisions, and hence induce isomorphisms in homology. For example, note that $A\setminus A\cap B$ is open since its complement is closed. This set satisfies excision, since $\overline{A\setminus(A\cap B)}\subseteq (\overline{B\setminus(A\cap B)})^{\mathsf{c}}=int(A)$ by assumption. A similar argument shows that the second inclusion is an excision.
 \end{remark}
 
 To prove this theorem, we follow the approach laid out in \cite{Eilenberg}, first proving a lemma. 
@@ -38,15 +38,13 @@ G_1'                                                     &                      
 G_2 \arrow[rd, "h_1"] \arrow[ru, "i_2"] \arrow[uu, "k_1"] &                                                           & G_1 \arrow[ld, "h_2"] \arrow[lu, "i_1"] \arrow[uu, "k_2"] \\
                                                          & G_0'                                                      &                                                          
 \end{tikzcd}\]
-Suppose each triangle commutes, $k_1,k_2$ are isomorphisms, and the diagonals are exact. Then $h_1k_1^{-1}l_1=-h_2k_2^{-1}l_2$.
+Suppose we have commutativity in each triangle, $k_1,k_2$ are isomorphisms and the diagonals are exact. Then $h_1k_1^{-1}l_1=-h_2k_2^{-1}l_2$.
 \end{lemma}
 
 \begin{proof}
-By Lemma \ref{dsum-lemma}, $(i_1+i_2):G_1\dsum G_2\rightarrow G$ is an isomorphism, and so is $(j_1,j_2):G\rightarrow(G'_1,G'_2)$. What does this tell us? Every $x\in G$ is identified with a unique $(j_1(x),j_2(x))\in G_1'\dsum G_2'$, and there are unique $x_2,x_1\in G_2\dsum G_1$ such that $i_2(x_2)+i_1(x_1)=x$. These two representations are related by an isomorphism $(k_1^{-1},k_2^{-1})$. It is not immediately obvious that this isomorphism maps $(j_1(x),j_2(x))$ to $(x_2,x_1)$. However, by commutativity, $k_1^{-1}$ is the inverse of $j_1i_2$, and $j_1(i_2(x_2))=j_1(x)$, so $k_1^{-1}$ maps $j_1(x)$ to $x_2$. A similar argument shows $k_2^{-1}$ maps $j_2(x)$ to $x_1$.
+By Lemma \ref{dsum-lemma}, $(i_1+i_2):G_1\dsum G_2\rightarrow G$ is an isomorphism, and so is $(j_1,j_2):G\rightarrow(G'_1,G'_2)$. What does this tell us? Every $x\in G$ is identified with a unique $(j_1(x),j_2(x))\in G_1'\dsum G_2'$, and there are unique $x_2,x_1\in G_2\dsum G_1$ such that $i_2(x_2)+i_1(x_1)=x$. These two representations are related by an isomorphism $(k_1^{-1},k_2^{-1})$. We would like to show that this isomorphism maps $(j_1(x),j_2(x))$ to $(x_2,x_1)$. By commutativity, $k_1^{-1}$ is the inverse of $j_1i_2$, and $j_1(i_2(x_2))=j_1(x)$, so $k_1^{-1}$ maps $j_1(x)$ to $x_2$. A similar argument shows $k_2^{-1}$ maps $j_2(x)$ to $x_1$. It follows that $$x=(i_2+i_1)(k_1^{-1},k_2^{-1})(j_1,j_2)x=i_2k_1^{-1}j_1(x)+i_1k_2^{-1}j_2(x).$$ In particular, letting $g\in G_0$ and $x=i_0(g)$, 
 
-It follows that $$x=(i_2+i_1)(k_1^{-1},k_2^{-1})(j_1,j_2)x=i_2k_1^{-1}j_1(x)+i_1k_2^{-1}j_2(x).$$ In particular, letting $g\in G_0$ and $x=i_0(g)$, 
-
-$$i_0(g)=i_2k_1^{-1}j_1i_0(g)+i_1k_2^{-1}j_2i_0(g)$$
+$$i_0(g)=i_2k_1^{-1}j_1i_0(g)+i_1k_2^{-1}j_2i_0(g).$$
 Applying $j_0$ to both sides and noting that $j_0i_0(g)=0$ by exactness, we get that 
 $$j_0i_2k_1^{-1}j_1i_0(g)=-j_0i_1k_2^{-1}j_2i_0(g).$$
 By commutativity in the diagram, this also gives
@@ -57,7 +55,7 @@ $$h_1k_1^{-1}l_1(g)=-h_2k_2^{-1}l_2.$$
 We will use this lemma to prove the main result.
 
 \begin{proof}[Proof of Theorem \ref{mayer-vietoris}]
-The proof will use a certain diagram, where all maps are induced by canonical inclusions, except for the boundary map $d$ (which is the boundary map of the homology sequence of $(X,A\cap B)$), and the maps $\partial_i$ (which are defined to commute in their triangle).
+The proof will use a certain diagram, where all maps are induced by canonical inclusions, except for the boundary map $d$, which is the boundary map of the homology sequence of $(X,A\cap B)$, and the maps $\partial_i$, which are defined to commute in their triangle.
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfTAAoBBADqCAxvTQACAEIBKEAF9S6TLnyEUAJlLFqdJq3bcw-BUpAZseAkXLbdDFm0SceU08stqiZDff1OXMAkADXdzFSt1ZFsAZj9HQx5eYNJ+OUUPVWtNUjiaBwNnI2TSWTCLLKitAFZ4wsCBVOExSTKM8M9s6NJa-P9Evikm0XFpdLMKyO9SADY6gO5gMABaYnkBZtG2iYivFDIAFnmBkqER1vTdGCgAc3giUAAzACcIAFskGJocCCQDvoSzkYXGIAD0AFRhF7vT7fX6IaoA+rAjQQqGvD6IGZwpCIvSAkAAay4qMh7WhmIA7DjEP98fViWCyWYKUhqSAfkgAJxIgJYElo8kY7k0vEFAIAKwFzKewsQPI58Lp4vYUqZ6JhWJpCpVzn56qFmq+ipF9ICYEFLLlZBNiGNuqJltlmq0tvt-SBTpArMQ7M5iAAHLz2MI0PRnngmCCNZjsbag2aQ4IwxGsFGNDHTf6Ew6oJnELZba6HRKvT7C-6bQ6sGW5RX4e6CW9BZR5EA
 \[\begin{tikzcd}
@@ -85,7 +83,7 @@ We have shown $im(k^*-l^*)\subseteq ker(\partial)$ and $ker(\partial)\subseteq i
 
 We would like to also show, in a similar vein to regular homology sequences, that maps between Mayer-Vietoris covers induce maps between Mayer-Vietoirs sequences. We say that $f:(X;X_1,X_2)\rightarrow (Y;Y_1,Y_2)$ is a \defn{map between the Mayer-Vietoris covers of X and Y} if $f(X_1)\subseteq Y_1$ and $f(X_2)\subseteq Y_2$. Note this necessarily implies $f(X_1\cap X_2)\subseteq Y_1\cap Y_2$.
 
-\begin{prop} Let $f:(X;X_1,X_2)\rightarrow (Y;Y_1,Y_2)$ be map between the Mayer-Vietoris covers of $X$ and $Y$. Then $f$ induces maps between their Mayer-Vietoris sequences, which commute with the sequence.
+\begin{prop} Let $f:(X;X_1,X_2)\rightarrow (Y;Y_1,Y_2)$ be map between the Mayer-Vietoris covers of $X$ and $Y$. Then $f$ induces maps between their Mayer-Vietoris sequences in a commutative manner.
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQAJAfWDAGpiAXwAaIQaXSZc+QigBMFanSat23MAAphXYgB1dAY3poABNrkBKMRJAZseAkQDMimgxZtEnLmG17dUHDMALYm6ubWkvYyRAAsrsoeaj6i4lHSjihkxEruql7cvAKCAJqRtlIOssgKOW4qnt6aJTr6RqYtluV2GdUudYn5TS3+gSFhPp3dlTEo8QN5jeplaRXRmcjkpAsN7NPr1VtU9Ule+71EAKwJi3urPVVX27m7Z4JKMFAA5vBEoABmACcIMEkFsQDgIEh4oNGv8AHoAKnKQJBSDIEKhiGusPYCORq1RoMQCkxSAAbCchviUcDiS4yYgAOxUuFI2loxDgyHowl09E0Hkkvmc0lCpwi4mUxlMyVIHFC8lyxAwoWXZUADkFWNiyoAnNqwcqGULiORlSzGcQhJRBEA
 \[\begin{tikzcd}
 {} \arrow[r] & H_{n+1}X \arrow[d, "f^*"] \arrow[r] & H_n(X_1\cap X_2) \arrow[d, "f^*"] \arrow[r] & H_nX_1\dsum H_nX_2 \arrow[d, "f^*"] \arrow[r] & H_nX \arrow[d, "f^*"] \arrow[r] & {} \\
@@ -148,7 +146,7 @@ Omitted. See \cite{Spanier}.
 In this section, we show a few examples of how convenient the Mayer-Vietoris sequence can be for calculating homology groups.
 
 \begin{example}[One-point wedges of circles]
-Consider the figure eight $8=S^1\wedge S^1$ where $\wedge$ is the wedge product identifying the south-pole $S$ of the top circle with the north-pole $N$ of the lower circle. Let $U_N$ be a small open neighbourhood of $N$, the north-pole of the top circle.We can cover $8$ by $A=8\setminus U_N\homotopic S^1$, and $B=D^+\homotopic \bullet$, the upper half circle of the top circle. Then $A\cap B= D^+\setminus U_N\homotopic \bullet \sqcup \bullet$. It is easy to see that this cover satisfies Mayer-Vietoris. Now note that $$H_n(\bullet \sqcup \bullet)=\begin{cases}\mathbb{Z}\times\mathbb{Z} & n=0\\ 0 & \text{otherwise}\end{cases}$$ by Proposition \ref{disjoint-union}. Since $\tilde{H}_0S^1\dsum \tilde{H}_0\bullet=0$, the reduced Mayer-Vietoris sequence reads 
+Consider the figure eight $8=S^1\wedge S^1$ where $\wedge$ is the wedge product identifying the south-pole $S$ of the top circle with the north-pole $N$ of the lower circle. Let $U_N$ be a small open neighbourhood of $N$, the north-pole of the top circle.We can cover $8$ by $A=8\setminus U_N\homotopic S^1$, and $B=D_+\homotopic \bullet$, the upper half circle of the top circle. Then $A\cap B= D_+\setminus U_N\homotopic \bullet \sqcup \bullet$. It is easy to see that this cover satisfies Mayer-Vietoris. Now note that $$H_n(\bullet \sqcup \bullet)=\begin{cases}\mathbb{Z}\times\mathbb{Z} & n=0\\ 0 & \text{otherwise}\end{cases}$$ by Proposition \ref{disjoint-union}. Since $\tilde{H}_0S^1\dsum \tilde{H}_0\bullet=0$, the reduced Mayer-Vietoris sequence reads 
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanLjxAZseAkQBMo6vWatEIGXgaxgACU4B9IQA5tvfQKIBmU+IW0nIKKmqanrp8BoLIACwB5pJWHNxe-IYoAKyJEpbWUrb2Ts7EHmlR3pnIAGy5QSlcYjBQAObwRKAAZgBOELJIZCA4EEhCFb39Y9QjSCaBySAA1gB6AFSRkwOI87OI-gv5Mmh0PXiMm33bB3txE1dICcOjiFn3U68zLzWcFJxAA
 \[\begin{tikzcd}
@@ -156,13 +154,13 @@ Consider the figure eight $8=S^1\wedge S^1$ where $\wedge$ is the wedge product 
 \end{tikzcd}\]
 Therefore $\tilde{H}_08=0$, so by Proposition \ref{reduced-homology}, $H_08=\mathbb{Z}$. Furthermore, note that the fold $f:8\rightarrow S^1$, which is the identity on the lower circle, and the reflection on the upper circle, is a retraction of the inclusion $k:S^1\rightarrow 8$ of the lower circle. Since $H_n$ is a functor, $f^*$ is a retraction of $k^*$. By Proposition \ref{retraction-iso}, $H_18\iso \mathbb{Z}\times\mathbb{Z}$. The rest of the Mayer-Vietoris sequence easily gives $H_n8=0$ whenever $n\neq 0,1$.
 
-This argument can easily be extended by induction to show the wedge of $m$ circles (wedged at the same point) $\bigwedge_m S^1$ has homology groups $H_1\bigwedge_m S^1=\mathbb{Z}^m$ and $H_0\bigwedge_m S^1=\mathbb{Z}$. Let $A=\bigwedge_{m} S^1\setminus U_x\homotopic \bigwedge_{m-1} S^1$, where $U_x$ is a small open neighbourhood of some point in one of the circles (not the wedge point), and $B=I\homotopic \bullet$, a small interval of the punctured circle containing the puncture in its interior and not intersecting the wedge point. Then $A$ and $B$ easily satisfy Mayer-Vietoris, and $A\cap B\homotopic \bullet \sqcup \bullet$. By induction, the reduced Mayer-Vietoris sequence reads:
+This argument can easily be extended by induction to show the wedge of $m$ circles (wedged at the same point $S\in S^1$) $\bigwedge_m S^1$, has homology groups $H_1\bigwedge_m S^1=\mathbb{Z}^m$ and $H_0\bigwedge_m S^1=\mathbb{Z}$. Let $A=\bigwedge_{m} S^1\setminus U_N\homotopic \bigwedge_{m-1} S^1$, where $U_{N}$ is a small open neighbourhood of $N$ in one of the circles, and $B=D^n_+\homotopic \bullet$, the upper hemisphere of the same circle. Then $A$ and $B$ easily satisfy Mayer-Vietoris, and $A\cap B\homotopic \bullet \sqcup \bullet$. By induction, the reduced Mayer-Vietoris sequence reads:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAdKQFs6OABYAjZcABanAHrAATLIC0uzlx4gM2PASK7R1es1aIQMvA1jAAEpwD6QgBymvJYCRADMduKO0nIKKmqaQeZ8VoLIACyRDpLOHNzB-NYoAKxZEk4uUm4e3j7EgfnJIUXIAGxl0blcYjBQAObwRKAAZgBOELJIZCA4EEhCjWMT89SzSLZROSAA1loAVElLk4gba4gRmxUyaHSjeIyH48cXZ+mLT0iZM3OIxe-Lv1WP1anAonCAA
 \[\begin{tikzcd}
-0 \arrow[r] & \mathbb{Z}^{m-1} \arrow[r, "k^*"] & \tilde{H}_18 \arrow[r, "\partial"] & \mathbb{Z} \arrow[r] & 0 \arrow[r] & \tilde{H}_08 \arrow[r] & 0
+0 \arrow[r] & \mathbb{Z}^{m-1} \arrow[r, "k^*"] & \tilde{H}_1\bigwedge_{m} S^1 \arrow[r, "\partial"] & \mathbb{Z} \arrow[r] & 0 \arrow[r] & \tilde{H}_0\bigwedge_{m} S^1 \arrow[r] & 0
 \end{tikzcd}\]
 
-This shows $\tilde{H}_0 \bigwedge_m S^1=0$. Again  $k:S^1\rightarrow \bigwedge_m S^1$ admits a retraction $r:\bigwedge_m S^1\rightarrow S^1$ which is the identity on every circle except the one that had $U_x$ removed, and which folds the final circle onto any other circle. Therefore Proposition \ref{retraction-iso} gives that $H_1 \bigwedge_m S^1\iso \mathbb{Z}^{m}$.
+This shows $\tilde{H}_0 \bigwedge_m S^1=0$. Again  $k:S^1\rightarrow \bigwedge_m S^1$ admits a retraction $r:\bigwedge_m S^1\rightarrow S^1$ which is the identity on every circle except the one that had $U_N$ removed, and which folds the final circle onto any other circle. Therefore Proposition \ref{retraction-iso} gives that $H_1 \bigwedge_m S^1\iso \mathbb{Z}^{m}$.
 \end{example}
 
 \begin{example}
@@ -173,24 +171,21 @@ Let X be the quotient of the $2$-sphere which identifies the North and South pol
                                          & S^1 \sqcup S^1 \arrow[u, "i"] &                                          \\
 S^1 \arrow[ru, "i_1"'] \arrow[ruu, "id"] &                               & S^1 \arrow[lu, "i_2"] \arrow[luu, "id"']
 \end{tikzcd}\]
-It induces the following commutative map in homology (for $n=0,1$), from which the formula for $i^*$ can be easily read. 
+It induces the following commutative map in homology (for $n=0,1$), which forces $i^*(x,y)=x+y$.
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBpiBdUkANwEMAbAVxiRAB12BbOnACwBGA4AC0Avpzxd4AAk49+Q0WJBjS6TLnyEUZAAxVajFm3m9Bw8avUgM2PASJ7SAJkP1mrRB27mlVtQ17bSIXV3djLx8FC2VVQxgoAHN4IlAAMwAnCC4kZxAcCCQyI082LGsM7NzEMIKixHyPE28ACgAPUj0AShBqBjoBGAYABU0HHRBMrCS+HEqQLJykAGZqQrzqZqjWgE8u3sDF6tX1hpLttl2+kAGh0fGQ72nZ+aOlmrqNxAvItnb4mIgA
 \[\begin{tikzcd}
                                                    & \mathbb{Z}                                 &                                                    \\
                                                    & \mathbb{Z}\times \mathbb{Z} \arrow[u, "i"] &                                                    \\
 \mathbb{Z} \arrow[ru, "{(x,0)}"'] \arrow[ruu, "x"] &                                            & \mathbb{Z} \arrow[lu, "{(y,0)}"] \arrow[luu, "y"']
 \end{tikzcd}\]
-
 The fact that $i_1^*(x)=(x,0)$ and $i_2^*(y)=(0,y)$ follows from Proposition \ref{disjoint-union}.
-
 The Mayer-Vietoris sequence reads as follows:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPoAmAAQANLjxAZseAkTmjq9Zq0QgAOiYC2dHAAsARreAAtTmbzn4Cs5Zv2nnVbyaAkQAzHrihmxeVnYOzgHqfFqCyAAs4QaSxrJCKtyB-NooAKwZEkamJlAQOAicYjBQAObwRKAAZgBOEOZIZCA4EEhC+SBdPcPUg0i6EVmVaHSdeIzyCeO9iLPTiGFzFVgAegBUALwAHgDUAJ7r3Zt7O+n7bADWJ3cTiM87pS-GZkWyywqyEXAonCAA
 \[\begin{tikzcd}
 0 \arrow[r] & H_2 X \arrow[r, "\partial_2"] & \mathbb{Z}\times \mathbb{Z} \arrow[r, "i^*=x+y"] & \mathbb{Z} \arrow[r, "k^*"] & H_1X \arrow[r, "\partial_1"] & \dots
 \end{tikzcd}\]
-
-Now $ker(i^*)=<(x,-x)>\iso \mathbb{Z}=im(\partial_2)$ by exactness. Since $\partial_2$ is injective, $H_2 X\iso \mathbb{Z}$. Additionally, since $i^*$ is surjective, $k^*=0$. Therefore, the rest of the sequence reads:
+Note $ker(i^*)=<(x,-x)>\iso \mathbb{Z}=im(\partial_2)$ by exactness. Since $\partial_2$ is injective, $H_2 X= \mathbb{Z}$. Additionally, since $i^*$ is surjective, $k^*=0$. Therefore, the rest of the sequence reads:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRGJAF9T1Nd9CKAIzkqtRizYAJAPpCABAA0uPEBmx4CRAEyjq9Zq0QgAOiYC2dHAAsARreAAtTmbzn48s5Zv2nnFbwaAkQAzHrihmxeVnYOzgFqfJqCyAAs4QaSxrLEytyB-FooAKwZEkbsXGIwUADm8ESgAGYAThDmSGQgOBBIQvkgre191D1IuhFZpiZodC14jHIJQx2IE2OIYZMVWAB6AFQAvAAeANQAnsttq1sb6dtsANYHV8OI9xvFnBScQA
 \[\begin{tikzcd}

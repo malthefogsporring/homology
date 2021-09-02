@@ -2,8 +2,8 @@
 We will now perform a calculation of the groups $H_kS^{n}$ from the axioms. Our approach will be an adaptation of that taken in \cite{Werndli}. We write $S^n$ for the $n$-sphere, $$S^n=\{\mathbf{x}\in \mathbb{R}^n:|\mathbf{x}|=1\},$$ and $D^n$ for the closed $n$-disk, 
 $$D^n=\{\mathbf{x}\in \mathbb{R}^n:|\mathbf{x}|\leq1\}.$$
 
-\begin{lemma}\label{sphere-isomorphism} For every $n\in \mathbb{Z}$,
-$$\tilde{H}_kS^n\iso \tilde{H}_{k-1}S^{n-1}$$
+\begin{lemma}\label{sphere-isomorphism} For every $n\in G$,
+$$\tilde{H}_kS^n\iso \tilde{H}_{k-1}S^{n-1}.$$
 \end{lemma}
 \begin{proof}
 Consider first the pair $(D^n,S^{n-1})$, where $S^{n-1}$ is the boundary of $D^n$. Since $D^n$ is contractible, the reduced homology sequence reads:
@@ -19,9 +19,9 @@ Additionally, we have the pair $(S^n,D^n)$, where $D^n$ is identified as the clo
 \[\begin{tikzcd}
 0 \arrow[r] & \tilde{H}_kS^n \arrow[r] & {H_k(S^n,D^n)} \arrow[r] & 0
 \end{tikzcd}\]
-which gives an isomorphism $\tilde{H}_kS^k\iso H_k(S^n,D^n)$.
+which gives an isomorphism $\tilde{H}_kS^n\iso H_k(S^n,D^n)$.
 
-The open disk $D_{1/2}$ of radius $1/2$ is a subset of $D^n$ which can be excised from the pair $(S^n,D^n)$. The resulting space deformation retracts to the pair $(D^n,S^{n-1})$, where $D^n$ is the upper hemisphere and $S^{n-1}$ its boundary. By the excision axiom,
+The open disk $int(D^n)_{1/2}$ of radius $1/2$ is a subset of $D^n$ which can be excised from the pair $(S^n,D^n)$. The resulting space deformation retracts to the pair $(D^n,S^{n-1})$, where $D^n$ is the upper hemisphere and $S^{n-1}$ its boundary. By the excision axiom,
 $$H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})$$
 All in all,
 $$\tilde{H}_kS^n\iso H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-1}.$$
@@ -31,12 +31,11 @@ $$\tilde{H}_kS^n\iso H_k (S^n,D^n)\iso H_k(D^n,S^{n-1})\iso \tilde{H}_{k-1}S^{n-
 
 \begin{prop}\label{homology-spheres}
 For $n>0$,
-$$H_kS^n=\begin{cases}\mathbb{Z}&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
+$$H_kS^n=\begin{cases}G&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
 \end{prop}
 \begin{proof}
-We identify $S^{0}=\bullet \sqcup \bullet$. By Proposition \ref{disjoint-union}, $$H_k S^{0}=H_k\bullet \dsum H_k \bullet=\begin{cases}\mathbb{Z}\times \mathbb{Z} &k=0\\ 0 & \text{otherwise}\end{cases}$$ It follows that $\tilde{H}_0S^{0}=\mathbb{Z}$ and $\tilde{H}_kS^{0}=0$ when $k\neq 0$. By Lemma \ref{sphere-isomorphism}, $$\tilde{H}_kS^n=\tilde{H}_{k-n}S^{0}=\begin{cases}\mathbb{Z} & k=n\\0 & \text{otherwise}\end{cases}$$
-By Proposition \ref{reduced-homology}, $$H_kS^n=\tilde{H}_kS^n\dsum H_k\bullet=\begin{cases}\mathbb{Z}&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
+We identify $S^{0}=\bullet \sqcup \bullet$. By Proposition \ref{disjoint-union}, $$H_k S^{0}=H_k\bullet \dsum H_k \bullet=\begin{cases}G\times G &k=0\\ 0 & \text{otherwise}\end{cases}$$ It follows that $\tilde{H}_0S^{0}=G$ and $\tilde{H}_kS^{0}=0$ when $k\neq 0$. By Lemma \ref{sphere-isomorphism}, $$\tilde{H}_kS^n=\tilde{H}_{k-n}S^{0}=\begin{cases}G & k=n\\0 & \text{otherwise}\end{cases}$$Therefore, by Proposition \ref{reduced-homology}, $$H_kS^n=\tilde{H}_kS^n\dsum H_k\bullet=\begin{cases}G&k=0,n \\ 0 & \text{otherwise}\end{cases}$$
 \cite{Werndli}
 \end{proof}
 
-All the results in this section hold true for homology theories with any choice of coefficients $G=H_0\bullet$. For the remainder of the text, unless stated otherwise, we will make the choice $G=\mathbb{Z}$, which corresponds to Singular Homology Theory \cite{Hatcher}. Making this choice will simplify some of our arguments, and in Section \ref{sec-degree-maps} allow us to define the \defn{degree} of $f:S^n\rightarrow S^n$ as the integer $f^*(1)\in\mathbb{Z}$.
+All the results in this section hold true for homology theories with any choice of coefficients $H_0\bullet=G$. For the remainder of the text, unless stated otherwise, we will make the choice $G=\mathbb{Z}$, which corresponds to Singular Homology Theory \cite{Hatcher}. Making this choice will simplify some of our arguments, and, in Section \ref{sec-degree-maps}, allow us to define the \defn{degree} of $f:S^n\rightarrow S^n$ as the integer $f^*(1)\in\mathbb{Z}$.

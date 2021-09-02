@@ -1,20 +1,20 @@
 \section{Axioms}\label{sec-axioms}
 \subsection{The Eilenberg-Steenrod axioms}
-The axioms for a homology theory were first laid out by Eilenberg and Steenrod in \cite{Eilenberg}. In this section, we will follow a simplified treatment given in \cite{Werndli}. We define $\Top{2}$ to be the category of pairs of topological spaces $(X,A)$, where $A,B\in \mathbf{Top}$ and $A\subseteq X$. Maps $\Top{2}((X,A),(Y,B)$ are continuous maps $f:X\rightarrow Y$ such that $f(A)\subseteq B$. It is not hard to see this space satisfies the definition of a category.
+In this section we follow the treatment of the Eilenberg-Steenrod axioms given in \cite{Werndli}. We define $\Top{2}$ to be the category of pairs of topological spaces $(X,A)$, where $A,B\in \mathbf{Top}$ and $A\subseteq X$. Maps in $\Top{2}\big((X,A),(Y,B)\big)$ are continuous maps $f:X\rightarrow Y$ such that $f(A)\subseteq B$. It is not hard to see this defines a category.
 
 \begin{lemma}
 $\Top{2}$ is a category.
 \end{lemma}
 \begin{proof}
-It is easy to see that the identity map $id_X$ satisfies the requirement for each $(X,A)$, as $id_X(A)=A$. Furthermore, if $f\in \Top{2}((X,A),(Y,B)$ and $g\in \Top{2}((Y,B),(Z,C)$, then $gf$ is continuous and $gf(A)= g(f(A))\subseteq g(B)\subseteq C$ as required. The associativity and identity properties are satisfied because $\mathbf{Top}$ is a category.
+As $id_X(A)=A$, $id_X\in \Top{2}\big((X,A),(X,A)\big)$ for each $(X,A)$. Furthermore, if $f\in \Top{2}((X,A),(Y,B)$ and $g\in \Top{2}((Y,B),(Z,C)$, then $gf$ is continuous and $gf(A)= g(f(A))\subseteq g(B)\subseteq C$ as required. The extra associativity and identity properties are satisfied because $\mathbf{Top}$ is a category.
 \end{proof}
 
-We can similarly define $\Top{3}$ as the triples of topological spaces $(X,A,B)$ where $B\subseteq A \subseteq X$ and where morphisms $f:(X,A,B)\rightarrow (Y,C,D)$ are maps $f:X\rightarrow Y$ such that $f(A)\subseteq C$ and $f(B)\subseteq D$. We identify $X\in \mathbf{Top}$ with $(X,\emptyset)\in \Top{2}$, and $(X,A)\in \Top{2}$ with $(X,A,\emptyset)\in \Top{3}$.
+We can similarly define $\Top{3}$ as the triples of topological spaces $(X,A,B)$ where $B\subseteq A \subseteq X$ and where morphisms $f:(X,A,B)\rightarrow (Y,C,D)$ are maps $f:X\rightarrow Y$ such that $f(A)\subseteq C$ and $f(B)\subseteq D$. We identify $X\in \mathbf{Top}$ with $(X,\emptyset)\in \Top{2}$ and $(X,A)\in \Top{2}$ with $(X,A,\emptyset)\in \Top{3}$.
 
 \begin{definition}
-A subcategory $\cat{C}\subset \Top{2}$ is \defn{admissible for homology} if the following apply:
+A subcategory $\cat{C}\subseteq \Top{2}$ is \defn{admissible for homology} if the following apply:
 \begin{enumerate}[(a)]
-\item $C$ contains all points in $\mathbf{Top}$. In the language of category theory, $\cat{C}$ contains all \defn{final objects} in $\mathbf{Top}$, that is, all objects $\bullet\in\mathbf{Top}$ with the property that there is one and only one morphism from any $X\in\mathbf{Top}$ to $\bullet$.
+\item $C$ contains all points in $\mathbf{Top}$. In the language of category theory, $\cat{C}$ contains all \defn{final objects} in $\mathbf{Top}$, that is, all objects $\bullet\in\mathbf{Top}$ with the property that there is exactly one morphism $f:X\rightarrow \bullet$ for every $X\in \mathbf{Top}$.
 \item For any $(X,A)\in \cat{C}$, the following commutative diagram lies in $\cat{C}$, where all maps are induced by canonical inclusions:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAKAHS5gFs0OAJ5wYOUj36CRYgJQgAvqXSZc+QinIVqdJq3YcAghN4DhonPKUrseAkQBMpYjoYs2iTgA0TU83MVlEAxbdUdSB1c9D05jQysgkLV7FABmbRo3fU8OH3jAm2SNZAAWDN13Ax8vKx0YKABzeCJQADMAJwg+JDIQHAgkcmsQDq7Bmn6kB2HR7sQtPoHEVJnOufTFpBLVscQnTcRtoNmtiaWAVgVKBSA
 \[\begin{tikzcd}
@@ -22,8 +22,8 @@ A subcategory $\cat{C}\subset \Top{2}$ is \defn{admissible for homology} if the 
 {(\emptyset,\emptyset)} \arrow[r] & {(A,\emptyset)} \arrow[ru] \arrow[rd] &                            & {(X,A)} \arrow[r] & {(X,X)} \\
                                   &                                       & {(A,A)} \arrow[ru]         &                   &        
 \end{tikzcd}\]
-Furthermore, for any $f\in \cat{C}((X,A),(Y,B))$, $\cat{C}$ contains all the canonical maps induced by $f$ on the above diagram to the corresponding diagram of $(Y,B)$.
-\item For $(X,A)\in \cat{C}$, $\cat{C}$ contains the following diagram:
+Furthermore, for any $f\in \cat{C}((X,A),(Y,B))$, $\cat{C}$ contains all the canonical maps induced by $f$ on the above diagram to the corresponding diagram for $(Y,B)$.
+\item For $(X,A)\in \cat{C}$, the following diagram lies in $\cat{C}$:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoANUgQQEoQAX1LpMufIRQBGclVqMWbLgB1leALbwABAEleqjdp0DBcmFADm8IqABmAJwjqkZEDghIZIAEYwwUJABaAGZXemZWRDcAfSkQagY6XwYABTE8AjZ7LAsACxwhERAHJxdqd09qcMUonGjieJ8-AMRQ00EgA
 \[\begin{tikzcd}
 {(X,A)} \arrow[r, "\tau_1"', bend right] \arrow[r, "\tau_0", bend left] & {(X\times I,A\times I)}
@@ -47,10 +47,10 @@ As noted in \cite{Werndli}, the definition certifies that
 
 In this text, we will assume all spaces and maps are admissible unless otherwise stated. We will also use "space" to denote "topological space". 
 
-We now give the axioms of an (ordinary) homology theory for an admissible category.
+We now give the axioms of an (ordinary) homology theory.
 
 \begin{definition}
-An \defn{ordinary homology theory} on an admissible category $\cat{C}$ is a family of functors $(H_n:\cat{C}\rightarrow \mathbf{Ab})_{n \in\mathbb{Z}}$ to the category of Abelian groups\footnote{The original definition defines functors into an \defn{abelian category}, which generally speaking is a category where homomorphisms can be added and wehere we can define the kernel and image of a homomorphism. In this text we will only deal with the category of abelian groups.} $\mathbf{Ab}$ and a family of natural transformations $\partial_n:H_n\rightarrow H_{n-1}\circ p$, where $p$ is the functor sending $(X,A)$ to $(A,\emptyset)$ and $f:(X,A)\rightarrow (Y,B)$ to $f|_A^B:(A,\emptyset)\rightarrow(B,\emptyset)$. We will often write $f^*$ for $H_n f$, $\partial$ for $\partial_n$ and $H_nX$ for $H_n(X,\emptyset)$, as it is usually obvious what role they play. $H_n$ and $\partial$ are assumed to hold the following axioms:
+An \defn{ordinary homology theory} on an admissible category $\cat{C}$ is a family of functors $(H_n:\cat{C}\rightarrow \mathbf{Ab})_{n \in\mathbb{Z}}$ to the category of Abelian groups\footnote{The original definition defines functors into an \defn{abelian category}, which generally speaking is a category where homomorphisms can be added and where we can define the kernel and image of a homomorphism. In this text we will only deal with the category of abelian groups.} $\mathbf{Ab}$ and a family of natural transformations $\partial_n:H_n\rightarrow H_{n-1}\circ p$, where $p$ is the functor sending $(X,A)$ to $(A,\emptyset)$ and $f:(X,A)\rightarrow (Y,B)$ to $f|_A^B:(A,\emptyset)\rightarrow(B,\emptyset)$. We will often write $f^*$ for $H_n f$, $\partial$ for $\partial_n$ and $H_nX$ for $H_n(X,\emptyset)$, as it is usually obvious what role they play. $H_n$ and $\partial$ are assumed to satisfy the following axioms:
 
 \begin{enumerate}[(a)]
 \item (Homotopy invariance) If $f\homotopic g$, then $f^*=g^*$.
@@ -73,9 +73,9 @@ give rise to a long exact sequence
 \end{definition}
 
 \begin{remark}\label{homotopy-isomorphism}
-As $H_n$ is a functor, it preserves commutative diagrams. That is, any commutative diagram of spaces in $\Top{2}$ gives rise to a commutative diagram in homology. Furthermore $id^*=id$ by the identity property of functors. Together with axiom (a), this asserts that homology theory can be used to distinguish between homotopy equivalent spaces: if $f:X\rightarrow Y$ is a homotopy equivalence with homotopy inverse $g:Y\rightarrow X$, then as $fg\homotopic id$, $f^*g^*=(fg)^*=id$, so $f^*$ is surjective. Similarly as $gf\homotopic id$, $g^*f^*=id$, so $f^*$ is injective. Hence $f^*:H_nX\rightarrow H_nY$ is an isomorphism.
+Note $id^*=id$ by the identity property of functors. Together with axiom (a), this asserts that homology theory can be used to distinguish between homotopy equivalent spaces: if $f:X\rightarrow Y$ is a homotopy equivalence with homotopy inverse $g:Y\rightarrow X$, then as $fg\homotopic id$, $f^*g^*=(fg)^*=id$, since $H_n$ is a functor. Therefore $f^*$ is surjective. Similarly, as $gf\homotopic id$, $g^*f^*=id$, so $f^*$ is injective. Hence $f^*:H_nX\rightarrow H_nY$ is an isomorphism.
 \end{remark}
-The extra dimension axiom is what defines an ordinary homology theory as opposed to a (general) homology theory. It is essential in our study. The choice $H_0=G$, called a "choice of coefficients" distinguishes homology theories from each other.
+The extra dimension axiom is what defines an ordinary homology theory as opposed to a (general) homology theory. It is essential in our study. The choice $H_0=G$, called a \defn{choice of coefficients} distinguishes homology theories from each other.
 
 \subsection{Basic results}
 \begin{prop}
@@ -93,7 +93,7 @@ By exactness, $ker(j^*)=H_nX$, so $j^*=0$. Similarly, $im(\partial)=0$, so $\par
 
 \begin{remark}
 \label{contractible-0}
-As a special case of this result, $H_n(X,X)=0$, as $X$ is a deformation retract of itself. We are also interested in special case where $A=x$ is a single point, i.e. $X$ is contractible. Then we have $H_nX\iso H_n\bullet=\mathbb{Z}$ and $H_n(X,x)=0$.
+As a special case of this result, $H_n(X,X)=0$, as $X$ is a deformation retract of itself. We are also interested in special case where $A=x$ is a single point, i.e. $X$ is contractible. Then we have $H_nX\iso H_n\bullet=G$ and $H_n(X,x)=0$.
 \end{remark}
 
 Next, we would like to show how to calculate the homology of a disconnected space.
@@ -112,13 +112,13 @@ If $f$ and $g$ are isomorphisms, and the diagonals are exact, then there exist i
 \end{lemma}
 \begin{proof}
 By commutativity, $ji'=g,$ so $ji'g^{-1}=id_{B'}$. Therefore $i'g^{-1}$ is a section of $j$. By Proposition \ref{short-seq-direct-sum}, we have an isomorphism $$(i+i'g^{-1}):A\dsum B'\rightarrow X$$
-$$(a,b)\mapsto i(a)+i'g^{-1}(b)$$
-Since $g^{-1}$ is an isomorphism, $(i+i'):A\dsum B\rightarrow X$ is also an isomorphism in an obvious way.
+$$(a,b)\mapsto i(a)+i'g^{-1}(b).$$
+Since $g^{-1}$ is an isomorphism, $(i+i'):A\dsum B\rightarrow X$ is also an isomorphism in the obvious way.
 
 Similarly, $f^{-1}j'$ is a retraction of $i$. Again, by Proposition \ref{short-seq-direct-sum}, we have an isomorphism $$(f^{-1}j',j):X\rightarrow A\dsum B'$$
 $$x\mapsto (f^{-1}j'(x),j(x))$$
 which since $f^{-1}$ is an isomorphism also gives an isomorphism 
-$$(j',j):X\rightarrow A'\dsum B'$$
+$$(j',j):X\rightarrow A'\dsum B'.$$
 \end{proof}
 
 
@@ -135,43 +135,40 @@ Consider the following diagram
 {(B,\emptyset)} \arrow[ru, "i_B"] \arrow[rr, "g"] &                                                     & {(X,A)}
 \end{tikzcd}\]
 
-It induces the following commutative diagram in homology, which satisfies the previous lemma, as the diagonals are part of the exact sequences of $(X,A)$ and $(X,B)$ respectively, and $f^*$ and $g^*$ are isomorphisms by the excision axiom.
+It induces the following commutative diagram in homology, which satisfies the previous lemma as the diagonals are part of the exact sequences of $(X,A)$ and $(X,B)$ respectively and since $f^*$ and $g^*$ are isomorphisms by the excision axiom.
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoAmAXVJADcBDAGwFcYkQAJAfTACEQAvqXSZc+QinIVqdJq3bcwACgAapAIIBKQcJAZseAkQCMpYzIYs2iTjxU6RB8UTLELc67bDqHe0YYlkKTcaS3kbRVVSXm0BGRgoAHN4IlAAMwAnCABbJDIQHAgkKVkrdiwuXgA9ACpfTJykAGYaQuLQj3KudVr6rNzEErbEABYOspsAK0reoXT+9oKixFNS8JBpnrq5kAaB-OHVsM9E2d095tblsbXPNNnKASA
 \[\begin{tikzcd}
 H_nA \arrow[rd, "i_A^*"] \arrow[rr, "f^*"] &                                              & {H_n(X,B)} \\
                                            & H_nX \arrow[ru, "j_B^*"] \arrow[rd, "j_A^*"] &            \\
 H_nB \arrow[ru, "i_B^*"] \arrow[rr, "g^*"] &                                              & {H_n(X,A)}
 \end{tikzcd}\]
-The result then follows from the lemma.
+The result then follows from Lemma \ref{dsum-lemma}.
 \cite{Werndli}
 \end{proof}
 
 
 \subsection{Reduced homology}
-Results in homology are easy when the associated homology sequence has maps that are isomorphisms or $0$-maps. Therefore, if it is possible to "simplify" a homology sequence by for example replacing some groups with $0$, this is often advantageous. As we will show, it is often possible to factor out $H_n\bullet$ from a homology sequence of $(X,A)$, resulting in a simpler sequence. Furthermore, this transformation is reversible.
+Results in homology are easy when the associated homology sequence has maps that are isomorphisms or $0$-maps. Therefore, if it is possible to "simplify" a homology sequence by for example replacing some groups with $0$, this is often advantageous. As we will show, it is possible to factor out $H_n\bullet$ from a homology sequence of $(X,A)$, resulting in a simpler sequence. Furthermore, this transformation is reversible.
 
 \begin{definition}
-For non-empty $X$, $\tilde{H}_nX:=ker(p^*:H_nX\rightarrow H_n\bullet)$ where $p^*$ is induced by the initial map $p:X\rightarrow \bullet$. $\tilde{H}_nX$ is called the \defn{$n$-th reduced homology group} of $X$.
+For non-empty $X$, $\tilde{H}_nX:=ker(p^*:H_nX\rightarrow H_n\bullet)$ where $p^*$ is induced by the map $p:X\rightarrow \bullet$. $\tilde{H}_nX$ is called the \defn{$n$-th reduced homology group} of $X$.
 \end{definition}
 
 \begin{prop}
 \label{reduced-homology}
 For non-empty $X$,
 $$H_nX\iso\tilde{H}_nX\dsum H_n\bullet$$
-and for any $x\in X$ $$\tilde{H}_nX\iso H_n(X,x)$$
+and for any $x\in X$, $$\tilde{H}_nX\iso H_n(X,x).$$
 \end{prop}
 \begin{proof}
-Consider the homomorphism $p^*:H_nX\rightarrow H_n\bullet$
-
-
-Note $p^*$ is a retraction of $i^*:H_n\bullet \rightarrow H_n X$ induced by the inclusion, as $pi:\bullet\rightarrow \bullet$ is trivially the identity, and $H_n$ is a functor. By Proposition \ref{retraction-iso}, $$H_nX\iso ker(p^*)\dsum im(i^*) \iso \tilde{H}_nX\dsum im(i^*).$$ If we can show $i^*$ is injective, we have our first equality. By the naturality of $\partial$, the following diagram commutes:
+Consider the homomorphism $p^*:H_nX\rightarrow H_n\bullet$. Note $p^*$ is a retraction of $i^*:H_n\bullet \rightarrow H_n X$ induced by the inclusion, as $pi:\bullet\rightarrow \bullet$ is trivially the identity, and $H_n$ is a functor. By Proposition \ref{retraction-iso}, $$H_nX\iso ker(p^*)\dsum im(i^*) \iso \tilde{H}_nX\dsum im(i^*).$$ If we can show $i^*$ is injective, we have our first equality. By the naturality of $\partial$, the following diagram commutes:
 
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkB9YMAagEYAvgAoAGqQA6EgMZQIOAJQhBpdJlz5CKMvyq1GLNlx4CRU2fMky5i5apAZseAkX6ld1es1aIOnMOY2dmpOmq7kel6GvlwB1vLKejBQAObwRKAAZgBOEAC2SGQgOBBIAMyeBj4gUmh02XiMwSA5+UhuxaWIAEyV3my19Y0Mza0FiEUl7X3RDgB6AFSjueMVnUi9+v2+aIuJgkA
 \[\begin{tikzcd}
 {H_{n+1}(X,\bullet)} \arrow[r, "\partial"] \arrow[d, "p^*"] & H_n\bullet \arrow[d, "p^*"] \\
 {H_{n+1}(\bullet,\bullet)} \arrow[r, "\partial"]              & H_n\bullet                 
 \end{tikzcd}\]
-Note $p^*:H_n\bullet\rightarrow H_n\bullet$ is the identity, as $p:\bullet\rightarrow\bullet$ is the identity. Therefore $\partial$ factors through $H_{n+1}(\bullet,\bullet)=0$. By the exactness of the homology sequence for $(X,\bullet)$, $0=im(\partial)=ker(i^*)$, so $i^*$ is injective as required, and $$H_nX\iso \tilde{H}_nX\dsum H_n\bullet.$$
+Note $p^*:H_n\bullet\rightarrow H_n\bullet$ is the identity, as $p:\bullet\rightarrow\bullet$ is the identity. Therefore $\partial$ factors through $H_{n+1}(\bullet,\bullet)=0$, so $\partial=0$. By the exactness of the homology sequence for $(X,\bullet)$, $0=im(\partial)=ker(i^*)$, so $i^*$ is injective as required, and $$H_nX\iso \tilde{H}_nX\dsum H_n\bullet.$$
 
 
 For the second isomorphism, note that the long exact sequence of $(X,\bullet)$
@@ -184,8 +181,7 @@ gives a short exact sequence
 \[\begin{tikzcd}
 0 \arrow[r] & H_n\bullet \arrow[r, "i^*"] & H_nX \arrow[r, "j^*"] & {H_n(X,\bullet)} \arrow[r] & 0
 \end{tikzcd}\]
-
-Since $p^*:H_nX\rightarrow H_n\bullet$ is a retraction of $i^*$, Proposition \ref{short-seq-direct-sum} gives that $H_nX\iso H_n(X,\bullet)\dsum H_n\bullet$. Since this is isomorphic to $\tilde{H}_nX\dsum H_n\bullet$, $$H_n(X,x)\iso \tilde{H}_nX.$$
+Since $p^*:H_nX\rightarrow H_n\bullet$ is a retraction of $i^*$, Proposition \ref{short-seq-direct-sum} gives that $$H_nX\iso H_n(X,\bullet)\dsum H_n\bullet.$$ Since this is isomorphic to $\tilde{H}_nX\dsum H_n\bullet$, $$H_n(X,x)\iso \tilde{H}_nX.$$
 \end{proof}
 
 \begin{corollary}
@@ -218,23 +214,20 @@ For a triple $(X,A,B)\in \Top{3}$, the sequence
 is a long exact sequence.
 \end{prop}
 \begin{proof}
-We first show that $(2)$ is a chain complex. By commutativity, the compositions $i\partial$ and $\partial j$ factor through two consecutive maps in a long exact sequence, and are hence $0$. For $j^*i^*$, note that $i$ and $j$ factor through $(A,A)$:
+We first show that $(2)$ is a chain complex. By commutativity, the compositions $i\partial$ and $\partial j$ factor through two consecutive maps in a long exact sequence, and are hence $0$. For $j^*i^*$, note that $ji$ factors through $(A,A)$:
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAoBBUgIQEoQAX1LpMufIRRkAjFVqMWbdgA1eA4aOx4CRMgCY59Zq0QdVndSJAYtEotNKzqRxaa6kLQuTCgBzeESgAGYAThAAtkhkIDgQSA7yxmxYQlahEfHUsUh6zgomIABWqcFhkYjR2YgAzHlJpgDWJSDp5bUxcYi5ia4gABZegkA
 \[\begin{tikzcd}
 {(A,B)} \arrow[d, "i"] \arrow[rd, "k"] &                         \\
 {(X,B)} \arrow[d, "j"]                 & {(A,A)} \arrow[ld, "h"] \\
 {(X,A)}                                &                        
 \end{tikzcd}\]
-
 In homology, this means $j^*i^*$ factors through $H_n(A,A)=0$, so $j^*i^*=0$.
-
 % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAAkB9MACgEFSAIQCUIAL6l0mXPkIoyARiq1GLNl14ANIaIlTseAkTIAmZfWatEHbj219dkkBgOyiC0kuoW114uOUYKABzeCJQADMAJwgAWyQyEBwIJA8VSzYsAD0AKnEnaLjU6mSkE29VKxAAK1z8yJj4xETSxABmCoy-epBCpo6klMRy9N8QfzEKMSA
 \[\begin{tikzcd}
 {H_n(A,B)} \arrow[d, "i^*"] \arrow[rd, "0"] &                   \\
 {H_n(X,B)} \arrow[d, "j^*"]                 & 0 \arrow[ld, "0"] \\
 {H_n(X,A)}                                  &                  
 \end{tikzcd}\]
-
 The result then follows by an application of the Braid Lemma (Lemma \ref{braid-lemma}).
 \cite{Werndli}
 \end{proof}
